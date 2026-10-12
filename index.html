@@ -183,19 +183,28 @@ body::before {
 </div>
 
 <script>
-// VAULT ROUTING TABLE
-const VAULT_ROUTES = {
-  "2547": "./utary/",
-  "utary": "./utary/",
-  "utari": "./utary/"
+// VAULT ROUTING TABLE (HASH-PROTECTED)
+const HASHED_ROUTES = {
+  "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0": "./utary/",
+  "27a301fdbc4d398d2bb271d90ba609ed26165584f08cf6b07b0b98f333bf46ea": "./utary/",
+  "4aa0b06ef5d367d890fc03a1963d61a60fedcadbf0f50a28fd6456597afcbd1f": "./utary/"
 };
 
-function unlockPortal() {
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  const hashArr = Array.from(new Uint8Array(hashBuf));
+  return hashArr.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function unlockPortal() {
   const key = document.getElementById("vault-key").value.trim().toLowerCase();
   const err = document.getElementById("vault-err");
-  if (VAULT_ROUTES[key]) {
+  const hashed = await sha256(key);
+  
+  if (HASHED_ROUTES[hashed]) {
     sessionStorage.setItem("utary_auth", "granted");
-    window.location.href = VAULT_ROUTES[key];
+    window.location.href = HASHED_ROUTES[hashed];
   } else {
     err.style.display = "block";
     document.getElementById("vault-key").value = "";

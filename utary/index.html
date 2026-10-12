@@ -855,8 +855,8 @@ footer {
       <input type="password" id="gate-pass" class="gate-input" maxlength="6" placeholder="••••" autofocus onkeypress="handleGateKey(event)"/>
     </div>
     <button class="gate-btn" onclick="verifyGate()">UNLOCK PROPOSAL</button>
-    <div class="gate-error" id="gate-err">⚠️ Passcode salah. Silakan coba lagi.</div>
-    <div class="gate-hint">Petunjuk: 4-digit angka sesuai total aset batch (2547).</div>
+    <div class="gate-error" id="gate-err">⚠️ Passcode salah atau tidak valid. Silakan coba lagi.</div>
+    <div class="gate-hint" style="color: var(--text-dim);">Akses terbatas. Hubungi pengirim dokumen jika Anda belum menerima passcode resmi.</div>
   </div>
 </div>
 
@@ -1205,8 +1205,15 @@ footer {
 </footer>
 
 <script>
-// SECURITY PASSCODE VERIFICATION (CODE: 2547)
-const TARGET_PASS = "2547";
+// SECURITY PASSCODE VERIFICATION (SHA-256 HASH PROTECTED)
+const HASH_TARGET = "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0";
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  const hashArr = Array.from(new Uint8Array(hashBuf));
+  return hashArr.map(b => b.toString(16).padStart(2, "0")).join("");
+}
 
 function checkSessionAuth() {
   if (sessionStorage.getItem("utary_auth") === "granted") {
@@ -1214,10 +1221,12 @@ function checkSessionAuth() {
   }
 }
 
-function verifyGate() {
+async function verifyGate() {
   const entered = document.getElementById("gate-pass").value.trim();
   const errBox = document.getElementById("gate-err");
-  if (entered === TARGET_PASS) {
+  const hashed = await sha256(entered);
+  
+  if (hashed === HASH_TARGET) {
     sessionStorage.setItem("utary_auth", "granted");
     document.getElementById("security-gate").classList.add("unlocked");
     errBox.style.display = "none";
