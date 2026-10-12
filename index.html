@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YTTA — Studio Client &amp; Partner Vault // Telkraf.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #08080a;
+  --bg-card: #0e0e13;
+  --border-subtle: #1e1e28;
+  --border-strong: #333344;
+  --text-main: #f5f5f7;
+  --text-muted: #888899;
+  --accent-yellow: #F5E03A;
+  --accent-pink: #F0527A;
+  --accent-purple: #8B2FC2;
+  --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
+  --font-display: 'Creato Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-display);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+.portal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  max-width: 480px;
+  width: 100%;
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+  position: relative;
+  z-index: 1;
+}
+.portal-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-signature);
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-yellow);
+  background: rgba(245, 224, 58, 0.08);
+  border: 1px solid rgba(245, 224, 58, 0.25);
+  padding: 4px 12px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.portal-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.portal-title span {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.portal-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+.vault-input {
+  width: 100%;
+  background: #08080b;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-align: center;
+  padding: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  letter-spacing: 2px;
+}
+.vault-input:focus {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 16px rgba(245, 224, 58, 0.25);
+}
+
+.vault-btn {
+  width: 100%;
+  background: var(--grad-signature);
+  color: #000;
+  font-weight: 800;
+  font-size: 14px;
+  border: none;
+  padding: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vault-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 224, 58, 0.3);
+}
+
+.vault-error {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: #ff5252;
+  margin-top: 12px;
+}
+
+.portal-quote {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #555566;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="portal-box">
+  <div class="brand-badge">TELKRAF.ID // PRIVATE CLIENT VAULT</div>
+  <h1 class="portal-title">YTTA <span>SYSTEM</span></h1>
+  <p class="portal-desc">
+    "Welcome to my ytta repo; you were chosen, and I have spoken. This is the way."
+  </p>
+
+  <div class="input-group">
+    <input type="password" id="vault-key" class="vault-input" placeholder="ENTER ACCESS KEY" autofocus onkeypress="handleKey(event)"/>
+  </div>
+  <button class="vault-btn" onclick="unlockPortal()">UNLOCK VAULT</button>
+  <div class="vault-error" id="vault-err">⚠️ Access Key tidak terdaftar. Hubungi Telkraf.id.</div>
+
+  <div class="portal-quote">
+    Confidentiality is an art. Unauthorized access strictly prohibited.
+  </div>
+</div>
+
+<script>
+// VAULT ROUTING TABLE
+const VAULT_ROUTES = {
+  "2547": "./utary/",
+  "utary": "./utary/",
+  "utari": "./utary/"
+};
+
+function unlockPortal() {
+  const key = document.getElementById("vault-key").value.trim().toLowerCase();
+  const err = document.getElementById("vault-err");
+  if (VAULT_ROUTES[key]) {
+    sessionStorage.setItem("utary_auth", "granted");
+    window.location.href = VAULT_ROUTES[key];
+  } else {
+    err.style.display = "block";
+    document.getElementById("vault-key").value = "";
+    document.getElementById("vault-key").focus();
+  }
+}
+
+function handleKey(e) {
+  if (e.key === "Enter") {
+    unlockPortal();
+  }
+}
+</script>
+</body>
+</html>
