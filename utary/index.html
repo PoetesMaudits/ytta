@@ -2,23 +2,23 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Telkraf.id × Utary — Blueprints Daur Ulang Aset &amp; Kolaborasi Canva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Telkraf.id × Utary — Blueprint Monetisasi &amp; Transformasi Produk Canva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-deep: #0a0a0c;
-  --bg-surface: #111115;
-  --bg-card: #15151b;
-  --bg-card-hover: #1c1c24;
-  --border-subtle: #242430;
-  --border-strong: #363647;
+  --bg-deep: #08080a;
+  --bg-surface: #0e0e13;
+  --bg-card: #131319;
+  --bg-card-hover: #191922;
+  --border-subtle: #22222e;
+  --border-strong: #323244;
 
   --text-main: #f5f5f7;
-  --text-muted: #9595a8;
-  --text-dim: #5c5c70;
+  --text-muted: #8e8ea2;
+  --text-dim: #545468;
 
   --accent-yellow: #F5E03A;
   --accent-pink: #F0527A;
@@ -27,14 +27,13 @@
   --accent-green: #00e676;
 
   --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
+  --grad-badge: linear-gradient(90deg, rgba(245, 224, 58, 0.12) 0%, rgba(240, 82, 122, 0.12) 50%, rgba(139, 47, 194, 0.12) 100%);
   --font-display: 'Creato Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; padding: 0; box-sizing: border-box;
 }
 
 body {
@@ -50,7 +49,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Blueprint Grid Pattern */
+/* Background Engineering Grid */
 body::before {
   content: "";
   position: fixed;
@@ -58,24 +57,33 @@ body::before {
   background-image: 
     linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 36px 36px;
   pointer-events: none;
   z-index: 0;
 }
 
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
 /* ==========================================================================
-   SECURITY VERIFICATION GATE (LOCK SCREEN OVERLAY)
+   SECURITY VERIFICATION GATE (CLEAN & RESTRICTED)
    ========================================================================== */
 #security-gate {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, #14141d 0%, #08080a 100%);
-  z-index: 99999;
+  background: radial-gradient(circle at center, #14141d 0%, #060608 100%);
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(20px);
+  padding: 20px;
+  backdrop-filter: blur(24px);
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 #security-gate.unlocked {
@@ -84,13 +92,13 @@ body::before {
   pointer-events: none;
 }
 .gate-card {
-  background: #111117;
+  background: #0f0f15;
   border: 1px solid var(--border-strong);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.85);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.95);
   border-radius: 8px;
-  max-width: 440px;
+  max-width: 420px;
   width: 100%;
-  padding: 36px 32px;
+  padding: 40px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -102,43 +110,40 @@ body::before {
   height: 3px;
   background: var(--grad-signature);
 }
-.gate-badge {
-  display: inline-flex;
+.gate-brand-logo {
+  max-width: 130px;
+  margin: 0 auto 20px auto;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  color: var(--accent-yellow);
-  background: rgba(245, 224, 58, 0.08);
-  border: 1px solid rgba(245, 224, 58, 0.25);
-  padding: 4px 10px;
-  border-radius: 3px;
-  margin-bottom: 16px;
-  text-transform: uppercase;
+  justify-content: center;
+}
+.gate-brand-logo svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .gate-icon {
-  font-size: 36px;
+  font-size: 34px;
   margin-bottom: 12px;
 }
 .gate-title {
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.gate-subtitle {
+.gate-sub {
   font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.55;
   margin-bottom: 24px;
+  font-family: var(--font-mono);
 }
 .gate-input-wrap {
   margin-bottom: 16px;
 }
 .gate-input {
   width: 100%;
-  background: #09090d;
+  background: #07070a;
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   color: #fff;
@@ -179,31 +184,15 @@ body::before {
   color: #ff5252;
   margin-top: 12px;
 }
-.gate-hint {
-  margin-top: 20px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-}
 
 /* ==========================================================================
-   MAIN CONTENT STYLES
+   TOP BAR (OFFICIAL LOGO + PARTNER IDENTITY)
    ========================================================================== */
-.container {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 28px;
-  position: relative;
-  z-index: 1;
-}
-
-/* TOP COLLABORATION BAR */
 .top-bar {
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(17, 17, 21, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 14px 0;
+  background: rgba(14, 14, 19, 0.9);
+  backdrop-filter: blur(14px);
+  padding: 12px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -212,67 +201,77 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
-  font-family: var(--font-mono);
 }
-.collab-tag {
+.brand-identity-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand-logo-wrap {
+  width: 96px;
+  display: flex;
+  align-items: center;
+}
+.brand-logo-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.divider-col {
+  width: 1px;
+  height: 20px;
+  background: var(--border-strong);
+}
+.partner-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.partner-tag strong {
+  color: #fff;
+}
+.top-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.brand-pill {
-  background: var(--grad-signature);
-  color: #000;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 3px;
-  letter-spacing: 0.5px;
-}
-.collab-with {
-  color: var(--text-muted);
-}
-.collab-with strong {
-  color: #fff;
-}
-.live-badge {
+.status-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 230, 118, 0.1);
-  border: 1px solid rgba(0, 230, 118, 0.3);
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.25);
   color: var(--accent-green);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
+  font-family: var(--font-mono);
 }
-.dot-live {
-  width: 6px;
-  height: 6px;
+.dot-green {
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--accent-green);
-  box-shadow: 0 0 8px var(--accent-green);
+  box-shadow: 0 0 6px var(--accent-green);
 }
-.lock-again-btn {
+.lock-btn {
   background: transparent;
   border: 1px solid var(--border-subtle);
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: 11px;
-  padding: 3px 8px;
+  padding: 4px 8px;
   border-radius: 3px;
   cursor: pointer;
-  margin-left: 12px;
 }
-.lock-again-btn:hover {
-  color: #fff;
-  border-color: var(--border-strong);
-}
+.lock-btn:hover { color: #fff; border-color: var(--border-strong); }
 
-/* HERO SECTION */
+/* ==========================================================================
+   HERO INTRO SECTION
+   ========================================================================== */
 .hero {
-  padding: 56px 0 32px 0;
+  padding: 40px 0 24px 0;
 }
-.hero-pretitle {
+.hero-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -281,18 +280,18 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--accent-yellow);
-  padding: 6px 14px;
+  padding: 4px 12px;
   background: rgba(245, 224, 58, 0.08);
   border: 1px solid rgba(245, 224, 58, 0.25);
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 .hero-title {
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 800;
   letter-spacing: -1.2px;
-  line-height: 1.18;
-  margin-bottom: 16px;
+  line-height: 1.2;
+  margin-bottom: 12px;
   max-width: 960px;
 }
 .hero-title span {
@@ -300,126 +299,96 @@ body::before {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero-lead {
-  font-size: 16px;
+.hero-desc {
+  font-size: 15px;
   color: var(--text-muted);
-  max-width: 820px;
+  max-width: 840px;
   line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-/* STATS ROW */
-.stats-banner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 48px;
+/* ==========================================================================
+   SUPER INTERACTIVE TAB NAVIGATION BAR (MOBILE SWIPEABLE)
+   ========================================================================== */
+.tabs-wrapper {
+  margin-bottom: 32px;
+  position: sticky;
+  top: 57px;
+  z-index: 95;
+  background: rgba(8, 8, 10, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
 }
-.stat-box {
-  background: var(--bg-card);
+.tabs-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  padding: 20px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
   border-radius: 4px;
-  position: relative;
-  overflow: hidden;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  flex-shrink: 0;
 }
-.stat-box::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--border-subtle);
-}
-.stat-box.prime::after {
-  background: var(--grad-signature);
-}
-.stat-label {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-.stat-val {
-  font-size: 26px;
-  font-weight: 800;
-  font-family: var(--font-mono);
+.tab-btn:hover {
   color: #fff;
-  letter-spacing: -0.5px;
+  border-color: var(--border-strong);
 }
-.stat-note {
-  font-size: 11.5px;
-  color: var(--text-dim);
-  margin-top: 4px;
+.tab-btn.active {
+  background: rgba(245, 224, 58, 0.08);
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+  box-shadow: 0 0 12px rgba(245, 224, 58, 0.15);
 }
-
-/* COMPARISON: OLD VS NEW */
-.comp-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 56px;
-}
-.comp-card {
-  padding: 28px;
-  border-radius: 6px;
-  position: relative;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-card);
-}
-.comp-card.old {
-  border-top: 3px solid #ff4d4d;
-}
-.comp-card.new {
-  border-top: 3px solid var(--accent-green);
-  background: linear-gradient(180deg, rgba(0, 230, 118, 0.04) 0%, rgba(21, 21, 27, 1) 100%);
-}
-.comp-badge {
+.tab-badge {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 2px;
-  display: inline-block;
-  margin-bottom: 12px;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-dim);
 }
-.comp-card.old .comp-badge {
-  background: rgba(255, 77, 77, 0.15);
-  color: #ff6b6b;
-}
-.comp-card.new .comp-badge {
-  background: rgba(0, 230, 118, 0.15);
-  color: var(--accent-green);
-}
-.comp-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.comp-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 13.5px;
-  color: var(--text-muted);
-}
-.comp-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.5;
-}
-.comp-list li strong {
-  color: var(--text-main);
+.tab-btn.active .tab-badge {
+  background: rgba(245, 224, 58, 0.25);
+  color: var(--accent-yellow);
 }
 
-/* SECTION TITLE UTILS */
-.sec-head {
-  margin-bottom: 28px;
+/* ==========================================================================
+   PANEL CONTENT CONTAINERS
+   ========================================================================== */
+.tab-panel {
+  display: none;
+  animation: tabFadeIn 0.25s ease-out;
 }
-.sec-pre {
+.tab-panel.active {
+  display: block;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-head {
+  margin-bottom: 24px;
+}
+.panel-pre {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--accent-yellow);
@@ -427,26 +396,28 @@ body::before {
   letter-spacing: 1px;
   margin-bottom: 4px;
 }
-.sec-title {
-  font-size: 26px;
+.panel-title {
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.6px;
   margin-bottom: 6px;
 }
-.sec-desc {
-  font-size: 14.5px;
+.panel-desc {
+  font-size: 14px;
   color: var(--text-muted);
-  max-width: 780px;
+  max-width: 800px;
 }
 
-/* 3 VEHICLES CARDS */
-.vehicles-grid {
+/* ==========================================================================
+   TAB 1: NYAWA KEDUA (END-PRODUCT MOCKUP SHOWCASE)
+   ========================================================================== */
+.mockups-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
-.vehicle-card {
+.mockup-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
@@ -455,230 +426,406 @@ body::before {
   flex-direction: column;
   transition: transform 0.2s, border-color 0.2s;
 }
-.vehicle-card:hover {
+.mockup-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-strong);
 }
-.vehicle-visual {
-  height: 180px;
-  background: repeating-conic-gradient(#15151e 0% 25%, #191924 0% 50%) 50% / 16px 16px;
+.mockup-preview-stage {
+  height: 240px;
+  background: radial-gradient(circle at center, #1e1e28 0%, #111116 100%);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  position: relative;
+  padding: 16px;
 }
-.vehicle-visual img, .vehicle-visual svg {
-  max-height: 140px;
-  max-width: 140px;
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+.mockup-stage-asset {
+  max-width: 160px;
+  max-height: 160px;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.7));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.vehicle-price-tag {
+.mockup-card:hover .mockup-stage-asset {
+  transform: scale(1.08);
+}
+.end-product-pill {
   position: absolute;
-  top: 12px; right: 12px;
+  top: 12px; left: 12px;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong);
+  color: var(--accent-yellow);
   font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(4px);
+  font-size: 10px;
   padding: 4px 8px;
   border-radius: 3px;
-  color: var(--accent-green);
-  border: 1px solid rgba(0, 230, 118, 0.3);
+  font-weight: 700;
 }
-.vehicle-body {
+.price-pill {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(0, 230, 118, 0.15);
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.mockup-body {
   padding: 24px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-.vehicle-tag {
+.mockup-cat {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   color: var(--accent-pink);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
   margin-bottom: 6px;
 }
-.vehicle-name {
+.mockup-name {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
   line-height: 1.3;
 }
-.vehicle-desc {
+.mockup-explanation {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.55;
   margin-bottom: 16px;
 }
-.vehicle-features {
+.mockup-spec-box {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   padding: 14px;
   border-radius: 4px;
   margin-top: auto;
-  font-size: 12.5px;
+  font-size: 12px;
 }
-.vehicle-features-title {
+.mockup-spec-title {
   font-family: var(--font-mono);
   font-size: 10px;
-  text-transform: uppercase;
   color: var(--accent-yellow);
+  text-transform: uppercase;
   margin-bottom: 6px;
 }
-.vehicle-features ul {
+.mockup-spec-box ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  color: var(--text-main);
 }
-.vehicle-features ul li::before {
-  content: "✓ ";
-  color: var(--accent-green);
-  font-weight: 700;
+.mockup-spec-box ul li::before {
+  content: "✦ ";
+  color: var(--accent-yellow);
 }
 
-/* 4-STEP PIPELINE */
-.pipeline-grid {
+/* ==========================================================================
+   TAB 2: SWOT & TRIANGULASI DATA
+   ========================================================================== */
+.swot-quad {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 56px;
-  position: relative;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
 }
-.pipeline-step {
+.swot-panel {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  padding: 24px;
   border-radius: 6px;
+  padding: 24px;
   position: relative;
 }
-.step-num {
-  font-family: var(--font-mono);
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--border-strong);
-  line-height: 1;
-  margin-bottom: 12px;
+.swot-panel.s { border-top: 3px solid var(--accent-green); }
+.swot-panel.w { border-top: 3px solid #ff5252; }
+.swot-panel.o { border-top: 3px solid var(--accent-yellow); }
+.swot-panel.t { border-top: 3px solid var(--accent-purple); }
+
+.swot-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 }
-.step-who {
+.swot-char {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+.swot-panel.s .swot-char { color: var(--accent-green); }
+.swot-panel.w .swot-char { color: #ff5252; }
+.swot-panel.o .swot-char { color: var(--accent-yellow); }
+.swot-panel.t .swot-char { color: var(--accent-purple); }
+
+.swot-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 2px;
-  display: inline-block;
-  margin-bottom: 8px;
+  color: var(--text-muted);
 }
-.step-who.utari {
-  background: rgba(240, 82, 122, 0.15);
-  color: var(--accent-pink);
-  border: 1px solid rgba(240, 82, 122, 0.3);
+.swot-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13.5px;
 }
-.step-who.khairul {
-  background: rgba(0, 210, 255, 0.15);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(0, 210, 255, 0.3);
+.swot-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-muted);
 }
-.step-who.joint {
-  background: rgba(245, 224, 58, 0.15);
+.swot-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+}
+.swot-list li strong {
+  color: var(--text-main);
+}
+
+/* TRIANGULASI DATA PILLARS */
+.triangulation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.tri-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 24px;
+}
+.tri-icon { font-size: 28px; margin-bottom: 10px; }
+.tri-source {
+  font-family: var(--font-mono);
+  font-size: 11px;
   color: var(--accent-yellow);
-  border: 1px solid rgba(245, 224, 58, 0.3);
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
-.step-title {
+.tri-title {
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 10px;
+}
+.tri-stat {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
   margin-bottom: 8px;
 }
-.step-detail {
+.tri-desc {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.55;
 }
 
-/* RESPONSIBILITIES MATRIX TABLE */
-.matrix-table {
+/* ==========================================================================
+   TAB 3: PLATFORM & TRAFFIC PROMOTION ENGINE
+   ========================================================================== */
+.platform-table-wrap {
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+.platform-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 56px;
   font-size: 13.5px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
   overflow: hidden;
 }
-.matrix-table th {
+.platform-table th {
+  padding: 14px 18px;
   text-align: left;
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 16px 20px;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
 }
-.matrix-table td {
-  padding: 16px 20px;
+.platform-table td {
+  padding: 16px 18px;
   border-bottom: 1px solid var(--border-subtle);
   vertical-align: middle;
 }
-.matrix-table tr:last-child td {
-  border-bottom: none;
-}
-.badge-role {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 3px;
-  font-weight: 600;
-}
-.badge-role.utari-role {
-  background: rgba(240, 82, 122, 0.12);
-  color: var(--accent-pink);
-  border: 1px solid rgba(240, 82, 122, 0.3);
-}
-.badge-role.khairul-role {
-  background: rgba(0, 210, 255, 0.12);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(0, 210, 255, 0.3);
-}
+.platform-table tr:last-child td { border-bottom: none; }
 
-/* EARNINGS SIMULATOR */
-.calc-wrapper {
+/* TRAFFIC PROMOTION ENGINES */
+.traffic-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.traffic-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  padding: 36px;
   border-radius: 6px;
-  margin-bottom: 56px;
+  padding: 24px;
 }
-.calc-inputs {
+.traffic-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-pink);
+  margin-bottom: 8px;
+}
+.traffic-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.traffic-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.traffic-steps {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.traffic-steps ol {
+  padding-left: 18px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 6px;
+  color: var(--text-main);
 }
-.calc-field {
+
+/* ==========================================================================
+   TAB 4: ROADMAP GO-TO-MARKET (4 MINGGU EKSEKUSI)
+   ========================================================================== */
+.gtm-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.gtm-step {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.gtm-step-time {
+  background: var(--bg-surface);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--border-subtle);
+}
+.gtm-week {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-yellow);
+}
+.gtm-days {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.gtm-step-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gtm-step-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.gtm-step-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.gtm-deliverable {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--accent-green);
+}
+
+/* ==========================================================================
+   TAB 5: SINERGI & SIMULASI BAGI HASIL (TRANSPAREN)
+   ========================================================================== */
+.roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.role-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 24px;
+}
+.role-box.utari { border-top: 3px solid var(--accent-pink); }
+.role-box.telkraf { border-top: 3px solid var(--accent-cyan); }
+.role-who {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.role-box.utari .role-who { color: var(--accent-pink); }
+.role-box.telkraf .role-who { color: var(--accent-cyan); }
+.role-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.role-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-size: 13.5px;
 }
-.field-header {
+.role-list li::before { content: "✓ "; color: var(--accent-green); font-weight: 700; }
+
+/* MINI CALCULATOR IN TAB 5 */
+.calc-clean-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+.calc-ctrl-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.clean-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.clean-label-row {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 12.5px;
-}
-.field-label {
-  font-weight: 600;
-  color: var(--text-main);
-}
-.field-disp {
-  font-weight: 700;
-  color: var(--accent-yellow);
+  font-size: 12px;
 }
 input[type="range"] {
   -webkit-appearance: none;
@@ -691,133 +838,48 @@ input[type="range"] {
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 18px; height: 18px;
   border-radius: 50%;
   background: var(--accent-yellow);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(245, 224, 58, 0.5);
   border: 2px solid #000;
+  box-shadow: 0 0 8px rgba(245, 224, 58, 0.4);
 }
-.calc-outputs {
+.calc-display-col {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  padding: 28px;
   border-radius: 6px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.out-row {
+.disp-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border-subtle);
-}
-.out-row:last-child {
-  border-bottom: none;
-}
-.out-label {
   font-size: 13px;
-  color: var(--text-muted);
 }
-.out-val {
-  font-family: var(--font-mono);
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-}
-.hero-payout-box {
-  background: linear-gradient(135deg, rgba(240, 82, 122, 0.1) 0%, rgba(245, 224, 58, 0.1) 100%);
-  border: 1px solid rgba(240, 82, 122, 0.3);
-  padding: 20px;
-  border-radius: 6px;
-  margin-top: 16px;
-}
-.hero-payout-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  color: var(--accent-pink);
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.hero-payout-num {
-  font-family: var(--font-mono);
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--accent-yellow);
-}
-.hero-payout-sub {
-  font-size: 11.5px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-/* CTA BANNER */
-.cta-banner {
-  background: linear-gradient(135deg, #171722 0%, #121217 100%);
-  border: 1px solid var(--border-strong);
-  padding: 44px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 60px;
-  position: relative;
-  overflow: hidden;
-}
-.cta-banner::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--grad-signature);
-}
-.cta-title {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-.cta-desc {
-  font-size: 15px;
-  color: var(--text-muted);
-  max-width: 640px;
-  margin: 0 auto 24px auto;
-  line-height: 1.6;
-}
-.cta-btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.cta-btn-primary {
-  background: var(--grad-signature);
-  color: #000;
-  font-weight: 800;
-  font-size: 14px;
-  padding: 14px 28px;
+.disp-row:last-child { border-bottom: none; }
+.hero-num-badge {
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  padding: 14px;
   border-radius: 4px;
-  text-decoration: none;
-  font-family: var(--font-display);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.cta-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 224, 58, 0.3);
+  text-align: right;
+  margin-top: 10px;
 }
 
-/* FOOTER */
+/* ==========================================================================
+   FOOTER (OFFICIAL TELKRAF LOGO)
+   ========================================================================== */
 footer {
   border-top: 1px solid var(--border-subtle);
   padding: 28px 0;
   margin-top: auto;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--text-dim);
 }
 .footer-inner {
@@ -825,32 +887,45 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-
-@media (max-width: 992px) {
-  .stats-banner { grid-template-columns: repeat(2, 1fr); }
-  .vehicles-grid { grid-template-columns: 1fr; }
-  .pipeline-grid { grid-template-columns: repeat(2, 1fr); }
-  .calc-wrapper { grid-template-columns: 1fr; }
-  .comp-grid { grid-template-columns: 1fr; }
+.footer-logo-wrap {
+  width: 76px;
 }
-@media (max-width: 600px) {
-  .stats-banner { grid-template-columns: 1fr; }
-  .pipeline-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: 32px; }
+.footer-logo-wrap svg {
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+@media (max-width: 992px) {
+  .mockups-grid { grid-template-columns: 1fr; }
+  .swot-quad { grid-template-columns: 1fr; }
+  .triangulation-grid { grid-template-columns: 1fr; }
+  .traffic-grid { grid-template-columns: 1fr; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .calc-clean-box { grid-template-columns: 1fr; }
+  .gtm-step { grid-template-columns: 1fr; }
+  .gtm-step-time { border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 16px; }
+  .hero-title { font-size: 28px; }
 }
 </style>
 </head>
 <body>
 
-<!-- SECURITY GATE OVERLAY -->
+<!-- ==========================================================================
+     SECURITY PASSCODE OVERLAY (CLEAN, NO LEAKS, SHA-256 ENCRYPTED)
+     ========================================================================== -->
 <div id="security-gate">
   <div class="gate-card">
-    <div class="gate-badge">TELKRAF.ID × UTARY // VAULT SECURE</div>
+    <div class="gate-brand-logo">
+      <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
     <div class="gate-icon">🔐</div>
     <h2 class="gate-title">Restricted Document</h2>
-    <p class="gate-subtitle">
-      Dokumen ini bersifat privat khusus kolaborasi kemitraan <strong>Telkraf.id × Utary</strong>. Masukkan passcode verifikasi untuk membuka.
-    </p>
+    <div class="gate-sub">VERIFIKASI OTORISASI MITRA UTARY</div>
+    
     <div class="gate-input-wrap">
       <input type="password" id="gate-pass" class="gate-input" maxlength="6" placeholder="••••" autofocus onkeypress="handleGateKey(event)"/>
     </div>
@@ -859,352 +934,545 @@ footer {
   </div>
 </div>
 
-<!-- TOP COLLABORATION BAR -->
-<div class="top-bar">
+<!-- ==========================================================================
+     SITE HEADER (OFFICIAL LOGO + PARTNER IDENTITY)
+     ========================================================================== -->
+<header class="top-bar">
   <div class="container top-bar-inner">
-    <div class="collab-tag">
-      <span class="brand-pill">TELKRAF.ID</span>
-      <span class="collab-with">PARTNERSHIP PROPOSAL × <strong>UTARY</strong></span>
-      <button class="lock-again-btn" onclick="lockGate()" title="Kunci dokumen kembali">🔒 Lock</button>
+    <div class="brand-identity-row">
+      <div class="brand-logo-wrap">
+        <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+      </div>
+      <div class="divider-col"></div>
+      <div class="partner-tag">
+        COLLABORATION BLUEPRINT × <strong>UTARY</strong>
+      </div>
     </div>
-    <div class="live-badge">
-      <span class="dot-live"></span>
-      <span>BLUEPRINT SIAP EKSEKUSI // ZERO RISK</span>
+    <div class="top-actions">
+      <div class="status-pill">
+        <span class="dot-green"></span>
+        <span>VERIFIED STRATEGY</span>
+      </div>
+      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen kembali">🔒</button>
     </div>
   </div>
-</div>
+</header>
 
 <div class="container">
-  <!-- HERO HEADER -->
+  <!-- HERO INTRO -->
   <section class="hero">
-    <div class="hero-pretitle">COMMERCIAL COLLABORATION &amp; CANVA PRODUCTIZATION</div>
+    <div class="hero-tag">COMMERCIAL PRODUCTIZATION // 2,547 ASSETS</div>
     <h1 class="hero-title">
       Memberi Nyawa Kedua: <span>2,547 Karya Seni</span> Menjadi Reusable Canva Kits Bernilai Jual Tinggi
     </h1>
-    <p class="hero-lead">
-      Proposal kemitraan strategis untuk mengubah seluruh ilustrasi &amp; vektor yang telah dibuat (Juni–Oktober) menjadi <strong>produk digital siap pakai (Ready-to-Use Templates &amp; Activity Books)</strong> berlisensi komersial di pasar global.
+    <p class="hero-desc">
+      Proposal kemitraan komprehensif untuk mentransformasi seluruh portofolio ilustrasi &amp; vektor Utari (Juni–Oktober) menjadi <strong>produk digital siap pakai berdaya jual tinggi</strong> di pasar global dengan roadmap distribusi terukur.
     </p>
-
-    <!-- KEY HIGHLIGHT STATS -->
-    <div class="stats-banner">
-      <div class="stat-box prime">
-        <div class="stat-label">Total Aset Siap Olah</div>
-        <div class="stat-val">2,547</div>
-        <div class="stat-note">Modal artwork sudah 100% lengkap</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Format Vektor SVG</div>
-        <div class="stat-val">455 File</div>
-        <div class="stat-note">Scalable &amp; bisa ganti warna di Canva</div>
-      </div>
-      <div class="stat-box prime">
-        <div class="stat-label">Target Nilai Jual Produk</div>
-        <div class="stat-val">$15 – $29</div>
-        <div class="stat-note">Bukan recehan $0.05 per unduhan</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Modal Uang Tambahan</div>
-        <div class="stat-val">Rp 0 (NOL)</div>
-        <div class="stat-note">Dibiayai &amp; diproduksi penuh oleh Telkraf</div>
-      </div>
-    </div>
   </section>
 
-  <!-- SECTION 1: WHY RE-PACKAGING? -->
-  <section>
-    <div class="sec-head">
-      <div class="sec-pre">TRANSFORMASI STRATEGI</div>
-      <h2 class="sec-title">Kenapa Kita Harus Mengemas Ulang Aset Ini?</h2>
-      <p class="sec-desc">Menjual elemen tunggal di microstock tradisional kini terjebak perang harga dan banjir AI gratisan. Solusinya adalah menjual <strong>solusi jadi</strong> yang menghemat waktu pembeli.</p>
+  <!-- ==========================================================================
+       SUPER INTERACTIVE TAB NAVIGATION BAR
+       ========================================================================== -->
+  <div class="tabs-wrapper">
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('tab-mockups', this)">
+        <span>🌟 Nyawa Kedua (Produk Jadi)</span>
+        <span class="tab-badge">3 Mockups</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-swot', this)">
+        <span>📊 SWOT &amp; Triangulasi Data</span>
+        <span class="tab-badge">Market Proof</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-platform', this)">
+        <span>🛒 Platform &amp; Mesin Trafik</span>
+        <span class="tab-badge">Traffic Engine</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-roadmap', this)">
+        <span>🗺️ Roadmap Penjualan</span>
+        <span class="tab-badge">4 Minggu</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sinergi', this)">
+        <span>🤝 Sinergi &amp; Bagi Hasil</span>
+        <span class="tab-badge">Win-Win</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 1: TRANSFORMASI NYAWA KEDUA (END-PRODUCT MOCKUPS)
+       ========================================================================== -->
+  <div id="tab-mockups" class="tab-panel active">
+    <div class="panel-head">
+      <div class="panel-pre">VISUALISASI END-PRODUCT NYATA</div>
+      <h2 class="panel-title">Bukan Sekadar Clipart Mentah: Begini Tampilannya Saat Jadi Produk</h2>
+      <p class="panel-desc">
+        Pembeli global tidak mencari gambar terpisah. Mereka membeli <strong>solusi jadi</strong> yang siap cetak dan siap pakai untuk kebutuhan anak, usaha kecil, maupun jurnal pribadi.
+      </p>
     </div>
 
-    <div class="comp-grid">
-      <div class="comp-card old">
-        <span class="comp-badge">JALUR LAMA // PASSIVE ELEMENT POOL</span>
-        <h3 class="comp-title">Menunggu Unduhan Eceran</h3>
-        <ul class="comp-list">
-          <li><span>⚠️</span> <strong>Royalti Kecil:</strong> Pendapatan rata-rata hanya $0.03 – $0.10 per download elemen.</li>
-          <li><span>⚠️</span> <strong>Karya Tenggelam:</strong> Ribuan karya mengendap di folder hard drive tanpa kepastian view.</li>
-          <li><span>⚠️</span> <strong>Banjir AI Generatif:</strong> Pasar microstock dibanjiri jutaan gambar AI tak berjiwa yang menurunkan nilai.</li>
-          <li><span>⚠️</span> <strong>Pembeli Bingung:</strong> Pembeli awam tidak tahu cara menyusun clipart mentah menjadi desain jadi.</li>
+    <div class="mockups-grid">
+      <!-- MOCKUP 1: BUSY BOOK -->
+      <div class="mockup-card">
+        <div class="mockup-preview-stage">
+          <span class="end-product-pill">PRINTABLE BINDER KIT</span>
+          <span class="price-pill">$19 USD</span>
+          <img class="mockup-stage-asset" src="data:image/png;base64,[object Object]" alt="Toddler Busy Book Mockup"/>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-cat">EDUKASI ANAK // PRESCHOOL</div>
+          <h3 class="mockup-name">Toddler Morning Routine Busy Book</h3>
+          <p class="mockup-explanation">
+            Ilustrasi mobil polisi anak, makanan pastel, dan objek harian Utari dirangkai menjadi <strong>40 halaman buku aktivitas interaktif</strong> berperekat velcro untuk balita usia 3–5 tahun.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK JADI DI CANVA:</div>
+            <ul>
+              <li>Flashcards Alfabet &amp; Kendaraan Darurat velcro</li>
+              <li>Matching game bayangan &amp; bentuk simetris</li>
+              <li>Daily good habits reward chart berstiker</li>
+              <li>Ukuran A4 &amp; US Letter siap cetak di printer rumah</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP 2: BAKERY CAFE KIT -->
+      <div class="mockup-card">
+        <div class="mockup-preview-stage">
+          <span class="end-product-pill">B2B BRANDING PACK</span>
+          <span class="price-pill">$24 USD</span>
+          <img class="mockup-stage-asset" src="data:image/png;base64,[object Object]" alt="Artisan Bakery Cafe Mockup"/>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-cat">UMKM F&amp;B // CAFE KEKINIAN</div>
+          <h3 class="mockup-name">Artisan Bakery &amp; Boba Cafe Brand Kit</h3>
+          <p class="mockup-explanation">
+            Kue tart stroberi dan camilan manis Utari disulap menjadi <strong>kit identitas visual lengkap</strong> yang dibutuhkan pemilik coffee shop rumahan tanpa perlu menyewa desainer mahal.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK JADI DI CANVA:</div>
+            <ul>
+              <li>Stiker cup minuman sealer &amp; toples kue bulat</li>
+              <li>Loyalty stamp card 10-kopi gratis 1</li>
+              <li>Table menu tent A4 promosi diskon meja</li>
+              <li>Instagram Story discount alert templates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP 3: GOODNOTES STUDY VAULT -->
+      <div class="mockup-card">
+        <div class="mockup-preview-stage">
+          <span class="end-product-pill">DIGITAL PLANNER IPAD</span>
+          <span class="price-pill">$15 USD</span>
+          <img class="mockup-stage-asset" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDAwMCA0MDAwIj4KICA8dGl0bGU+Q3V0ZSBCZWFyIE1lbW8gUGFkIE5vdGUgUGFwZXI8L3RpdGxlPgogIDxkZXNjPmN1dGUgbWVtbyBwYWQsIHN0aWNreSBub3RlLCBkaWdpdGFsIHBsYW5uZXIgc3RpY2tlcnMsIGJ1bGxldCBqb3VybmFsIGRlY28sIGtvcmVhbiBhZXN0aGV0aWMgbm90ZXMsIGthd2FpaSBzdGF0aW9uZXJ5LCB0byBkbyBsaXN0IHBhcGVyLCBjdXRlIHJlbWluZGVyIG5vdGUsIHN0dWR5Z3JhbSBlbGVtZW50cywgcGFzdGVsIG1lc3NhZ2UgYm94LCBzY3JhcGJvb2sgcGFwZXIgY3V0ZSwgZmxhdCB2ZWN0b3Igbm90ZTwvZGVzYz4KICA8bWV0YWRhdGE+CiAgICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIj4KICAgICAgPGNjOldvcmsgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzp0aXRsZT5DdXRlIEJlYXIgTWVtbyBQYWQgTm90ZSBQYXBlcjwvZGM6dGl0bGU+CiAgICAgICAgPGRjOmRlc2NyaXB0aW9uPkN1dGUgQmVhciBNZW1vIFBhZCBOb3RlIFBhcGVyIC0gRmxhdCB2ZWN0b3IgaWxsdXN0cmF0aW9uPC9kYzpkZXNjcmlwdGlvbj4KICAgICAgICA8ZGM6Y3JlYXRvcj4KICAgICAgICAgIDxyZGY6QmFnPgogICAgICAgICAgICA8cmRmOmxpPlRlbGtyYWYuaWQ8L3JkZjpsaT4KICAgICAgICAgIDwvcmRmOkJhZz4KICAgICAgICA8L2RjOmNyZWF0b3I+CiAgICAgICAgPGRjOnN1YmplY3Q+CiAgICAgICAgICA8cmRmOkJhZz4KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIG1lbW8gcGFkPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnN0aWNreSBub3RlPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmRpZ2l0YWwgcGxhbm5lciBzdGlja2VyczwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5idWxsZXQgam91cm5hbCBkZWNvPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmtvcmVhbiBhZXN0aGV0aWMgbm90ZXM8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+a2F3YWlpIHN0YXRpb25lcnk8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+dG8gZG8gbGlzdCBwYXBlcjwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIHJlbWluZGVyIG5vdGU8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+c3R1ZHlncmFtIGVsZW1lbnRzPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnBhc3RlbCBtZXNzYWdlIGJveDwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5zY3JhcGJvb2sgcGFwZXIgY3V0ZTwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5mbGF0IHZlY3RvciBub3RlPC9yZGY6bGk+CiAgICAgICAgICA8L3JkZjpCYWc+CiAgICAgICAgPC9kYzpzdWJqZWN0PgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNy4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTE0KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNlMGMyYWU7CiAgICAgIH0KCiAgICAgIC5zdDAsIC5zdDEsIC5zdDIsIC5zdDMsIC5zdDQsIC5zdDUsIC5zdDYsIC5zdDcsIC5zdDggewogICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2JhODU2NDsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXBwYXRoLTQpOwogICAgICB9CgogICAgICAuc3QyIHsKICAgICAgICBmaWxsOiAjYWE3NjU1OwogICAgICB9CgogICAgICAuc3QxMCB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzNhM2EzYTsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogIzdmNGEyODsKICAgICAgfQoKICAgICAgLnN0MTEgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0xKTsKICAgICAgfQoKICAgICAgLnN0MTIgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC01KTsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogI2YzOTM4OTsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0zKTsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogI2ZmZjhlYTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2MzOGQ2YTsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogI2ViZDZhYTsKICAgICAgfQoKICAgICAgLnN0MTQgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0yKTsKICAgICAgfQoKICAgICAgLnN0MTUgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoIj4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik05NTUuOCwzNjNjMTIwLjktMTQuMywyMzAuOCw3Mi4yLDI0NS4xLDE5My4ycy03Mi4yLDIzMC44LTE5My4yLDI0NS4xLTIzMC43LTcyLjItMjQ1LjEtMTkzLjIsNzIuMi0yMzAuNywxOTMuMi0yNDUuMVoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTEiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE4ODkuNiwyMDIuMmMtMTIwLjksMTQuMy0yMDcuNSwxMjQuMS0xOTMuMiwyNDUuMSwxNC4zLDEyMC45LDEyNC4xLDIwNy41LDI0NS4xLDE5My4yLDEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjEtMTQuMy0xMjAuOS0xMjQuMS0yMDcuNS0yNDUuMS0xOTMuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTIiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE0NDMuOCwzNjAuOWMzNTcuOS00Mi40LDY3Ni4yLDE1Ny43LDcxMC40LDQ0Ni42cy0yMjguNSw1NTcuOC01ODYuNCw2MDAuMi02NzYuMi0xNTcuNy03MTAuNC00NDYuNiwyMjguNi01NTcuOCw1ODYuNC02MDAuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTMiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTMwNTIuNywxMDY3LjdjMjA4LjcsMCwzNzcuOSwxNjkuMSwzNzcuOSwzNzcuOGgwdjE5NzUuOWMwLDIwOC43LTE2OS4yLDM3Ny45LTM3Ny45LDM3Ny45SDk0Ny4zYy0yMDguNywwLTM3Ny45LTE2OS4yLTM3Ny45LTM3Ny45di0xOTc1LjhjMC0yMDguNywxNjkuMi0zNzcuOSwzNzcuOS0zNzcuOWgyMTA1LjRaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC00Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik03MzQuNCwxMjE5LjdzLTMyLTE2MS43LDE0OS4yLTE5Ny40YzE3NC44LTM0LjUsMjEyLjQsMjE4LDc4LDIzNi45LTEwLjYsMS41LTIwLjQsNi4zLTI4LDEzLjgtMzEuOCwzMC41LTEyMSw5My41LTE5OS4yLTUzLjJaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC01Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik0yMzE4LjgsMTAzMnMtNi43LTE2NC43LTE5MS4yLTE1Ny4xYy0xNzgsNy4zLTE1NS42LDI2MS42LTIwLjUsMjQ4LjUsMTAuNi0xLDIxLjMsMS40LDMwLjQsNi44LDM4LjEsMjIuMiwxMzkuNiw2Mi42LDE4MS4zLTk4LjNaIi8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iU1ZHSUQtNyIgY2xhc3M9InN0MiIgZD0iTTk1NS44LDM2M2MxMjAuOS0xNC4zLDIzMC44LDcyLjIsMjQ1LjEsMTkzLjIsMTQuMywxMjAuOS03Mi4yLDIzMC44LTE5My4yLDI0NS4xcy0yMzAuNy03Mi4yLTI0NS4xLTE5My4yLDcyLjItMjMwLjgsMTkzLjItMjQ1LjFaIi8+CiAgPGcgY2xhc3M9InN0MTUiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTk2OC40LDQ2OC44YzYyLjYtNy40LDExOS4zLDM3LjMsMTI2LjgsOTkuOSw3LjQsNjIuNi0zNy4zLDExOS4zLTk5LjksMTI2LjhzLTExOS4zLTM3LjMtMTI2LjgtOTkuOWMwLDAsMCwwLDAsMC03LjQtNjIuNiwzNy4zLTExOS4zLDk5LjktMTI2LjhaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC04IiBjbGFzcz0ic3QyIiBkPSJNMTg4OS42LDIwMi4yYy0xMjAuOSwxNC4zLTIwNy41LDEyNC4xLTE5My4yLDI0NS4xczEyNC4xLDIwNy41LDI0NS4xLDE5My4yYzEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjFzLTEyNC4xLTIwNy41LTI0NS4xLTE5My4yWiIvPgogIDxnIGNsYXNzPSJzdDExIj4KICAgIDxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0xOTAyLjIsMzA4Yy02Mi42LDcuNC0xMDcuMyw2NC4yLTk5LjksMTI2LjgsNy40LDYyLjYsNjQuMiwxMDcuMywxMjYuOCw5OS45LDYyLjYtNy40LDEwNy4zLTY0LjIsOTkuOS0xMjYuOC03LjQtNjIuNi02NC4yLTEwNy4zLTEyNi44LTk5LjlaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC05IiBjbGFzcz0ic3Q3IiBkPSJNMTQ0My44LDM2MC45YzM1Ny45LTQyLjQsNjc2LjIsMTU3LjcsNzEwLjQsNDQ2LjZzLTIyOC41LDU1Ny44LTU4Ni40LDYwMC4yLTY3Ni4yLTE1Ny43LTcxMC40LTQ0Ni42LDIyOC42LTU1Ny44LDU4Ni40LTYwMC4yWiIvPgogIDxnIGNsYXNzPSJzdDE0Ij4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQ5Mi40LDc3OS40YzEwMy43LTE0LjIsMTYwLjEsNDQuOCwxNjcuMiwxMDVzLTU1LjUsMTE3LjEtMTM5LjcsMTI3LjEtMTU4LjQtMzAuOC0xNjUuNi05MC45LDM3LjEtMTI3LjMsMTM4LjEtMTQxLjJaIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDgiIGQ9Ik0xNDkyLjQsNzc5LjRjMTAzLjctMTQuMiwxNjAuMSw0NC44LDE2Ny4yLDEwNXMtNTUuNSwxMTcuMS0xMzkuNywxMjcuMS0xNTguNC0zMC44LTE2NS42LTkwLjksMzcuMS0xMjcuMywxMzguMS0xNDEuMloiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTExNjEuOSw4NzkuOWM0Ny44LTUuNyw5MCwxOS40LDk0LjMsNTUuOXMtMzAuOSw3MC43LTc4LjcsNzYuNC05MC0xOS40LTk0LjMtNTUuOSwzMC45LTcwLjcsNzguNy03Ni40WiIvPgogIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0xODI4LjcsODAwLjljNDcuOC01LjcsOTAsMTkuNCw5NC4zLDU1LjlzLTMwLjksNzAuNy03OC43LDc2LjQtOTAtMTkuNC05NC4zLTU1LjksMzEtNzAuNyw3OC43LTc2LjRaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTEyNjIuMiw3ODFjMjIuNS0yLjcsNDMuMywxNi42LDQ2LjUsNDNzLTEyLjYsNTAtMzUuMSw1Mi43LTQzLjMtMTYuNi00Ni41LTQzLDEyLjYtNTAsMzUuMS01Mi43WiIvPgogIDxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0xMjY5LjQsODgyLjNjLTIzLjYsMC00NC40LTIwLjUtNDcuNy00OC0zLjUtMjkuMywxNC40LTU1LjcsMzkuOS01OC43aDBjMjUuMy0zLDQ5LDE4LjQsNTIuNSw0Ny44LDEuOCwxMy42LTEuNCwyNy40LTguOCwzOC45LTcuNSwxMS4zLTE4LjYsMTguMy0zMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4zWk0xMjYyLjgsNzg2LjNjLTE5LjUsMi4zLTMzLjIsMjMuMi0zMC40LDQ2LjdzMjEsNDAuNSw0MC40LDM4LjJjOS4zLTEuMSwxNy42LTYuNSwyMy4zLTE1LjEsNi05LjQsOC41LTIwLjYsNy4xLTMxLjYtMi44LTIzLjQtMjEtNDAuNi00MC40LTM4LjJoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcwNi43LDcyOC4zYzIyLjUtMi43LDQzLjMsMTYuNiw0Ni41LDQzcy0xMi42LDUwLTM1LjEsNTIuNy00My4zLTE2LjYtNDYuNS00MywxMi42LTUwLDM1LjEtNTIuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcxMy45LDgyOS43Yy0yMy42LDAtNDQuNC0yMC41LTQ3LjctNDgtMS44LTEzLjYsMS40LTI3LjQsOC44LTM4LjksNy41LTExLjMsMTguNi0xOC4zLDMxLjEtMTkuOGgwYzEyLjUtMS41LDI0LjksMi44LDM0LjgsMTIsMjAuMiwxOS42LDIzLjksNTAuOCw4LjgsNzQuNi03LjUsMTEuMy0xOC42LDE4LjMtMzEuMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4yWk0xNzEwLjksNzMzLjVjLTEuMiwwLTIuNCwwLTMuNS4yaDBjLTkuMywxLjEtMTcuNiw2LjQtMjMuMywxNS02LDkuNC04LjUsMjAuNS03LjEsMzEuNiwyLjgsMjMuNCwyMC45LDQwLjUsNDAuNCwzOC4yLDkuMy0xLjEsMTcuNi02LjQsMjMuMy0xNSwxMi4xLTE5LjQsOS4xLTQ0LjYtNy4yLTYwLjctNi42LTYuMS0xNC41LTkuMy0yMi42LTkuM2gwWk0xNzA2LjcsNzI4LjNoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ2Mi4xLDkxOC45Yy01LjYsMS4yLTExLjEtMi4zLTEyLjQtNy45LTEuMi01LjYsMi4zLTExLjEsNy45LTEyLjQsMCwwLC4xLDAsLjIsMCwyMC43LTQuNCwzMy40LTE2LjksMzgtMzcuNSwxLjMtNS42LDYuOC05LjEsMTIuNC03LjgsMi41LjYsNC44LDIuMSw2LjMsNC4yLDEzLDE5LjEsMjgsMjksNDUuNCwyOSw1LjcuMiwxMC4yLDUsMTAsMTAuNy0uMiw1LjUtNC42LDkuOS0xMC4xLDEwLTE4LjQsMC0zNS4zLTcuNC01MC4zLTIzLTkuMSwxOC4yLTI0LjksMjkuOC00Ny40LDM0LjZaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTE0OTguMSw4MTIuN2MyOC41LTMuNCw1My4yLDcuNiw1NS4yLDI0LjVzLTE5LjUsMzMuMy00OCwzNi43LTUzLjItNy42LTU1LjItMjQuNSwxOS41LTMzLjQsNDgtMzYuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ5NS4xLDg4MGMtMTAuOCwwLTIxLTItMjkuNS01LjctMTIuMy01LjQtMTkuNy0xNC0yMC45LTI0LjJzNC0yMC4yLDE0LjctMjguNGM5LjgtNy41LDIzLjQtMTIuNiwzOC4xLTE0LjRoMGMxNC43LTEuNywyOS4xLDAsNDAuNCw1LjEsMTIuMyw1LjQsMTkuNywxNCwyMC45LDI0LjIsMi40LDIwLjItMjAuOCwzOS01Mi43LDQyLjgtMy42LjQtNy4zLjYtMTAuOS42Wk0xNDk4LjcsODE4LjFjLTEyLjgsMS41LTI0LjUsNS44LTMyLjgsMTIuMi03LjUsNS43LTExLjIsMTIuMy0xMC41LDE4LjVzNS45LDExLjcsMTQuNSwxNS41YzkuNiw0LjIsMjEuOSw1LjgsMzQuNyw0LjIsMjUuMS0zLDQ0LjktMTcsNDMuMi0zMC43LS43LTYuMi01LjktMTEuNy0xNC41LTE1LjUtOS42LTQuMi0yMS45LTUuOC0zNC43LTQuMloiLz4KICA8cGF0aCBpZD0iU1ZHSUQtMTAiIGNsYXNzPSJzdDYiIGQ9Ik0zMDUyLjcsMTA2Ny43YzIwOC43LDAsMzc3LjksMTY5LjEsMzc3LjksMzc3LjhoMHYxOTc1LjljMCwyMDguNy0xNjkuMiwzNzcuOS0zNzcuOSwzNzcuOUg5NDcuM2MtMjA4LjcsMC0zNzcuOS0xNjkuMi0zNzcuOS0zNzcuOXYtMTk3NS44YzAtMjA4LjcsMTY5LjItMzc3LjksMzc3LjktMzc3LjloMjEwNS40WiIvPgogIDxnIGNsYXNzPSJzdDEzIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3Q4IiBkPSJNOTI1LjcsMTg2NC42Yy0xMC44LjYtMjAtNy42LTIwLjYtMTguNC0uNi0xMC44LDcuNi0yMCwxOC40LTIwLjYuNywwLDEuNCwwLDIuMiwwaDIxNzAuMmMxMC44LS42LDIwLDcuNiwyMC42LDE4LjQuNiwxMC44LTcuNiwyMC0xOC40LDIwLjYtLjcsMC0xLjQsMC0yLjIsMEg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDIyMTAuMWMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI1NTUuNmMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI5MDEuMWMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDMyNDYuNmMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTExIiBjbGFzcz0ic3QyIiBkPSJNNzM0LjQsMTIxOS43cy0zMi0xNjEuNywxNDkuMi0xOTcuNGMxNzQuOC0zNC41LDIxMi40LDIxOCw3OCwyMzYuOS0xMC42LDEuNS0yMC40LDYuMy0yOCwxMy44LTMxLjgsMzAuNS0xMjEsOTMuNS0xOTkuMi01My4yWiIvPgogIDxnIGNsYXNzPSJzdDkiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTg5NC45LDEyMTQuNmMtNC42LTUuNy0zLjYtMTQuMSwyLjEtMTguNyw1LjctNC42LDE0LjEtMy42LDE4LjcsMi4xLjEuMi4zLjMuNC41bDUyLjQsNjkuNGM0LjMsNiwyLjksMTQuMy0zLDE4LjUtNS44LDQuMS0xMy43LDMtMTguMS0yLjVsLTUyLjQtNjkuNFoiLz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTEyIiBjbGFzcz0ic3QyIiBkPSJNMjMxOC44LDEwMzJzLTYuNy0xNjQuNy0xOTEuMi0xNTcuMWMtMTc4LDcuMy0xNTUuNiwyNjEuNi0yMC41LDI0OC41LDEwLjYtMSwyMS4zLDEuNCwzMC40LDYuOCwzOC4xLDIyLjIsMTM5LjYsNjIuNiwxODEuMy05OC4zWiIvPgogIDxnIGNsYXNzPSJzdDEyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjE2MS42LDEwNjQuNWMzLTYuNy4xLTE0LjUtNi42LTE3LjZzLTE0LjUtLjEtMTcuNiw2LjZjMCwuMS0uMS4zLS4yLjRsLTM0LjgsNzkuN2MtMi45LDYuNy4xLDE0LjYsNi45LDE3LjUsNi43LDIuOSwxNC42LS4xLDE3LjUtNi45bDM0LjgtNzkuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTIxNjEuNiwxMDY0LjVjMy02LjcuMS0xNC41LTYuNi0xNy42cy0xNC41LS4xLTE3LjYsNi42YzAsLjEtLjEuMy0uMi40bC0zNC44LDc5LjdjLTIuOSw2LjcuMSwxNC42LDYuOSwxNy41LDYuNywyLjksMTQuNi0uMSwxNy41LTYuOWwzNC44LTc5LjdaIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=" alt="GoodNotes Study Vault Mockup"/>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-cat">GEN-Z // IPAD PRODUCTIVITY</div>
+          <h3 class="mockup-name">GoodNotes Pastel Study Vault &amp; Stickers</h3>
+          <p class="mockup-explanation">
+            Vektor memo pad beruang SVG Oktober dan stationery Utari dijadikan <strong>template jurnal digital iPad</strong> yang dilengkapi lembar stiker transparan crop-ready untuk GoodNotes/Notion.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK JADI DI CANVA:</div>
+            <ul>
+              <li>Hyperlinked Weekly &amp; Monthly Study Dashboard</li>
+              <li>300+ Crop-ready PNG/SVG GoodNotes Digital Stickers</li>
+              <li>Memo sticky notes pastel ganti warna dinamis</li>
+              <li>Exam countdown &amp; Pomodoro study log tracker</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 2: SWOT & TRIANGULASI DATA RIIL
+       ========================================================================== */
+  <div id="tab-swot" class="tab-panel">
+    <div class="panel-head">
+      <div class="panel-pre">ANALISIS STRATEGIS &amp; VALIDASI PASAR</div>
+      <h2 class="panel-title">SWOT Produk Jadi &amp; Bukti Triangulasi Data Nyata</h2>
+      <p class="panel-desc">
+        Keputusan pengemasan ini bukan spekulasi. Data tren pencarian global dan volume penjualan marketplace membuktikan tingginya permintaan terhadap produk ini.
+      </p>
+    </div>
+
+    <!-- SWOT MATRIX -->
+    <div class="swot-quad">
+      <div class="swot-panel s">
+        <div class="swot-title-row">
+          <span class="swot-char">S</span>
+          <span class="swot-label">STRENGTHS (KEKUATAN KARYA)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Volume Raksasa Siap Olah:</strong> 2.547 aset sudah selesai dibuat, tidak perlu waktu berbulan-bulan menggambar dari nol.</li>
+          <li><strong>Gaya Humanis Hand-Drawn:</strong> Karakter hangat kawaii/pastel gouache memiliki nilai emosional tinggi dibanding AI generik.</li>
+          <li><strong>Vektor Scalable SVG Oktober:</strong> 455 aset Oktober sudah berformat SVG scalable dan bisa diubah warnanya di Canva.</li>
         </ul>
       </div>
 
-      <div class="comp-card new">
-        <span class="comp-badge">JALUR BARU // HIGH-DEMAND CANVA KITS</span>
-        <h3 class="comp-title">Produk Jadi Berlisensi Komersial</h3>
-        <ul class="comp-list">
-          <li><span>✨</span> <strong>Margin Tinggi:</strong> Dijual dalam bundle siap pakai seharga <strong>$15 – $29 per paket</strong> di Etsy/Creative Fabrica.</li>
-          <li><span>✨</span> <strong>Solusi Instan:</strong> Pembeli (guru, ibu rumah tangga, pemilik cafe) langsung mengedit teks &amp; mencetaknya di Canva.</li>
-          <li><span>✨</span> <strong>Karakter Humanis:</strong> Karya hand-drawn Utary yang imut &amp; hangat memiliki nilai seni yang dicari pembeli premium.</li>
-          <li><span>✨</span> <strong>Pasif Nyata:</strong> Sekali template jadi, produk bisa terjual ribuan kali tanpa batas waktu (Evergreen).</li>
+      <div class="swot-panel w">
+        <div class="swot-title-row">
+          <span class="swot-char">W</span>
+          <span class="swot-label">WEAKNESSES (TANTANGAN AWAL)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Sebagian Masih Raster PNG:</strong> Batch Juni–Sep membutuhkan seleksi cermat agar resolusinya tajam saat dicetak.</li>
+          <li><strong>Kategori Campur Aduk:</strong> File batch awal masih bercampur antara makanan, flamingo, dan alat olahraga, menuntut kurasi tematik.</li>
+        </ul>
+      </div>
+
+      <div class="swot-panel o">
+        <div class="swot-title-row">
+          <span class="swot-char">O</span>
+          <span class="swot-label">OPPORTUNITIES (PELUANG BESAR)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Booming Homeschool &amp; Printable:</strong> Orang tua di US/Eropa gemar mencetak lembar aktivitas anak di rumah untuk mengurangi screen-time gadget.</li>
+          <li><strong>Pasar Digital iPad Gen-Z:</strong> Penjualan stiker digital dan template GoodNotes mengalami repeat order yang sangat tinggi.</li>
+        </ul>
+      </div>
+
+      <div class="swot-panel t">
+        <div class="swot-title-row">
+          <span class="swot-char">T</span>
+          <span class="swot-label">THREATS &amp; MITIGASI</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Banjir Clipart AI Gratis:</strong> Pasar clipart satuan rusak oleh AI. <em>Mitigasi:</em> Jangan jual gambar eceran, jual <strong>Canva Template jadi</strong> berlisensi komersial!</li>
         </ul>
       </div>
     </div>
-  </section>
 
-  <!-- SECTION 2: 3 KENDARAAN PRODUK SUPER LARIS -->
-  <section>
-    <div class="sec-head">
-      <div class="sec-pre">KATALOG BLUEPRINT PRODUK</div>
-      <h2 class="sec-title">3 Kategori Produk Bernilai Jual Super Tinggi</h2>
-      <p class="sec-desc">Kami telah memetakan 2.547 ilustrasi Utari ke dalam 3 jenis produk yang memiliki volume pencarian dan daya beli paling tinggi di pasar global.</p>
+    <!-- TRIANGULASI DATA 3 PILAR -->
+    <div class="panel-head" style="margin-top: 16px;">
+      <div class="panel-pre">TRIANGULASI DATA EMPIRIS</div>
+      <h3 style="font-size: 18px; font-weight: 700;">3 Bukti Validasi Data Pasar Global</h3>
     </div>
 
-    <div class="vehicles-grid">
-      <!-- VEHICLE 1 -->
-      <div class="vehicle-card">
-        <div class="vehicle-visual">
-          <span class="vehicle-price-tag">$19.00 USD</span>
-          <img src="data:image/png;base64,[object Object]" alt="Preschool Vehicle"/>
+    <div class="triangulation-grid">
+      <div class="tri-card">
+        <div class="tri-icon">📈</div>
+        <div class="tri-source">PILAR 1 // GOOGLE TRENDS</div>
+        <div class="tri-title">Permintaan Homeschool Activity</div>
+        <div class="tri-stat">+140% YoY</div>
+        <p class="tri-desc">
+          Volume pencarian kata kunci <em>"printable busy book for toddlers"</em> dan <em>"learning binder canva"</em> melonjak konsisten dengan puncak stabil tiap awal semester dan liburan.
+        </p>
+      </div>
+
+      <div class="tri-card">
+        <div class="tri-icon">🛒</div>
+        <div class="tri-source">PILAR 2 // MARKETPLACE SIGNALS</div>
+        <div class="tri-title">Top Shop di Etsy &amp; TPT</div>
+        <div class="tri-stat">15,000+ Sales</div>
+        <p class="tri-desc">
+          Toko penjual produk serupa di Etsy membukukan lebih dari 15.000 penjualan pada rentang harga <strong>$14 – $22 USD</strong> dengan rating rata-rata 4.9 bintang dari pembeli terverifikasi.
+        </p>
+      </div>
+
+      <div class="tri-card">
+        <div class="tri-icon">📌</div>
+        <div class="tri-source">PILAR 3 // PINTEREST VISUAL SEARCH</div>
+        <div class="tri-title">High Save &amp; Click Rate</div>
+        <div class="tri-stat">Top 5% Category</div>
+        <p class="tri-desc">
+          Kategori <em>"Preschool Printables"</em> dan <em>"Aesthetic Study Planner"</em> memiliki rasio simpan (Save Rate) tertinggi di Pinterest karena audiensnya aktif mencari inspirasi cetak mandiri.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 3: PLATFORM & MESIN TRAFIK PROMOSI
+       ========================================================================== -->
+  <div id="tab-platform" class="tab-panel">
+    <div class="panel-head">
+      <div class="panel-pre">DISTRIBUSI &amp; MESIN TRAFIK ORGANIK</div>
+      <h2 class="panel-title">Kandidat Platform Penjualan &amp; Strategi Promosi</h2>
+      <p class="panel-desc">
+        Produk berkualitas butuh saluran distribusi yang tepat. Kami menggunakan strategi multi-platform yang didukung mesin promosi visual organik tanpa perlu biaya iklan berbayar.
+      </p>
+    </div>
+
+    <div class="platform-table-wrap">
+      <table class="platform-table">
+        <thead>
+          <tr>
+            <th>Kandidat Platform</th>
+            <th>Target Pembeli</th>
+            <th>Kelebihan Utama</th>
+            <th>Strategi Penjualan Telkraf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Etsy Global</strong></td>
+            <td>Ibu muda, guru PAUD, journaler US/UK/Eropa</td>
+            <td>Pembeli siap belanja (high buying intent) dengan harga premium.</td>
+            <td>Etalase utama untuk paket <em>Toddler Busy Book</em> &amp; <em>Bakery Cafe Kit</em> ($19 – $24).</td>
+          </tr>
+          <tr>
+            <td><strong>Creative Fabrica</strong></td>
+            <td>Crafter, desainer Canva, pemilik mesin cetak</td>
+            <td>Ekosistem langganan dengan payout pasif per unduhan anggota.</td>
+            <td>Listing bundle SVG scalable &amp; clipart vault untuk penghasilan pasif stabil.</td>
+          </tr>
+          <tr>
+            <td><strong>Gumroad / Payhip</strong></td>
+            <td>Audiens media sosial, pembeli direct-link</td>
+            <td>Potongan fee rendah (10%), payout langsung via PayPal/Stripe.</td>
+            <td>Link tujuan utama promosi video Pinterest &amp; Instagram tanpa perang diskon.</td>
+          </tr>
+          <tr>
+            <td><strong>Teachers Pay Teachers</strong></td>
+            <td>Guru TK/SD dan pendidik homeschooling</td>
+            <td>Pasar khusus bahan ajar edukatif dengan repeat order tahunan.</td>
+            <td>Etalase khusus untuk lembar aktivitas tracing &amp; flashcard edukasi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel-head" style="margin-top: 16px;">
+      <div class="panel-pre">ENGINE PROMOSI MEDIA SOSIAL</div>
+      <h3 style="font-size: 18px; font-weight: 700;">Mesin Penarik Pembeli Organik (Zero Ad-Spend)</h3>
+    </div>
+
+    <div class="traffic-grid">
+      <div class="traffic-card">
+        <div class="traffic-tag">PINTEREST ENGINE // MESIN UTAMA</div>
+        <h4 class="traffic-title">Pinterest Visual SEO Funnel</h4>
+        <p class="traffic-desc">
+          Pinterest adalah mesin pencari visual, bukan sekadar media sosial. Pin produk berumur panjang dan terus mendatangkan pembeli berbulan-bulan setelah diunggah.
+        </p>
+        <div class="traffic-steps">
+          <ol>
+            <li>Rilis 15 Rich Pins estetik per minggu dengan kata kunci target (misal: <em>"toddler learning binder printable"</em>).</li>
+            <li>Pin langsung terhubung ke link toko Etsy / Gumroad.</li>
+          </ol>
         </div>
-        <div class="vehicle-body">
-          <div class="vehicle-tag">EDUKASI ANAK // HIGH DEMAND</div>
-          <h3 class="vehicle-name">Children Busy Book &amp; Learning Binder</h3>
-          <p class="vehicle-desc">
-            Buku aktivitas interaktif 40+ halaman untuk anak usia 3–6 tahun. Menggunakan ilustrasi kendaraan, makanan, hewan, dan objek harian Utari.
+      </div>
+
+      <div class="traffic-card">
+        <div class="traffic-tag">TIKTOK &amp; REELS // DEMO CEPAT</div>
+        <h4 class="traffic-title">Micro-Demo Video (7–10 Detik)</h4>
+        <p class="traffic-desc">
+          Video pendek yang memuaskan mata (ASMR / satisfying video) saat lembar busy book dipotong, ditempel velcro, atau stiker digital digeser di iPad.
+        </p>
+        <div class="traffic-steps">
+          <ol>
+            <li>Video memperlihatkan kemudahan: <em>"Beli ➔ Download ➔ Cetak di Rumah"</em>.</li>
+            <li>Memancing rasa ingin tahu ibu muda untuk berkomentar dan meminta link.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="traffic-card">
+        <div class="traffic-tag">LEAD MAGNET // EMAIL LIST</div>
+        <h4 class="traffic-title">Freebie Sample Funnel</h4>
+        <p class="traffic-desc">
+          Memberikan 3 halaman flashcard gratis untuk di-download pembeli. Sebagai gantinya, mereka memberikan email untuk penawaran bundle lengkap seharga $19.
+        </p>
+        <div class="traffic-steps">
+          <ol>
+            <li>Menjaring ratusan calon pembeli tanpa biaya iklan.</li>
+            <li>Mengirimkan otomatis voucher diskon peluncuran untuk produk kedua.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 4: ROADMAP PENJUALAN (GO-TO-MARKET 4 MINGGU)
+       ========================================================================== -->
+  <div id="tab-roadmap" class="tab-panel">
+    <div class="panel-head">
+      <div class="panel-pre">EKSEKUSI NYATA // BUKAN WACANA</div>
+      <h2 class="panel-title">Roadmap Penjualan 4 Minggu (Go-To-Market)</h2>
+      <p class="panel-desc">
+        Strategi ini baru dinilai berhasil jika produk sudah live dan mendatangkan penjualan nyata. Berikut jadwal kerja 4 minggu pertama untuk membuktikannya:
+      </p>
+    </div>
+
+    <div class="gtm-timeline">
+      <div class="gtm-step">
+        <div class="gtm-step-time">
+          <div class="gtm-week">MINGGU 1</div>
+          <div class="gtm-days">HARI 1 – 7</div>
+        </div>
+        <div class="gtm-step-content">
+          <h4 class="gtm-step-title">Kurasi Aset &amp; Assembling Pilot Product</h4>
+          <p class="gtm-step-desc">
+            Telkraf memilih 350 ilustrasi terkuat Utari (kategori kendaraan anak, makanan, hewan) lalu menyusunnya menjadi master template Canva <strong>Toddler Busy Book (40 Halaman)</strong> lengkap dengan PDF delivery guide.
           </p>
-          <div class="vehicle-features">
-            <div class="vehicle-features-title">ISI TEMPLATE CANVA:</div>
-            <ul>
-              <li>Flashcards alfabet &amp; angka berilustrasi</li>
-              <li>Tracing lines &amp; matching shadow game</li>
-              <li>Good habits reward chart anak</li>
-              <li>Printable nursery wall art print</li>
-            </ul>
-          </div>
+          <div class="gtm-deliverable">✓ Deliverable: 1 Master Template Canva Live + 3D Mockup Editorial</div>
         </div>
       </div>
 
-      <!-- VEHICLE 2 -->
-      <div class="vehicle-card">
-        <div class="vehicle-visual">
-          <span class="vehicle-price-tag">$15.00 USD</span>
-          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDAwMCA0MDAwIj4KICA8dGl0bGU+Q3V0ZSBCZWFyIE1lbW8gUGFkIE5vdGUgUGFwZXI8L3RpdGxlPgogIDxkZXNjPmN1dGUgbWVtbyBwYWQsIHN0aWNreSBub3RlLCBkaWdpdGFsIHBsYW5uZXIgc3RpY2tlcnMsIGJ1bGxldCBqb3VybmFsIGRlY28sIGtvcmVhbiBhZXN0aGV0aWMgbm90ZXMsIGthd2FpaSBzdGF0aW9uZXJ5LCB0byBkbyBsaXN0IHBhcGVyLCBjdXRlIHJlbWluZGVyIG5vdGUsIHN0dWR5Z3JhbSBlbGVtZW50cywgcGFzdGVsIG1lc3NhZ2UgYm94LCBzY3JhcGJvb2sgcGFwZXIgY3V0ZSwgZmxhdCB2ZWN0b3Igbm90ZTwvZGVzYz4KICA8bWV0YWRhdGE+CiAgICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIj4KICAgICAgPGNjOldvcmsgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzp0aXRsZT5DdXRlIEJlYXIgTWVtbyBQYWQgTm90ZSBQYXBlcjwvZGM6dGl0bGU+CiAgICAgICAgPGRjOmRlc2NyaXB0aW9uPkN1dGUgQmVhciBNZW1vIFBhZCBOb3RlIFBhcGVyIC0gRmxhdCB2ZWN0b3IgaWxsdXN0cmF0aW9uPC9kYzpkZXNjcmlwdGlvbj4KICAgICAgICA8ZGM6Y3JlYXRvcj4KICAgICAgICAgIDxyZGY6QmFnPgogICAgICAgICAgICA8cmRmOmxpPlRlbGtyYWYuaWQ8L3JkZjpsaT4KICAgICAgICAgIDwvcmRmOkJhZz4KICAgICAgICA8L2RjOmNyZWF0b3I+CiAgICAgICAgPGRjOnN1YmplY3Q+CiAgICAgICAgICA8cmRmOkJhZz4KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIG1lbW8gcGFkPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnN0aWNreSBub3RlPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmRpZ2l0YWwgcGxhbm5lciBzdGlja2VyczwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5idWxsZXQgam91cm5hbCBkZWNvPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmtvcmVhbiBhZXN0aGV0aWMgbm90ZXM8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+a2F3YWlpIHN0YXRpb25lcnk8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+dG8gZG8gbGlzdCBwYXBlcjwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIHJlbWluZGVyIG5vdGU8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+c3R1ZHlncmFtIGVsZW1lbnRzPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnBhc3RlbCBtZXNzYWdlIGJveDwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5zY3JhcGJvb2sgcGFwZXIgY3V0ZTwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5mbGF0IHZlY3RvciBub3RlPC9yZGY6bGk+CiAgICAgICAgICA8L3JkZjpCYWc+CiAgICAgICAgPC9kYzpzdWJqZWN0PgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNy4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTE0KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNlMGMyYWU7CiAgICAgIH0KCiAgICAgIC5zdDAsIC5zdDEsIC5zdDIsIC5zdDMsIC5zdDQsIC5zdDUsIC5zdDYsIC5zdDcsIC5zdDggewogICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2JhODU2NDsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXBwYXRoLTQpOwogICAgICB9CgogICAgICAuc3QyIHsKICAgICAgICBmaWxsOiAjYWE3NjU1OwogICAgICB9CgogICAgICAuc3QxMCB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzNhM2EzYTsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogIzdmNGEyODsKICAgICAgfQoKICAgICAgLnN0MTEgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0xKTsKICAgICAgfQoKICAgICAgLnN0MTIgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC01KTsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogI2YzOTM4OTsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0zKTsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogI2ZmZjhlYTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2MzOGQ2YTsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogI2ViZDZhYTsKICAgICAgfQoKICAgICAgLnN0MTQgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0yKTsKICAgICAgfQoKICAgICAgLnN0MTUgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoIj4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik05NTUuOCwzNjNjMTIwLjktMTQuMywyMzAuOCw3Mi4yLDI0NS4xLDE5My4ycy03Mi4yLDIzMC44LTE5My4yLDI0NS4xLTIzMC43LTcyLjItMjQ1LjEtMTkzLjIsNzIuMi0yMzAuNywxOTMuMi0yNDUuMVoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTEiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE4ODkuNiwyMDIuMmMtMTIwLjksMTQuMy0yMDcuNSwxMjQuMS0xOTMuMiwyNDUuMSwxNC4zLDEyMC45LDEyNC4xLDIwNy41LDI0NS4xLDE5My4yLDEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjEtMTQuMy0xMjAuOS0xMjQuMS0yMDcuNS0yNDUuMS0xOTMuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTIiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE0NDMuOCwzNjAuOWMzNTcuOS00Mi40LDY3Ni4yLDE1Ny43LDcxMC40LDQ0Ni42cy0yMjguNSw1NTcuOC01ODYuNCw2MDAuMi02NzYuMi0xNTcuNy03MTAuNC00NDYuNiwyMjguNi01NTcuOCw1ODYuNC02MDAuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTMiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTMwNTIuNywxMDY3LjdjMjA4LjcsMCwzNzcuOSwxNjkuMSwzNzcuOSwzNzcuOGgwdjE5NzUuOWMwLDIwOC43LTE2OS4yLDM3Ny45LTM3Ny45LDM3Ny45SDk0Ny4zYy0yMDguNywwLTM3Ny45LTE2OS4yLTM3Ny45LTM3Ny45di0xOTc1LjhjMC0yMDguNywxNjkuMi0zNzcuOSwzNzcuOS0zNzcuOWgyMTA1LjRaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC00Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik03MzQuNCwxMjE5LjdzLTMyLTE2MS43LDE0OS4yLTE5Ny40YzE3NC44LTM0LjUsMjEyLjQsMjE4LDc4LDIzNi45LTEwLjYsMS41LTIwLjQsNi4zLTI4LDEzLjgtMzEuOCwzMC41LTEyMSw5My41LTE5OS4yLTUzLjJaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC01Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik0yMzE4LjgsMTAzMnMtNi43LTE2NC43LTE5MS4yLTE1Ny4xYy0xNzgsNy4zLTE1NS42LDI2MS42LTIwLjUsMjQ4LjUsMTAuNi0xLDIxLjMsMS40LDMwLjQsNi44LDM4LjEsMjIuMiwxMzkuNiw2Mi42LDE4MS4zLTk4LjNaIi8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iU1ZHSUQtNyIgY2xhc3M9InN0MiIgZD0iTTk1NS44LDM2M2MxMjAuOS0xNC4zLDIzMC44LDcyLjIsMjQ1LjEsMTkzLjIsMTQuMywxMjAuOS03Mi4yLDIzMC44LTE5My4yLDI0NS4xcy0yMzAuNy03Mi4yLTI0NS4xLTE5My4yLDcyLjItMjMwLjgsMTkzLjItMjQ1LjFaIi8+CiAgPGcgY2xhc3M9InN0MTUiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTk2OC40LDQ2OC44YzYyLjYtNy40LDExOS4zLDM3LjMsMTI2LjgsOTkuOSw3LjQsNjIuNi0zNy4zLDExOS4zLTk5LjksMTI2LjhzLTExOS4zLTM3LjMtMTI2LjgtOTkuOWMwLDAsMCwwLDAsMC03LjQtNjIuNiwzNy4zLTExOS4zLDk5LjktMTI2LjhaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC04IiBjbGFzcz0ic3QyIiBkPSJNMTg4OS42LDIwMi4yYy0xMjAuOSwxNC4zLTIwNy41LDEyNC4xLTE5My4yLDI0NS4xczEyNC4xLDIwNy41LDI0NS4xLDE5My4yYzEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjFzLTEyNC4xLTIwNy41LTI0NS4xLTE5My4yWiIvPgogIDxnIGNsYXNzPSJzdDExIj4KICAgIDxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0xOTAyLjIsMzA4Yy02Mi42LDcuNC0xMDcuMyw2NC4yLTk5LjksMTI2LjgsNy40LDYyLjYsNjQuMiwxMDcuMywxMjYuOCw5OS45LDYyLjYtNy40LDEwNy4zLTY0LjIsOTkuOS0xMjYuOC03LjQtNjIuNi02NC4yLTEwNy4zLTEyNi44LTk5LjlaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC05IiBjbGFzcz0ic3Q3IiBkPSJNMTQ0My44LDM2MC45YzM1Ny45LTQyLjQsNjc2LjIsMTU3LjcsNzEwLjQsNDQ2LjZzLTIyOC41LDU1Ny44LTU4Ni40LDYwMC4yLTY3Ni4yLTE1Ny43LTcxMC40LTQ0Ni42LDIyOC42LTU1Ny44LDU4Ni40LTYwMC4yWiIvPgogIDxnIGNsYXNzPSJzdDE0Ij4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQ5Mi40LDc3OS40YzEwMy43LTE0LjIsMTYwLjEsNDQuOCwxNjcuMiwxMDVzLTU1LjUsMTE3LjEtMTM5LjcsMTI3LjEtMTU4LjQtMzAuOC0xNjUuNi05MC45LDM3LjEtMTI3LjMsMTM4LjEtMTQxLjJaIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDgiIGQ9Ik0xNDkyLjQsNzc5LjRjMTAzLjctMTQuMiwxNjAuMSw0NC44LDE2Ny4yLDEwNXMtNTUuNSwxMTcuMS0xMzkuNywxMjcuMS0xNTguNC0zMC44LTE2NS42LTkwLjksMzcuMS0xMjcuMywxMzguMS0xNDEuMloiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTExNjEuOSw4NzkuOWM0Ny44LTUuNyw5MCwxOS40LDk0LjMsNTUuOXMtMzAuOSw3MC43LTc4LjcsNzYuNC05MC0xOS40LTk0LjMtNTUuOSwzMC45LTcwLjcsNzguNy03Ni40WiIvPgogIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0xODI4LjcsODAwLjljNDcuOC01LjcsOTAsMTkuNCw5NC4zLDU1LjlzLTMwLjksNzAuNy03OC43LDc2LjQtOTAtMTkuNC05NC4zLTU1LjksMzEtNzAuNyw3OC43LTc2LjRaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTEyNjIuMiw3ODFjMjIuNS0yLjcsNDMuMywxNi42LDQ2LjUsNDNzLTEyLjYsNTAtMzUuMSw1Mi43LTQzLjMtMTYuNi00Ni41LTQzLDEyLjYtNTAsMzUuMS01Mi43WiIvPgogIDxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0xMjY5LjQsODgyLjNjLTIzLjYsMC00NC40LTIwLjUtNDcuNy00OC0zLjUtMjkuMywxNC40LTU1LjcsMzkuOS01OC43aDBjMjUuMy0zLDQ5LDE4LjQsNTIuNSw0Ny44LDEuOCwxMy42LTEuNCwyNy40LTguOCwzOC45LTcuNSwxMS4zLTE4LjYsMTguMy0zMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4zWk0xMjYyLjgsNzg2LjNjLTE5LjUsMi4zLTMzLjIsMjMuMi0zMC40LDQ2LjdzMjEsNDAuNSw0MC40LDM4LjJjOS4zLTEuMSwxNy42LTYuNSwyMy4zLTE1LjEsNi05LjQsOC41LTIwLjYsNy4xLTMxLjYtMi44LTIzLjQtMjEtNDAuNi00MC40LTM4LjJoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcwNi43LDcyOC4zYzIyLjUtMi43LDQzLjMsMTYuNiw0Ni41LDQzcy0xMi42LDUwLTM1LjEsNTIuNy00My4zLTE2LjYtNDYuNS00MywxMi42LTUwLDM1LjEtNTIuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcxMy45LDgyOS43Yy0yMy42LDAtNDQuNC0yMC41LTQ3LjctNDgtMS44LTEzLjYsMS40LTI3LjQsOC44LTM4LjksNy41LTExLjMsMTguNi0xOC4zLDMxLjEtMTkuOGgwYzEyLjUtMS41LDI0LjksMi44LDM0LjgsMTIsMjAuMiwxOS42LDIzLjksNTAuOCw4LjgsNzQuNi03LjUsMTEuMy0xOC42LDE4LjMtMzEuMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4yWk0xNzEwLjksNzMzLjVjLTEuMiwwLTIuNCwwLTMuNS4yaDBjLTkuMywxLjEtMTcuNiw2LjQtMjMuMywxNS02LDkuNC04LjUsMjAuNS03LjEsMzEuNiwyLjgsMjMuNCwyMC45LDQwLjUsNDAuNCwzOC4yLDkuMy0xLjEsMTcuNi02LjQsMjMuMy0xNSwxMi4xLTE5LjQsOS4xLTQ0LjYtNy4yLTYwLjctNi42LTYuMS0xNC41LTkuMy0yMi42LTkuM2gwWk0xNzA2LjcsNzI4LjNoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ2Mi4xLDkxOC45Yy01LjYsMS4yLTExLjEtMi4zLTEyLjQtNy45LTEuMi01LjYsMi4zLTExLjEsNy45LTEyLjQsMCwwLC4xLDAsLjIsMCwyMC43LTQuNCwzMy40LTE2LjksMzgtMzcuNSwxLjMtNS42LDYuOC05LjEsMTIuNC03LjgsMi41LjYsNC44LDIuMSw2LjMsNC4yLDEzLDE5LjEsMjgsMjksNDUuNCwyOSw1LjcuMiwxMC4yLDUsMTAsMTAuNy0uMiw1LjUtNC42LDkuOS0xMC4xLDEwLTE4LjQsMC0zNS4zLTcuNC01MC4zLTIzLTkuMSwxOC4yLTI0LjksMjkuOC00Ny40LDM0LjZaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTE0OTguMSw4MTIuN2MyOC41LTMuNCw1My4yLDcuNiw1NS4yLDI0LjVzLTE5LjUsMzMuMy00OCwzNi43LTUzLjItNy42LTU1LjItMjQuNSwxOS41LTMzLjQsNDgtMzYuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ5NS4xLDg4MGMtMTAuOCwwLTIxLTItMjkuNS01LjctMTIuMy01LjQtMTkuNy0xNC0yMC45LTI0LjJzNC0yMC4yLDE0LjctMjguNGM5LjgtNy41LDIzLjQtMTIuNiwzOC4xLTE0LjRoMGMxNC43LTEuNywyOS4xLDAsNDAuNCw1LjEsMTIuMyw1LjQsMTkuNywxNCwyMC45LDI0LjIsMi40LDIwLjItMjAuOCwzOS01Mi43LDQyLjgtMy42LjQtNy4zLjYtMTAuOS42Wk0xNDk4LjcsODE4LjFjLTEyLjgsMS41LTI0LjUsNS44LTMyLjgsMTIuMi03LjUsNS43LTExLjIsMTIuMy0xMC41LDE4LjVzNS45LDExLjcsMTQuNSwxNS41YzkuNiw0LjIsMjEuOSw1LjgsMzQuNyw0LjIsMjUuMS0zLDQ0LjktMTcsNDMuMi0zMC43LS43LTYuMi01LjktMTEuNy0xNC41LTE1LjUtOS42LTQuMi0yMS45LTUuOC0zNC43LTQuMloiLz4KICA8cGF0aCBpZD0iU1ZHSUQtMTAiIGNsYXNzPSJzdDYiIGQ9Ik0zMDUyLjcsMTA2Ny43YzIwOC43LDAsMzc3LjksMTY5LjEsMzc3LjksMzc3LjhoMHYxOTc1LjljMCwyMDguNy0xNjkuMiwzNzcuOS0zNzcuOSwzNzcuOUg5NDcuM2MtMjA4LjcsMC0zNzcuOS0xNjkuMi0zNzcuOS0zNzcuOXYtMTk3NS44YzAtMjA4LjcsMTY5LjItMzc3LjksMzc3LjktMzc3LjloMjEwNS40WiIvPgogIDxnIGNsYXNzPSJzdDEzIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3Q4IiBkPSJNOTI1LjcsMTg2NC42Yy0xMC44LjYtMjAtNy42LTIwLjYtMTguNC0uNi0xMC44LDcuNi0yMCwxOC40LTIwLjYuNywwLDEuNCwwLDIuMiwwaDIxNzAuMmMxMC44LS42LDIwLDcuNiwyMC42LDE4LjQuNiwxMC44LTcuNiwyMC0xOC40LDIwLjYtLjcsMC0xLjQsMC0yLjIsMEg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDIyMTAuMWMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI1NTUuNmMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI5MDEuMWMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDMyNDYuNmMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTExIiBjbGFzcz0ic3QyIiBkPSJNNzM0LjQsMTIxOS43cy0zMi0xNjEuNywxNDkuMi0xOTcuNGMxNzQuOC0zNC41LDIxMi40LDIxOCw3OCwyMzYuOS0xMC42LDEuNS0yMC40LDYuMy0yOCwxMy44LTMxLjgsMzAuNS0xMjEsOTMuNS0xOTkuMi01My4yWiIvPgogIDxnIGNsYXNzPSJzdDkiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTg5NC45LDEyMTQuNmMtNC42LTUuNy0zLjYtMTQuMSwyLjEtMTguNyw1LjctNC42LDE0LjEtMy42LDE4LjcsMi4xLjEuMi4zLjMuNC41bDUyLjQsNjkuNGM0LjMsNiwyLjksMTQuMy0zLDE4LjUtNS44LDQuMS0xMy43LDMtMTguMS0yLjVsLTUyLjQtNjkuNFoiLz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTEyIiBjbGFzcz0ic3QyIiBkPSJNMjMxOC44LDEwMzJzLTYuNy0xNjQuNy0xOTEuMi0xNTcuMWMtMTc4LDcuMy0xNTUuNiwyNjEuNi0yMC41LDI0OC41LDEwLjYtMSwyMS4zLDEuNCwzMC40LDYuOCwzOC4xLDIyLjIsMTM5LjYsNjIuNiwxODEuMy05OC4zWiIvPgogIDxnIGNsYXNzPSJzdDEyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjE2MS42LDEwNjQuNWMzLTYuNy4xLTE0LjUtNi42LTE3LjZzLTE0LjUtLjEtMTcuNiw2LjZjMCwuMS0uMS4zLS4yLjRsLTM0LjgsNzkuN2MtMi45LDYuNy4xLDE0LjYsNi45LDE3LjUsNi43LDIuOSwxNC42LS4xLDE3LjUtNi45bDM0LjgtNzkuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTIxNjEuNiwxMDY0LjVjMy02LjcuMS0xNC41LTYuNi0xNy42cy0xNC41LS4xLTE3LjYsNi42YzAsLjEtLjEuMy0uMi40bC0zNC44LDc5LjdjLTIuOSw2LjcuMSwxNC42LDYuOSwxNy41LDYuNywyLjksMTQuNi0uMSwxNy41LTYuOWwzNC44LTc5LjdaIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=" alt="GoodNotes Planner Memo"/>
+      <div class="gtm-step">
+        <div class="gtm-step-time">
+          <div class="gtm-week">MINGGU 2</div>
+          <div class="gtm-days">HARI 8 – 14</div>
         </div>
-        <div class="vehicle-body">
-          <div class="vehicle-tag">GEN-Z &amp; IPAD USERS // REPEAT ORDER</div>
-          <h3 class="vehicle-name">Aesthetic Digital Planner &amp; Clipart Vault</h3>
-          <p class="vehicle-desc">
-            Paket digital planner untuk aplikasi GoodNotes/Notion di iPad dilengkapi 300+ digital stickers crop-ready dari memo pad &amp; stationery Utari.
+        <div class="gtm-step-content">
+          <h4 class="gtm-step-title">Listing Toko &amp; Aktivasi Mesin Pinterest</h4>
+          <p class="gtm-step-desc">
+            Publikasi produk ke etalase Etsy &amp; Gumroad dengan copywriting SEO bahasa Inggris. Menjadwalkan 15 Idea Pins di Pinterest dengan kata kunci pembeli US/Eropa.
           </p>
-          <div class="vehicle-features">
-            <div class="vehicle-features-title">ISI TEMPLATE CANVA:</div>
-            <ul>
-              <li>Daily &amp; weekly aesthetic study planner</li>
-              <li>300+ Crop-ready PNG/SVG digital stickers</li>
-              <li>Mood tracker &amp; habits countdown dashboard</li>
-              <li>Korean pastel memo notes editable</li>
-            </ul>
-          </div>
+          <div class="gtm-deliverable">✓ Deliverable: Toko Live Siap Menerima Order + 15 Pins Terjadwal</div>
         </div>
       </div>
 
-      <!-- VEHICLE 3 -->
-      <div class="vehicle-card">
-        <div class="vehicle-visual">
-          <span class="vehicle-price-tag">$24.00 USD</span>
-          <img src="data:image/png;base64,[object Object]" alt="Bakery Cafe Strawberry Cake"/>
+      <div class="gtm-step">
+        <div class="gtm-step-time">
+          <div class="gtm-week">MINGGU 3</div>
+          <div class="gtm-days">HARI 15 – 21</div>
         </div>
-        <div class="vehicle-body">
-          <div class="vehicle-tag">UMKM &amp; CAFE // KOMERSIAL B2B</div>
-          <h3 class="vehicle-name">Artisan Bakery &amp; Boba Cafe Branding Kit</h3>
-          <p class="vehicle-desc">
-            Kit identitas visual lengkap untuk coffee shop dan toko kue rumahan. Menggunakan ilustrasi cake stroberi, camilan, dan minuman pastel Utari.
+        <div class="gtm-step-content">
+          <h4 class="gtm-step-title">Validasi Respon Pasar &amp; Assembling Produk Kedua</h4>
+          <p class="gtm-step-desc">
+            Menganalisis traffic klik dan query pencarian yang masuk. Meluncurkan produk kedua: <strong>Artisan Bakery Cafe Branding Pack</strong> untuk menjaring pasar UMKM F&amp;B.
           </p>
-          <div class="vehicle-features">
-            <div class="vehicle-features-title">ISI TEMPLATE CANVA:</div>
-            <ul>
-              <li>Menu board meja &amp; promo standee Canva</li>
-              <li>Loyalty stamp card &amp; stiker toples bulat</li>
-              <li>Template postingan Instagram feed &amp; story</li>
-              <li>Thank you card &amp; sealing packaging label</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3: ALUR PRODUKSI HULU KE HILIR -->
-  <section>
-    <div class="sec-head">
-      <div class="sec-pre">ROADMAP OPERASIONAL</div>
-      <h2 class="sec-title">Alur Kerja Hulu ke Hilir (Zero-Confusion Pipeline)</h2>
-      <p class="sec-desc">Sistem pembagian kerja yang sangat jelas agar tidak ada beban ganda. Utari fokus pada karya, Khairul mengurus produksi Canva dan penjualan.</p>
-    </div>
-
-    <div class="pipeline-grid">
-      <div class="pipeline-step">
-        <div class="step-num">01</div>
-        <span class="step-who utari">PERAN UTARI</span>
-        <h4 class="step-title">Artwork &amp; Review</h4>
-        <p class="step-detail">
-          Menyediakan 2.547 ilustrasi yang sudah ada di folder. Jika ada request tema baru di masa depan, Utari memberikan arahan style.
-        </p>
-      </div>
-
-      <div class="pipeline-step">
-        <div class="step-num">02</div>
-        <span class="step-who khairul">PERAN KHAIRUL / TELKRAF</span>
-        <h4 class="step-title">Produksi Template Canva</h4>
-        <p class="step-detail">
-          Menyusun layouting Canva profesional, mengatur smart frames, hierarki tipografi, packaging format, dan panduan cetak (PDF guide).
-        </p>
-      </div>
-
-      <div class="pipeline-step">
-        <div class="step-num">03</div>
-        <span class="step-who khairul">PERAN KHAIRUL / TELKRAF</span>
-        <h4 class="step-title">Listing &amp; Pemasaran Global</h4>
-        <p class="step-detail">
-          Pembuatan mockup editorial 3D, copywriting SEO bahasa Inggris, dan publikasi toko di Etsy, Creative Fabrica, serta Gumroad.
-        </p>
-      </div>
-
-      <div class="pipeline-step">
-        <div class="step-num">04</div>
-        <span class="step-who joint">KOLABORASI TRANSPARAN</span>
-        <h4 class="step-title">Penjualan &amp; Payout Bulanan</h4>
-        <p class="step-detail">
-          Laporan performa penjualan berkala yang transparan. Pembayaran bagi hasil keuntungan ditransfer langsung ke rekening Utari tiap bulan.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: PEMBAGIAN TANGGUNG JAWAB -->
-  <section>
-    <div class="sec-head">
-      <div class="sec-pre">KEJELASAN TANGGUNG JAWAB</div>
-      <h2 class="sec-title">Matriks Kolaborasi &amp; Hak Cipta</h2>
-      <p class="sec-desc">Transparansi penuh agar proses berjalan nyaman dan terpercaya tanpa ada tanda tanya.</p>
-    </div>
-
-    <table class="matrix-table">
-      <thead>
-        <tr>
-          <th>Bidang Kerja / Tanggung JAWAB</th>
-          <th>Penanggung Jawab</th>
-          <th>Keterangan Teknis</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Kepemilikan Hak Cipta Ilustrasi Asli</strong></td>
-          <td><span class="badge-role utari-role">Utary (Original Artist)</span></td>
-          <td>Karya seni tetap merupakan portofolio dan kekayaan intelektual Utari.</td>
-        </tr>
-        <tr>
-          <td><strong>Desain Layout &amp; Frame Template Canva</strong></td>
-          <td><span class="badge-role khairul-role">Khairul Hafizi (Telkraf)</span></td>
-          <td>Dikerjakan penuh oleh Khairul hingga template siap pakai dan estetik.</td>
-        </tr>
-        <tr>
-          <td><strong>Biaya Operasional &amp; Listing Fee Toko</strong></td>
-          <td><span class="badge-role khairul-role">Khairul Hafizi (Telkraf)</span></td>
-          <td>Utari tidak mengeluarkan uang modal sepeser pun (100% ditanggung partner).</td>
-        </tr>
-        <tr>
-          <td><strong>Customer Support &amp; Penanganan Komplain</strong></td>
-          <td><span class="badge-role khairul-role">Khairul Hafizi (Telkraf)</span></td>
-          <td>Segala urusan pertanyaan pembeli luar negeri ditangani oleh tim Telkraf.</td>
-        </tr>
-        <tr>
-          <td><strong>Bagi Hasil Penjualan (Profit Share)</strong></td>
-          <td><span class="badge-role" style="background: rgba(245, 224, 58, 0.15); color: var(--accent-yellow); border: 1px solid rgba(245, 224, 58, 0.3);">Win-Win Profit Share</span></td>
-          <td>Utari menerima bagi hasil bersih pasif langsung ke rekening setiap bulan.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- SECTION 5: KALKULATOR REVENUE SIMULATOR -->
-  <section>
-    <div class="sec-head">
-      <div class="sec-pre">PROYEKSI PENDAPATAN PASIF</div>
-      <h2 class="sec-title">Simulasi Estimasi Penghasilan Utary</h2>
-      <p class="sec-desc">Geser slider di bawah ini untuk melihat perkiraan passive income yang masuk ke rekening Utari setiap bulan.</p>
-    </div>
-
-    <div class="calc-wrapper">
-      <div class="calc-inputs">
-        <div class="calc-field">
-          <div class="field-header">
-            <span class="field-label">Harga Jual Rata-rata Bundle (USD)</span>
-            <span class="field-disp" id="disp-price">$19</span>
-          </div>
-          <input type="range" id="sim-price" min="10" max="35" value="19" oninput="simCalculate()">
-          <span style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Rekomendasi harga produk digital Canva pack di pasar US/Eropa.</span>
-        </div>
-
-        <div class="calc-field">
-          <div class="field-header">
-            <span class="field-label">Estimasi Penjualan Gabungan per Bulan</span>
-            <span class="field-disp" id="disp-sales">75 Penjualan</span>
-          </div>
-          <input type="range" id="sim-sales" min="15" max="250" value="75" step="5" oninput="simCalculate()">
-          <span style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Akumulasi penjualan di Etsy, Creative Fabrica &amp; Gumroad.</span>
-        </div>
-
-        <div class="calc-field">
-          <div class="field-header">
-            <span class="field-label">Porsi Bagi Hasil Royalti Utary (%)</span>
-            <span class="field-disp" id="disp-share">35%</span>
-          </div>
-          <input type="range" id="sim-share" min="20" max="50" value="35" step="5" oninput="simCalculate()">
-          <span style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Persentase bersih untuk Utari tanpa potongan biaya produksi Canva.</span>
+          <div class="gtm-deliverable">✓ Deliverable: Laporan Data Klik Awal + Peluncuran Produk Kedua</div>
         </div>
       </div>
 
-      <div class="calc-outputs">
+      <div class="gtm-step">
+        <div class="gtm-step-time">
+          <div class="gtm-week">MINGGU 4</div>
+          <div class="gtm-days">HARI 22 – 30</div>
+        </div>
+        <div class="gtm-step-content">
+          <h4 class="gtm-step-title">Evaluasi Penjualan &amp; Transfer Royalti Pertama</h4>
+          <p class="gtm-step-desc">
+            Rekapitulasi penjualan bulan pertama secara transparan. Mentransfer hak bagi hasil royalti langsung ke rekening Utari, lalu mempersiapkan scale-up ke produk ketiga (Digital Planner).
+          </p>
+          <div class="gtm-deliverable">✓ Deliverable: Payout Royalti Bulan Pertama ke Rekening Utari</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 5: SINERGI & BAGI HASIL
+       ========================================================================== -->
+  <div id="tab-sinergi" class="tab-panel">
+    <div class="panel-head">
+      <div class="panel-pre">KOLABORASI ADIL // WIN-WIN PARTNERSHIP</div>
+      <h2 class="panel-title">Pembagian Peran &amp; Simulasi Keuntungan Transparan</h2>
+      <p class="panel-desc">
+        Kemitraan yang sehat dibangun di atas transparansi. Utari tidak dibebani pekerjaan teknis Canva atau operasional toko, dan tetap memegang hak cipta atas karya aslinya.
+      </p>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-box utari">
+        <div class="role-who">TANGGUNG JAWAB UTARI</div>
+        <h3 class="role-title">Original Creator &amp; Advisor</h3>
+        <ul class="role-list">
+          <li>Menyediakan 2.547 ilustrasi yang sudah ada di folder.</li>
+          <li>Hak cipta karya seni asli <strong>100% tetap milik Utari</strong>.</li>
+          <li>Memberikan approval atas kecocokan tema produk jadi.</li>
+          <li><strong>Rp 0 Modal Uang:</strong> Utari tidak mengeluarkan biaya apa pun.</li>
+        </ul>
+      </div>
+
+      <div class="role-box telkraf">
+        <div class="role-who">TANGGUNG JAWAB TELKRAF (KHAIRUL)</div>
+        <h3 class="role-title">Commercial &amp; Production Partner</h3>
+        <ul class="role-list">
+          <li>Penyusunan layouting Canva &amp; smart frames interaktif.</li>
+          <li>Menanggung seluruh biaya listing fee dan operasional toko.</li>
+          <li>Pembuatan 3D mockup editorial dan materi promosi Pinterest.</li>
+          <li>Penanganan customer service &amp; komplain pembeli luar negeri.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CLEAN ESTIMATE CALCULATOR -->
+    <div class="panel-head" style="margin-top: 16px;">
+      <div class="panel-pre">SIMULATOR BAGI HASIL</div>
+      <h3 style="font-size: 18px; font-weight: 700;">Simulasi Perkiraan Royalti Pasif Utari</h3>
+    </div>
+
+    <div class="calc-clean-box">
+      <div class="calc-ctrl-col">
+        <div class="clean-field">
+          <div class="clean-label-row">
+            <span>Harga Jual per Bundle:</span>
+            <strong id="v-price" style="color: var(--accent-yellow);">$19 USD</strong>
+          </div>
+          <input type="range" id="c-price" min="12" max="32" value="19" oninput="runSim()"/>
+        </div>
+
+        <div class="clean-field">
+          <div class="clean-label-row">
+            <span>Estimasi Penjualan per Bulan:</span>
+            <strong id="v-sales" style="color: var(--accent-yellow);">75 Sales</strong>
+          </div>
+          <input type="range" id="c-sales" min="15" max="250" value="75" step="5" oninput="runSim()"/>
+        </div>
+
+        <div class="clean-field">
+          <div class="clean-label-row">
+            <span>Porsi Royalti Pasif Utari:</span>
+            <strong id="v-share" style="color: var(--accent-pink);">35%</strong>
+          </div>
+          <input type="range" id="c-share" min="20" max="50" value="35" step="5" oninput="runSim()"/>
+        </div>
+      </div>
+
+      <div class="calc-display-col">
         <div>
-          <div class="out-row">
-            <span class="out-label">Total Penjualan Kotor (Gross USD)</span>
-            <span class="out-val" id="out-gross-usd">$1,425</span>
+          <div class="disp-row">
+            <span style="color: var(--text-muted);">Total Penjualan Kotor (USD):</span>
+            <strong id="disp-gross-usd">$1,425</strong>
           </div>
-          <div class="out-row">
-            <span class="out-label">Total Penjualan Kotor (IDR @ Rp16.000)</span>
-            <span class="out-val" id="out-gross-idr">Rp 22.800.000</span>
+          <div class="disp-row">
+            <span style="color: var(--text-muted);">Total Penjualan Kotor (IDR):</span>
+            <strong id="disp-gross-idr">Rp 22.800.000</strong>
           </div>
         </div>
 
-        <div class="hero-payout-box">
-          <div class="hero-payout-tag">ESTIMASI PASSIVE INCOME UTARI PER BULAN:</div>
-          <div class="hero-payout-num" id="out-utari-idr">Rp 7.980.000</div>
-          <div class="hero-payout-sub" id="out-utari-usd">($498.75 USD / bulan langsung ke rekening)</div>
-          <div style="font-size: 11px; color: var(--text-muted); margin-top: 10px; font-family: var(--font-mono);">
-            Proyeksi 1 Tahun: <strong id="out-utari-annual" style="color: var(--accent-green);">Rp 95.760.000</strong> potensi pendapatan pasif tambahan.
+        <div class="hero-num-badge">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-green); text-transform: uppercase;">
+            HAK ROYALTI UTARI / BULAN:
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: #fff;" id="disp-utari-idr">
+            Rp 7.980.000
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);" id="disp-utari-usd">
+            ($498.75 USD langsung ke rekening)
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- SECTION 6: CTA & NEXT STEP -->
-  <section class="cta-banner">
-    <h2 class="cta-title">Siap Memulai Pilot Project Bersama?</h2>
-    <p class="cta-desc">
-      Kita tidak perlu langsung mengerjakan semuanya sekaligus. Kita cukup mulai dengan <strong>1 Pilot Project pertama (Children Busy Book)</strong> dalam 7 hari ke depan untuk membuktikan respon pasar global.
-    </p>
-    <div class="cta-btn-group">
-      <a href="https://wa.me/6282283884814?text=Halo%20Khairul,%20saya%20sudah%20lihat%20blueprint%20Canva%20Kits.%20Yuk%20kita%20coba%20pilot%20projectnya!" target="_blank" class="cta-btn-primary">
-        <span>💬</span> DISKUSIKAN PILOT PROJECT VIA WHATSAPP
-      </a>
-    </div>
-  </section>
 </div>
 
-<!-- FOOTER -->
+<!-- ==========================================================================
+     FOOTER WITH OFFICIAL TELKRAF LOGO
+     ========================================================================== -->
 <footer>
   <div class="container footer-inner">
-    <div>TELKRAF.ID × UTARY // EXCLUSIVE COMMERCIAL BLUEPRINT</div>
-    <div>RESTRICTED CLIENT VAULT 2026</div>
+    <div class="footer-logo-wrap">
+      <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
+    <div>COLLABORATION BLUEPRINT × UTARY // RESTRICTED ACCESS 2026</div>
   </div>
 </footer>
 
+<!-- ==========================================================================
+     SCRIPTS: AUTH GATE & TAB CONTROLLER
+     ========================================================================== -->
 <script>
-// SECURITY PASSCODE VERIFICATION (SHA-256 HASH PROTECTED)
+// PASSCODE HASH (TARGET: 2547)
 const HASH_TARGET = "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0";
 
 async function sha256(str) {
@@ -1231,16 +1499,14 @@ async function verifyGate() {
     errBox.style.display = "none";
   } else {
     errBox.style.display = "block";
-    const inputEl = document.getElementById("gate-pass");
-    inputEl.value = "";
-    inputEl.focus();
+    const el = document.getElementById("gate-pass");
+    el.value = "";
+    el.focus();
   }
 }
 
 function handleGateKey(e) {
-  if (e.key === "Enter") {
-    verifyGate();
-  }
+  if (e.key === "Enter") verifyGate();
 }
 
 function lockGate() {
@@ -1250,34 +1516,49 @@ function lockGate() {
   document.getElementById("gate-err").style.display = "none";
 }
 
-// SIMULATOR
-function simCalculate() {
-  const price = parseInt(document.getElementById('sim-price').value);
-  const sales = parseInt(document.getElementById('sim-sales').value);
-  const share = parseInt(document.getElementById('sim-share').value);
+// TAB SWITCHING
+function switchTab(tabId, btnEl) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-  document.getElementById('disp-price').innerText = '$' + price;
-  document.getElementById('disp-sales').innerText = sales + ' Penjualan';
-  document.getElementById('disp-share').innerText = share + '%';
+  const activeP = document.getElementById(tabId);
+  if (activeP) activeP.classList.add('active');
+  if (btnEl) btnEl.classList.add('active');
+
+  // Smooth scroll up to tabs
+  const tabsWrapper = document.querySelector('.tabs-wrapper');
+  if (tabsWrapper) {
+    const y = tabsWrapper.getBoundingClientRect().top + window.pageYOffset - 70;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+// SIMULATOR
+function runSim() {
+  const price = parseInt(document.getElementById('c-price').value);
+  const sales = parseInt(document.getElementById('c-sales').value);
+  const share = parseInt(document.getElementById('c-share').value);
+
+  document.getElementById('v-price').innerText = '$' + price + ' USD';
+  document.getElementById('v-sales').innerText = sales + ' Sales';
+  document.getElementById('v-share').innerText = share + '%';
 
   const grossUsd = price * sales;
   const grossIdr = grossUsd * 16000;
 
   const utariUsd = grossUsd * (share / 100);
   const utariIdr = utariUsd * 16000;
-  const annualIdr = utariIdr * 12;
 
-  document.getElementById('out-gross-usd').innerText = '$' + grossUsd.toLocaleString('en-US');
-  document.getElementById('out-gross-idr').innerText = 'Rp ' + grossIdr.toLocaleString('id-ID');
+  document.getElementById('disp-gross-usd').innerText = '$' + grossUsd.toLocaleString('en-US');
+  document.getElementById('disp-gross-idr').innerText = 'Rp ' + grossIdr.toLocaleString('id-ID');
 
-  document.getElementById('out-utari-idr').innerText = 'Rp ' + Math.round(utariIdr).toLocaleString('id-ID');
-  document.getElementById('out-utari-usd').innerText = '($' + utariUsd.toFixed(2) + ' USD / bulan langsung ke rekening)';
-  document.getElementById('out-utari-annual').innerText = 'Rp ' + Math.round(annualIdr).toLocaleString('id-ID');
+  document.getElementById('disp-utari-idr').innerText = 'Rp ' + Math.round(utariIdr).toLocaleString('id-ID');
+  document.getElementById('disp-utari-usd').innerText = '($' + utariUsd.toFixed(2) + ' USD langsung ke rekening)';
 }
 
 // INIT
 checkSessionAuth();
-simCalculate();
+runSim();
 </script>
 </body>
 </html>
