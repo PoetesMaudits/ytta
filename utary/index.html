@@ -734,7 +734,120 @@ body::before {
 }
 
 /* ==========================================================================
-   TAB 4: ROADMAP PRODUKSI (4 MINGGU)
+   TAB 4: ARSIP DOKUMEN & LAPORAN ANALISIS
+   ========================================================================== */
+.archive-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.archive-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.archive-meta-row strong { color: var(--accent-yellow); }
+.archive-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.archive-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.archive-content-box {
+  background: #09090e;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+.archive-content-box h3 {
+  color: var(--accent-yellow);
+  font-size: 16px;
+  margin: 22px 0 10px 0;
+  font-weight: 800;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding-bottom: 6px;
+}
+.archive-content-box h4 {
+  color: #fff;
+  font-size: 14px;
+  margin: 16px 0 6px 0;
+  font-weight: 700;
+}
+.archive-content-box ul {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+.archive-content-box li {
+  margin-bottom: 6px;
+}
+.archive-content-box li strong {
+  color: #fff;
+}
+.archive-content-box p {
+  margin-bottom: 12px;
+}
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 12px;
+}
+.archive-table th, .archive-table td {
+  border: 1px solid var(--border-subtle);
+  padding: 10px 12px;
+  text-align: left;
+}
+.archive-table th {
+  background: var(--bg-surface);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.archive-action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.archive-action-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.archive-action-btn:hover {
+  background: var(--border-subtle);
+  color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+}
+
+/* ==========================================================================
+   TAB 5: ROADMAP PRODUKSI (4 MINGGU)
    ========================================================================== */
 .roadmap-stack {
   display: flex;
@@ -1071,13 +1184,17 @@ footer {
         <span class="tab-icon">📈</span>
         <span>3. Riset Google Trends</span>
       </button>
+      <button class="tab-btn" onclick="switchTab('tab-archive', this)">
+        <span class="tab-icon">📑</span>
+        <span>4. Arsip Laporan &amp; Dokumen</span>
+      </button>
       <button class="tab-btn" onclick="switchTab('tab-roadmap', this)">
         <span class="tab-icon">🗺️</span>
-        <span>4. Roadmap Eksekusi</span>
+        <span>5. Roadmap Eksekusi</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-calc', this)">
         <span class="tab-icon">💰</span>
-        <span>5. Kalkulator &amp; Kemitraan</span>
+        <span>6. Kalkulator &amp; Kemitraan</span>
       </button>
     </div>
   </div>
@@ -1664,7 +1781,124 @@ footer {
   </section>
 
   <!-- ==========================================================================
-       TAB 4: ROADMAP PRODUKSI (4 MINGGU)
+       TAB 4: ARSIP LAPORAN LENGKAP & DOKUMEN STRATEGIS
+       ========================================================================== -->
+  <section id="tab-archive" class="tab-panel">
+    <div class="panel-header">
+      <div class="panel-tag">ARSIP DOKUMEN RESMI // FULL STRATEGY PAPERS</div>
+      <h2 class="panel-title">Arsip Riset &amp; Dokumen Kolaborasi Telkraf.id × Utary</h2>
+      <p class="panel-desc">
+        Seluruh analisis mendalam, catatan percakapan strategi microstock, dan brief teknis produk anak-anak diarsipkan secara transparan agar Utari dapat memeriksa seluruh rincian kapan saja:
+      </p>
+    </div>
+
+    <!-- DOKUMEN UTAMA: LAPORAN ANALISIS PELUANG ILUSTRASI ANAK -->
+    <div class="archive-card">
+      <div class="archive-meta-row">
+        <span>KODE DOKUMEN: <strong>TELKRAF-UTARY-DOC-01</strong></span>
+        <span>STATUS: <strong>RESMI &amp; TERVALIDASI</strong></span>
+        <span>PEMILIK: <strong>UTARY &amp; TELKRAF.ID</strong></span>
+      </div>
+      <h3 class="archive-title">Laporan Riset &amp; Analisis Strategis: Monetisasi Aset Ilustrasi Anak di Tengah Gempuran AI</h3>
+      <p class="archive-desc">
+        Kompilasi komprehensif hasil evaluasi 2.547 ilustrasi Utari, komparasi kelemahan generative AI, dan strategi eksekusi multi-platform (Canva, Etsy, TPT, Creative Fabrica).
+      </p>
+
+      <div class="archive-content-box">
+        <h3>1. Ringkasan Eksekutif &amp; Paradigma Baru</h3>
+        <p>
+          Berdasarkan evaluasi diskusi microstock Telkraf.id, model lama (mengunggah ribuan file JPEG/vektor mentah ke Adobe Stock/Shutterstock untuk mendapatkan royalti $0.10) sudah tidak efektif karena membanjirnya miliaran gambar generik buatan AI.
+        </p>
+        <p>
+          Namun, pergeseran pasar justru memicu lonjakan permintaan untuk <strong>karya seni otentik manusia (human-drawn) yang diolah menjadi produk jadi (end-product kits)</strong>. Kategori ilustrasi anak, media edukasi balita, dan parenting memegang benteng pertahanan terkuat (*AI Moat*) karena AI tidak mampu menjaga konsistensi karakter dari halaman ke halaman, gagal memahami kurikulum motorik anak, dan memiliki risiko hukum lisensi komersial.
+        </p>
+
+        <h3>2. 5 Kategori Produk Bernilai Tinggi Berdasarkan Google Trends</h3>
+        <table class="archive-table">
+          <thead>
+            <tr>
+              <th>Nama Produk Digital</th>
+              <th>Target Pembeli</th>
+              <th>Google Trends Signal</th>
+              <th>Platform Penjualan</th>
+              <th>Estimasi Harga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Toddler Morning Routine Busy Book</strong></td>
+              <td>Ibu Muda (US, UK, CA, AU)</td>
+              <td>🚀 `toddler busy book` (+140% YoY)</td>
+              <td>Etsy, Gumroad, Karyakarsa</td>
+              <td><strong>$19 – $24 USD</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Ramadan &amp; Hijaiyah Kids Adventure</strong></td>
+              <td>Keluarga Muslim Diaspora Global</td>
+              <td>🗓️ `ramadan template` (Peak Q1 Spike)</td>
+              <td>Etsy, TeachersPayTeachers</td>
+              <td><strong>$18 – $28 USD</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Pastel Classroom Decor &amp; Phonics</strong></td>
+              <td>Guru PAUD/TK &amp; Homeschooler</td>
+              <td>🗓️ `preschool classroom decor`</td>
+              <td>TeachersPayTeachers (TPT)</td>
+              <td><strong>$20 – $35 USD</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Kids Calm-Down Corner Kit</strong></td>
+              <td>Orang Tua &amp; Terapis Anak</td>
+              <td>📈 `calm down corner` (Viral Pinterest)</td>
+              <td>Etsy, Gumroad</td>
+              <td><strong>$14 – $22 USD</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Kids Apparel &amp; Sublimation SVG Pack</strong></td>
+              <td>Crafters Pengguna Cricut/Laser</td>
+              <td>📊 `cute kids svg` (Evergreen Stabil)</td>
+              <td>Creative Fabrica, Etsy</td>
+              <td><strong>$5 – $12 USD</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>3. Model Bisnis "Asset Multi-Harvesting"</h3>
+        <p>
+          Utari tidak perlu menggambar dari nol setiap minggu. Sistem Telkraf.id menerapkan <strong>Asset Multi-Harvesting</strong> di mana 1 set gambar Utari dapat dipanen menjadi 5 saluran pendapatan sekaligus:
+        </p>
+        <ul>
+          <li><strong>Saluran 1 (B2C Retail):</strong> Printable Toddler Busy Book di Etsy ($19).</li>
+          <li><strong>Saluran 2 (B2B Edukasi):</strong> Lembar kerja siswa &amp; flashcard phonics di Teachers Pay Teachers ($22).</li>
+          <li><strong>Saluran 3 (Seasonal Peak):</strong> Ramadan &amp; Eid Kids Activity Kit ($24).</li>
+          <li><strong>Saluran 4 (Crafter SVG):</strong> File cutting SVG mesin Cricut di Creative Fabrica ($8).</li>
+          <li><strong>Saluran 5 (Digital Stationery):</strong> Stiker digital GoodNotes iPad untuk Gen-Z ($15).</li>
+        </ul>
+
+        <h3>4. Piagam Perlindungan Hak Cipta &amp; Zero Risk Guarantee</h3>
+        <ul>
+          <li><strong>Hak Cipta Tetap Milik Utari:</strong> Seluruh ilustrasi asli 100% tetap diakui sah milik Utari. Telkraf.id hanya bertindak sebagai pengelola lisensi produk turunan Canva.</li>
+          <li><strong>Rp 0 Modal Finansial:</strong> Utari tidak dipungut biaya listing marketplace, biaya tools, atau biaya iklan sepeser pun.</li>
+          <li><strong>Pencatatan Terbuka:</strong> Laporan penjualan diunduh langsung dari dashboard toko resmi tiap akhir bulan.</li>
+          <li><strong>Transfer Royalti Rutin:</strong> Pembagian hasil bersih ditransfer langsung ke rekening bank Utari setiap siklus bulanan.</li>
+        </ul>
+      </div>
+
+      <div class="archive-action-bar">
+        <button class="archive-action-btn" onclick="alert('✅ Tautan arsip resmi: D:/BUDDY/TELKRAF/MICROSTOCK/analisis_peluang_ilustrasi_anak_utari.md')">
+          <span>📁</span>
+          <span>Buka Lokasi File di Disk</span>
+        </button>
+        <button class="archive-action-btn" onclick="switchTab('tab-calc', document.querySelectorAll('.tab-btn')[5])">
+          <span>💰</span>
+          <span>Cek Simulasi Royalti Utari</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 5: ROADMAP PRODUKSI (4 MINGGU)
        ========================================================================== -->
   <section id="tab-roadmap" class="tab-panel">
     <div class="panel-header">
