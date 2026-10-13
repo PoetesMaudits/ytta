@@ -218,101 +218,45 @@ body::before {
 .top-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
-.status-pill {
-  display: inline-flex;
+.back-btn {
+  display: none;
   align-items: center;
-  gap: 5px;
-  background: rgba(0, 230, 118, 0.08);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  color: var(--accent-green);
-  padding: 3px 8px;
-  border-radius: 20px;
-  font-size: 10.5px;
-  font-family: var(--font-mono);
+  gap: 6px;
+  background: rgba(245, 224, 58, 0.12);
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
-.dot-green {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--accent-green);
+.back-btn:hover {
+  background: var(--accent-yellow);
+  color: #000;
 }
 .lock-btn {
   background: transparent;
   border: 1px solid var(--border-subtle);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 3px 7px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* ==========================================================================
-   WORKSPACE CLOUD DRIVE SWITCHER BAR (SEAMLESS MULTI-DOCUMENT HUB)
-   ========================================================================== */
-.workspace-drive-bar {
-  background: #09090e;
-  border-bottom: 1.5px solid var(--border-strong);
-  padding: 8px 0;
-  position: sticky;
-  top: 45px;
-  z-index: 98;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
-}
-.workspace-drive-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.drive-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--accent-yellow);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.drive-docs-nav {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.drive-docs-nav::-webkit-scrollbar { display: none; }
-.drive-doc-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
   color: var(--text-muted);
   font-family: var(--font-display);
-  font-size: 12.5px;
-  font-weight: 700;
-  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
-  white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.2s ease;
 }
-.drive-doc-btn:hover {
+.lock-btn:hover {
   color: #fff;
   border-color: var(--text-muted);
-}
-.drive-doc-btn.active {
-  background: linear-gradient(90deg, rgba(245, 224, 58, 0.18) 0%, rgba(240, 82, 122, 0.18) 100%);
-  border-color: var(--accent-yellow);
-  color: #fff;
-  box-shadow: 0 0 12px rgba(245, 224, 58, 0.25);
-}
-.drive-doc-btn.active .doc-btn-icon {
-  transform: scale(1.15);
 }
 
 .workspace-doc-view {
@@ -327,148 +271,167 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* UNLOCKED VAULT DIRECTORY */
-.portal-unlocked-card {
+/* ==========================================================================
+   DIREKTORI HUB (HERO & GALLERY HOME)
+   ========================================================================== */
+.hub-hero {
+  margin: 32px 0 32px 0;
+  text-align: left;
+}
+.hub-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.hub-title span {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hub-sub {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.6;
+}
+.hub-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+@media (max-width: 860px) {
+  .hub-gallery-grid { grid-template-columns: 1fr; }
+}
+.hub-card {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   border-radius: 8px;
-  padding: 32px 28px;
-  margin: 20px 0 32px 0;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.85);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
-.portal-unlocked-card::before {
+.hub-card::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 3px;
+  background: var(--border-strong);
+  transition: background 0.2s ease;
+}
+.hub-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+}
+.hub-card:hover::before {
   background: var(--grad-signature);
 }
-.portal-brand-head {
+.hub-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.hub-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.hub-card-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.hub-card-btn {
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  color: var(--accent-yellow);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.hub-card:hover .hub-card-btn {
+  background: var(--accent-yellow);
+  color: #000;
+  border-color: var(--accent-yellow);
+}
+
+.hub-protection-box {
+  background: #09090d;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+.hub-protection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+@media (max-width: 860px) {
+  .hub-protection-grid { grid-template-columns: 1fr; }
+}
+
+.doc-header-strip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px 8px 0 0;
+  padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 16px;
-  margin-bottom: 24px;
+  border-bottom: 2px solid var(--accent-yellow);
 }
-.portal-logo-inline { width: 90px; }
-.portal-logo-inline svg { width: 100%; height: auto; display: block; }
-.portal-badge-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.portal-badge-green {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--accent-green);
-  background: rgba(0, 230, 118, 0.1);
-  border: 1px solid rgba(0, 230, 118, 0.3);
-  padding: 3px 8px;
-  border-radius: 3px;
-}
-.portal-badge-dim {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--text-dim);
-}
-.portal-main-title {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-.portal-main-title span {
-  background: var(--grad-signature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.portal-main-quote {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  font-style: italic;
-  margin-bottom: 24px;
-}
-.vault-directory-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.vault-dir-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.vault-dir-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent-yellow);
-}
-.dir-card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.dir-badge {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--accent-yellow);
-  text-transform: uppercase;
-}
-.dir-icon { font-size: 20px; }
-.dir-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-}
-.dir-desc {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-.dir-meta-row {
-  margin-top: auto;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  border-top: 1px dashed var(--border-subtle);
-  padding-top: 10px;
-  margin-bottom: 12px;
-}
-.dir-action-btn {
+.strip-action-btn {
   background: transparent;
   border: 1px solid var(--border-strong);
   color: var(--accent-yellow);
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
-  padding: 8px 12px;
+  padding: 6px 14px;
   border-radius: 4px;
   cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
 }
-.dir-action-btn:hover {
+.strip-action-btn:hover {
   background: var(--accent-yellow);
   color: #000;
 }
-.portal-footer-quote {
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 14px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-dim);
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-@media (max-width: 800px) {
-  .vault-directory-grid { grid-template-columns: 1fr; }
+.doc-frame {
+  width: 100%;
+  height: 86vh;
+  min-height: 820px;
+  border: 1px solid var(--border-strong);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background: #08080a;
+  display: block;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.8);
 }
 
 /* ==========================================================================
@@ -699,19 +662,14 @@ body::before {
 .moat-card.human .moat-title { color: var(--accent-green); }
 .moat-badge {
   font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 3px 7px;
-  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
 }
 .moat-card.ai .moat-badge {
-  background: rgba(255, 82, 82, 0.1);
   color: #ff5252;
-  border: 1px solid rgba(255, 82, 82, 0.3);
 }
 .moat-card.human .moat-badge {
-  background: rgba(0, 230, 118, 0.1);
   color: var(--accent-green);
-  border: 1px solid rgba(0, 230, 118, 0.3);
 }
 .moat-list {
   list-style: none;
@@ -791,27 +749,20 @@ body::before {
 }
 .product-badge-pill {
   position: absolute;
-  top: 10px; left: 10px;
-  background: rgba(0,0,0,0.85);
-  border: 1px solid var(--border-strong);
+  top: 12px; left: 14px;
   color: var(--accent-yellow);
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 3px 7px;
-  border-radius: 3px;
+  letter-spacing: 0.5px;
 }
 .product-price-pill {
   position: absolute;
-  top: 10px; right: 10px;
-  background: rgba(0, 230, 118, 0.15);
-  border: 1px solid rgba(0, 230, 118, 0.4);
+  top: 12px; right: 14px;
   color: var(--accent-green);
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 7px;
-  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 800;
 }
 .mockup-content {
   padding: 18px;
@@ -900,24 +851,20 @@ body::before {
 .badge-trend {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0;
+  background: none !important;
+  border: none !important;
 }
 .badge-trend.rising {
-  background: rgba(0, 230, 118, 0.12);
   color: var(--accent-green);
-  border: 1px solid rgba(0, 230, 118, 0.3);
 }
 .badge-trend.peak {
-  background: rgba(245, 224, 58, 0.12);
   color: var(--accent-yellow);
-  border: 1px solid rgba(245, 224, 58, 0.3);
 }
 .badge-trend.stable {
-  background: rgba(0, 210, 255, 0.12);
   color: var(--accent-cyan);
-  border: 1px solid rgba(0, 210, 255, 0.3);
 }
 
 .tri-grid {
@@ -1326,7 +1273,7 @@ footer {
     <div class="gate-input-wrap">
       <input type="password" id="gate-pass" class="gate-input" placeholder="MASUKKAN PIN" autofocus onkeypress="handleGateKey(event)"/>
     </div>
-    <button class="gate-btn" onclick="verifyGate()">BUKA DOKUMEN</button>
+    <button class="gate-btn" onclick="verifyGate()"><span>🔓</span> BUKA DOKUMEN</button>
     <div class="gate-error" id="gate-err">⚠️ PIN salah. Silakan coba lagi.</div>
   </div>
 </div>
@@ -1337,86 +1284,120 @@ footer {
 <header class="top-bar">
   <div class="container top-bar-inner">
     <div class="brand-identity-row">
-      <div class="brand-logo-wrap">
+      <div class="brand-logo-wrap" onclick="returnToHub()" title="Kembali ke Direktori Hub">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
       </div>
       <div class="divider-col"></div>
       <div class="partner-tag">PARTNERSHIP: <strong>UTARY × TELKRAF.ID</strong></div>
     </div>
     <div class="top-actions">
-      <div class="status-pill">
-        <span class="dot-green"></span>
-        <span>CONFIDENTIAL STRATEGY</span>
-      </div>
-      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen kembali">🔒 Kunci</button>
+      <button id="header-back-btn" class="back-btn" onclick="returnToHub()">
+        <span>⬅️</span>
+        <span>Kembali</span>
+      </button>
+      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen">
+        <span>🔒</span>
+        <span>Kunci</span>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- ==========================================================================
-     WORKSPACE CLOUD DRIVE SWITCHER BAR (SEAMLESS MULTI-DOCUMENT HUB)
-     ========================================================================== -->
-<div class="workspace-drive-bar">
-  <div class="container workspace-drive-inner">
-    <div class="drive-label">
-      <span>☁️</span>
-      <span>STUDIO CLOUD DRIVE:</span>
-    </div>
-    <div class="drive-docs-nav">
-      <button class="drive-doc-btn active" onclick="switchWorkspaceDoc('doc-canva', this)">
-        <span class="doc-btn-icon">🌟</span>
-        <span>1. Blueprint Transformasi Canva</span>
-      </button>
-      <button class="drive-doc-btn" onclick="switchWorkspaceDoc('doc-dashboard', this)">
-        <span class="doc-btn-icon">📈</span>
-        <span>2. Riset Tren &amp; AI Moat 2026</span>
-      </button>
-      <button class="drive-doc-btn" onclick="switchWorkspaceDoc('doc-report', this)">
-        <span class="doc-btn-icon">📑</span>
-        <span>3. Laporan Analisis Riset Lengkap</span>
-      </button>
-      <button class="drive-doc-btn" onclick="switchWorkspaceDoc('doc-portal', this)">
-        <span class="doc-btn-icon">🏛️</span>
-        <span>4. Master Vault &amp; Direktori Hub</span>
-      </button>
-    </div>
-  </div>
-</div>
-
 <div id="workspace-viewport">
 
   <!-- ==========================================================================
-       DOKUMEN 1: BLUEPRINT TRANSFORMASI CANVA (PRESENTASI ASLI 5839ad4)
+       HERO / HOME: DIREKTORI HUB (GALERI DOKUMEN & MATERI)
        ========================================================================== -->
-  <div id="doc-canva" class="workspace-doc-view active">
-    <div class="container" style="padding-top: 14px;">
-      <div style="background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: 8px 8px 0 0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 2px solid var(--accent-yellow);">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 20px;">🌟</span>
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-yellow); font-weight: 700;">DOKUMEN 1 // BLUEPRINT TRANSFORMASI PRODUK CANVA (ORIGINAL PRESENTATION 5839ad4)</div>
-            <div style="font-size: 12px; color: var(--text-muted);">Materi Presentasi 5 Modul: Nyawa Kedua Aset, Analisis SWOT vs AI, Pasar &amp; Trafik, Roadmap GTM, &amp; Sinergi Hak Cipta.</div>
+  <div id="doc-hub" class="workspace-doc-view active">
+    <div class="container">
+      <div class="hub-hero">
+        <h1 class="hub-title">Direktori <span>Hub</span></h1>
+        <p class="hub-sub">
+          Ruang kerja studio kolaborasi Utary × Telkraf. Akses seluruh materi presentasi transformasi Canva, analisis riset Google Trends, dan laporan strategi lengkap di bawah ini.
+        </p>
+      </div>
+
+      <div class="hub-gallery-grid">
+        <!-- CARD 1 -->
+        <div class="hub-card" onclick="openDocument('doc-canva')">
+          <div class="hub-card-icon">🌟</div>
+          <div class="hub-card-title">Blueprint Canva</div>
+          <div class="hub-card-desc">
+            Presentasi visual transformasi karya ilustrasi menjadi lini produk Canva: konsep Nyawa Kedua, kartu edukasi, perbandingan SWOT vs AI, serta roadmap peluncuran.
           </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-canva');">
+            <span>🌟</span>
+            <span>Buka Blueprint</span>
+          </button>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <a href="./blueprint-canva.html" target="_blank" class="dir-action-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;">
-            <span>↗️</span>
-            <span>Buka Layar Penuh di Tab Baru</span>
-          </a>
+
+        <!-- CARD 2 -->
+        <div class="hub-card" onclick="openDocument('doc-dashboard')">
+          <div class="hub-card-icon">📈</div>
+          <div class="hub-card-title">Riset Tren</div>
+          <div class="hub-card-desc">
+            Dashboard analisis data Google Trends, 5 rekomendasi produk anak anti-AI berdaya beli tinggi, visual mockup, serta kalkulator royalti otomatis.
+          </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-dashboard');">
+            <span>📈</span>
+            <span>Buka Riset</span>
+          </button>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="hub-card" onclick="openDocument('doc-report')">
+          <div class="hub-card-icon">📑</div>
+          <div class="hub-card-title">Laporan Lengkap</div>
+          <div class="hub-card-desc">
+            Dokumen kajian eksekutif tertulis mengenai strategi mitigasi AI, model multi-harvesting aset, serta piagam perlindungan hak cipta 100% Utari.
+          </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-report');">
+            <span>📑</span>
+            <span>Baca Laporan</span>
+          </button>
         </div>
       </div>
-      <iframe id="canva-frame" src="./blueprint-canva.html?embed=1" style="width: 100%; height: 86vh; min-height: 820px; border: 1px solid var(--border-strong); border-top: none; border-radius: 0 0 8px 8px; background: #08080a; display: block; box-shadow: 0 16px 48px rgba(0,0,0,0.8);" title="Blueprint Transformasi Canva 5839ad4"></iframe>
+
+      <div class="hub-protection-box">
+        <h3 style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <span>🛡️</span>
+          <span>Komitmen Kemitraan Adil &amp; Transparan</span>
+        </h3>
+        <div class="hub-protection-grid">
+          <div><strong>100% Hak Cipta Utari:</strong> Seluruh karya gambar asli tetap sah milik Utari. Telkraf hanya bertindak sebagai pengelola lisensi komersial produk turunan.</div>
+          <div><strong>Rp 0 Modal Finansial:</strong> Utari tidak dipungut modal awal atau biaya operasional toko internasional apapun.</div>
+          <div><strong>Bagi Hasil Transparan:</strong> Rekap penjualan marketplace dapat diverifikasi langsung dan royalti ditransfer rutin ke rekening bank Utari.</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       DOKUMEN 2: RISET GOOGLE TRENDS 2026 & AI MOAT (DASHBOARD ANALISIS)
+       DOKUMEN: BLUEPRINT TRANSFORMASI CANVA
+       ========================================================================== -->
+  <div id="doc-canva" class="workspace-doc-view">
+    <div class="container" style="padding-top: 16px;">
+      <div class="doc-header-strip">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 2px;">Blueprint Canva</h2>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin: 0;">Presentasi visual strategi transformasi aset ilustrasi menjadi produk Canva.</p>
+        </div>
+        <a href="./blueprint-canva.html" target="_blank" class="strip-action-btn">
+          <span>↗️</span>
+          <span>Buka Tab</span>
+        </a>
+      </div>
+      <iframe id="canva-frame" src="./blueprint-canva.html?embed=1" class="doc-frame" title="Blueprint Canva"></iframe>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOKUMEN: RISET GOOGLE TRENDS & AI MOAT (DASHBOARD ANALISIS)
        ========================================================================== -->
   <div id="doc-dashboard" class="workspace-doc-view">
 
     <!-- HERO & EXECUTIVE HIGHLIGHTS -->
     <div class="container hero-section">
-  <div class="hero-badge">AI MOAT RESEARCH &amp; PRODUCT STRATEGY 2026</div>
   <h1 class="hero-title">
     Monetisasi Mutakhir Ilustrasi Anak di Tengah <span>Gempuran AI</span>
   </h1>
@@ -1456,27 +1437,27 @@ footer {
     <div class="tabs-nav">
       <button class="tab-btn active" onclick="switchTab('tab-moat', this)">
         <span class="tab-icon">🛡️</span>
-        <span>1. AI Moat &amp; Fondasi</span>
+        <span>AI Moat</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-products', this)">
         <span class="tab-icon">🧸</span>
-        <span>2. Rekomendasi Produk &amp; Mockup</span>
+        <span>Rekomendasi Produk</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-trends', this)">
         <span class="tab-icon">📈</span>
-        <span>3. Riset Google Trends</span>
+        <span>Google Trends</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-archive', this)">
         <span class="tab-icon">📑</span>
-        <span>4. Arsip Laporan &amp; Dokumen</span>
+        <span>Arsip Dokumen</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-roadmap', this)">
         <span class="tab-icon">🗺️</span>
-        <span>5. Roadmap Eksekusi</span>
+        <span>Roadmap Eksekusi</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-calc', this)">
         <span class="tab-icon">💰</span>
-        <span>6. Kalkulator &amp; Kemitraan</span>
+        <span>Kalkulator Royalti</span>
       </button>
     </div>
   </div>
@@ -2167,13 +2148,13 @@ footer {
       </div>
 
       <div class="archive-action-bar">
-        <button class="archive-action-btn" onclick="alert('✅ Tautan arsip resmi: D:/BUDDY/TELKRAF/MICROSTOCK/analisis_peluang_ilustrasi_anak_utari.md')">
-          <span>📁</span>
-          <span>Buka Lokasi File di Disk</span>
+        <button class="archive-action-btn" onclick="openDocument('doc-report')">
+          <span>📑</span>
+          <span>Baca Laporan</span>
         </button>
         <button class="archive-action-btn" onclick="switchTab('tab-calc', document.querySelectorAll('.tab-btn')[5])">
           <span>💰</span>
-          <span>Cek Simulasi Royalti Utari</span>
+          <span>Hitung Royalti</span>
         </button>
       </div>
     </div>
@@ -2372,105 +2353,7 @@ footer {
     </main>
   </div> <!-- END OF doc-dashboard -->
 
-  <!-- ==========================================================================
-       DOKUMEN 2: YTTA MASTER VAULT & DIREKTORI (UNLOCKED DIRECTORY)
-       ========================================================================== -->
-  <div id="doc-portal" class="workspace-doc-view">
-    <div class="container" style="padding-top: 10px;">
-      <div class="portal-unlocked-card">
-        <div class="portal-brand-head">
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div class="portal-logo-inline">
-              <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
-            </div>
-            <div>
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-yellow); font-weight: 700;">TELKRAF CLOUD DRIVE // MASTER HUB</div>
-              <div style="font-size: 12px; color: var(--text-dim);">Directory Path: <code>/ytta/utary/</code> (Authenticated Session)</div>
-            </div>
-          </div>
-          <div class="portal-badge-wrap">
-            <span class="portal-badge-green">● VAULT UNLOCKED &amp; VERIFIED</span>
-            <span class="portal-badge-dim">SESSION ACTIVE</span>
-          </div>
-        </div>
 
-        <h2 class="portal-main-title">YTTA <span>SYSTEM DIRECTORY</span></h2>
-        <p class="portal-main-quote">
-          "Welcome to your dedicated studio workspace. Semua dokumen strategis, blueprint aset, dan laporan riset terhubung langsung di bawah ini tanpa perlu verifikasi ulang."
-        </p>
-
-        <div class="vault-directory-grid">
-          <!-- CARD 1 -->
-          <div class="vault-dir-card">
-            <div class="dir-card-head">
-              <span class="dir-badge">ORIGINAL PRESENTATION</span>
-              <span class="dir-icon">🌟</span>
-            </div>
-            <div class="dir-title">1. Blueprint Transformasi Canva (5839ad4)</div>
-            <div class="dir-desc">
-              Materi presentasi 5 modul visual: Konsep 'Nyawa Kedua' aset gambar Utari, analisis SWOT vs AI, target marketplace luar negeri, dan roadmap peluncuran.
-            </div>
-            <div class="dir-meta-row">STATUS: ACTIVE // 5 MODUL MOCKUP LENGKAP</div>
-            <button class="dir-action-btn" onclick="switchWorkspaceDoc('doc-canva', document.querySelectorAll('.drive-doc-btn')[0])">
-              Buka Blueprint Canva →
-            </button>
-          </div>
-
-          <!-- CARD 2 -->
-          <div class="vault-dir-card">
-            <div class="dir-card-head">
-              <span class="dir-badge">DATA TRENDS &amp; AI MOAT</span>
-              <span class="dir-icon">📈</span>
-            </div>
-            <div class="dir-title">2. Riset Tren &amp; AI Moat 2026</div>
-            <div class="dir-desc">
-              Analisis peluang ilustrasi anak anti-AI, kalkulator payout royalti otomatis, mockup visual produk Canva, serta breakdown 5 kategori produk high-demand Google Trends.
-            </div>
-            <div class="dir-meta-row">STATUS: ONLINE // VERSI 2.0 // UTARI-SPECIALIZED</div>
-            <button class="dir-action-btn" onclick="switchWorkspaceDoc('doc-dashboard', document.querySelectorAll('.drive-doc-btn')[1])">
-              Buka Riset Tren &amp; AI Moat →
-            </button>
-          </div>
-
-          <!-- CARD 3 -->
-          <div class="vault-dir-card">
-            <div class="dir-card-head">
-              <span class="dir-badge">FULL EXECUTIVE REPORT</span>
-              <span class="dir-icon">📑</span>
-            </div>
-            <div class="dir-title">3. Laporan Analisis Riset Lengkap</div>
-            <div class="dir-desc">
-              Kajian mendalam 5 pilar strategi (Microstock vs AI, Google Trends data, model multi-harvesting, dan piagam perlindungan hak cipta 100% Utari).
-            </div>
-            <div class="dir-meta-row">FORMAT: READER MODE // PRINTABLE PDF READY</div>
-            <button class="dir-action-btn" onclick="switchWorkspaceDoc('doc-report', document.querySelectorAll('.drive-doc-btn')[2])">
-              Baca Dokumen Riset Lengkap →
-            </button>
-          </div>
-
-          <!-- CARD 4 -->
-          <div class="vault-dir-card">
-            <div class="dir-card-head">
-              <span class="dir-badge">PARTNERSHIP PROTECTION</span>
-              <span class="dir-icon">🛡️</span>
-            </div>
-            <div class="dir-title">4. Piagam Perlindungan Hak Cipta</div>
-            <div class="dir-desc">
-              Perjanjian kemitraan adil: Kepemilikan hak cipta gambar asli 100% mutlak milik Utari. Rp 0 modal uang, transparansi rekap penjualan toko global.
-            </div>
-            <div class="dir-meta-row">HUKUM: LISENSI KOMERSIAL TURUNAN // TELKRAF.ID</div>
-            <button class="dir-action-btn" onclick="switchWorkspaceDoc('doc-dashboard', document.querySelectorAll('.drive-doc-btn')[1]); setTimeout(() => showTab('tab-sinergi'), 150);">
-              Lihat Pembagian Hak Cipta &amp; Peran →
-            </button>
-          </div>
-        </div>
-
-        <div class="portal-footer-quote">
-          TELKRAF.ID × UTARI // REPOSITORY MASTER VAULT // STRICTLY CONFIDENTIAL &amp; PROTECTED
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ==========================================================================
        DOKUMEN 3: LAPORAN ANALISIS RISET LENGKAP (READER MODE)
@@ -2478,11 +2361,6 @@ footer {
   <div id="doc-report" class="workspace-doc-view">
     <div class="container" style="padding-top: 24px;">
       <div class="archive-card">
-        <div class="archive-meta-row">
-          <span>DOKUMEN RESMI: <strong>ANALISIS_PELUANG_ILUSTRASI_ANAK_UTARI.MD</strong></span>
-          <span>SUMBER: <strong>D:/BUDDY/TELKRAF/MICROSTOCK/</strong></span>
-          <span>MODE: <strong>FULL READER MODE // STANDALONE VIEW</strong></span>
-        </div>
         <h2 class="archive-title">Laporan Riset &amp; Analisis Mendalam: Monetisasi Aset Ilustrasi Anak di Tengah Gempuran AI</h2>
         <p class="archive-desc">
           Dokumen lengkap evaluasi 2.547 aset ilustrasi Utari, pembuktian 5 tahun data Google Trends, peluang pasar B2B &amp; B2C, serta skema pembagian royalti transparan.
@@ -2565,17 +2443,13 @@ footer {
         </div>
 
         <div class="archive-action-bar">
-          <button class="archive-action-btn" onclick="switchWorkspaceDoc('doc-dashboard', document.querySelectorAll('.drive-doc-btn')[1])">
-            <span>📈</span>
-            <span>Kembali ke Riset Tren &amp; AI Moat</span>
-          </button>
-          <button class="archive-action-btn" onclick="switchWorkspaceDoc('doc-canva', document.querySelectorAll('.drive-doc-btn')[0])">
-            <span>🌟</span>
-            <span>Lihat Blueprint Canva (5839ad4)</span>
+          <button class="archive-action-btn" onclick="returnToHub()">
+            <span>⬅️</span>
+            <span>Kembali</span>
           </button>
           <button class="archive-action-btn" onclick="window.print()">
             <span>🖨️</span>
-            <span>Cetak / Simpan Dokumen Ini (PDF)</span>
+            <span>Cetak Dokumen</span>
           </button>
         </div>
       </div>
@@ -2620,6 +2494,7 @@ async function sha256(str) {
 function checkSessionAuth() {
   if (sessionStorage.getItem("utary_auth") === "granted") {
     document.getElementById("security-gate").classList.add("unlocked");
+    returnToHub();
   }
 }
 
@@ -2635,6 +2510,7 @@ async function verifyGate() {
     sessionStorage.setItem("utary_auth", "granted");
     document.getElementById("security-gate").classList.add("unlocked");
     errBox.style.display = "none";
+    returnToHub();
   } else {
     errBox.style.display = "block";
     const el = document.getElementById("gate-pass");
@@ -2652,18 +2528,25 @@ function lockGate() {
   document.getElementById("security-gate").classList.remove("unlocked");
   document.getElementById("gate-pass").value = "";
   document.getElementById("gate-err").style.display = "none";
+  returnToHub();
 }
 
-// WORKSPACE DOCUMENT SWITCHER (CLOUD DRIVE HUB)
-function switchWorkspaceDoc(docId, btnEl) {
+// DOCUMENT NAVIGATION (DIREKTORI HUB & CONTEXTUAL BACK)
+function openDocument(docId) {
   document.querySelectorAll('.workspace-doc-view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.drive-doc-btn').forEach(b => b.classList.remove('active'));
-
-  const activeDoc = document.getElementById(docId);
-  if (activeDoc) activeDoc.classList.add('active');
-  if (btnEl) btnEl.classList.add('active');
-
+  const target = document.getElementById(docId);
+  if (target) {
+    target.classList.add('active');
+  }
+  const backBtn = document.getElementById('header-back-btn');
+  if (backBtn) {
+    backBtn.style.display = (docId === 'doc-hub') ? 'none' : 'inline-flex';
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function returnToHub() {
+  openDocument('doc-hub');
 }
 
 // TAB SWITCHER

@@ -392,26 +392,19 @@ body.is-embedded { padding-top: 0 !important; }
 .product-badge-pill {
   position: absolute;
   top: 10px; left: 10px;
-  background: rgba(0,0,0,0.85);
-  border: 1px solid var(--border-strong);
   color: var(--accent-yellow);
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 3px 7px;
-  border-radius: 3px;
+  letter-spacing: 0.5px;
 }
 .product-price-pill {
   position: absolute;
   top: 10px; right: 10px;
-  background: rgba(0, 230, 118, 0.15);
-  border: 1px solid rgba(0, 230, 118, 0.4);
   color: var(--accent-green);
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 7px;
-  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 800;
 }
 .mockup-content {
   padding: 18px;
@@ -830,7 +823,7 @@ footer {
     <div class="gate-input-wrap">
       <input type="password" id="gate-pass" class="gate-input" maxlength="6" placeholder="••••" autofocus onkeypress="handleGateKey(event)"/>
     </div>
-    <button class="gate-btn" onclick="verifyGate()">UNLOCK PROPOSAL</button>
+    <button class="gate-btn" onclick="verifyGate()"><span>🔓</span> BUKA DOKUMEN</button>
     <div class="gate-error" id="gate-err">⚠️ Passcode salah. Silakan coba lagi.</div>
   </div>
 </div>
@@ -850,11 +843,10 @@ footer {
       </div>
     </div>
     <div class="top-actions">
-      <div class="status-pill">
-        <span class="dot-green"></span>
-        <span>PARTNERSHIP</span>
-      </div>
-      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen kembali">🔒</button>
+      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen">
+        <span>🔒</span>
+        <span>Kunci</span>
+      </button>
     </div>
   </div>
 </header>
@@ -871,23 +863,23 @@ footer {
     <div class="tabs-nav">
       <button class="tab-btn active" onclick="switchTab('tab-mockups', this)">
         <span class="tab-icon">🌟</span>
-        <span>1. Nyawa Kedua</span>
+        <span>Nyawa Kedua</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-swot', this)">
         <span class="tab-icon">📊</span>
-        <span>2. SWOT &amp; Data</span>
+        <span>Analisis SWOT</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-platform', this)">
         <span class="tab-icon">🛒</span>
-        <span>3. Pasar &amp; Trafik</span>
+        <span>Pasar Trafik</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-roadmap', this)">
         <span class="tab-icon">🗺️</span>
-        <span>4. Roadmap Penjualan</span>
+        <span>Roadmap Penjualan</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-sinergi', this)">
         <span class="tab-icon">🤝</span>
-        <span>5. Sinergi &amp; Hak</span>
+        <span>Sinergi Hak</span>
       </button>
     </div>
   </div>
