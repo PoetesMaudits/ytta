@@ -7,15 +7,15 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-deep: #08080a;
   --bg-surface: #0e0e13;
-  --bg-card: #131319;
-  --bg-card-hover: #191922;
-  --border-subtle: #22222e;
-  --border-strong: #323244;
+  --bg-card: rgba(18, 18, 24, 0.88);
+  --bg-card-hover: rgba(25, 25, 34, 0.95);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
 
   --text-main: #f5f5f7;
   --text-muted: #8e8ea2;
@@ -29,7 +29,7 @@
 
   --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
   --grad-card-header: linear-gradient(180deg, rgba(245, 224, 58, 0.08) 0%, transparent 100%);
-  --font-display: 'Creato Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -92,13 +92,15 @@ body::before {
   pointer-events: none;
 }
 .gate-card {
-  background: #0f0f15;
-  border: 1px solid var(--border-strong);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.95);
-  border-radius: 8px;
+  background: rgba(15, 15, 21, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.9);
+  border-radius: 20px;
   max-width: 400px;
   width: 100%;
-  padding: 36px 26px;
+  padding: 38px 28px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -111,7 +113,7 @@ body::before {
   background: var(--grad-signature);
 }
 .gate-brand-logo {
-  max-width: 110px;
+  max-width: 100px;
   margin: 0 auto 16px auto;
   display: flex;
   align-items: center;
@@ -127,47 +129,55 @@ body::before {
   margin-bottom: 4px;
 }
 .gate-sub {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-family: var(--font-mono);
+  letter-spacing: 0.5px;
 }
 .gate-input-wrap { margin-bottom: 14px; }
 .gate-input {
   width: 100%;
-  background: #07070a;
+  background: rgba(7, 7, 10, 0.85);
   border: 1px solid var(--border-subtle);
-  border-radius: 4px;
+  border-radius: 8px;
   color: #fff;
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 17px;
   text-align: center;
   letter-spacing: 2px;
-  padding: 12px 14px;
+  padding: 13px 14px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .gate-input:focus {
   border-color: var(--accent-yellow);
-  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+  box-shadow: 0 0 16px rgba(245, 224, 58, 0.22);
 }
 .gate-btn {
   width: 100%;
   background: var(--grad-signature);
-  color: #000;
+  color: #050508;
   font-weight: 800;
   font-size: 13.5px;
   border: none;
   padding: 13px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: var(--font-display);
-  letter-spacing: 0.5px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
 .gate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 224, 58, 0.3);
+  box-shadow: 0 8px 24px rgba(245, 224, 58, 0.28);
+}
+.gate-btn:active {
+  transform: translateY(0);
 }
 .gate-error {
   display: none;
@@ -230,15 +240,16 @@ body::before {
   color: var(--accent-yellow);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 4px;
+  font-size: 12.5px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .back-btn:hover {
   background: var(--accent-yellow);
-  color: #000;
+  color: #050508;
+  transform: translateY(-1px);
 }
 .lock-btn {
   background: transparent;
@@ -247,17 +258,18 @@ body::before {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 12px;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.2s ease;
 }
 .lock-btn:hover {
   color: #fff;
-  border-color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 .workspace-doc-view {
@@ -307,14 +319,16 @@ body::before {
 }
 .hub-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 28px 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 30px 26px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 .hub-card::before {
@@ -322,12 +336,12 @@ body::before {
   position: absolute;
   top: 0; left: 0; right: 0; height: 3px;
   background: var(--border-strong);
-  transition: background 0.2s ease;
+  transition: background 0.25s ease;
 }
 .hub-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-yellow);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.7);
 }
 .hub-card:hover::before {
   background: var(--grad-signature);
@@ -357,8 +371,8 @@ body::before {
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  padding: 10px 16px;
-  border-radius: 4px;
+  padding: 11px 18px;
+  border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -368,7 +382,7 @@ body::before {
 }
 .hub-card:hover .hub-card-btn {
   background: var(--accent-yellow);
-  color: #000;
+  color: #050508;
   border-color: var(--accent-yellow);
 }
 
@@ -386,8 +400,10 @@ body::before {
 }
 .swot-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 14px;
   padding: 18px;
 }
 .swot-card.s { border-top: 3px solid var(--accent-green); }
@@ -446,9 +462,11 @@ body::before {
 }
 .platform-item-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px 20px;
 }
 .platform-card-header {
   display: flex;
@@ -465,8 +483,8 @@ body::before {
   color: var(--accent-cyan);
   background: rgba(0, 210, 255, 0.08);
   border: 1px solid rgba(0, 210, 255, 0.25);
-  padding: 2px 6px;
-  border-radius: 3px;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 .platform-card-body {
   font-size: 12.5px;
@@ -493,9 +511,11 @@ body::before {
 }
 .traffic-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px 20px;
 }
 .traffic-tag {
   font-family: var(--font-mono);
@@ -522,15 +542,17 @@ body::before {
 }
 .role-clean-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 18px;
+  border-radius: 16px;
+  padding: 22px;
 }
 .role-clean-card.utari { border-top: 3px solid var(--accent-pink); }
 .role-clean-card.telkraf { border-top: 3px solid var(--accent-cyan); }
 .role-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   margin-bottom: 4px;
 }
@@ -543,18 +565,20 @@ body::before {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 12.5px;
+  gap: 8px;
+  font-size: 13px;
 }
 .role-clean-list li::before {
   content: "✓ "; color: var(--accent-green); font-weight: 700;
 }
 
 .clean-principles-box {
-  background: linear-gradient(180deg, #121218 0%, #0c0c10 100%);
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  padding: 22px;
+  background: rgba(18, 18, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px;
   margin-bottom: 32px;
 }
 .principle-title {
@@ -623,11 +647,14 @@ body::before {
 }
 .metric-box {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 14px 16px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .metric-box::before {
   content: "";
@@ -654,21 +681,23 @@ body::before {
   font-size: 10px;
   color: var(--text-muted);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
-   STICKY TAB BAR NAVIGATION
+   STICKY TAB BAR NAVIGATION (TELKRAF LIQUID GLASS)
    ========================================================================== */
 .tabs-wrapper {
   position: sticky;
   top: 90px;
   z-index: 95;
-  background: rgba(10, 10, 14, 0.98);
-  backdrop-filter: blur(16px);
+  background: rgba(10, 10, 14, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   padding: 10px 0;
-  border-bottom: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 24px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.65);
 }
 .tabs-header-hint {
   display: flex;
@@ -679,6 +708,7 @@ body::before {
   color: var(--text-dim);
   margin-bottom: 6px;
   padding: 0 4px;
+  letter-spacing: 0.5px;
 }
 .tabs-nav {
   display: flex;
@@ -693,13 +723,13 @@ body::before {
 
 .tab-btn {
   background: var(--bg-card);
-  border: 1.5px solid var(--border-strong);
+  border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
   cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
@@ -712,13 +742,14 @@ body::before {
 }
 .tab-btn:hover {
   color: #fff;
-  border-color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
 }
 .tab-btn.active {
-  background: linear-gradient(180deg, rgba(245, 224, 58, 0.15) 0%, rgba(19, 19, 25, 1) 100%);
+  background: rgba(245, 224, 58, 0.12);
   border-color: var(--accent-yellow);
   color: var(--accent-yellow);
-  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+  box-shadow: 0 4px 16px rgba(245, 224, 58, 0.18);
   transform: translateY(-1px);
 }
 .tab-btn.active .tab-icon {
@@ -1168,8 +1199,10 @@ body::before {
 }
 .roadmap-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 16px;
   overflow: hidden;
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -1195,7 +1228,7 @@ body::before {
   color: var(--text-dim);
 }
 .roadmap-info-side {
-  padding: 16px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1220,9 +1253,11 @@ body::before {
    ========================================================================== */
 .calc-wrapper {
   background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 26px;
   margin-bottom: 28px;
 }
 .calc-title {
