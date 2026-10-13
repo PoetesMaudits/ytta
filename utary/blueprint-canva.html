@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Telkraf.id × Utary — Blueprint Monetisasi &amp; Transformasi Produk Canva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #08080a;
+  --bg-surface: #0e0e13;
+  --bg-card: #131319;
+  --bg-card-hover: #191922;
+  --border-subtle: #22222e;
+  --border-strong: #323244;
+
+  --text-main: #f5f5f7;
+  --text-muted: #8e8ea2;
+  --text-dim: #545468;
+
+  --accent-yellow: #F5E03A;
+  --accent-pink: #F0527A;
+  --accent-purple: #8B2FC2;
+  --accent-cyan: #00d2ff;
+  --accent-green: #00e676;
+
+  --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
+  --font-display: 'Creato Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Engineering Grid */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   SECURITY VERIFICATION GATE (CLEAN & RESTRICTED)
+   ========================================================================== */
+#security-gate {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, #14141d 0%, #060608 100%);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(24px);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+#security-gate.unlocked {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+body.is-embedded .top-bar { display: none !important; }
+body.is-embedded #security-gate { display: none !important; }
+body.is-embedded { padding-top: 0 !important; }
+.gate-card {
+  background: #0f0f15;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.95);
+  border-radius: 8px;
+  max-width: 380px;
+  width: 100%;
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gate-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-signature);
+}
+.gate-brand-logo {
+  max-width: 110px;
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gate-brand-logo svg {
+  width: 100%; height: auto; display: block;
+}
+.gate-icon { font-size: 32px; margin-bottom: 8px; }
+.gate-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.gate-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+}
+.gate-input-wrap { margin-bottom: 14px; }
+.gate-input {
+  width: 100%;
+  background: #07070a;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 6px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gate-input:focus {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+}
+.gate-btn {
+  width: 100%;
+  background: var(--grad-signature);
+  color: #000;
+  font-weight: 800;
+  font-size: 13.5px;
+  border: none;
+  padding: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  transition: transform 0.2s;
+}
+.gate-btn:hover { transform: translateY(-2px); }
+.gate-error {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: #ff5252;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   TOP BAR (STICKY HEADER)
+   ========================================================================== */
+.top-bar {
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(14, 14, 19, 0.95);
+  backdrop-filter: blur(14px);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-identity-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-logo-wrap {
+  width: 84px;
+  display: flex;
+  align-items: center;
+}
+.brand-logo-wrap svg {
+  width: 100%; height: auto; display: block;
+}
+.divider-col {
+  width: 1px; height: 18px; background: var(--border-strong);
+}
+.partner-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.partner-tag strong { color: #fff; }
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  color: var(--accent-green);
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+}
+.dot-green {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent-green);
+}
+.lock-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   SUPER PROMINENT MOBILE TAB BAR (STICKY JUST BELOW TOP-BAR)
+   ========================================================================== */
+.tabs-wrapper {
+  position: sticky;
+  top: 45px;
+  z-index: 95;
+  background: rgba(10, 10, 14, 0.98);
+  backdrop-filter: blur(16px);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: 24px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+.tabs-header-hint {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+.tabs-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 2px 2px 6px 2px;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  min-height: 44px;
+}
+.tab-btn:hover {
+  color: #fff;
+  border-color: var(--text-muted);
+}
+.tab-btn.active {
+  background: linear-gradient(180deg, rgba(245, 224, 58, 0.15) 0%, rgba(19, 19, 25, 1) 100%);
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+  transform: translateY(-1px);
+}
+.tab-btn.active .tab-icon {
+  transform: scale(1.15);
+}
+.tab-icon {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+/* ==========================================================================
+   PANELS & CONTAINERS
+   ========================================================================== */
+.tab-panel {
+  display: none;
+  animation: panelIn 0.25s ease-out;
+}
+.tab-panel.active { display: block; }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-header {
+  margin-bottom: 20px;
+}
+.panel-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-yellow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.panel-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.panel-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   TAB 1: NYAWA KEDUA (END-PRODUCT MOCKUPS)
+   ========================================================================== */
+.mockups-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.mockup-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-visual {
+  height: 200px;
+  background: radial-gradient(circle at center, #1b1b24 0%, #0e0e13 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.mockup-visual img, .mockup-visual svg {
+  max-width: 140px;
+  max-height: 140px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+}
+.product-badge-pill {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid var(--border-strong);
+  color: var(--accent-yellow);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+.product-price-pill {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: rgba(0, 230, 118, 0.15);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+.mockup-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.mockup-niche {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-pink);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.mockup-headline {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.mockup-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.mockup-spec-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: auto;
+  font-size: 11.5px;
+}
+.mockup-spec-title {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--accent-yellow);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.mockup-spec-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.mockup-spec-box ul li::before {
+  content: "✦ "; color: var(--accent-yellow);
+}
+
+/* ==========================================================================
+   TAB 2: SWOT & TRIANGULASI DATA (EXCLUSIVELY ISOLATED)
+   ========================================================================== */
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.swot-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 18px;
+}
+.swot-card.s { border-top: 3px solid var(--accent-green); }
+.swot-card.w { border-top: 3px solid #ff5252; }
+.swot-card.o { border-top: 3px solid var(--accent-yellow); }
+.swot-card.t { border-top: 3px solid var(--accent-purple); }
+
+.swot-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.swot-char {
+  font-size: 24px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+.swot-card.s .swot-char { color: var(--accent-green); }
+.swot-card.w .swot-char { color: #ff5252; }
+.swot-card.o .swot-char { color: var(--accent-yellow); }
+.swot-card.t .swot-char { color: var(--accent-purple); }
+
+.swot-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+.swot-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.swot-list li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.swot-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+}
+.swot-list li strong { color: var(--text-main); }
+
+/* TRIANGULATION CARDS */
+.tri-subhead {
+  margin: 20px 0 12px 0;
+}
+.tri-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.tri-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 18px;
+}
+.tri-icon { font-size: 24px; margin-bottom: 6px; }
+.tri-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-yellow);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.tri-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 6px;
+}
+.tri-stat {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.tri-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   TAB 3: PLATFORM & MESIN TRAFIK (MOBILE CARD-BASED)
+   ========================================================================== */
+.platform-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.platform-item-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 16px;
+}
+.platform-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.platform-card-name {
+  font-size: 16px; font-weight: 700; color: #fff;
+}
+.platform-card-target {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-cyan);
+  background: rgba(0, 210, 255, 0.08);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.platform-card-body {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.platform-strategy-tag {
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* TRAFFIC PROMOTION */
+.traffic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.traffic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 18px;
+}
+.traffic-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-pink);
+  margin-bottom: 6px;
+}
+.traffic-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 8px;
+}
+.traffic-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.traffic-steps {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 11.5px;
+}
+.traffic-steps ol {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   TAB 4: ROADMAP PENJUALAN (4 MINGGU)
+   ========================================================================== */
+.roadmap-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.roadmap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+}
+.roadmap-time-side {
+  background: var(--bg-surface);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.roadmap-week-num {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-yellow);
+}
+.roadmap-days-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+.roadmap-info-side {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.roadmap-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 6px;
+}
+.roadmap-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.roadmap-out {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-green);
+}
+
+/* ==========================================================================
+   TAB 5: SINERGI & PRINSIP KOLABORASI (NO SLIDER)
+   ========================================================================== */
+.sinergi-roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.role-clean-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 18px;
+}
+.role-clean-card.utari { border-top: 3px solid var(--accent-pink); }
+.role-clean-card.telkraf { border-top: 3px solid var(--accent-cyan); }
+.role-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.role-clean-card.utari .role-tag { color: var(--accent-pink); }
+.role-clean-card.telkraf .role-tag { color: var(--accent-cyan); }
+.role-name {
+  font-size: 16px; font-weight: 700; margin-bottom: 10px;
+}
+.role-clean-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+}
+.role-clean-list li::before {
+  content: "✓ "; color: var(--accent-green); font-weight: 700;
+}
+
+.clean-principles-box {
+  background: linear-gradient(180deg, #121218 0%, #0c0c10 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 22px;
+  margin-bottom: 32px;
+}
+.principle-title {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent-yellow);
+}
+.principle-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.principle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.principle-item strong { color: #fff; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 24px 0;
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo-wrap { width: 70px; }
+.footer-logo-wrap svg { width: 100%; height: auto; opacity: 0.7; }
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES (MOBILE STRICT)
+   ========================================================================== */
+@media (max-width: 820px) {
+  .mockups-grid { grid-template-columns: 1fr; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .tri-grid { grid-template-columns: 1fr; }
+  .traffic-grid { grid-template-columns: 1fr; }
+  .sinergi-roles-grid { grid-template-columns: 1fr; }
+  .roadmap-card { grid-template-columns: 1fr; }
+  .roadmap-time-side { border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 12px; }
+  .tab-btn { min-height: 48px; padding: 10px 14px; font-size: 12.5px; }
+  .tabs-wrapper { top: 43px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     SECURITY PASSCODE OVERLAY (CLEAN, NO LEAKS, SHA-256)
+     ========================================================================== -->
+<div id="security-gate">
+  <div class="gate-card">
+    <div class="gate-brand-logo">
+      <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
+    <div class="gate-icon">🔐</div>
+    <h2 class="gate-title">Restricted Document</h2>
+    <div class="gate-sub">VERIFIKASI OTORISASI MITRA UTARY</div>
+    
+    <div class="gate-input-wrap">
+      <input type="password" id="gate-pass" class="gate-input" maxlength="6" placeholder="••••" autofocus onkeypress="handleGateKey(event)"/>
+    </div>
+    <button class="gate-btn" onclick="verifyGate()">UNLOCK PROPOSAL</button>
+    <div class="gate-error" id="gate-err">⚠️ Passcode salah. Silakan coba lagi.</div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     TOP HEADER (OFFICIAL LOGO)
+     ========================================================================== -->
+<header class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="brand-identity-row">
+      <div class="brand-logo-wrap">
+        <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+      </div>
+      <div class="divider-col"></div>
+      <div class="partner-tag">
+        BLUEPRINT × <strong>UTARY</strong>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="status-pill">
+        <span class="dot-green"></span>
+        <span>PARTNERSHIP</span>
+      </div>
+      <button class="lock-btn" onclick="lockGate()" title="Kunci dokumen kembali">🔒</button>
+    </div>
+  </div>
+</header>
+
+<!-- ==========================================================================
+     SUPER PROMINENT MOBILE TAB BAR (STICKY AT TOP)
+     ========================================================================== -->
+<div class="tabs-wrapper">
+  <div class="container">
+    <div class="tabs-header-hint">
+      <span>PILIH MENU TOPIK:</span>
+      <span>👈 GESER TAB 👉</span>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('tab-mockups', this)">
+        <span class="tab-icon">🌟</span>
+        <span>1. Nyawa Kedua</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-swot', this)">
+        <span class="tab-icon">📊</span>
+        <span>2. SWOT &amp; Data</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-platform', this)">
+        <span class="tab-icon">🛒</span>
+        <span>3. Pasar &amp; Trafik</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-roadmap', this)">
+        <span class="tab-icon">🗺️</span>
+        <span>4. Roadmap Penjualan</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sinergi', this)">
+        <span class="tab-icon">🤝</span>
+        <span>5. Sinergi &amp; Hak</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+  <!-- ==========================================================================
+       TAB 1: NYAWA KEDUA (END-PRODUCT MOCKUP SHOWCASE)
+       ========================================================================== -->
+  <section id="tab-mockups" class="tab-panel active">
+    <div class="panel-header">
+      <div class="panel-tag">VISUALISASI END-PRODUCT // SIAP JUAL</div>
+      <h2 class="panel-title">Bukan Clipart Mentah: Ini Wujud Nyata Saat Jadi Produk</h2>
+      <p class="panel-desc">
+        Pembeli global mencari <strong>produk jadi</strong> yang menghemat waktu mereka. Berikut 3 bentuk produk bernilai tinggi yang siap kita buat dari 2.547 ilustrasi Utari:
+      </p>
+    </div>
+
+    <div class="mockups-grid">
+      <!-- MOCKUP 1: BUSY BOOK -->
+      <div class="mockup-card">
+        <div class="mockup-visual">
+          <span class="product-badge-pill">PRINTABLE BINDER KIT</span>
+          <span class="product-price-pill">$19 USD</span>
+          <img src="data:image/png;base64,[object Object]" alt="Toddler Busy Book Mockup"/>
+        </div>
+        <div class="mockup-content">
+          <div class="mockup-niche">EDUKASI ANAK // PRESCHOOL</div>
+          <h3 class="mockup-headline">Toddler Morning Routine Busy Book</h3>
+          <p class="mockup-desc">
+            Ilustrasi mobil polisi anak, makanan pastel, dan objek harian Utari disatukan menjadi <strong>40 halaman buku aktivitas velcro interaktif</strong> untuk balita usia 3–5 tahun.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+            <ul>
+              <li>Flashcard alfabet velcro &amp; kendaraan darurat</li>
+              <li>Matching game bayangan &amp; bentuk simetris</li>
+              <li>Good habits reward chart berstiker</li>
+              <li>Format A4 &amp; US Letter siap cetak di rumah</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP 2: BAKERY CAFE KIT -->
+      <div class="mockup-card">
+        <div class="mockup-visual">
+          <span class="product-badge-pill">B2B BRANDING PACK</span>
+          <span class="product-price-pill">$24 USD</span>
+          <img src="data:image/png;base64,[object Object]" alt="Artisan Bakery Cafe Mockup"/>
+        </div>
+        <div class="mockup-content">
+          <div class="mockup-niche">UMKM F&amp;B // CAFE KEKINIAN</div>
+          <h3 class="mockup-headline">Artisan Bakery &amp; Boba Cafe Brand Kit</h3>
+          <p class="mockup-desc">
+            Kue tart stroberi dan camilan manis Utari disulap menjadi <strong>kit identitas visual lengkap</strong> yang dibutuhkan pemilik cafe rumahan tanpa menyewa desainer mahal.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+            <ul>
+              <li>Stiker cup sealer minuman &amp; toples kue bulat</li>
+              <li>Loyalty stamp card (10 kopi gratis 1)</li>
+              <li>Table tent A4 promosi diskon meja</li>
+              <li>Template postingan Instagram feed &amp; story</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOCKUP 3: GOODNOTES STUDY VAULT -->
+      <div class="mockup-card">
+        <div class="mockup-visual">
+          <span class="product-badge-pill">DIGITAL PLANNER IPAD</span>
+          <span class="product-price-pill">$15 USD</span>
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDAwMCA0MDAwIj4KICA8dGl0bGU+Q3V0ZSBCZWFyIE1lbW8gUGFkIE5vdGUgUGFwZXI8L3RpdGxlPgogIDxkZXNjPmN1dGUgbWVtbyBwYWQsIHN0aWNreSBub3RlLCBkaWdpdGFsIHBsYW5uZXIgc3RpY2tlcnMsIGJ1bGxldCBqb3VybmFsIGRlY28sIGtvcmVhbiBhZXN0aGV0aWMgbm90ZXMsIGthd2FpaSBzdGF0aW9uZXJ5LCB0byBkbyBsaXN0IHBhcGVyLCBjdXRlIHJlbWluZGVyIG5vdGUsIHN0dWR5Z3JhbSBlbGVtZW50cywgcGFzdGVsIG1lc3NhZ2UgYm94LCBzY3JhcGJvb2sgcGFwZXIgY3V0ZSwgZmxhdCB2ZWN0b3Igbm90ZTwvZGVzYz4KICA8bWV0YWRhdGE+CiAgICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIj4KICAgICAgPGNjOldvcmsgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzp0aXRsZT5DdXRlIEJlYXIgTWVtbyBQYWQgTm90ZSBQYXBlcjwvZGM6dGl0bGU+CiAgICAgICAgPGRjOmRlc2NyaXB0aW9uPkN1dGUgQmVhciBNZW1vIFBhZCBOb3RlIFBhcGVyIC0gRmxhdCB2ZWN0b3IgaWxsdXN0cmF0aW9uPC9kYzpkZXNjcmlwdGlvbj4KICAgICAgICA8ZGM6Y3JlYXRvcj4KICAgICAgICAgIDxyZGY6QmFnPgogICAgICAgICAgICA8cmRmOmxpPlRlbGtyYWYuaWQ8L3JkZjpsaT4KICAgICAgICAgIDwvcmRmOkJhZz4KICAgICAgICA8L2RjOmNyZWF0b3I+CiAgICAgICAgPGRjOnN1YmplY3Q+CiAgICAgICAgICA8cmRmOkJhZz4KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIG1lbW8gcGFkPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnN0aWNreSBub3RlPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmRpZ2l0YWwgcGxhbm5lciBzdGlja2VyczwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5idWxsZXQgam91cm5hbCBkZWNvPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPmtvcmVhbiBhZXN0aGV0aWMgbm90ZXM8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+a2F3YWlpIHN0YXRpb25lcnk8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+dG8gZG8gbGlzdCBwYXBlcjwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5jdXRlIHJlbWluZGVyIG5vdGU8L3JkZjpsaT4NCiAgICAgICAgICAgIDxyZGY6bGk+c3R1ZHlncmFtIGVsZW1lbnRzPC9yZGY6bGk+DQogICAgICAgICAgICA8cmRmOmxpPnBhc3RlbCBtZXNzYWdlIGJveDwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5zY3JhcGJvb2sgcGFwZXIgY3V0ZTwvcmRmOmxpPg0KICAgICAgICAgICAgPHJkZjpsaT5mbGF0IHZlY3RvciBub3RlPC9yZGY6bGk+CiAgICAgICAgICA8L3JkZjpCYWc+CiAgICAgICAgPC9kYzpzdWJqZWN0PgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNy4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTE0KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNlMGMyYWU7CiAgICAgIH0KCiAgICAgIC5zdDAsIC5zdDEsIC5zdDIsIC5zdDMsIC5zdDQsIC5zdDUsIC5zdDYsIC5zdDcsIC5zdDggewogICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogI2JhODU2NDsKICAgICAgfQoKICAgICAgLnN0OSB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXBwYXRoLTQpOwogICAgICB9CgogICAgICAuc3QyIHsKICAgICAgICBmaWxsOiAjYWE3NjU1OwogICAgICB9CgogICAgICAuc3QxMCB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0MyB7CiAgICAgICAgZmlsbDogIzNhM2EzYTsKICAgICAgfQoKICAgICAgLnN0NCB7CiAgICAgICAgZmlsbDogIzdmNGEyODsKICAgICAgfQoKICAgICAgLnN0MTEgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0xKTsKICAgICAgfQoKICAgICAgLnN0MTIgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC01KTsKICAgICAgfQoKICAgICAgLnN0NSB7CiAgICAgICAgZmlsbDogI2YzOTM4OTsKICAgICAgfQoKICAgICAgLnN0MTMgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0zKTsKICAgICAgfQoKICAgICAgLnN0NiB7CiAgICAgICAgZmlsbDogI2ZmZjhlYTsKICAgICAgfQoKICAgICAgLnN0NyB7CiAgICAgICAgZmlsbDogI2MzOGQ2YTsKICAgICAgfQoKICAgICAgLnN0OCB7CiAgICAgICAgZmlsbDogI2ViZDZhYTsKICAgICAgfQoKICAgICAgLnN0MTQgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aC0yKTsKICAgICAgfQoKICAgICAgLnN0MTUgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwcGF0aCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoIj4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik05NTUuOCwzNjNjMTIwLjktMTQuMywyMzAuOCw3Mi4yLDI0NS4xLDE5My4ycy03Mi4yLDIzMC44LTE5My4yLDI0NS4xLTIzMC43LTcyLjItMjQ1LjEtMTkzLjIsNzIuMi0yMzAuNywxOTMuMi0yNDUuMVoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTEiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE4ODkuNiwyMDIuMmMtMTIwLjksMTQuMy0yMDcuNSwxMjQuMS0xOTMuMiwyNDUuMSwxNC4zLDEyMC45LDEyNC4xLDIwNy41LDI0NS4xLDE5My4yLDEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjEtMTQuMy0xMjAuOS0xMjQuMS0yMDcuNS0yNDUuMS0xOTMuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTIiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTE0NDMuOCwzNjAuOWMzNTcuOS00Mi40LDY3Ni4yLDE1Ny43LDcxMC40LDQ0Ni42cy0yMjguNSw1NTcuOC01ODYuNCw2MDAuMi02NzYuMi0xNTcuNy03MTAuNC00NDYuNiwyMjguNi01NTcuOCw1ODYuNC02MDAuMloiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXBwYXRoLTMiPgogICAgICA8cGF0aCBjbGFzcz0ic3QxMCIgZD0iTTMwNTIuNywxMDY3LjdjMjA4LjcsMCwzNzcuOSwxNjkuMSwzNzcuOSwzNzcuOGgwdjE5NzUuOWMwLDIwOC43LTE2OS4yLDM3Ny45LTM3Ny45LDM3Ny45SDk0Ny4zYy0yMDguNywwLTM3Ny45LTE2OS4yLTM3Ny45LTM3Ny45di0xOTc1LjhjMC0yMDguNywxNjkuMi0zNzcuOSwzNzcuOS0zNzcuOWgyMTA1LjRaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC00Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik03MzQuNCwxMjE5LjdzLTMyLTE2MS43LDE0OS4yLTE5Ny40YzE3NC44LTM0LjUsMjEyLjQsMjE4LDc4LDIzNi45LTEwLjYsMS41LTIwLjQsNi4zLTI4LDEzLjgtMzEuOCwzMC41LTEyMSw5My41LTE5OS4yLTUzLjJaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aC01Ij4KICAgICAgPHBhdGggY2xhc3M9InN0MTAiIGQ9Ik0yMzE4LjgsMTAzMnMtNi43LTE2NC43LTE5MS4yLTE1Ny4xYy0xNzgsNy4zLTE1NS42LDI2MS42LTIwLjUsMjQ4LjUsMTAuNi0xLDIxLjMsMS40LDMwLjQsNi44LDM4LjEsMjIuMiwxMzkuNiw2Mi42LDE4MS4zLTk4LjNaIi8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iU1ZHSUQtNyIgY2xhc3M9InN0MiIgZD0iTTk1NS44LDM2M2MxMjAuOS0xNC4zLDIzMC44LDcyLjIsMjQ1LjEsMTkzLjIsMTQuMywxMjAuOS03Mi4yLDIzMC44LTE5My4yLDI0NS4xcy0yMzAuNy03Mi4yLTI0NS4xLTE5My4yLDcyLjItMjMwLjgsMTkzLjItMjQ1LjFaIi8+CiAgPGcgY2xhc3M9InN0MTUiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTk2OC40LDQ2OC44YzYyLjYtNy40LDExOS4zLDM3LjMsMTI2LjgsOTkuOSw3LjQsNjIuNi0zNy4zLDExOS4zLTk5LjksMTI2LjhzLTExOS4zLTM3LjMtMTI2LjgtOTkuOWMwLDAsMCwwLDAsMC03LjQtNjIuNiwzNy4zLTExOS4zLDk5LjktMTI2LjhaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC04IiBjbGFzcz0ic3QyIiBkPSJNMTg4OS42LDIwMi4yYy0xMjAuOSwxNC4zLTIwNy41LDEyNC4xLTE5My4yLDI0NS4xczEyNC4xLDIwNy41LDI0NS4xLDE5My4yYzEyMC45LTE0LjMsMjA3LjUtMTI0LjIsMTkzLjItMjQ1LjFzLTEyNC4xLTIwNy41LTI0NS4xLTE5My4yWiIvPgogIDxnIGNsYXNzPSJzdDExIj4KICAgIDxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0xOTAyLjIsMzA4Yy02Mi42LDcuNC0xMDcuMyw2NC4yLTk5LjksMTI2LjgsNy40LDYyLjYsNjQuMiwxMDcuMywxMjYuOCw5OS45LDYyLjYtNy40LDEwNy4zLTY0LjIsOTkuOS0xMjYuOC03LjQtNjIuNi02NC4yLTEwNy4zLTEyNi44LTk5LjlaIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJTVkdJRC05IiBjbGFzcz0ic3Q3IiBkPSJNMTQ0My44LDM2MC45YzM1Ny45LTQyLjQsNjc2LjIsMTU3LjcsNzEwLjQsNDQ2LjZzLTIyOC41LDU1Ny44LTU4Ni40LDYwMC4yLTY3Ni4yLTE1Ny43LTcxMC40LTQ0Ni42LDIyOC42LTU1Ny44LDU4Ni40LTYwMC4yWiIvPgogIDxnIGNsYXNzPSJzdDE0Ij4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQ5Mi40LDc3OS40YzEwMy43LTE0LjIsMTYwLjEsNDQuOCwxNjcuMiwxMDVzLTU1LjUsMTE3LjEtMTM5LjcsMTI3LjEtMTU4LjQtMzAuOC0xNjUuNi05MC45LDM3LjEtMTI3LjMsMTM4LjEtMTQxLjJaIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDgiIGQ9Ik0xNDkyLjQsNzc5LjRjMTAzLjctMTQuMiwxNjAuMSw0NC44LDE2Ny4yLDEwNXMtNTUuNSwxMTcuMS0xMzkuNywxMjcuMS0xNTguNC0zMC44LTE2NS42LTkwLjksMzcuMS0xMjcuMywxMzguMS0xNDEuMloiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggY2xhc3M9InN0NSIgZD0iTTExNjEuOSw4NzkuOWM0Ny44LTUuNyw5MCwxOS40LDk0LjMsNTUuOXMtMzAuOSw3MC43LTc4LjcsNzYuNC05MC0xOS40LTk0LjMtNTUuOSwzMC45LTcwLjcsNzguNy03Ni40WiIvPgogIDxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0xODI4LjcsODAwLjljNDcuOC01LjcsOTAsMTkuNCw5NC4zLDU1LjlzLTMwLjksNzAuNy03OC43LDc2LjQtOTAtMTkuNC05NC4zLTU1LjksMzEtNzAuNyw3OC43LTc2LjRaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTEyNjIuMiw3ODFjMjIuNS0yLjcsNDMuMywxNi42LDQ2LjUsNDNzLTEyLjYsNTAtMzUuMSw1Mi43LTQzLjMtMTYuNi00Ni41LTQzLDEyLjYtNTAsMzUuMS01Mi43WiIvPgogIDxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0xMjY5LjQsODgyLjNjLTIzLjYsMC00NC40LTIwLjUtNDcuNy00OC0zLjUtMjkuMywxNC40LTU1LjcsMzkuOS01OC43aDBjMjUuMy0zLDQ5LDE4LjQsNTIuNSw0Ny44LDEuOCwxMy42LTEuNCwyNy40LTguOCwzOC45LTcuNSwxMS4zLTE4LjYsMTguMy0zMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4zWk0xMjYyLjgsNzg2LjNjLTE5LjUsMi4zLTMzLjIsMjMuMi0zMC40LDQ2LjdzMjEsNDAuNSw0MC40LDM4LjJjOS4zLTEuMSwxNy42LTYuNSwyMy4zLTE1LjEsNi05LjQsOC41LTIwLjYsNy4xLTMxLjYtMi44LTIzLjQtMjEtNDAuNi00MC40LTM4LjJoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcwNi43LDcyOC4zYzIyLjUtMi43LDQzLjMsMTYuNiw0Ni41LDQzcy0xMi42LDUwLTM1LjEsNTIuNy00My4zLTE2LjYtNDYuNS00MywxMi42LTUwLDM1LjEtNTIuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTcxMy45LDgyOS43Yy0yMy42LDAtNDQuNC0yMC41LTQ3LjctNDgtMS44LTEzLjYsMS40LTI3LjQsOC44LTM4LjksNy41LTExLjMsMTguNi0xOC4zLDMxLjEtMTkuOGgwYzEyLjUtMS41LDI0LjksMi44LDM0LjgsMTIsMjAuMiwxOS42LDIzLjksNTAuOCw4LjgsNzQuNi03LjUsMTEuMy0xOC42LDE4LjMtMzEuMSwxOS44LTEuNi4yLTMuMi4zLTQuOC4yWk0xNzEwLjksNzMzLjVjLTEuMiwwLTIuNCwwLTMuNS4yaDBjLTkuMywxLjEtMTcuNiw2LjQtMjMuMywxNS02LDkuNC04LjUsMjAuNS03LjEsMzEuNiwyLjgsMjMuNCwyMC45LDQwLjUsNDAuNCwzOC4yLDkuMy0xLjEsMTcuNi02LjQsMjMuMy0xNSwxMi4xLTE5LjQsOS4xLTQ0LjYtNy4yLTYwLjctNi42LTYuMS0xNC41LTkuMy0yMi42LTkuM2gwWk0xNzA2LjcsNzI4LjNoMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ2Mi4xLDkxOC45Yy01LjYsMS4yLTExLjEtMi4zLTEyLjQtNy45LTEuMi01LjYsMi4zLTExLjEsNy45LTEyLjQsMCwwLC4xLDAsLjIsMCwyMC43LTQuNCwzMy40LTE2LjksMzgtMzcuNSwxLjMtNS42LDYuOC05LjEsMTIuNC03LjgsMi41LjYsNC44LDIuMSw2LjMsNC4yLDEzLDE5LjEsMjgsMjksNDUuNCwyOSw1LjcuMiwxMC4yLDUsMTAsMTAuNy0uMiw1LjUtNC42LDkuOS0xMC4xLDEwLTE4LjQsMC0zNS4zLTcuNC01MC4zLTIzLTkuMSwxOC4yLTI0LjksMjkuOC00Ny40LDM0LjZaIi8+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTE0OTguMSw4MTIuN2MyOC41LTMuNCw1My4yLDcuNiw1NS4yLDI0LjVzLTE5LjUsMzMuMy00OCwzNi43LTUzLjItNy42LTU1LjItMjQuNSwxOS41LTMzLjQsNDgtMzYuN1oiLz4KICA8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTQ5NS4xLDg4MGMtMTAuOCwwLTIxLTItMjkuNS01LjctMTIuMy01LjQtMTkuNy0xNC0yMC45LTI0LjJzNC0yMC4yLDE0LjctMjguNGM5LjgtNy41LDIzLjQtMTIuNiwzOC4xLTE0LjRoMGMxNC43LTEuNywyOS4xLDAsNDAuNCw1LjEsMTIuMyw1LjQsMTkuNywxNCwyMC45LDI0LjIsMi40LDIwLjItMjAuOCwzOS01Mi43LDQyLjgtMy42LjQtNy4zLjYtMTAuOS42Wk0xNDk4LjcsODE4LjFjLTEyLjgsMS41LTI0LjUsNS44LTMyLjgsMTIuMi03LjUsNS43LTExLjIsMTIuMy0xMC41LDE4LjVzNS45LDExLjcsMTQuNSwxNS41YzkuNiw0LjIsMjEuOSw1LjgsMzQuNyw0LjIsMjUuMS0zLDQ0LjktMTcsNDMuMi0zMC43LS43LTYuMi01LjktMTEuNy0xNC41LTE1LjUtOS42LTQuMi0yMS45LTUuOC0zNC43LTQuMloiLz4KICA8cGF0aCBpZD0iU1ZHSUQtMTAiIGNsYXNzPSJzdDYiIGQ9Ik0zMDUyLjcsMTA2Ny43YzIwOC43LDAsMzc3LjksMTY5LjEsMzc3LjksMzc3LjhoMHYxOTc1LjljMCwyMDguNy0xNjkuMiwzNzcuOS0zNzcuOSwzNzcuOUg5NDcuM2MtMjA4LjcsMC0zNzcuOS0xNjkuMi0zNzcuOS0zNzcuOXYtMTk3NS44YzAtMjA4LjcsMTY5LjItMzc3LjksMzc3LjktMzc3LjloMjEwNS40WiIvPgogIDxnIGNsYXNzPSJzdDEzIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3Q4IiBkPSJNOTI1LjcsMTg2NC42Yy0xMC44LjYtMjAtNy42LTIwLjYtMTguNC0uNi0xMC44LDcuNi0yMCwxOC40LTIwLjYuNywwLDEuNCwwLDIuMiwwaDIxNzAuMmMxMC44LS42LDIwLDcuNiwyMC42LDE4LjQuNiwxMC44LTcuNiwyMC0xOC40LDIwLjYtLjcsMC0xLjQsMC0yLjIsMEg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDIyMTAuMWMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI1NTUuNmMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDI5MDEuMWMtMTAuOC0uMi0xOS4zLTkuMi0xOS4xLTIwLC4yLTEwLjQsOC42LTE4LjksMTkuMS0xOS4xaDIxNzAuMmMxMC44LjIsMTkuMyw5LjIsMTkuMSwyMC0uMiwxMC40LTguNiwxOC45LTE5LjEsMTkuMUg5MjUuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0OCIgZD0iTTkyNS43LDMyNDYuNmMtMTAuOCwwLTE5LjUtOC43LTE5LjUtMTkuNXM4LjctMTkuNSwxOS41LTE5LjVoMjE3MC4yYzEwLjgsMCwxOS41LDguNywxOS41LDE5LjVzLTguNywxOS41LTE5LjUsMTkuNUg5MjUuN1oiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTExIiBjbGFzcz0ic3QyIiBkPSJNNzM0LjQsMTIxOS43cy0zMi0xNjEuNywxNDkuMi0xOTcuNGMxNzQuOC0zNC41LDIxMi40LDIxOCw3OCwyMzYuOS0xMC42LDEuNS0yMC40LDYuMy0yOCwxMy44LTMxLjgsMzAuNS0xMjEsOTMuNS0xOTkuMi01My4yWiIvPgogIDxnIGNsYXNzPSJzdDkiPgogICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTg5NC45LDEyMTQuNmMtNC42LTUuNy0zLjYtMTQuMSwyLjEtMTguNyw1LjctNC42LDE0LjEtMy42LDE4LjcsMi4xLjEuMi4zLjMuNC41bDUyLjQsNjkuNGM0LjMsNiwyLjksMTQuMy0zLDE4LjUtNS44LDQuMS0xMy43LDMtMTguMS0yLjVsLTUyLjQtNjkuNFoiLz4KICA8L2c+CiAgPHBhdGggaWQ9IlNWR0lELTEyIiBjbGFzcz0ic3QyIiBkPSJNMjMxOC44LDEwMzJzLTYuNy0xNjQuNy0xOTEuMi0xNTcuMWMtMTc4LDcuMy0xNTUuNiwyNjEuNi0yMC41LDI0OC41LDEwLjYtMSwyMS4zLDEuNCwzMC40LDYuOCwzOC4xLDIyLjIsMTM5LjYsNjIuNiwxODEuMy05OC4zWiIvPgogIDxnIGNsYXNzPSJzdDEyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjE2MS42LDEwNjQuNWMzLTYuNy4xLTE0LjUtNi42LTE3LjZzLTE0LjUtLjEtMTcuNiw2LjZjMCwuMS0uMS4zLS4yLjRsLTM0LjgsNzkuN2MtMi45LDYuNy4xLDE0LjYsNi45LDE3LjUsNi43LDIuOSwxNC42LS4xLDE3LjUtNi45bDM0LjgtNzkuN1oiLz4KICAgICAgPHBhdGggY2xhc3M9InN0NCIgZD0iTTIxNjEuNiwxMDY0LjVjMy02LjcuMS0xNC41LTYuNi0xNy42cy0xNC41LS4xLTE3LjYsNi42YzAsLjEtLjEuMy0uMi40bC0zNC44LDc5LjdjLTIuOSw2LjcuMSwxNC42LDYuOSwxNy41LDYuNywyLjksMTQuNi0uMSwxNy41LTYuOWwzNC44LTc5LjdaIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=" alt="GoodNotes Study Vault Mockup"/>
+        </div>
+        <div class="mockup-content">
+          <div class="mockup-niche">GEN-Z // IPAD PRODUCTIVITY</div>
+          <h3 class="mockup-headline">GoodNotes Pastel Study Vault &amp; Stickers</h3>
+          <p class="mockup-desc">
+            Vektor memo pad beruang SVG Oktober dan stationery Utari dijadikan <strong>template jurnal digital iPad</strong> yang dilengkapi stiker transparan crop-ready untuk GoodNotes/Notion.
+          </p>
+          <div class="mockup-spec-box">
+            <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+            <ul>
+              <li>Hyperlinked Weekly &amp; Monthly Study Dashboard</li>
+              <li>300+ Crop-ready PNG/SVG GoodNotes Digital Stickers</li>
+              <li>Memo sticky notes pastel ganti warna dinamis</li>
+              <li>Exam countdown &amp; Pomodoro study log tracker</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 2: SWOT & TRIANGULASI DATA (EXCLUSIVELY ISOLATED)
+       ========================================================================== -->
+  <section id="tab-swot" class="tab-panel">
+    <div class="panel-header">
+      <div class="panel-tag">EVALUASI STRATEGIS &amp; VALIDASI PASAR</div>
+      <h2 class="panel-title">SWOT Produk &amp; Bukti Triangulasi Data Empiris</h2>
+      <p class="panel-desc">
+        Fokus pada analisis kelayakan produk dan bukti nyata bahwa pasar global siap membeli produk ini.
+      </p>
+    </div>
+
+    <!-- SWOT QUADRANTS -->
+    <div class="swot-grid">
+      <div class="swot-card s">
+        <div class="swot-head-row">
+          <span class="swot-char">S</span>
+          <span class="swot-label">STRENGTHS (KEKUATAN KARYA)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>2.547 Aset Siap Pakai:</strong> Modal awal karya sangat masif tanpa butuh waktu berbulan-bulan menggambar dari awal.</li>
+          <li><strong>Gaya Otentik Hand-Drawn:</strong> Karakter hangat kawaii/pastel gouache memiliki sentuhan emosional tinggi dibanding AI generik.</li>
+          <li><strong>Format Vektor SVG Oktober:</strong> 455 file SVG scalable siap diedit warnanya langsung di Canva tanpa pecah saat dicetak.</li>
+        </ul>
+      </div>
+
+      <div class="swot-card w">
+        <div class="swot-head-row">
+          <span class="swot-char">W</span>
+          <span class="swot-label">WEAKNESSES (TANTANGAN PRODUKSI)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Format Campuran:</strong> Batch Juni–Sep berbentuk raster PNG sehingga butuh kurasi cermat agar hasil cetaknya tajam.</li>
+          <li><strong>Isi Batch Acak:</strong> Kategori awal masih bercampur antara makanan, flamingo, dan alat olahraga, butuh penataan tematik.</li>
+        </ul>
+      </div>
+
+      <div class="swot-card o">
+        <div class="swot-head-row">
+          <span class="swot-char">O</span>
+          <span class="swot-label">OPPORTUNITIES (PELUANG BESAR)</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Tren Homeschool Global:</strong> Ibu muda US/Eropa aktif mencari aktivitas cetak di rumah untuk mengurangi screen-time balita.</li>
+          <li><strong>Pasar iPad Gen-Z:</strong> Penjualan stiker digital GoodNotes dan study planner memiliki repeat order yang sangat tinggi.</li>
+        </ul>
+      </div>
+
+      <div class="swot-card t">
+        <div class="swot-head-row">
+          <span class="swot-char">T</span>
+          <span class="swot-label">THREATS &amp; MITIGASI</span>
+        </div>
+        <ul class="swot-list">
+          <li><strong>Banjir Clipart AI Murah:</strong> Clipart satuan tidak lagi berharga. <em>Mitigasi:</em> Jangan jual gambar eceran, jual <strong>Canva Template Kit jadi</strong> berlisensi komersial.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TRIANGULASI DATA -->
+    <div class="tri-subhead">
+      <div class="panel-tag">TRIANGULASI DATA PASAR GLOBAL</div>
+      <h3 style="font-size: 16px; font-weight: 700;">3 Pilar Bukti Empiris Pasar</h3>
+    </div>
+
+    <div class="tri-grid">
+      <div class="tri-card">
+        <div class="tri-icon">📈</div>
+        <div class="tri-badge">PILAR 1 // GOOGLE TRENDS</div>
+        <div class="tri-title">Aktivitas Homeschool</div>
+        <div class="tri-stat">+140% YoY</div>
+        <p class="tri-desc">
+          Volume pencarian kata kunci <em>"printable busy book for toddlers"</em> dan <em>"learning binder canva"</em> melonjak konsisten dengan puncak stabil tiap awal semester dan liburan.
+        </p>
+      </div>
+
+      <div class="tri-card">
+        <div class="tri-icon">🛒</div>
+        <div class="tri-badge">PILAR 2 // MARKETPLACE ETSY &amp; TPT</div>
+        <div class="tri-title">Top Shop Sales Record</div>
+        <div class="tri-stat">15,000+ Sales</div>
+        <p class="tri-desc">
+          Toko penjual produk sejenis di Etsy membukukan lebih dari 15.000 penjualan di harga <strong>$14 – $22 USD</strong> dengan rating 4.9 bintang dari ribuan ulasan pembeli.
+        </p>
+      </div>
+
+      <div class="tri-card">
+        <div class="tri-icon">📌</div>
+        <div class="tri-badge">PILAR 3 // PINTEREST VISUAL SEARCH</div>
+        <div class="tri-title">High Save &amp; Click Rate</div>
+        <div class="tri-stat">Top 5% Category</div>
+        <p class="tri-desc">
+          Kategori <em>"Preschool Activity Printables"</em> dan <em>"Aesthetic Study Planner"</em> memiliki rasio simpan tertinggi di Pinterest karena audiens aktif mencari ide cetak mandiri.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 3: PASAR & TRAFIK PROMOSI
+       ========================================================================== -->
+  <section id="tab-platform" class="tab-panel">
+    <div class="panel-header">
+      <div class="panel-tag">SALURAN PENJUALAN &amp; PROMOSI ORGANIK</div>
+      <h2 class="panel-title">Kandidat Platform Penjualan &amp; Mesin Trafik</h2>
+      <p class="panel-desc">
+        Strategi multi-platform yang didukung mesin promosi visual organik tanpa perlu mengeluarkan biaya iklan berbayar.
+      </p>
+    </div>
+
+    <!-- RESPONSIVE CARDS INSTEAD OF OVERFLOWING TABLE -->
+    <div class="platform-cards-stack">
+      <div class="platform-item-card">
+        <div class="platform-card-header">
+          <span class="platform-card-name">Etsy Global Marketplace</span>
+          <span class="platform-card-target">Ibu Muda &amp; Pendidik US/Eropa</span>
+        </div>
+        <div class="platform-card-body">
+          <div>Etalase utama untuk produk printables dan Canva templates bernilai tinggi ($19 – $24).</div>
+          <div class="platform-strategy-tag">✦ Strategi: Menjangkau pembeli dengan daya beli tinggi yang mencari solusi cetak instan.</div>
+        </div>
+      </div>
+
+      <div class="platform-item-card">
+        <div class="platform-card-header">
+          <span class="platform-card-name">Creative Fabrica</span>
+          <span class="platform-card-target">Crafter &amp; Canva Designer</span>
+        </div>
+        <div class="platform-card-body">
+          <div>Ekosistem langganan dengan payout pasif per unduhan anggota aktif global.</div>
+          <div class="platform-strategy-tag">✦ Strategi: Listing bundle SVG scalable &amp; clipart vault untuk arus kas pasif jangka panjang.</div>
+        </div>
+      </div>
+
+      <div class="platform-item-card">
+        <div class="platform-card-header">
+          <span class="platform-card-name">Gumroad / Payhip</span>
+          <span class="platform-card-target">Audiens Media Sosial Direct</span>
+        </div>
+        <div class="platform-card-body">
+          <div>Toko mandiri dengan potongan fee sangat rendah dan pembayaran langsung via PayPal/Stripe.</div>
+          <div class="platform-strategy-tag">✦ Strategi: Link utama untuk trafik video Pinterest &amp; Instagram tanpa persaingan harga toko lain.</div>
+        </div>
+      </div>
+
+      <div class="platform-item-card">
+        <div class="platform-card-header">
+          <span class="platform-card-name">Teachers Pay Teachers (TPT)</span>
+          <span class="platform-card-target">Guru TK/SD &amp; Tutor</span>
+        </div>
+        <div class="platform-card-body">
+          <div>Pasar khusus materi ajar edukatif dengan siklus pembelian berulang tiap tahun ajaran baru.</div>
+          <div class="platform-strategy-tag">✦ Strategi: Etalase khusus paket lembar aktivitas tracing &amp; flashcard edukasi.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tri-subhead">
+      <div class="panel-tag">MESIN TRAFIK ORGANIK</div>
+      <h3 style="font-size: 16px; font-weight: 700;">Cara Menarik Pembeli Tanpa Biaya Iklan</h3>
+    </div>
+
+    <div class="traffic-grid">
+      <div class="traffic-card">
+        <div class="traffic-tag">PINTEREST // MESIN UTAMA</div>
+        <h4 class="traffic-title">Pinterest Visual SEO</h4>
+        <p class="traffic-desc">
+          Pinterest adalah search engine visual. Rilis 15 Idea Pins estetik per minggu dengan kata kunci target (misal: <em>"toddler busy book printable"</em>). Pin terus aktif mendatangkan pembeli berbulan-bulan.
+        </p>
+      </div>
+
+      <div class="traffic-card">
+        <div class="traffic-tag">TIKTOK &amp; REELS // DEMO CEPAT</div>
+        <h4 class="traffic-title">Micro-Demo Video (7–10 Detik)</h4>
+        <p class="traffic-desc">
+          Video pendek yang memuaskan mata saat lembar busy book dipotong, ditempel velcro, atau stiker digital digeser di iPad. Memancing rasa ingin tahu ibu muda untuk meminta link beli di komentar.
+        </p>
+      </div>
+
+      <div class="traffic-card">
+        <div class="traffic-tag">LEAD MAGNET // EMAIL LIST</div>
+        <h4 class="traffic-title">Freebie Sample Funnel</h4>
+        <p class="traffic-desc">
+          Memberikan 3 halaman flashcard gratis untuk diunduh pembeli. Sebagai gantinya, mereka memberikan email yang kemudian secara otomatis menerima voucher diskon untuk membeli bundle lengkap $19.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 4: ROADMAP PENJUALAN (4 MINGGU)
+       ========================================================================== -->
+  <section id="tab-roadmap" class="tab-panel">
+    <div class="panel-header">
+      <div class="panel-tag">EKSEKUSI NYATA // GO-TO-MARKET</div>
+      <h2 class="panel-title">Roadmap Penjualan 4 Minggu</h2>
+      <p class="panel-desc">
+        Jadwal kerja bertahap untuk membuktikan penjualan produk di pasar global:
+      </p>
+    </div>
+
+    <div class="roadmap-stack">
+      <div class="roadmap-card">
+        <div class="roadmap-time-side">
+          <div class="roadmap-week-num">MINGGU 1</div>
+          <div class="roadmap-days-tag">HARI 1 – 7</div>
+        </div>
+        <div class="roadmap-info-side">
+          <h4 class="roadmap-title">Kurasi Aset &amp; Assembling Pilot Product</h4>
+          <p class="roadmap-desc">
+            Telkraf memilih 350 ilustrasi terkuat Utari lalu menyusunnya menjadi master template Canva <strong>Toddler Busy Book (40 Halaman)</strong> lengkap dengan PDF delivery guide dan mockup 3D.
+          </p>
+          <div class="roadmap-out">✓ Output: 1 Master Template Canva Live + Mockup Editorial</div>
+        </div>
+      </div>
+
+      <div class="roadmap-card">
+        <div class="roadmap-time-side">
+          <div class="roadmap-week-num">MINGGU 2</div>
+          <div class="roadmap-days-tag">HARI 8 – 14</div>
+        </div>
+        <div class="roadmap-info-side">
+          <h4 class="roadmap-title">Listing Toko &amp; Aktivasi Mesin Pinterest</h4>
+          <p class="roadmap-desc">
+            Publikasi produk ke etalase Etsy &amp; Gumroad dengan copywriting SEO bahasa Inggris, serta menjadwalkan 15 Idea Pins di Pinterest menargetkan kata kunci pembeli US/Eropa.
+          </p>
+          <div class="roadmap-out">✓ Output: Toko Live Siap Menerima Order + 15 Pins Aktif</div>
+        </div>
+      </div>
+
+      <div class="roadmap-card">
+        <div class="roadmap-time-side">
+          <div class="roadmap-week-num">MINGGU 3</div>
+          <div class="roadmap-days-tag">HARI 15 – 21</div>
+        </div>
+        <div class="roadmap-info-side">
+          <h4 class="roadmap-title">Validasi Respon Pasar &amp; Assembling Produk Kedua</h4>
+          <p class="roadmap-desc">
+            Menganalisis traffic klik pembeli yang masuk, lalu meluncurkan produk kedua: <strong>Artisan Bakery Cafe Branding Pack</strong> untuk menjaring pasar UMKM F&amp;B.
+          </p>
+          <div class="roadmap-out">✓ Output: Laporan Data Klik Awal + Peluncuran Produk Kedua</div>
+        </div>
+      </div>
+
+      <div class="roadmap-card">
+        <div class="roadmap-time-side">
+          <div class="roadmap-week-num">MINGGU 4</div>
+          <div class="roadmap-days-tag">HARI 22 – 30</div>
+        </div>
+        <div class="roadmap-info-side">
+          <h4 class="roadmap-title">Evaluasi Penjualan &amp; Transfer Royalti Pertama</h4>
+          <p class="roadmap-desc">
+            Rekapitulasi penjualan bulan pertama secara transparan, mentransfer hak royalti langsung ke rekening Utari, dan mempersiapkan peluncuran produk ketiga (Digital Planner).
+          </p>
+          <div class="roadmap-out">✓ Output: Payout Royalti Bulan Pertama ke Rekening Utari</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TAB 5: SINERGI & HAK CIPTA (NO SLIDER, CLEAN & RESPECTFUL)
+       ========================================================================== -->
+  <section id="tab-sinergi" class="tab-panel">
+    <div class="panel-header">
+      <div class="panel-tag">KOLABORASI ADIL // WIN-WIN PARTNERSHIP</div>
+      <h2 class="panel-title">Pembagian Peran &amp; Prinsip Kemitraan</h2>
+      <p class="panel-desc">
+        Kemitraan yang sehat dibangun di atas rasa saling menghargai. Utari tidak dibebani pekerjaan teknis Canva atau operasional toko, dan tetap memegang hak cipta penuh atas karya aslinya.
+      </p>
+    </div>
+
+    <div class="sinergi-roles-grid">
+      <div class="role-clean-card utari">
+        <div class="role-tag">PERAN UTARI</div>
+        <h3 class="role-name">Original Creator &amp; Advisor</h3>
+        <ul class="role-clean-list">
+          <li>Menyediakan 2.547 ilustrasi yang sudah ada di folder.</li>
+          <li>Hak cipta karya seni asli <strong>100% tetap milik Utari</strong>.</li>
+          <li>Memberikan approval atas kecocokan tema produk jadi.</li>
+          <li><strong>Rp 0 Modal Finansial:</strong> Utari tidak mengeluarkan biaya apa pun.</li>
+        </ul>
+      </div>
+
+      <div class="role-clean-card telkraf">
+        <div class="role-tag">PERAN TELKRAF (KHAIRUL)</div>
+        <h3 class="role-name">Production &amp; Commercial Partner</h3>
+        <ul class="role-clean-list">
+          <li>Penyusunan layouting Canva &amp; smart frames interaktif.</li>
+          <li>Menanggung 100% biaya listing fee dan operasional toko.</li>
+          <li>Pembuatan mockup editorial dan promosi visual Pinterest.</li>
+          <li>Penanganan customer service &amp; komplain pembeli luar negeri.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CLEAN PRINCIPLES BOX -->
+    <div class="clean-principles-box">
+      <h3 class="principle-title">Prinsip Bagi Hasil &amp; Transparansi:</h3>
+      <div class="principle-items">
+        <div class="principle-item">
+          <span>🛡️</span>
+          <div><strong>Kepemilikan Hak Cipta Terjamin:</strong> Karya seni Utari tidak diakui sepihak oleh studio. Utari tetap diakui sebagai pencipta asli dari seluruh ilustrasi.</div>
+        </div>
+        <div class="principle-item">
+          <span>📊</span>
+          <div><strong>Pencatatan Penjualan Terbuka:</strong> Laporan performa penjualan dari toko (Etsy/Gumroad) direkapitulasi secara transparan tiap akhir bulan.</div>
+        </div>
+        <div class="principle-item">
+          <span>💵</span>
+          <div><strong>Transfer Royalti Rutin:</strong> Hak bagi hasil keuntungan bersih langsung ditransfer ke rekening bank Utari setiap siklus bulanan tanpa potongan tak jelas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER WITH OFFICIAL TELKRAF LOGO
+     ========================================================================== -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo-wrap">
+      <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
+    <div>BLUEPRINT × UTARY // RESTRICTED ACCESS 2026</div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     SCRIPTS: AUTH GATE & TAB CONTROLLER
+     ========================================================================== -->
+<script>
+// PASSCODE HASHES: MantapKali, mantapkali, fallback 2547
+const VALID_HASHES = new Set([
+  "84e41149998523aa38383223198cadc2d45b15a0d066b7edbece63afaf588229",
+  "8db2e41ba3e1df839256608708bf01a0bfd727de7d4d463f1eae486c8e573c1f",
+  "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0"
+]);
+
+const isEmbed = (new URLSearchParams(window.location.search).get("embed") === "1") || (window.self !== window.top);
+if (isEmbed) {
+  document.body.classList.add("is-embedded");
+}
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  const hashArr = Array.from(new Uint8Array(hashBuf));
+  return hashArr.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function checkSessionAuth() {
+  if (isEmbed || sessionStorage.getItem("utary_auth") === "granted") {
+    document.getElementById("security-gate").classList.add("unlocked");
+  }
+}
+
+async function verifyGate() {
+  const entered = document.getElementById("gate-pass").value.trim();
+  const lower = entered.toLowerCase();
+  const errBox = document.getElementById("gate-err");
+  const hashedRaw = await sha256(entered);
+  const hashedLower = await sha256(lower);
+  
+  if (VALID_HASHES.has(hashedRaw) || VALID_HASHES.has(hashedLower)) {
+    sessionStorage.setItem("utary_auth", "granted");
+    document.getElementById("security-gate").classList.add("unlocked");
+    errBox.style.display = "none";
+  } else {
+    errBox.style.display = "block";
+    const el = document.getElementById("gate-pass");
+    el.value = "";
+    el.focus();
+  }
+}
+
+function handleGateKey(e) {
+  if (e.key === "Enter") verifyGate();
+}
+
+function lockGate() {
+  sessionStorage.removeItem("utary_auth");
+  document.getElementById("security-gate").classList.remove("unlocked");
+  document.getElementById("gate-pass").value = "";
+  document.getElementById("gate-err").style.display = "none";
+}
+
+// TAB SWITCHING
+function switchTab(tabId, btnEl) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+  const activeP = document.getElementById(tabId);
+  if (activeP) activeP.classList.add('active');
+  if (btnEl) {
+    btnEl.classList.add('active');
+    btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  // Smooth scroll up to top of panel on mobile
+  const tabsWrapper = document.querySelector('.tabs-wrapper');
+  if (tabsWrapper) {
+    const y = tabsWrapper.getBoundingClientRect().top + window.pageYOffset - 50;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+// INIT
+checkSessionAuth();
+</script>
+</body>
+</html>
