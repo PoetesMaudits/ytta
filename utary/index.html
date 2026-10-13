@@ -249,6 +249,133 @@ body::before {
 }
 
 /* ==========================================================================
+   WORKSPACE CLOUD DRIVE SWITCHER BAR (SEAMLESS MULTI-DOCUMENT HUB)
+   ========================================================================== */
+.workspace-drive-bar {
+  background: #09090e;
+  border-bottom: 1.5px solid var(--border-strong);
+  padding: 8px 0;
+  position: sticky;
+  top: 45px;
+  z-index: 98;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+.workspace-drive-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.drive-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-yellow);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.drive-docs-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.drive-docs-nav::-webkit-scrollbar { display: none; }
+.drive-doc-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.drive-doc-btn:hover {
+  color: #fff;
+  border-color: var(--text-muted);
+}
+.drive-doc-btn.active {
+  background: linear-gradient(90deg, rgba(245, 224, 58, 0.18) 0%, rgba(240, 82, 122, 0.18) 100%);
+  border-color: var(--accent-yellow);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(245, 224, 58, 0.25);
+}
+.drive-doc-btn.active .doc-btn-icon {
+  transform: scale(1.15);
+}
+
+.workspace-doc-view {
+  display: none;
+  animation: docIn 0.25s ease-out;
+}
+.workspace-doc-view.active {
+  display: block;
+}
+@keyframes docIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* EMBEDDED PORTAL IFRAME CONTAINER */
+.portal-frame-wrapper {
+  background: #08080a;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0 32px 0;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.85);
+}
+.portal-frame-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.portal-frame-header strong { color: var(--accent-yellow); }
+.portal-frame-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.portal-tool-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.portal-tool-btn:hover {
+  color: #fff;
+  border-color: var(--accent-yellow);
+}
+.portal-iframe {
+  width: 100%;
+  height: 85vh;
+  border: none;
+  display: block;
+  background: #08080a;
+}
+
+/* ==========================================================================
    HERO BANNER & EXECUTIVE HIGHLIGHTS
    ========================================================================== */
 .hero-section {
@@ -334,7 +461,7 @@ body::before {
    ========================================================================== */
 .tabs-wrapper {
   position: sticky;
-  top: 45px;
+  top: 90px;
   z-index: 95;
   background: rgba(10, 10, 14, 0.98);
   backdrop-filter: blur(16px);
@@ -1131,9 +1258,40 @@ footer {
 </header>
 
 <!-- ==========================================================================
-     HERO & EXECUTIVE HIGHLIGHTS
+     WORKSPACE CLOUD DRIVE SWITCHER BAR (SEAMLESS MULTI-DOCUMENT HUB)
      ========================================================================== -->
-<div class="container hero-section">
+<div class="workspace-drive-bar">
+  <div class="container workspace-drive-inner">
+    <div class="drive-label">
+      <span>☁️</span>
+      <span>STUDIO CLOUD DRIVE:</span>
+    </div>
+    <div class="drive-docs-nav">
+      <button class="drive-doc-btn active" onclick="switchWorkspaceDoc('doc-dashboard', this)">
+        <span class="doc-btn-icon">🧸</span>
+        <span>1. Blueprint &amp; Produk Utari</span>
+      </button>
+      <button class="drive-doc-btn" onclick="switchWorkspaceDoc('doc-portal', this)">
+        <span class="doc-btn-icon">🏛️</span>
+        <span>2. YTTA Master Vault Gateway</span>
+      </button>
+      <button class="drive-doc-btn" onclick="switchWorkspaceDoc('doc-report', this)">
+        <span class="doc-btn-icon">📑</span>
+        <span>3. Laporan Analisis Riset Lengkap</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="workspace-viewport">
+
+  <!-- ==========================================================================
+       DOKUMEN 1: BLUEPRINT & REKOMENDASI PRODUK UTARI (DASHBOARD)
+       ========================================================================== -->
+  <div id="doc-dashboard" class="workspace-doc-view active">
+
+    <!-- HERO & EXECUTIVE HIGHLIGHTS -->
+    <div class="container hero-section">
   <div class="hero-badge">AI MOAT RESEARCH &amp; PRODUCT STRATEGY 2026</div>
   <h1 class="hero-title">
     Monetisasi Mutakhir Ilustrasi Anak di Tengah <span>Gempuran AI</span>
@@ -2087,9 +2245,137 @@ footer {
         </div>
       </div>
     </div>
-  </section>
+    </main>
+  </div> <!-- END OF doc-dashboard -->
 
-</main>
+  <!-- ==========================================================================
+       DOKUMEN 2: YTTA MASTER PORTAL GATEWAY (EMBEDDED LIVE VIEW)
+       ========================================================================== -->
+  <div id="doc-portal" class="workspace-doc-view">
+    <div class="container" style="padding-top: 20px;">
+      <div class="portal-frame-wrapper">
+        <div class="portal-frame-header">
+          <div>
+            <span>DOKUMEN INDUK: <strong>YTTA MASTER PORTAL SYSTEM (INDEX.HTML)</strong></span>
+            <span style="color: var(--text-dim); margin-left: 10px;">// REALTIME EMBEDDED VIEWPORT</span>
+          </div>
+          <div class="portal-frame-tools">
+            <button class="portal-tool-btn" onclick="document.getElementById('portal-iframe-el').src = document.getElementById('portal-iframe-el').src">🔄 Muat Ulang Frame</button>
+            <a href="../index.html" target="_blank" class="portal-tool-btn">↗️ Buka di Tab Baru</a>
+          </div>
+        </div>
+        <iframe id="portal-iframe-el" src="../index.html" class="portal-iframe" title="YTTA Master Portal System"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOKUMEN 3: LAPORAN ANALISIS RISET LENGKAP (READER MODE)
+       ========================================================================== -->
+  <div id="doc-report" class="workspace-doc-view">
+    <div class="container" style="padding-top: 24px;">
+      <div class="archive-card">
+        <div class="archive-meta-row">
+          <span>DOKUMEN RESMI: <strong>ANALISIS_PELUANG_ILUSTRASI_ANAK_UTARI.MD</strong></span>
+          <span>SUMBER: <strong>D:/BUDDY/TELKRAF/MICROSTOCK/</strong></span>
+          <span>MODE: <strong>FULL READER MODE // STANDALONE VIEW</strong></span>
+        </div>
+        <h2 class="archive-title">Laporan Riset &amp; Analisis Mendalam: Monetisasi Aset Ilustrasi Anak di Tengah Gempuran AI</h2>
+        <p class="archive-desc">
+          Dokumen lengkap evaluasi 2.547 aset ilustrasi Utari, pembuktian 5 tahun data Google Trends, peluang pasar B2B &amp; B2C, serta skema pembagian royalti transparan.
+        </p>
+
+        <div class="archive-content-box">
+          <h3>1. Executive Summary &amp; Korelasi Strategis Microstock</h3>
+          <p>
+            Dalam evaluasi strategi microstock Telkraf.id, model lama (mengunggah ribuan file JPEG/vektor mentah secara acak ke Adobe Stock/Shutterstock untuk mendapatkan royalti $0.10–$0.50) sudah hancur lebur akibat banjir gambar AI generatif.
+          </p>
+          <p>
+            Namun, pergeseran ini melahirkan hukum ekonomi baru: <strong>ketika gambar generik menjadi gratis dan berlimpah, kurasi manusia, konsistensi emosional, dan produk siap pakai (end-product) justru menjadi barang langka bernilai jual tinggi (high ticket).</strong>
+          </p>
+
+          <h3>2. Mengapa Ilustrasi Anak Memiliki "AI Moat" Terkuat?</h3>
+          <table class="archive-table">
+            <thead>
+              <tr>
+                <th>Dimensi Evaluasi</th>
+                <th>Konten Generatif AI</th>
+                <th>Ilustrasi Otentik Utari (Hand-Drawn)</th>
+                <th>Keunggulan Komersial</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Konsistensi Karakter</strong></td>
+                <td>Gagal mempertahankan bentuk wajah/baju karakter di halaman 1–40.</td>
+                <td>Karakter beruang, anak, dan kelinci kohesif di seluruh buku.</td>
+                <td>Kunci utama buku cerita &amp; busy book berseri.</td>
+              </tr>
+              <tr>
+                <td><strong>Presisi Vektor (SVG)</strong></td>
+                <td>Path bertumpuk, ribuan node sampah, garis bocor.</td>
+                <td>Vektor kurva tertutup bersih, ramah mesin Cricut/laser.</td>
+                <td>Dicari komunitas Crafter di Creative Fabrica.</td>
+              </tr>
+              <tr>
+                <td><strong>Akurasi Pedagogi</strong></td>
+                <td>Typo font alfabet, urutan tracing motorik ngawur.</td>
+                <td>Sesuai kaidah motorik halus Montessori (garis putus-putus rapi).</td>
+                <td>Lolos standar pembelian guru di TPT.</td>
+              </tr>
+              <tr>
+                <td><strong>Sentuhan Emosional</strong></td>
+                <td>Efek uncanny valley, kaku, dan dingin.</td>
+                <td>Hangat, lembut, estetika pastel kawaii ramah anak.</td>
+                <td>Orang tua aktif mencari konten screen-free.</td>
+              </tr>
+              <tr>
+                <td><strong>Legalitas Hak Cipta</strong></td>
+                <td>Rawan sengketa hukum lisensi komersial.</td>
+                <td>100% orisinal ciptaan manusia, aman garansi lisensi komersial penuh.</td>
+                <td>Syarat mutlak bagi institusi dan sekolah.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>3. 5 Rekomendasi Produk High-Demand Berdasarkan Google Trends</h3>
+          <p>
+            <strong>1. Toddler Routine &amp; Montessori Busy Book ($19 – $24 USD):</strong> Permintaan Google Trends `toddler busy book` naik +140% YoY. Format binder velcro Canva 40 halaman.<br/>
+            <strong>2. Islamic Kids Ramadan &amp; Eid Adventure ($18 – $28 USD):</strong> Menjawab permintaan keluarga Muslim diaspora US/UK yang kekurangan konten anak estetik.<br/>
+            <strong>3. Pastel Classroom Decor &amp; Phonics ($20 – $35 USD):</strong> Menembus pasar Teachers Pay Teachers (TPT) untuk belanja tahunan guru PAUD/TK di US.<br/>
+            <strong>4. Kids Calm-Down Corner &amp; Emotional Board ($14 – $22 USD):</strong> Regulasi emosi anak dengan visual feeling wheel dan afirmasi harian viral Pinterest.<br/>
+            <strong>5. Kids Apparel &amp; Sublimation SVG Pack ($5 – $12 USD):</strong> Vektor bersih untuk crafter kaos anak dan tumbler rumahan.
+          </p>
+
+          <h3>4. Model Bisnis "Asset Multi-Harvesting"</h3>
+          <p>
+            Utari tidak perlu menggambar dari nol setiap minggu. Sistem Telkraf.id menerapkan <strong>Asset Multi-Harvesting</strong> di mana 1 set gambar Utari dipanen menjadi 5 saluran pendapatan sekaligus: (1) Etsy B2C, (2) TPT Edukasi, (3) Seasonal Ramadan Kit, (4) Crafter SVG, dan (5) GoodNotes Digital Stationery.
+          </p>
+
+          <h3>5. Piagam Kemitraan Adil &amp; Perlindungan Utari</h3>
+          <ul>
+            <li><strong>100% Hak Cipta Tetap Milik Utari:</strong> Seluruh karya asli tetap diakui sah milik Utari. Telkraf hanya mengelola lisensi produk turunan Canva.</li>
+            <li><strong>Rp 0 Modal Finansial:</strong> Utari tidak dipungut biaya operasional toko atau listing fee apa pun.</li>
+            <li><strong>Pencatatan Terbuka:</strong> Laporan penjualan toko resmi dapat diaudit kapan saja.</li>
+            <li><strong>Transfer Royalti Rutin:</strong> Pembagian keuntungan ditransfer langsung ke rekening bank Utari setiap siklus bulanan.</li>
+          </ul>
+        </div>
+
+        <div class="archive-action-bar">
+          <button class="archive-action-btn" onclick="switchWorkspaceDoc('doc-dashboard', document.querySelectorAll('.drive-doc-btn')[0])">
+            <span>🧸</span>
+            <span>Kembali ke Blueprint &amp; Mockup Produk</span>
+          </button>
+          <button class="archive-action-btn" onclick="window.print()">
+            <span>🖨️</span>
+            <span>Cetak / Simpan Dokumen Ini (PDF)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- END OF workspace-viewport -->
 
 <!-- ==========================================================================
      FOOTER WITH OFFICIAL TELKRAF LOGO
@@ -2159,6 +2445,18 @@ function lockGate() {
   document.getElementById("security-gate").classList.remove("unlocked");
   document.getElementById("gate-pass").value = "";
   document.getElementById("gate-err").style.display = "none";
+}
+
+// WORKSPACE DOCUMENT SWITCHER (CLOUD DRIVE HUB)
+function switchWorkspaceDoc(docId, btnEl) {
+  document.querySelectorAll('.workspace-doc-view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.drive-doc-btn').forEach(b => b.classList.remove('active'));
+
+  const activeDoc = document.getElementById(docId);
+  if (activeDoc) activeDoc.classList.add('active');
+  if (btnEl) btnEl.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // TAB SWITCHER
