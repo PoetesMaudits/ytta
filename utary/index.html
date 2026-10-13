@@ -6,15 +6,15 @@
 <title>Telkraf.id × Utary — Strategi Monetisasi Aset Ilustrasi Anak di Tengah Gempuran AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-deep: #08080a;
+  --bg-deep: #09090b;
   --bg-surface: #0e0e13;
-  --bg-card: #131319;
-  --bg-card-hover: #191922;
-  --border-subtle: #22222e;
-  --border-strong: #323244;
+  --bg-card: rgba(19, 19, 25, 0.72);
+  --bg-card-hover: rgba(25, 25, 34, 0.85);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
 
   --text-main: #f5f5f7;
   --text-muted: #8e8ea2;
@@ -28,7 +28,7 @@
 
   --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
   --grad-card-header: linear-gradient(180deg, rgba(245, 224, 58, 0.08) 0%, transparent 100%);
-  --font-display: 'Creato Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -41,6 +41,10 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden !important;
   background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(ellipse 65% 45% at 50% -12%, rgba(139, 47, 194, 0.14), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 90% 12%, rgba(240, 82, 122, 0.07), transparent 60%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-display);
   font-size: 14.5px;
@@ -390,48 +394,155 @@ body::before {
   .hub-protection-grid { grid-template-columns: 1fr; }
 }
 
-.doc-header-strip {
+/* ==========================================================================
+   BLUEPRINT CANVA NATIVE STYLES
+   ========================================================================== */
+.canva-tab-panel {
+  display: none;
+  animation: panelIn 0.25s ease-out;
+}
+.canva-tab-panel.active { display: block; }
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .swot-grid { grid-template-columns: 1fr; }
+}
+.swot-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px 8px 0 0;
-  padding: 14px 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.swot-card.s { border-top: 3px solid var(--accent-green); }
+.swot-card.w { border-top: 3px solid #ff5252; }
+.swot-card.o { border-top: 3px solid var(--accent-yellow); }
+.swot-card.t { border-top: 3px solid var(--accent-purple); }
+
+.swot-head-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.swot-char {
+  font-size: 24px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+.swot-card.s .swot-char { color: var(--accent-green); }
+.swot-card.w .swot-char { color: #ff5252; }
+.swot-card.o .swot-char { color: var(--accent-yellow); }
+.swot-card.t .swot-char { color: var(--accent-purple); }
+
+.swot-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.swot-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+.swot-list li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.swot-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+}
+.swot-list li strong { color: var(--text-main); }
+
+.platform-cards-stack {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
-  border-bottom: 2px solid var(--accent-yellow);
+  margin-bottom: 28px;
 }
-.strip-action-btn {
-  background: transparent;
-  border: 1px solid var(--border-strong);
-  color: var(--accent-yellow);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
+.platform-item-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 18px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.platform-card-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
+}
+.platform-card-name {
+  font-size: 16px; font-weight: 700; color: #fff;
+}
+.platform-card-target {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+.platform-card-body {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
-  transition: all 0.2s ease;
 }
-.strip-action-btn:hover {
-  background: var(--accent-yellow);
-  color: #000;
+.platform-strategy-tag {
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
 }
-.doc-frame {
-  width: 100%;
-  height: 86vh;
-  min-height: 820px;
-  border: 1px solid var(--border-strong);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  background: #08080a;
-  display: block;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.8);
+
+.traffic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+@media (max-width: 860px) {
+  .traffic-grid { grid-template-columns: 1fr; }
+}
+.traffic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 18px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.traffic-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-pink);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.traffic-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #fff;
+}
+.traffic-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
 }
 
 /* ==========================================================================
@@ -1376,19 +1487,551 @@ footer {
        DOKUMEN: BLUEPRINT TRANSFORMASI CANVA
        ========================================================================== -->
   <div id="doc-canva" class="workspace-doc-view">
-    <div class="container" style="padding-top: 16px;">
-      <div class="doc-header-strip">
-        <div>
-          <h2 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 2px;">Blueprint Canva</h2>
-          <p style="font-size: 12.5px; color: var(--text-muted); margin: 0;">Presentasi visual strategi transformasi aset ilustrasi menjadi produk Canva.</p>
+
+    <!-- HERO & EXECUTIVE HIGHLIGHTS -->
+    <div class="container hero-section">
+      <h1 class="hero-title">
+        Blueprint Transformasi: Dari Ilustrasi Mentah Menjadi <span>Produk Jadi Canva</span>
+      </h1>
+      <p class="hero-lead">
+        Strategi visual mengubah 2.547 aset karya asli Utari menjadi produk bernilai jual tinggi yang dicari orang tua, guru, dan pelaku usaha di seluruh dunia melalui format interaktif siap pakai.
+      </p>
+
+      <div class="metrics-strip">
+        <div class="metric-box active">
+          <div class="metric-val green">5 Modul</div>
+          <div class="metric-lbl">Strategi Transformasi Visual</div>
         </div>
-        <a href="./blueprint-canva.html" target="_blank" class="strip-action-btn">
-          <span>↗️</span>
-          <span>Buka Tab</span>
-        </a>
+        <div class="metric-box active">
+          <div class="metric-val yellow">$15 – $24</div>
+          <div class="metric-lbl">Target Valuasi per Template</div>
+        </div>
+        <div class="metric-box active">
+          <div class="metric-val pink">100%</div>
+          <div class="metric-lbl">Hak Cipta Tetap Milik Utari</div>
+        </div>
+        <div class="metric-box active">
+          <div class="metric-val cyan">4 Minggu</div>
+          <div class="metric-lbl">Roadmap Peluncuran Produk</div>
+        </div>
       </div>
-      <iframe id="canva-frame" src="./blueprint-canva.html?embed=1" class="doc-frame" title="Blueprint Canva"></iframe>
     </div>
+
+    <!-- STICKY TOPIC TABS FOR BLUEPRINT CANVA -->
+    <div class="sticky-tabs-container">
+      <div class="container tabs-inner-wrap">
+        <div class="tabs-scroll-hint">
+          <span>NAVIGASI TOPIK BLUEPRINT:</span>
+          <span>👈 GESER TAB 👉</span>
+        </div>
+        <div class="tabs-nav" id="canva-tabs-nav">
+          <button class="tab-btn active" onclick="switchCanvaTab('canva-tab-mockups', this)">
+            <span class="tab-icon">🌟</span>
+            <span>Nyawa Kedua</span>
+          </button>
+          <button class="tab-btn" onclick="switchCanvaTab('canva-tab-swot', this)">
+            <span class="tab-icon">📊</span>
+            <span>Analisis SWOT</span>
+          </button>
+          <button class="tab-btn" onclick="switchCanvaTab('canva-tab-platform', this)">
+            <span class="tab-icon">🛒</span>
+            <span>Pasar Trafik</span>
+          </button>
+          <button class="tab-btn" onclick="switchCanvaTab('canva-tab-roadmap', this)">
+            <span class="tab-icon">🗺️</span>
+            <span>Roadmap Penjualan</span>
+          </button>
+          <button class="tab-btn" onclick="switchCanvaTab('canva-tab-sinergi', this)">
+            <span class="tab-icon">🤝</span>
+            <span>Sinergi Hak</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+
+      <!-- TAB 1: NYAWA KEDUA (MOCKUP SHOWCASE) -->
+      <section id="canva-tab-mockups" class="canva-tab-panel active">
+        <div class="panel-header">
+          <div class="panel-tag">VISUALISASI PRODUK JADI // SIAP JUAL</div>
+          <h2 class="panel-title">Bukan Clipart Mentah: Ini Wujud Nyata Saat Jadi Produk</h2>
+          <p class="panel-desc">
+            Pembeli global mencari <strong>produk jadi</strong> yang menghemat waktu mereka. Berikut 3 bentuk produk bernilai tinggi yang siap kita buat dari 2.547 ilustrasi Utari:
+          </p>
+        </div>
+
+        <div class="mockups-grid">
+          <!-- MOCKUP 1: BUSY BOOK -->
+          <div class="mockup-card">
+            <div class="mockup-visual">
+              <span class="product-badge-pill">PRINTABLE BINDER KIT</span>
+              <span class="product-price-pill">$19 USD</span>
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="canvaBookCover" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFD1DC"/>
+                    <stop offset="100%" stop-color="#FFB7B2"/>
+                  </linearGradient>
+                  <linearGradient id="canvaCarBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#80D6FF"/>
+                    <stop offset="100%" stop-color="#42A5F5"/>
+                  </linearGradient>
+                </defs>
+                <rect x="25" y="20" width="150" height="160" rx="10" fill="#fff" stroke="#323244" stroke-width="3"/>
+                <rect x="30" y="25" width="140" height="150" rx="8" fill="url(#canvaBookCover)"/>
+                <circle cx="25" cy="50" r="5" fill="#444" stroke="#fff" stroke-width="1.5"/>
+                <circle cx="25" cy="100" r="5" fill="#444" stroke="#fff" stroke-width="1.5"/>
+                <circle cx="25" cy="150" r="5" fill="#444" stroke="#fff" stroke-width="1.5"/>
+                <g transform="translate(48, 65)">
+                  <rect x="10" y="30" width="84" height="30" rx="8" fill="url(#canvaCarBody)"/>
+                  <path d="M25 30 L40 12 L70 12 L82 30 Z" fill="#E1F5FE"/>
+                  <circle cx="55" cy="8" r="4" fill="#FF5252"/>
+                  <circle cx="40" cy="38" r="3" fill="#1e1e28"/>
+                  <circle cx="68" cy="38" r="3" fill="#1e1e28"/>
+                  <path d="M50 44 Q54 48 58 44" fill="none" stroke="#1e1e28" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="34" cy="44" r="3.5" fill="#FF8A80" opacity="0.7"/>
+                  <circle cx="74" cy="44" r="3.5" fill="#FF8A80" opacity="0.7"/>
+                  <circle cx="28" cy="60" r="10" fill="#37474F"/>
+                  <circle cx="28" cy="60" r="4" fill="#ECEFF1"/>
+                  <circle cx="76" cy="60" r="10" fill="#37474F"/>
+                  <circle cx="76" cy="60" r="4" fill="#ECEFF1"/>
+                </g>
+                <rect x="45" y="142" width="110" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
+                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#F0527A" text-anchor="middle">TODDLER BUSY BOOK</text>
+              </svg>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-niche">EDUKASI BALITA // MONTESSORI</div>
+              <h3 class="mockup-headline">Toddler Morning Routine Busy Book</h3>
+              <p class="mockup-desc">
+                Ilustrasi mobil polisi anak, makanan pastel, dan objek harian Utari disatukan menjadi <strong>40 halaman buku aktivitas velcro interaktif</strong> untuk balita usia 2–5 tahun.
+              </p>
+              <div class="mockup-spec-box">
+                <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+                <ul>
+                  <li>Flashcard alfabet velcro &amp; kendaraan darurat</li>
+                  <li>Matching game bayangan &amp; bentuk simetris</li>
+                  <li>Good habits reward chart berstiker</li>
+                  <li>Format A4 &amp; US Letter siap cetak di rumah</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MOCKUP 2: BAKERY CAFE BRAND KIT -->
+          <div class="mockup-card">
+            <div class="mockup-visual">
+              <span class="product-badge-pill">B2B BRANDING PACK</span>
+              <span class="product-price-pill">$24 USD</span>
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="canvaBakeryBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFF3E0"/>
+                    <stop offset="100%" stop-color="#FFE0B2"/>
+                  </linearGradient>
+                  <linearGradient id="canvaBobaCup" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#B3E5FC"/>
+                    <stop offset="100%" stop-color="#81D4FA"/>
+                  </linearGradient>
+                </defs>
+                <rect x="25" y="20" width="150" height="160" rx="10" fill="url(#canvaBakeryBg)" stroke="#323244" stroke-width="3"/>
+                <path d="M70 60 L78 135 Q100 145 122 135 L130 60 Z" fill="url(#canvaBobaCup)" stroke="#0288D1" stroke-width="2"/>
+                <ellipse cx="100" cy="60" rx="34" ry="10" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+                <line x1="100" y1="28" x2="100" y2="60" stroke="#FF5252" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="88" cy="120" r="5" fill="#37474F"/>
+                <circle cx="100" cy="125" r="5" fill="#37474F"/>
+                <circle cx="112" cy="118" r="5" fill="#37474F"/>
+                <circle cx="93" cy="90" r="2.5" fill="#263238"/>
+                <circle cx="107" cy="90" r="2.5" fill="#263238"/>
+                <path d="M97 96 Q100 99 103 96" fill="none" stroke="#263238" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="89" cy="94" r="3" fill="#FF8A80" opacity="0.6"/>
+                <circle cx="111" cy="94" r="3" fill="#FF8A80" opacity="0.6"/>
+                <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
+                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#E65100" text-anchor="middle">BAKERY &amp; CAFE KIT</text>
+              </svg>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-niche">UMKM F&amp;B // CAFE KEKINIAN</div>
+              <h3 class="mockup-headline">Artisan Bakery &amp; Boba Cafe Brand Kit</h3>
+              <p class="mockup-desc">
+                Kue tart stroberi dan camilan manis Utari disulap menjadi <strong>kit identitas visual lengkap</strong> yang dibutuhkan pemilik cafe rumahan tanpa menyewa desainer mahal.
+              </p>
+              <div class="mockup-spec-box">
+                <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+                <ul>
+                  <li>Stiker cup sealer minuman &amp; toples kue bulat</li>
+                  <li>Loyalty stamp card (10 kopi gratis 1)</li>
+                  <li>Table tent A4 promosi diskon meja</li>
+                  <li>Template postingan Instagram feed &amp; story</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MOCKUP 3: DIGITAL PLANNER -->
+          <div class="mockup-card">
+            <div class="mockup-visual">
+              <span class="product-badge-pill">DIGITAL PLANNER IPAD</span>
+              <span class="product-price-pill">$15 USD</span>
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="canvaIpadBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2c2d3a"/>
+                    <stop offset="100%" stop-color="#181922"/>
+                  </linearGradient>
+                  <linearGradient id="canvaScreenPaper" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FBFBF9"/>
+                    <stop offset="100%" stop-color="#F0EFEB"/>
+                  </linearGradient>
+                </defs>
+                <rect x="22" y="16" width="156" height="168" rx="14" fill="url(#canvaIpadBody)" stroke="#44465a" stroke-width="2.5"/>
+                <rect x="30" y="24" width="140" height="152" rx="8" fill="url(#canvaScreenPaper)"/>
+                <rect x="156" y="36" width="14" height="16" rx="3" fill="#F0527A"/>
+                <rect x="156" y="58" width="14" height="16" rx="3" fill="#F5E03A"/>
+                <rect x="156" y="80" width="14" height="16" rx="3" fill="#00d2ff"/>
+                <rect x="156" y="102" width="14" height="16" rx="3" fill="#00e676"/>
+                <line x1="42" y1="46" x2="148" y2="46" stroke="#d5d3cd" stroke-width="2"/>
+                <line x1="42" y1="68" x2="148" y2="68" stroke="#e8e6e0" stroke-width="1.5"/>
+                <line x1="42" y1="88" x2="148" y2="88" stroke="#e8e6e0" stroke-width="1.5"/>
+                <line x1="42" y1="108" x2="148" y2="108" stroke="#e8e6e0" stroke-width="1.5"/>
+                <line x1="42" y1="128" x2="148" y2="128" stroke="#e8e6e0" stroke-width="1.5"/>
+                <g transform="translate(92, 60)">
+                  <rect x="0" y="0" width="46" height="42" rx="4" fill="#FFF8E7" stroke="#E0C2AE" stroke-width="1.5"/>
+                  <circle cx="16" cy="18" r="2" fill="#5D4037"/>
+                  <circle cx="30" cy="18" r="2" fill="#5D4037"/>
+                  <ellipse cx="23" cy="23" rx="4" ry="3" fill="#D7CCC8"/>
+                  <circle cx="23" cy="22" r="1.5" fill="#3E2723"/>
+                </g>
+                <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
+                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#8B2FC2" text-anchor="middle">IPAD DIGITAL PLANNER</text>
+              </svg>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-niche">GEN-Z // IPAD PRODUCTIVITY</div>
+              <h3 class="mockup-headline">GoodNotes Pastel Study Vault &amp; Stickers</h3>
+              <p class="mockup-desc">
+                Vektor memo pad beruang dan stationery Utari dijadikan <strong>template jurnal digital iPad</strong> yang dilengkapi stiker transparan crop-ready untuk GoodNotes/Notion.
+              </p>
+              <div class="mockup-spec-box">
+                <div class="mockup-spec-title">KOMPONEN PRODUK DI CANVA:</div>
+                <ul>
+                  <li>Hyperlinked Weekly &amp; Monthly Study Dashboard</li>
+                  <li>300+ Crop-ready PNG/SVG GoodNotes Digital Stickers</li>
+                  <li>Memo sticky notes pastel ganti warna dinamis</li>
+                  <li>Exam countdown &amp; Pomodoro study log tracker</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: SWOT & TRIANGULASI DATA -->
+      <section id="canva-tab-swot" class="canva-tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">EVALUASI STRATEGIS &amp; VALIDASI PASAR</div>
+          <h2 class="panel-title">SWOT Produk &amp; Bukti Triangulasi Data Empiris</h2>
+          <p class="panel-desc">
+            Fokus pada analisis kelayakan produk dan bukti nyata bahwa pasar global siap membeli produk ini.
+          </p>
+        </div>
+
+        <div class="swot-grid">
+          <div class="swot-card s">
+            <div class="swot-head-row">
+              <span class="swot-char">S</span>
+              <span class="swot-label">STRENGTHS (KEKUATAN KARYA)</span>
+            </div>
+            <ul class="swot-list">
+              <li><strong>2.547 Aset Siap Pakai:</strong> Modal awal karya sangat masif tanpa butuh waktu berbulan-bulan menggambar dari awal.</li>
+              <li><strong>Gaya Otentik Hand-Drawn:</strong> Karakter hangat kawaii/pastel gouache memiliki sentuhan emosional tinggi dibanding AI generik.</li>
+              <li><strong>Format Vektor SVG:</strong> File SVG scalable siap diedit warnanya langsung di Canva tanpa pecah saat dicetak.</li>
+            </ul>
+          </div>
+
+          <div class="swot-card w">
+            <div class="swot-head-row">
+              <span class="swot-char">W</span>
+              <span class="swot-label">WEAKNESSES (TANTANGAN PRODUKSI)</span>
+            </div>
+            <ul class="swot-list">
+              <li><strong>Format Campuran:</strong> Sebagian batch berbentuk raster PNG sehingga butuh kurasi cermat agar hasil cetaknya tajam.</li>
+              <li><strong>Isi Batch Acak:</strong> Kategori awal masih bercampur, butuh penataan tematik agar tepat sasaran.</li>
+            </ul>
+          </div>
+
+          <div class="swot-card o">
+            <div class="swot-head-row">
+              <span class="swot-char">O</span>
+              <span class="swot-label">OPPORTUNITIES (PELUANG BESAR)</span>
+            </div>
+            <ul class="swot-list">
+              <li><strong>Tren Homeschool Global:</strong> Ibu muda US/Eropa aktif mencari aktivitas cetak di rumah untuk mengurangi screen-time balita.</li>
+              <li><strong>Pasar iPad Gen-Z:</strong> Penjualan stiker digital GoodNotes dan study planner memiliki repeat order yang sangat tinggi.</li>
+            </ul>
+          </div>
+
+          <div class="swot-card t">
+            <div class="swot-head-row">
+              <span class="swot-char">T</span>
+              <span class="swot-label">THREATS &amp; MITIGASI</span>
+            </div>
+            <ul class="swot-list">
+              <li><strong>Banjir Clipart AI Murah:</strong> Clipart satuan tidak lagi bernilai. <em>Mitigasi:</em> Jangan jual gambar eceran, jual <strong>Canva Template Kit jadi</strong> berlisensi komersial.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tri-subhead">
+          <div class="panel-tag">TRIANGULASI DATA PASAR GLOBAL</div>
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">3 Pilar Bukti Empiris Pasar</h3>
+        </div>
+
+        <div class="tri-grid">
+          <div class="tri-card">
+            <div class="tri-icon">📈</div>
+            <div class="tri-badge">PILAR 1 // GOOGLE TRENDS</div>
+            <div class="tri-title">Aktivitas Homeschool</div>
+            <div class="tri-stat">+140% YoY</div>
+            <p class="tri-desc">
+              Volume pencarian kata kunci <em>"printable busy book for toddlers"</em> dan <em>"learning binder canva"</em> melonjak konsisten dengan puncak stabil tiap awal semester dan liburan.
+            </p>
+          </div>
+
+          <div class="tri-card">
+            <div class="tri-icon">🛒</div>
+            <div class="tri-badge">PILAR 2 // MARKETPLACE ETSY &amp; TPT</div>
+            <div class="tri-title">Top Shop Sales Record</div>
+            <div class="tri-stat">15,000+ Sales</div>
+            <p class="tri-desc">
+              Toko penjual produk sejenis di Etsy membukukan lebih dari 15.000 penjualan di harga <strong>$14 – $22 USD</strong> dengan rating 4.9 bintang dari ribuan ulasan pembeli.
+            </p>
+          </div>
+
+          <div class="tri-card">
+            <div class="tri-icon">📌</div>
+            <div class="tri-badge">PILAR 3 // PINTEREST VISUAL SEARCH</div>
+            <div class="tri-title">High Save &amp; Click Rate</div>
+            <div class="tri-stat">Top 5% Category</div>
+            <p class="tri-desc">
+              Kategori <em>"Preschool Activity Printables"</em> dan <em>"Aesthetic Study Planner"</em> memiliki rasio simpan tertinggi di Pinterest karena audiens aktif mencari ide cetak mandiri.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: PASAR & TRAFIK -->
+      <section id="canva-tab-platform" class="canva-tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">SALURAN PENJUALAN &amp; PROMOSI ORGANIK</div>
+          <h2 class="panel-title">Kandidat Platform Penjualan &amp; Mesin Trafik</h2>
+          <p class="panel-desc">
+            Strategi multi-platform yang didukung mesin promosi visual organik tanpa perlu mengeluarkan biaya iklan berbayar.
+          </p>
+        </div>
+
+        <div class="platform-cards-stack">
+          <div class="platform-item-card">
+            <div class="platform-card-header">
+              <span class="platform-card-name">Etsy Global Marketplace</span>
+              <span class="platform-card-target">Ibu Muda &amp; Pendidik US/Eropa</span>
+            </div>
+            <div class="platform-card-body">
+              <div>Etalase utama untuk produk printables dan Canva templates bernilai tinggi ($19 – $24).</div>
+              <div class="platform-strategy-tag">✦ Strategi: Menjangkau pembeli dengan daya beli tinggi yang mencari solusi cetak instan.</div>
+            </div>
+          </div>
+
+          <div class="platform-item-card">
+            <div class="platform-card-header">
+              <span class="platform-card-name">Creative Fabrica</span>
+              <span class="platform-card-target">Crafter &amp; Canva Designer</span>
+            </div>
+            <div class="platform-card-body">
+              <div>Ekosistem langganan dengan payout pasif per unduhan anggota aktif global.</div>
+              <div class="platform-strategy-tag">✦ Strategi: Listing bundle SVG scalable &amp; clipart vault untuk arus kas pasif jangka panjang.</div>
+            </div>
+          </div>
+
+          <div class="platform-item-card">
+            <div class="platform-card-header">
+              <span class="platform-card-name">Gumroad / Payhip</span>
+              <span class="platform-card-target">Audiens Media Sosial Direct</span>
+            </div>
+            <div class="platform-card-body">
+              <div>Toko mandiri dengan potongan fee sangat rendah dan pembayaran langsung via PayPal/Stripe.</div>
+              <div class="platform-strategy-tag">✦ Strategi: Link utama untuk trafik video Pinterest &amp; Instagram tanpa persaingan harga toko lain.</div>
+            </div>
+          </div>
+
+          <div class="platform-item-card">
+            <div class="platform-card-header">
+              <span class="platform-card-name">Teachers Pay Teachers (TPT)</span>
+              <span class="platform-card-target">Guru TK/SD &amp; Tutor</span>
+            </div>
+            <div class="platform-card-body">
+              <div>Pasar khusus materi ajar edukatif dengan siklus pembelian berulang tiap tahun ajaran baru.</div>
+              <div class="platform-strategy-tag">✦ Strategi: Etalase khusus paket lembar aktivitas tracing &amp; flashcard edukasi.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tri-subhead">
+          <div class="panel-tag">MESIN TRAFIK ORGANIK</div>
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">Cara Menarik Pembeli Tanpa Biaya Iklan</h3>
+        </div>
+
+        <div class="traffic-grid">
+          <div class="traffic-card">
+            <div class="traffic-tag">PINTEREST // MESIN UTAMA</div>
+            <h4 class="traffic-title">Pinterest Visual SEO</h4>
+            <p class="traffic-desc">
+              Pinterest adalah search engine visual. Rilis 15 Idea Pins estetik per minggu dengan kata kunci target (misal: <em>"toddler busy book printable"</em>). Pin terus aktif mendatangkan pembeli berbulan-bulan.
+            </p>
+          </div>
+
+          <div class="traffic-card">
+            <div class="traffic-tag">TIKTOK &amp; REELS // DEMO CEPAT</div>
+            <h4 class="traffic-title">Micro-Demo Video (7–10 Detik)</h4>
+            <p class="traffic-desc">
+              Video pendek yang memuaskan mata saat lembar busy book dipotong, ditempel velcro, atau stiker digital digeser di iPad. Memancing rasa ingin tahu ibu muda untuk meminta link beli di komentar.
+            </p>
+          </div>
+
+          <div class="traffic-card">
+            <div class="traffic-tag">LEAD MAGNET // EMAIL LIST</div>
+            <h4 class="traffic-title">Freebie Sample Funnel</h4>
+            <p class="traffic-desc">
+              Memberikan 3 halaman flashcard gratis untuk diunduh pembeli. Sebagai gantinya, mereka memberikan email yang kemudian secara otomatis menerima voucher diskon untuk membeli bundle lengkap $19.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: ROADMAP PENJUALAN -->
+      <section id="canva-tab-roadmap" class="canva-tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">EKSEKUSI NYATA // GO-TO-MARKET</div>
+          <h2 class="panel-title">Roadmap Penjualan 4 Minggu</h2>
+          <p class="panel-desc">
+            Jadwal kerja bertahap untuk membuktikan penjualan produk di pasar global:
+          </p>
+        </div>
+
+        <div class="roadmap-stack">
+          <div class="roadmap-card">
+            <div class="roadmap-time-side">
+              <div class="roadmap-week-num">MINGGU 1</div>
+              <div class="roadmap-days-tag">HARI 1 – 7</div>
+            </div>
+            <div class="roadmap-info-side">
+              <h4 class="roadmap-title">Kurasi Aset &amp; Assembling Pilot Product</h4>
+              <p class="roadmap-desc">
+                Telkraf memilih 350 ilustrasi terkuat Utari lalu menyusunnya menjadi master template Canva <strong>Toddler Busy Book (40 Halaman)</strong> lengkap dengan PDF delivery guide dan mockup 3D.
+              </p>
+              <div class="roadmap-out">✓ Output: 1 Master Template Canva Live + Mockup Editorial</div>
+            </div>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-time-side">
+              <div class="roadmap-week-num">MINGGU 2</div>
+              <div class="roadmap-days-tag">HARI 8 – 14</div>
+            </div>
+            <div class="roadmap-info-side">
+              <h4 class="roadmap-title">Listing Toko &amp; Aktivasi Mesin Pinterest</h4>
+              <p class="roadmap-desc">
+                Publikasi produk ke etalase Etsy &amp; Gumroad dengan copywriting SEO bahasa Inggris, serta menjadwalkan 15 Idea Pins di Pinterest menargetkan kata kunci pembeli US/Eropa.
+              </p>
+              <div class="roadmap-out">✓ Output: Toko Live Siap Menerima Order + 15 Pins Aktif</div>
+            </div>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-time-side">
+              <div class="roadmap-week-num">MINGGU 3</div>
+              <div class="roadmap-days-tag">HARI 15 – 21</div>
+            </div>
+            <div class="roadmap-info-side">
+              <h4 class="roadmap-title">Validasi Respon Pasar &amp; Assembling Produk Kedua</h4>
+              <p class="roadmap-desc">
+                Menganalisis traffic klik pembeli yang masuk, lalu meluncurkan produk kedua: <strong>Artisan Bakery Cafe Branding Pack</strong> untuk menjaring pasar UMKM F&amp;B.
+              </p>
+              <div class="roadmap-out">✓ Output: Laporan Data Klik Awal + Peluncuran Produk Kedua</div>
+            </div>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-time-side">
+              <div class="roadmap-week-num">MINGGU 4</div>
+              <div class="roadmap-days-tag">HARI 22 – 30</div>
+            </div>
+            <div class="roadmap-info-side">
+              <h4 class="roadmap-title">Evaluasi Penjualan &amp; Transfer Royalti Pertama</h4>
+              <p class="roadmap-desc">
+                Rekapitulasi penjualan bulan pertama secara transparan, mentransfer hak royalti langsung ke rekening Utari, dan mempersiapkan peluncuran produk ketiga (Digital Planner).
+              </p>
+              <div class="roadmap-out">✓ Output: Payout Royalti Bulan Pertama ke Rekening Utari</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: SINERGI & HAK CIPTA -->
+      <section id="canva-tab-sinergi" class="canva-tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">KOLABORASI ADIL // WIN-WIN PARTNERSHIP</div>
+          <h2 class="panel-title">Pembagian Peran &amp; Prinsip Kemitraan</h2>
+          <p class="panel-desc">
+            Kemitraan yang sehat dibangun di atas rasa saling menghargai. Utari tidak dibebani pekerjaan teknis Canva atau operasional toko, dan tetap memegang hak cipta penuh atas karya aslinya.
+          </p>
+        </div>
+
+        <div class="sinergi-roles-grid">
+          <div class="role-clean-card utari">
+            <div class="role-tag">PERAN UTARI</div>
+            <h3 class="role-name">Original Creator &amp; Advisor</h3>
+            <ul class="role-clean-list">
+              <li>Menyediakan 2.547 ilustrasi yang sudah ada di folder.</li>
+              <li>Hak cipta karya seni asli <strong>100% tetap milik Utari</strong>.</li>
+              <li>Memberikan approval atas kecocokan tema produk jadi.</li>
+              <li><strong>Rp 0 Modal Finansial:</strong> Utari tidak mengeluarkan biaya apa pun.</li>
+            </ul>
+          </div>
+
+          <div class="role-clean-card telkraf">
+            <div class="role-tag">PERAN TELKRAF (KHAIRUL)</div>
+            <h3 class="role-name">Production &amp; Commercial Partner</h3>
+            <ul class="role-clean-list">
+              <li>Penyusunan layouting Canva &amp; smart frames interaktif.</li>
+              <li>Menanggung 100% biaya listing fee dan operasional toko.</li>
+              <li>Pembuatan mockup editorial dan promosi visual Pinterest.</li>
+              <li>Penanganan customer service &amp; komplain pembeli luar negeri.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clean-principles-box">
+          <h3 class="principle-title">Prinsip Bagi Hasil &amp; Transparansi:</h3>
+          <div class="principle-items">
+            <div class="principle-item">
+              <span>🛡️</span>
+              <div><strong>Kepemilikan Hak Cipta Terjamin:</strong> Karya seni Utari tidak diakui sepihak oleh studio. Utari tetap diakui sebagai pencipta asli dari seluruh ilustrasi.</div>
+            </div>
+            <div class="principle-item">
+              <span>📊</span>
+              <div><strong>Pencatatan Penjualan Terbuka:</strong> Laporan performa penjualan dari toko (Etsy/Gumroad) direkapitulasi secara transparan tiap akhir bulan.</div>
+            </div>
+            <div class="principle-item">
+              <span>💵</span>
+              <div><strong>Transfer Royalti Rutin:</strong> Hak bagi hasil keuntungan bersih langsung ditransfer ke rekening bank Utari setiap siklus bulanan tanpa potongan tak jelas.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
 
   <!-- ==========================================================================
@@ -2549,10 +3192,11 @@ function returnToHub() {
   openDocument('doc-hub');
 }
 
-// TAB SWITCHER
-function switchTab(tabId, btnEl) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+// TAB SWITCHER (BLUEPRINT CANVA)
+function switchCanvaTab(tabId, btnEl) {
+  document.querySelectorAll('.canva-tab-panel').forEach(p => p.classList.remove('active'));
+  const nav = document.getElementById('canva-tabs-nav');
+  if (nav) nav.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
   const activeP = document.getElementById(tabId);
   if (activeP) activeP.classList.add('active');
@@ -2560,12 +3204,18 @@ function switchTab(tabId, btnEl) {
     btnEl.classList.add('active');
     btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }
+}
 
-  // Smooth scroll up to top of panel on mobile
-  const tabsWrapper = document.querySelector('.tabs-wrapper');
-  if (tabsWrapper) {
-    const y = tabsWrapper.getBoundingClientRect().top + window.pageYOffset - 50;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+// TAB SWITCHER (RISET TREN / DASHBOARD)
+function switchTab(tabId, btnEl) {
+  document.querySelectorAll('#doc-dashboard .tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#doc-dashboard .tab-btn').forEach(b => b.classList.remove('active'));
+
+  const activeP = document.getElementById(tabId);
+  if (activeP) activeP.classList.add('active');
+  if (btnEl) {
+    btnEl.classList.add('active');
+    btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   }
 }
 
