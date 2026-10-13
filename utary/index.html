@@ -4,17 +4,18 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>Telkraf.id × Utary — Strategi Monetisasi Aset Ilustrasi Anak di Tengah Gempuran AI</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-deep: #09090b;
   --bg-surface: #0e0e13;
-  --bg-card: rgba(19, 19, 25, 0.72);
-  --bg-card-hover: rgba(25, 25, 34, 0.85);
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.12);
+  --bg-card: rgba(18, 19, 26, 0.85);
+  --bg-card-hover: rgba(26, 28, 38, 0.95);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
 
   --text-main: #f5f5f7;
   --text-muted: #8e8ea2;
@@ -29,11 +30,12 @@
   --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
   --grad-card-header: linear-gradient(180deg, rgba(245, 224, 58, 0.08) 0%, transparent 100%);
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *, *::before, *::after {
   margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 html, body {
@@ -46,7 +48,9 @@ html, body {
     radial-gradient(ellipse 50% 35% at 90% 12%, rgba(240, 82, 122, 0.07), transparent 60%);
   background-attachment: fixed;
   color: var(--text-main);
-  font-family: var(--font-display);
+  font-family: var(--font-display) !important;
+  font-feature-settings: "tnum" on, "cv02", "cv03", "cv04", "cv11";
+  font-variant-numeric: tabular-nums;
   font-size: 14.5px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -95,16 +99,18 @@ body::before {
   pointer-events: none;
 }
 .gate-card {
-  background: #0f0f15;
-  border: 1px solid var(--border-strong);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.95);
-  border-radius: 8px;
-  max-width: 400px;
+  background: linear-gradient(180deg, rgba(22, 24, 34, 0.96) 0%, rgba(14, 15, 22, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.85);
+  border-radius: 24px;
+  max-width: 420px;
   width: 100%;
-  padding: 36px 26px;
+  padding: 40px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 .gate-card::before {
   content: "";
@@ -113,71 +119,92 @@ body::before {
   height: 3px;
   background: var(--grad-signature);
 }
-.gate-brand-logo {
-  max-width: 110px;
-  margin: 0 auto 16px auto;
+.brand-badge-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
-.gate-brand-logo svg {
-  width: 100%; height: auto; display: block;
+.brand-badge-circle svg {
+  width: 36px;
+  height: auto;
+  display: block;
+}
+.brand-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  border: 2px solid #09090b;
+  box-shadow: 0 0 10px var(--accent-green);
 }
 .gate-title {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   margin-bottom: 4px;
+  color: #fff;
 }
 .gate-sub {
   font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 20px;
-  font-family: var(--font-mono);
+  margin-bottom: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
-.gate-input-wrap { margin-bottom: 14px; }
+.gate-input-wrap { margin-bottom: 16px; }
 .gate-input {
   width: 100%;
-  background: #07070a;
-  border: 1px solid var(--border-subtle);
-  border-radius: 4px;
+  background: #08080d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
   color: #fff;
-  font-family: var(--font-mono);
   font-size: 18px;
+  font-weight: 700;
   text-align: center;
-  letter-spacing: 2px;
-  padding: 12px 14px;
+  letter-spacing: 4px;
+  padding: 14px 16px;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: all 0.2s ease;
 }
 .gate-input:focus {
   border-color: var(--accent-yellow);
-  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+  box-shadow: 0 0 16px rgba(245, 224, 58, 0.25);
 }
 .gate-btn {
   width: 100%;
   background: var(--grad-signature);
   color: #000;
   font-weight: 800;
-  font-size: 13.5px;
+  font-size: 14px;
   border: none;
-  padding: 13px;
-  border-radius: 4px;
+  padding: 14px;
+  border-radius: 14px;
   cursor: pointer;
-  font-family: var(--font-display);
   letter-spacing: 0.5px;
   transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px rgba(245, 224, 58, 0.3);
 }
 .gate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 224, 58, 0.3);
+  box-shadow: 0 8px 26px rgba(245, 224, 58, 0.45);
 }
 .gate-error {
   display: none;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12px;
+  font-weight: 600;
   color: #ff5252;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 /* ==========================================================================
@@ -185,9 +212,10 @@ body::before {
    ========================================================================== */
 .top-bar {
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(14, 14, 19, 0.95);
-  backdrop-filter: blur(14px);
-  padding: 10px 0;
+  background: rgba(9, 9, 11, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 12px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -202,23 +230,58 @@ body::before {
   align-items: center;
   gap: 12px;
 }
-.brand-logo-wrap {
-  width: 84px;
+.brand-badge-circle-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.brand-logo-wrap svg {
-  width: 100%; height: auto; display: block;
+.brand-badge-circle-sm:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-yellow);
+}
+.brand-badge-circle-sm svg {
+  width: 22px;
+  height: auto;
+  display: block;
+}
+.brand-status-dot-sm {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1.5px solid #09090b;
+  box-shadow: 0 0 8px var(--accent-green);
 }
 .divider-col {
   width: 1px; height: 18px; background: var(--border-strong);
 }
 .partner-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .partner-tag strong { color: #fff; }
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
 .top-actions {
   display: flex;
   align-items: center;
@@ -228,39 +291,40 @@ body::before {
   display: none;
   align-items: center;
   gap: 6px;
-  background: rgba(245, 224, 58, 0.12);
+  background: rgba(245, 224, 58, 0.14);
   border: 1px solid var(--accent-yellow);
   color: var(--accent-yellow);
-  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 4px;
+  font-size: 12.5px;
+  padding: 8px 16px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .back-btn:hover {
   background: var(--accent-yellow);
   color: #000;
+  box-shadow: 0 4px 14px rgba(245, 224, 58, 0.35);
 }
 .lock-btn {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
-  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 12px;
-  padding: 6px 12px;
-  border-radius: 4px;
+  font-size: 12.5px;
+  padding: 8px 14px;
+  border-radius: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.2s ease;
 }
 .lock-btn:hover {
   color: #fff;
-  border-color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
 }
 
 .workspace-doc-view {
@@ -309,14 +373,17 @@ body::before {
   .hub-gallery-grid { grid-template-columns: 1fr; }
 }
 .hub-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 28px 24px;
+  background: linear-gradient(180deg, rgba(20, 22, 30, 0.85) 0%, rgba(13, 14, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px 26px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
@@ -324,13 +391,13 @@ body::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 3px;
-  background: var(--border-strong);
+  background: rgba(255, 255, 255, 0.1);
   transition: background 0.2s ease;
 }
 .hub-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent-yellow);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  border-color: rgba(245, 224, 58, 0.4);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
 }
 .hub-card:hover::before {
   background: var(--grad-signature);
@@ -354,14 +421,13 @@ body::before {
   flex-grow: 1;
 }
 .hub-card-btn {
-  background: transparent;
-  border: 1.5px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--accent-yellow);
-  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  padding: 10px 16px;
-  border-radius: 4px;
+  padding: 10px 18px;
+  border-radius: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -370,17 +436,20 @@ body::before {
   transition: all 0.2s ease;
 }
 .hub-card:hover .hub-card-btn {
-  background: var(--accent-yellow);
+  background: var(--grad-signature);
   color: #000;
-  border-color: var(--accent-yellow);
+  font-weight: 800;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(245, 224, 58, 0.35);
 }
 
 .hub-protection-box {
-  background: #09090d;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 24px;
+  background: linear-gradient(180deg, rgba(20, 22, 30, 0.85) 0%, rgba(13, 14, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 26px;
   margin-bottom: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 .hub-protection-grid {
   display: grid;
@@ -415,10 +484,10 @@ body::before {
 .swot-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .swot-card.s { border-top: 3px solid var(--accent-green); }
 .swot-card.w { border-top: 3px solid #ff5252; }
@@ -478,10 +547,10 @@ body::before {
 .platform-item-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 18px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .platform-card-header {
   display: flex;
@@ -524,10 +593,10 @@ body::before {
 .traffic-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 18px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .traffic-tag {
   font-family: var(--font-mono);
@@ -594,15 +663,17 @@ body::before {
 .metric-box {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 14px 16px;
+  border-radius: 20px;
+  padding: 16px 18px;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .metric-box::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
+  top: 0; left: 0; right: 0; height: 3px;
   background: var(--border-strong);
 }
 .metric-box.active::before {
@@ -631,14 +702,15 @@ body::before {
    ========================================================================== */
 .tabs-wrapper {
   position: sticky;
-  top: 90px;
+  top: 76px;
   z-index: 95;
-  background: rgba(10, 10, 14, 0.98);
-  backdrop-filter: blur(16px);
+  background: rgba(9, 9, 11, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 10px 0;
-  border-bottom: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 24px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .tabs-header-hint {
   display: flex;
@@ -662,14 +734,14 @@ body::before {
 .tabs-nav::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-strong);
-  color: var(--text-muted);
+  background: rgba(20, 21, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #c4c4d2;
   font-family: var(--font-display);
   font-size: 13px;
-  font-weight: 700;
-  padding: 10px 16px;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 14px;
   cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
@@ -679,16 +751,21 @@ body::before {
   flex-shrink: 0;
   scroll-snap-align: start;
   min-height: 44px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .tab-btn:hover {
   color: #fff;
-  border-color: var(--text-muted);
+  background: rgba(30, 32, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 .tab-btn.active {
-  background: linear-gradient(180deg, rgba(245, 224, 58, 0.15) 0%, rgba(19, 19, 25, 1) 100%);
-  border-color: var(--accent-yellow);
-  color: var(--accent-yellow);
-  box-shadow: 0 0 14px rgba(245, 224, 58, 0.25);
+  background: var(--grad-signature) !important;
+  border-color: transparent !important;
+  color: #000 !important;
+  font-weight: 800 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 18px rgba(245, 224, 58, 0.35) !important;
   transform: translateY(-1px);
 }
 .tab-btn.active .tab-icon {
@@ -748,10 +825,12 @@ body::before {
 .moat-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 22px;
+  border-radius: 20px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .moat-card.ai {
   border-top: 3px solid #ff5252;
@@ -800,11 +879,13 @@ body::before {
 }
 
 .core-takeaway-box {
-  background: linear-gradient(180deg, #13131c 0%, #0d0d12 100%);
+  background: linear-gradient(180deg, rgba(19, 19, 28, 0.95) 0%, rgba(13, 13, 18, 0.98) 100%);
   border: 1px solid var(--border-strong);
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 24px;
   margin-bottom: 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .takeaway-title {
   font-size: 16px;
@@ -833,11 +914,13 @@ body::before {
 .mockup-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s, border-color 0.2s;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .mockup-card:hover {
   transform: translateY(-2px);
@@ -876,7 +959,7 @@ body::before {
   font-weight: 800;
 }
 .mockup-content {
-  padding: 18px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -904,7 +987,7 @@ body::before {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-top: auto;
   font-size: 11.5px;
 }
@@ -931,9 +1014,11 @@ body::before {
 .trends-table-wrap {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  overflow-x: auto;
+  border-radius: 20px;
+  overflow: hidden;
   margin-bottom: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .trends-table {
   width: 100%;
@@ -948,11 +1033,11 @@ body::before {
   font-family: var(--font-mono);
   font-size: 10.5px;
   text-transform: uppercase;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--border-strong);
 }
 .trends-table td {
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-main);
 }
@@ -987,8 +1072,10 @@ body::before {
 .tri-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 18px;
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .tri-icon { font-size: 24px; margin-bottom: 6px; }
 .tri-badge {
@@ -1020,9 +1107,11 @@ body::before {
 .archive-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: 20px;
+  padding: 26px;
   margin-bottom: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .archive-meta-row {
   display: flex;
@@ -1052,7 +1141,7 @@ body::before {
 .archive-content-box {
   background: #09090e;
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 16px;
   padding: 24px;
   color: var(--text-muted);
   font-size: 13px;
@@ -1114,7 +1203,7 @@ body::before {
   font-family: var(--font-mono);
   font-size: 11.5px;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1139,10 +1228,12 @@ body::before {
 .roadmap-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 20px;
   overflow: hidden;
   display: grid;
   grid-template-columns: 120px 1fr;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .roadmap-time-side {
   background: var(--bg-surface);
@@ -1191,9 +1282,11 @@ body::before {
 .calc-wrapper {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: 20px;
+  padding: 26px;
   margin-bottom: 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .calc-title {
   font-size: 18px;
@@ -1240,7 +1333,7 @@ body::before {
 .calc-display {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 16px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -1283,8 +1376,10 @@ body::before {
 .role-clean-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 18px;
+  border-radius: 20px;
+  padding: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .role-clean-card.utari { border-top: 3px solid var(--accent-pink); }
 .role-clean-card.telkraf { border-top: 3px solid var(--accent-cyan); }
@@ -1311,11 +1406,13 @@ body::before {
 }
 
 .clean-principles-box {
-  background: linear-gradient(180deg, #121218 0%, #0c0c10 100%);
+  background: linear-gradient(180deg, rgba(18, 18, 24, 0.95) 0%, rgba(12, 12, 16, 0.98) 100%);
   border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  padding: 22px;
+  border-radius: 20px;
+  padding: 24px;
   margin-bottom: 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .principle-title {
   font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent-yellow);
@@ -1351,8 +1448,13 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-.footer-logo-wrap { width: 70px; }
-.footer-logo-wrap svg { width: 100%; height: auto; opacity: 0.7; }
+.footer-logo-wrap { width: 75px; }
+.footer-logo-wrap svg { width: 100%; height: auto; opacity: 0.85; }
+.footer-copy {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
 
 /* ==========================================================================
    RESPONSIVE DESIGN
@@ -1376,8 +1478,9 @@ footer {
      ========================================================================== -->
 <div id="security-gate">
   <div class="gate-card">
-    <div class="gate-brand-logo">
+    <div class="brand-badge-circle">
       <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+      <span class="brand-status-dot"></span>
     </div>
     <div class="gate-title">RESTRICTED VAULT</div>
     <div class="gate-sub">TELKRAF.ID × UTARY BLUEPRINT 2026</div>
@@ -1395,11 +1498,12 @@ footer {
 <header class="top-bar">
   <div class="container top-bar-inner">
     <div class="brand-identity-row">
-      <div class="brand-logo-wrap" onclick="returnToHub()" title="Kembali ke Direktori Hub">
+      <div class="brand-badge-circle-sm" onclick="returnToHub()" title="Kembali ke Direktori Hub">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+        <span class="brand-status-dot-sm"></span>
       </div>
       <div class="divider-col"></div>
-      <div class="partner-tag">PARTNERSHIP: <strong>UTARY × TELKRAF.ID</strong></div>
+      <div class="partner-tag"><span class="live-pulse-dot"></span> PARTNERSHIP: <strong>UTARY × TELKRAF.ID</strong></div>
     </div>
     <div class="top-actions">
       <button id="header-back-btn" class="back-btn" onclick="returnToHub()">
@@ -1598,7 +1702,7 @@ footer {
                   <circle cx="76" cy="60" r="4" fill="#ECEFF1"/>
                 </g>
                 <rect x="45" y="142" width="110" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#F0527A" text-anchor="middle">TODDLER BUSY BOOK</text>
+                <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="bold" fill="#F0527A" text-anchor="middle">TODDLER BUSY BOOK</text>
               </svg>
             </div>
             <div class="mockup-content">
@@ -1648,7 +1752,7 @@ footer {
                 <circle cx="89" cy="94" r="3" fill="#FF8A80" opacity="0.6"/>
                 <circle cx="111" cy="94" r="3" fill="#FF8A80" opacity="0.6"/>
                 <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#E65100" text-anchor="middle">BAKERY &amp; CAFE KIT</text>
+                <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="bold" fill="#E65100" text-anchor="middle">BAKERY &amp; CAFE KIT</text>
               </svg>
             </div>
             <div class="mockup-content">
@@ -1704,7 +1808,7 @@ footer {
                   <circle cx="23" cy="22" r="1.5" fill="#3E2723"/>
                 </g>
                 <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-                <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#8B2FC2" text-anchor="middle">IPAD DIGITAL PLANNER</text>
+                <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="bold" fill="#8B2FC2" text-anchor="middle">IPAD DIGITAL PLANNER</text>
               </svg>
             </div>
             <div class="mockup-content">
@@ -2242,7 +2346,7 @@ footer {
             </g>
             <!-- Text Badge -->
             <rect x="45" y="142" width="110" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#F0527A" text-anchor="middle">TODDLER BUSY BOOK</text>
+            <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="bold" fill="#F0527A" text-anchor="middle">TODDLER BUSY BOOK</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -2307,7 +2411,7 @@ footer {
             </g>
             <!-- Badge -->
             <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" fill="#1B2B4B" text-anchor="middle">RAMADAN KIDS ACTIVITY</text>
+            <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="bold" fill="#1B2B4B" text-anchor="middle">RAMADAN KIDS ACTIVITY</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -2372,7 +2476,7 @@ footer {
             </g>
             <!-- Badge -->
             <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">CALM-DOWN CORNER KIT</text>
+            <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">CALM-DOWN CORNER KIT</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -2422,20 +2526,20 @@ footer {
             <g transform="translate(38, 55)">
               <!-- Card A: Apple -->
               <rect x="0" y="0" width="36" height="52" rx="4" fill="#fff" stroke="#E0E0E0"/>
-              <text x="18" y="16" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#E53935" text-anchor="middle">Aa</text>
+              <text x="18" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="bold" fill="#E53935" text-anchor="middle">Aa</text>
               <circle cx="18" cy="32" r="10" fill="#EF5350"/>
               <path d="M18 22 Q21 17 24 20" fill="none" stroke="#689F38" stroke-width="1.5"/>
               <text x="18" y="48" font-size="6" font-weight="bold" fill="#333" text-anchor="middle">APPLE</text>
               <!-- Card B: Bear -->
               <rect x="44" y="0" width="36" height="52" rx="4" fill="#fff" stroke="#E0E0E0"/>
-              <text x="62" y="16" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#8D6E63" text-anchor="middle">Bb</text>
+              <text x="62" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="bold" fill="#8D6E63" text-anchor="middle">Bb</text>
               <circle cx="62" cy="32" r="9" fill="#BCAAA4"/>
               <circle cx="59" cy="30" r="1.5" fill="#333"/>
               <circle cx="65" cy="30" r="1.5" fill="#333"/>
               <text x="62" y="48" font-size="6" font-weight="bold" fill="#333" text-anchor="middle">BEAR</text>
               <!-- Card C: Cat -->
               <rect x="88" y="0" width="36" height="52" rx="4" fill="#fff" stroke="#E0E0E0"/>
-              <text x="106" y="16" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FB8C00" text-anchor="middle">Cc</text>
+              <text x="106" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="bold" fill="#FB8C00" text-anchor="middle">Cc</text>
               <circle cx="106" cy="32" r="9" fill="#FFE082"/>
               <polygon points="98,24 102,28 99,30" fill="#FFB74D"/>
               <polygon points="114,24 110,28 113,30" fill="#FFB74D"/>
@@ -2443,7 +2547,7 @@ footer {
             </g>
             <!-- Badge -->
             <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" fill="#EF6C00" text-anchor="middle">PASTEL CLASSROOM KIT</text>
+            <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="bold" fill="#EF6C00" text-anchor="middle">PASTEL CLASSROOM KIT</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -2496,10 +2600,10 @@ footer {
             </g>
             <!-- Cut Lines Indicating Cricut Ready -->
             <path d="M45 130 L155 130" stroke="#8E24AA" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <text x="100" y="137" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="bold" fill="#8E24AA" text-anchor="middle">CRICUT · SILHOUETTE · GLOWFORGE READY</text>
+            <text x="100" y="137" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="bold" fill="#8E24AA" text-anchor="middle">CRICUT · SILHOUETTE · GLOWFORGE READY</text>
             <!-- Badge -->
             <rect x="42" y="146" width="116" height="18" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="159" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" fill="#8E24AA" text-anchor="middle">KIDS APPAREL SVG BUNDLE</text>
+            <text x="100" y="159" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="bold" fill="#8E24AA" text-anchor="middle">KIDS APPAREL SVG BUNDLE</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -2553,7 +2657,7 @@ footer {
             </g>
             <!-- Badge -->
             <rect x="42" y="142" width="116" height="20" rx="4" fill="#ffffff" opacity="0.95"/>
-            <text x="100" y="156" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" fill="#D81B60" text-anchor="middle">KIDS BIRTHDAY PARTY KIT</text>
+            <text x="100" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="bold" fill="#D81B60" text-anchor="middle">KIDS BIRTHDAY PARTY KIT</text>
           </svg>
         </div>
         <div class="mockup-content">
@@ -3109,7 +3213,7 @@ footer {
     <div class="footer-logo-wrap">
       <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
     </div>
-    <div>TELKRAF.ID × UTARY // RESTRICTED STRATEGY BLUEPRINT 2026</div>
+    <div class="footer-copy">© 2026 Telkraf. All rights reserved.</div>
   </div>
 </footer>
 
