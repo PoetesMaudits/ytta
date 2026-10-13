@@ -185,6 +185,10 @@ body::before {
 <script>
 // VAULT ROUTING TABLE (HASH-PROTECTED)
 const HASHED_ROUTES = {
+  // MantapKali & mantapkali
+  "84e41149998523aa38383223198cadc2d45b15a0d066b7edbece63afaf588229": "./utary/",
+  "8db2e41ba3e1df839256608708bf01a0bfd727de7d4d463f1eae486c8e573c1f": "./utary/",
+  // Legacy / fallback PINs
   "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0": "./utary/",
   "27a301fdbc4d398d2bb271d90ba609ed26165584f08cf6b07b0b98f333bf46ea": "./utary/",
   "4aa0b06ef5d367d890fc03a1963d61a60fedcadbf0f50a28fd6456597afcbd1f": "./utary/"
@@ -198,13 +202,16 @@ async function sha256(str) {
 }
 
 async function unlockPortal() {
-  const key = document.getElementById("vault-key").value.trim().toLowerCase();
+  const rawKey = document.getElementById("vault-key").value.trim();
+  const lowerKey = rawKey.toLowerCase();
   const err = document.getElementById("vault-err");
-  const hashed = await sha256(key);
+  const hashedRaw = await sha256(rawKey);
+  const hashedLower = await sha256(lowerKey);
   
-  if (HASHED_ROUTES[hashed]) {
+  const dest = HASHED_ROUTES[hashedRaw] || HASHED_ROUTES[hashedLower];
+  if (dest) {
     sessionStorage.setItem("utary_auth", "granted");
-    window.location.href = HASHED_ROUTES[hashed];
+    window.location.href = dest;
   } else {
     err.style.display = "block";
     document.getElementById("vault-key").value = "";
