@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Telkraf.id × Eko — Cloud Studio &amp; Creative Brief Kaligrafi &amp; Ornamen</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -725,22 +725,127 @@ body::before {
 }
 .callout-desc strong { color: #fff; }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border-subtle);
-  padding: 24px 0;
-  margin-top: 40px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--text-dim);
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
+.table-scroll-hint {
+  display: none;
   align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-yellow);
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  background: rgba(245, 224, 58, 0.08);
+  border: 1px solid rgba(245, 224, 58, 0.2);
+  border-radius: 6px;
+  width: fit-content;
 }
-.footer-logo-wrap { width: 70px; }
-.footer-logo-wrap svg { width: 100%; height: auto; opacity: 0.7; }
+
+/* ==========================================================================
+   MOBILE FIRST & RESPECTABLE TOUCH TARGETS (WCAG 2.2 / APPLE HIG)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+  .hub-title {
+    font-size: clamp(22px, 5.5vw, 28px);
+    letter-spacing: -0.6px;
+  }
+  .hero-title {
+    font-size: clamp(21px, 5.2vw, 26px);
+    letter-spacing: -0.5px;
+  }
+  .hero-lead {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+  .hub-card {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+  .hub-card-btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+  .tabs-wrapper {
+    top: 48px;
+    padding: 10px 0 6px 0;
+  }
+  .tabs-nav {
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .tab-btn {
+    min-height: 46px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  .feature-card {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+  .spec-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+  .clean-callout {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+  .gate-card {
+    padding: 30px 20px;
+    border-radius: 18px;
+  }
+  .gate-input {
+    font-size: 16px; /* Prevents iOS forced auto-zoom */
+    min-height: 48px;
+  }
+  .gate-btn {
+    min-height: 48px;
+  }
+  .arabic-sample {
+    font-size: 26px;
+  }
+  .clean-table th, .clean-table td {
+    padding: 12px 14px;
+  }
+  .col-ar {
+    font-size: 22px;
+    min-width: 180px;
+  }
+  .table-scroll-hint {
+    display: flex !important;
+  }
+  .dos-donts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo-wrap { width: 72px; }
+  .partner-tag { font-size: 10px; }
+  .back-btn, .lock-btn {
+    padding: 7px 11px;
+    font-size: 11.5px;
+    min-height: 42px;
+  }
+  .metrics-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .metric-box {
+    padding: 10px 12px;
+  }
+  .metric-val {
+    font-size: 17px;
+  }
+  .metric-label {
+    font-size: 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1578,13 +1683,9 @@ footer {
      SCRIPTS: AUTH GATE, WORKSPACE DOC VIEWER & TAB CONTROLLER
      ========================================================================== -->
 <script>
-// PASSCODE HASHES: khattat, eko, Eko, bismillah, 2026
+// PASSCODE HASH: HANYA bismillah26
 const VALID_HASHES = new Set([
-  "240e074d72ee20a36d3db47b8bcbc51574e0b1365a0ee78316606c49422fc1d2", // khattat
-  "d6e472bc327f9a0443d8fd7622530fef9e6fa76904df6e940e207977982c9cf9", // eko
-  "0a50931a0724f8936ecce125b95a1764aea20ec7d9cda31f2ec2024fe0eacb74", // Eko
-  "76e6a142ad9ef5cb89f0a7fc972d3b4e72750e3fa6cf1b09b5ab22e3895c1c01", // bismillah
-  "b5832a875a6c3f6834dd9a8a719a84a28292c00cc781d48c8b4cc6012423dc23"  // 2026
+  "a750973091bbf297524d1fb9a5054dc0041e022b4e141138be07e154e438a45f" // bismillah26
 ]);
 
 async function sha256(str) {

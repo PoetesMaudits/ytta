@@ -113,4 +113,34 @@ Setiap portal multi-dokumen (seperti `utary/`) harus mematuhi pola arsitektur be
 * Sesi disimpan di `sessionStorage.getItem("utary_auth") === "granted"`.
 
 ---
+
+## 5. Konstitusi Mobile-First & Touch Target Respectability (WCAG 2.2 / Apple HIG)
+
+Seluruh antarmuka studio Telkraf wajib tampil optimal dan berwibawa di perangkat mobile (360px – 430px):
+
+1. **Viewport & Safe Area Insets:**
+   * Meta viewport wajib: `<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>`.
+   * Padding container diselaraskan dengan safe area: `padding-left: max(14px, env(safe-area-inset-left));` dan `padding-right: max(14px, env(safe-area-inset-right));`.
+
+2. **Aturan 16px Input (Anti iOS Auto-Zoom):**
+   * Seluruh elemen `<input>` wajib memiliki `font-size: 16px` minimum. Di iOS Safari, font input di bawah 16px akan memicu zoom-in otomatis paksa yang merusak layout.
+
+3. **Standar Ukuran Tombol & Tap Target:**
+   * Tombol interaktif utama (`.gate-btn`, `.vault-btn`, `.hub-card-btn`, `.tab-btn`) wajib memiliki `min-height: 48px` di layar mobile.
+   * Pada layar smartphone (≤ 480px), tombol kartu utama membentang penuh (`width: 100%`) dengan teks terpusat untuk kemudahan navigasi satu jempol (*one-thumb usability*).
+   * Tombol top bar (`Kembali`, `Kunci`): `min-height: 42px`, padding sentuh nyaman, `touch-action: manipulation`.
+
+4. **Padding & Gutter yang Respectable:**
+   * Kartu tidak boleh memakan ruang berlebih. Padding kartu di mobile diturunkan dari 30px–40px desktop menjadi `18px–22px` mobile dengan `border-radius: 16px`.
+   * Gap grid kartu di mobile dipadatkan menjadi `12px–14px` agar hierarki konten padat dan tidak memboroskan tinggi layar.
+
+5. **Fluid Typography:**
+   * Judul besar menggunakan `clamp(22px, 5.5vw, 32px)` untuk mencegah teks judul patah menjadi baris-baris sempit yang kaku.
+
+6. **Tabel & Widget Data:**
+   * Pembungkus tabel wajib menyertakan `-webkit-overflow-scrolling: touch`.
+   * Sediakan petunjuk mikro visual di layar mobile: `← Geser tabel ke samping untuk rincian data →`.
+
+---
 *Telkraf.id — Built for Precision, Aesthetics, and Scalability.*
+
