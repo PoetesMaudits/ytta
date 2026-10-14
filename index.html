@@ -207,18 +207,27 @@ body::before {
 <script>
 // VAULT ROUTING TABLE (HASH-PROTECTED)
 const HASHED_ROUTES = {
-  // MantapKali & mantapkali
+  // UTARY ROUTES: MantapKali & mantapkali
   "84e41149998523aa38383223198cadc2d45b15a0d066b7edbece63afaf588229": "./utary/",
   "8db2e41ba3e1df839256608708bf01a0bfd727de7d4d463f1eae486c8e573c1f": "./utary/",
-  // Legacy / fallback PINs
   "c2d735ed61274b73ed20a49594661e35185797b6ee082cb5145383e548d4f9d0": "./utary/",
   "27a301fdbc4d398d2bb271d90ba609ed26165584f08cf6b07b0b98f333bf46ea": "./utary/",
-  "4aa0b06ef5d367d890fc03a1963d61a60fedcadbf0f50a28fd6456597afcbd1f": "./utary/"
+  "4aa0b06ef5d367d890fc03a1963d61a60fedcadbf0f50a28fd6456597afcbd1f": "./utary/",
+
+  // EKO ROUTES: eko, Eko, khattat, seniman, bismillah
+  "d6e472bc327f9a0443d8fd7622530fef9e6fa76904df6e940e207977982c9cf9": "./eko/",
+  "0a50931a0724f8936ecce125b95a1764aea20ec7d9cda31f2ec2024fe0eacb74": "./eko/",
+  "240e074d72ee20a36d3db47b8bcbc51574e0b1365a0ee78316606c49422fc1d2": "./eko/",
+  "be58fc97c6be965a33389186bacfa0e5479566610a9a90cf8bbbeb880a8fba6b": "./eko/",
+  "76e6a142ad9ef5cb89f0a7fc972d3b4e72750e3fa6cf1b09b5ab22e3895c1c01": "./eko/",
+  "896b0eeecbfae526c11b017b203c9ebf77f54c30c822e8ec57fb2e2a05cf4e81": "./eko/"
 };
 
 // Auto-redirect if already authenticated in this session
 if (sessionStorage.getItem("utary_auth") === "granted") {
   window.location.href = "./utary/";
+} else if (sessionStorage.getItem("eko_auth") === "granted") {
+  window.location.href = "./eko/";
 }
 
 async function sha256(str) {

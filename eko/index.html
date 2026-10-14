@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Telkraf.id × Eko — Cloud Studio &amp; Creative Brief Kaligrafi &amp; Ornamen</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #08080a;
+  --bg-surface: #0e0e13;
+  --bg-card: rgba(18, 18, 24, 0.88);
+  --bg-card-hover: rgba(25, 25, 34, 0.95);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --text-main: #f5f5f7;
+  --text-muted: #8e8ea2;
+  --text-dim: #545468;
+
+  --accent-yellow: #F5E03A;
+  --accent-pink: #F0527A;
+  --accent-purple: #8B2FC2;
+  --accent-cyan: #00d2ff;
+  --accent-green: #00e676;
+
+  --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
+  --grad-card-header: linear-gradient(180deg, rgba(245, 224, 58, 0.08) 0%, transparent 100%);
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-arabic: 'Amiri', serif;
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   SECURITY VERIFICATION GATE
+   ========================================================================== */
+#security-gate {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, #14141d 0%, #060608 100%);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+#security-gate.unlocked {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.gate-card {
+  background: rgba(15, 15, 21, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.9);
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+  padding: 38px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gate-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-signature);
+}
+.gate-brand-logo {
+  max-width: 100px;
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gate-brand-logo svg {
+  width: 100%; height: auto; display: block;
+}
+.gate-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.gate-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+.gate-input-wrap { margin-bottom: 14px; }
+.gate-input {
+  width: 100%;
+  background: rgba(7, 7, 10, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gate-input:focus {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 16px rgba(245, 224, 58, 0.22);
+}
+.gate-btn {
+  width: 100%;
+  background: var(--grad-signature);
+  color: #050508;
+  font-weight: 800;
+  font-size: 13.5px;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+.gate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 224, 58, 0.28);
+}
+.gate-btn:active {
+  transform: translateY(0);
+}
+.gate-error {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: #ff5252;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   TOP BAR (STICKY HEADER)
+   ========================================================================== */
+.top-bar {
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(14, 14, 19, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-identity-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-logo-wrap {
+  width: 84px;
+  display: flex;
+  align-items: center;
+}
+.brand-logo-wrap svg {
+  width: 100%; height: auto; display: block;
+}
+.divider-col {
+  width: 1px; height: 18px; background: var(--border-strong);
+}
+.partner-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.partner-tag strong { color: #fff; }
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.back-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 224, 58, 0.12);
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.back-btn:hover {
+  background: var(--accent-yellow);
+  color: #050508;
+  transform: translateY(-1px);
+}
+.lock-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.lock-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.workspace-doc-view {
+  display: none;
+  animation: docIn 0.25s ease-out;
+}
+.workspace-doc-view.active {
+  display: block;
+}
+@keyframes docIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   DIREKTORI HUB (HERO & GALLERY HOME)
+   ========================================================================== */
+.hub-hero {
+  margin: 32px 0 32px 0;
+  text-align: left;
+}
+.hub-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.hub-title span {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hub-sub {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 780px;
+  line-height: 1.6;
+}
+.hub-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+@media (max-width: 860px) {
+  .hub-gallery-grid { grid-template-columns: 1fr; }
+}
+.hub-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.hub-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--border-strong);
+  transition: background 0.25s ease;
+}
+.hub-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.7);
+}
+.hub-card:hover::before {
+  background: var(--grad-signature);
+}
+.hub-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.hub-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.hub-card-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.hub-card-btn {
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  color: var(--accent-yellow);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.hub-card:hover .hub-card-btn {
+  background: var(--accent-yellow);
+  color: #050508;
+  border-color: var(--accent-yellow);
+}
+
+/* ==========================================================================
+   DOCUMENT HERO & EXECUTIVE HIGHLIGHTS
+   ========================================================================== */
+.hero-section {
+  padding: 28px 0 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.hero-title span {
+  background: var(--grad-signature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-lead {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 960px;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 860px) {
+  .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+}
+.metric-box {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.metric-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--border-strong);
+}
+.metric-box.active::before {
+  background: var(--grad-signature);
+}
+.metric-val {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.metric-val.green { color: var(--accent-green); }
+.metric-val.yellow { color: var(--accent-yellow); }
+.metric-val.pink { color: var(--accent-pink); }
+.metric-val.cyan { color: var(--accent-cyan); }
+.metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   STICKY TAB BAR NAVIGATION (TELKRAF LIQUID GLASS)
+   ========================================================================== */
+.tabs-wrapper {
+  position: sticky;
+  top: 45px;
+  z-index: 95;
+  background: rgba(10, 10, 14, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.65);
+}
+.tabs-header-hint {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  padding: 0 4px;
+  letter-spacing: 0.5px;
+}
+.tabs-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 2px 2px 6px 2px;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  min-height: 44px;
+}
+.tab-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+.tab-btn.active {
+  background: rgba(245, 224, 58, 0.12);
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+  box-shadow: 0 4px 16px rgba(245, 224, 58, 0.18);
+  transform: translateY(-1px);
+}
+
+.tab-panel {
+  display: none;
+  animation: tabFadeIn 0.2s ease-out;
+}
+.tab-panel.active {
+  display: block;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-header {
+  margin-bottom: 24px;
+}
+.panel-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-yellow);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.panel-title {
+  font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px;
+}
+.panel-desc {
+  font-size: 13.5px; color: var(--text-muted); line-height: 1.6;
+}
+
+/* ==========================================================================
+   CARDS & GRIDS (STYLE, CATEGORY, TABLE)
+   ========================================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 768px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+.feature-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.feature-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.feature-name {
+  font-size: 16px; font-weight: 800; color: #fff;
+}
+.feature-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-yellow);
+}
+.arabic-sample {
+  font-family: var(--font-arabic);
+  font-size: 32px;
+  color: var(--accent-yellow);
+  direction: rtl;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.feature-desc {
+  font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;
+}
+.action-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+}
+.action-link:hover { text-decoration: underline; }
+
+/* MASTER TABLE (16 FRASA) */
+.table-responsive-box {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow-x: auto;
+  margin-bottom: 28px;
+}
+.clean-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+}
+.clean-table th {
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.clean-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+.clean-table tr:last-child td {
+  border-bottom: none;
+}
+.col-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  width: 45px;
+}
+.col-ar {
+  font-family: var(--font-arabic);
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  direction: rtl;
+  min-width: 220px;
+  line-height: 1.4;
+}
+.trans-head {
+  font-size: 13.5px; font-weight: 700; color: #fff; margin-bottom: 3px;
+}
+.trans-sub {
+  font-size: 12px; color: var(--text-muted);
+}
+.col-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-pink);
+}
+
+/* SPECIFICATION GRID */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 768px) {
+  .spec-grid { grid-template-columns: 1fr; }
+}
+.spec-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 20px;
+}
+.spec-title {
+  font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.spec-desc {
+  font-size: 13px; color: var(--text-muted); line-height: 1.6;
+}
+.spec-desc strong { color: #fff; }
+
+/* CALLOUT PRINCIPLES */
+.clean-callout {
+  background: rgba(18, 18, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 28px;
+}
+.callout-title {
+  font-size: 15px; font-weight: 700; color: var(--accent-yellow); margin-bottom: 8px;
+}
+.callout-desc {
+  font-size: 13px; color: var(--text-muted); line-height: 1.6;
+}
+.callout-desc strong { color: #fff; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 24px 0;
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo-wrap { width: 70px; }
+.footer-logo-wrap svg { width: 100%; height: auto; opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     SECURITY GATE (TARGET PIN: khattat / bismillah / eko)
+     ========================================================================== -->
+<div id="security-gate">
+  <div class="gate-card">
+    <div class="gate-brand-logo">
+      <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
+    <div class="gate-title">RESTRICTED VAULT</div>
+    <div class="gate-sub">TELKRAF.ID × EKO CLOUD STUDIO 2026</div>
+    <div class="gate-input-wrap">
+      <input type="password" id="gate-pass" class="gate-input" placeholder="MASUKKAN PIN" autofocus onkeypress="handleGateKey(event)"/>
+    </div>
+    <button class="gate-btn" onclick="verifyGate()">
+      <span>🔓</span>
+      <span>Buka Dokumen</span>
+    </button>
+    <div class="gate-error" id="gate-err">⚠️ PIN salah. Silakan coba lagi.</div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     STICKY TOP HEADER
+     ========================================================================== -->
+<header class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="brand-identity-row">
+      <div class="brand-logo-wrap">
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+      </div>
+      <div class="divider-col"></div>
+      <div class="partner-tag">
+        STUDIO × <strong>EKO</strong>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="header-back-btn" class="back-btn" onclick="returnToHub()">
+        <span>←</span>
+        <span>Kembali</span>
+      </button>
+      <button class="lock-btn" onclick="lockGate()" title="Kunci sesi">
+        <span>🔒</span>
+        <span>Kunci</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="workspace-viewport">
+
+  <!-- ==========================================================================
+       DOKUMEN 0: BERANDA DIREKTORI HUB
+       ========================================================================== -->
+  <div id="doc-hub" class="workspace-doc-view active">
+    <div class="container">
+      <div class="hub-hero">
+        <h1 class="hub-title">
+          Direktori Rujukan &amp; Brief // <span>Eko (Khattat &amp; Artist)</span>
+        </h1>
+        <p class="hub-sub">
+          Pusat rujukan pengkaryaan sketsa kaligrafi Arab autentik dan ornamen arsitektur Islam bernilai tinggi untuk alur digitalisasi vektor, laser-cut woodworking, dan komersialisasi global Telkraf.id.
+        </p>
+      </div>
+
+      <div class="hub-gallery-grid">
+        <!-- CARD 1: KALIGRAFI -->
+        <div class="hub-card" onclick="openDocument('doc-kaligrafi')">
+          <div class="hub-card-icon">✒️</div>
+          <div class="hub-card-title">Brief Kaligrafi Arab</div>
+          <div class="hub-card-desc">
+            Panduan 16 frasa utama kaligrafi Arab, kaidah khat (Tsuluts, Diwani, Kufi), standar stroke menyatu unibody, dan resolusi scan 600 DPI.
+          </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-kaligrafi');">
+            <span>✒️</span>
+            <span>Buka Brief</span>
+          </button>
+        </div>
+
+        <!-- CARD 2: ORNAMEN -->
+        <div class="hub-card" onclick="openDocument('doc-ornamen')">
+          <div class="hub-card-icon">📐</div>
+          <div class="hub-card-title">Brief Ornamen Geometris</div>
+          <div class="hub-card-desc">
+            Panduan 6 kategori ornamen (Jali screen partisi, 3D layered wall art, lentera knockdown, coaster set, dan bingkai arch mihrab).
+          </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-ornamen');">
+            <span>📐</span>
+            <span>Buka Brief</span>
+          </button>
+        </div>
+
+        <!-- CARD 3: SOP & WORKFLOW -->
+        <div class="hub-card" onclick="openDocument('doc-workflow')">
+          <div class="hub-card-icon">📋</div>
+          <div class="hub-card-title">Standar Vektor &amp; SOP</div>
+          <div class="hub-card-desc">
+            Standar teknis pemotretan smartphone tegak lurus 90°, pencahayaan merata bebas bayangan, penamaan file, dan penyerahan karya.
+          </div>
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-workflow');">
+            <span>📋</span>
+            <span>Lihat SOP</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOKUMEN 1: CREATIVE BRIEF KALIGRAFI ARAB
+       ========================================================================== -->
+  <div id="doc-kaligrafi" class="workspace-doc-view">
+    <div class="container hero-section">
+      <h1 class="hero-title">
+        Creative Brief: <span>Sketsa Kaligrafi Arab</span>
+      </h1>
+      <p class="hero-lead">
+        Panduan pengkaryaan sketsa kaligrafi Arab manual presisi untuk digitalisasi aset vektor microstock global dan pemotongan mesin laser (laser-cut wood / acrylic) studio Telkraf.id.
+      </p>
+
+      <div class="metrics-strip">
+        <div class="metric-box active">
+          <div class="metric-val yellow">16 Frasa</div>
+          <div class="metric-lbl">Total Pesanan Frasa</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val green">Unibody</div>
+          <div class="metric-lbl">Konstruksi Menyatu</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val cyan">600 DPI</div>
+          <div class="metric-lbl">Standar Scan / Foto</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val pink">Laser Cut</div>
+          <div class="metric-lbl">Tujuan Akhir Produksi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS BAR -->
+    <div class="tabs-wrapper">
+      <div class="container">
+        <div class="tabs-header-hint">
+          <span>PILIH TOPIK BRIEF KALIGRAFI:</span>
+          <span>👈 GESER TAB 👉</span>
+        </div>
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab('kal-tab-style', this)">
+            <span>🖋️</span>
+            <span>Kaidah Khat</span>
+          </button>
+          <button class="tab-btn" onclick="switchTab('kal-tab-table', this)">
+            <span>📜</span>
+            <span>16 Frasa</span>
+          </button>
+          <button class="tab-btn" onclick="switchTab('kal-tab-spec', this)">
+            <span>⚙️</span>
+            <span>Syarat Laser</span>
+          </button>
+          <button class="tab-btn" onclick="switchTab('kal-tab-rules', this)">
+            <span>🛡️</span>
+            <span>Do &amp; Don't</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANELS -->
+    <div class="container">
+      <!-- TAB 1: KAIDAH KHAT -->
+      <section id="kal-tab-style" class="tab-panel active">
+        <div class="panel-header">
+          <div class="panel-tag">KARAKTERISTIK GAYA // STYLE DIRECTION</div>
+          <h2 class="panel-title">4 Karakter Gaya Kaligrafi yang Dibutuhkan</h2>
+          <p class="panel-desc">
+            Pilihan gaya kaligrafi harus memiliki garis tebal mantap dan susunan huruf yang saling mengikat:
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <!-- DIWANI -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">Diwani / Diwani Jali</span>
+                <span class="feature-tag">LUWES &amp; ORNAMENTAL</span>
+              </div>
+              <div class="arabic-sample">ديواني جلي</div>
+              <p class="feature-desc">
+                Gaya meliuk indah, sangat luwes, dan padat. Sangat cocok untuk produk ucapan hari raya (Eid Mubarak &amp; Ramadan Kareem), mahar, dan kado pernikahan.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=modern%20diwani%20calligraphy%20art" target="_blank" class="action-link">
+              <span>Lihat Contoh Desain</span> &nearr;
+            </a>
+          </div>
+
+          <!-- KUFI -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">Kufi Modern / Murabba'</span>
+                <span class="feature-tag">PALING PRESISI</span>
+              </div>
+              <div class="arabic-sample">كوفي حديث</div>
+              <p class="feature-desc">
+                Bentuk geometris bersudut tegas, arsitektural, dan minimalis. Sangat kokoh dan ramah mesin potong laser tanpa risiko patah sama sekali.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=modern%20kufic%20calligraphy%20laser%20cut" target="_blank" class="action-link">
+              <span>Lihat Contoh Desain</span> &nearr;
+            </a>
+          </div>
+
+          <!-- THULUTH -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">Tsuluts (Thuluth) Sambung</span>
+                <span class="feature-tag">MEGAH &amp; BERWIBAWA</span>
+              </div>
+              <div class="arabic-sample">ثلث متداخل</div>
+              <p class="feature-desc">
+                Megah dengan susunan huruf saling menumpuk padat (*interlocking*). Menjadi favorit utama untuk hiasan plakat dinding masjid dan ayat doa.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=thuluth%20calligraphy%20composition%20circular" target="_blank" class="action-link">
+              <span>Lihat Contoh Desain</span> &nearr;
+            </a>
+          </div>
+
+          <!-- CONTEMPORARY -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">Contemporary Freehand</span>
+                <span class="feature-tag">MODERN KUAS</span>
+              </div>
+              <div class="arabic-sample">خط معاصر</div>
+              <p class="feature-desc">
+                Sapuan kuas tegas, modern, dinamis, dan terbaca jelas. Memberikan sentuhan artistik humanis kontemporer yang diminati pembeli Barat.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=modern%20arabic%20calligraphy%20brush%20stroke" target="_blank" class="action-link">
+              <span>Lihat Contoh Desain</span> &nearr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: 16 FRASA LENGKAP -->
+      <section id="kal-tab-table" class="tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">DAFTAR PESANAN // MASTER PHRASES</div>
+          <h2 class="panel-title">Tabel 16 Frasa Kaligrafi Prioritas Produksi</h2>
+          <p class="panel-desc">
+            Harap pastikan harakat dan bentuk komposisi mematuhi rekomendasi berikut:
+          </p>
+        </div>
+
+        <div class="table-responsive-box">
+          <table class="clean-table">
+            <thead>
+              <tr>
+                <th class="col-num">No</th>
+                <th>Teks Kaligrafi Arab</th>
+                <th>Transliterasi &amp; Makna</th>
+                <th>Komposisi</th>
+                <th>Gaya &amp; Referensi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-num">01</td>
+                <td class="col-ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</td>
+                <td>
+                  <div class="trans-head">Bismillahirrahmanirrahim</div>
+                  <div class="trans-sub">Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang</div>
+                </td>
+                <td class="col-badge">Memanjang Landscape</td>
+                <td><strong>Thuluth / Diwani</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">02</td>
+                <td class="col-ar">بِسْمِ اللَّهِ</td>
+                <td>
+                  <div class="trans-head">Bismillah (Ringkas)</div>
+                  <div class="trans-sub">Dengan menyebut nama Allah</div>
+                </td>
+                <td class="col-badge">Emblem Bulat / Oval</td>
+                <td><strong>Diwani Jali / Freehand</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">03</td>
+                <td class="col-ar">رَمَضَانُ كَرِيمٌ</td>
+                <td>
+                  <div class="trans-head">Ramadan Kareem</div>
+                  <div class="trans-sub">Bulan Ramadan yang mulia &amp; pemurah</div>
+                </td>
+                <td class="col-badge">Bebas Kubah</td>
+                <td><strong>Diwani Modern</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">04</td>
+                <td class="col-ar">رَمَضَانُ مُبَارَكٌ</td>
+                <td>
+                  <div class="trans-head">Ramadan Mubarak</div>
+                  <div class="trans-sub">Ramadan yang penuh berkah</div>
+                </td>
+                <td class="col-badge">Komposisi Membulat</td>
+                <td><strong>Thuluth / Diwani</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">05</td>
+                <td class="col-ar">عِيدٌ مُبَارَكٌ</td>
+                <td>
+                  <div class="trans-head">Eid Mubarak</div>
+                  <div class="trans-sub">Selamat Hari Raya yang diberkahi</div>
+                </td>
+                <td class="col-badge">Lengkung Bulan Sabit</td>
+                <td><strong>Diwani / Contemporary</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">06</td>
+                <td class="col-ar">عِيدٌ سَعِيدٌ</td>
+                <td>
+                  <div class="trans-head">Eid Sa'eed</div>
+                  <div class="trans-sub">Hari raya yang penuh kebahagiaan</div>
+                </td>
+                <td class="col-badge">Kompak 2 Baris</td>
+                <td><strong>Diwani Modern</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">07</td>
+                <td class="col-ar">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</td>
+                <td>
+                  <div class="trans-head">Taqabbalallahu Minna wa Minkum</div>
+                  <div class="trans-sub">Semoga Allah menerima amal ibadah kita bersama</div>
+                </td>
+                <td class="col-badge">Horizontal Seimbang</td>
+                <td><strong>Thuluth / Diwani</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">08</td>
+                <td class="col-ar">كُلُّ عَامٍ وَأَنْتُمْ بِخَيْرٍ</td>
+                <td>
+                  <div class="trans-head">Kullu 'Aam wa Antum bi-Khayr</div>
+                  <div class="trans-sub">Semoga setiap tahun Anda dalam kebaikan</div>
+                </td>
+                <td class="col-badge">Memanjang Harmonis</td>
+                <td><strong>Diwani / Kufi</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">09</td>
+                <td class="col-ar">الْحَمْدُ لِلَّهِ</td>
+                <td>
+                  <div class="trans-head">Alhamdulillah</div>
+                  <div class="trans-sub">Segala puji hanya bagi Allah</div>
+                </td>
+                <td class="col-badge">Tegak Vertikal / Kotak</td>
+                <td><strong>Kufi Modern / Thuluth</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">10</td>
+                <td class="col-ar">سُبْحَانَ اللَّهِ</td>
+                <td>
+                  <div class="trans-head">Subhanallah</div>
+                  <div class="trans-sub">Maha Suci Allah</div>
+                </td>
+                <td class="col-badge">Vertikal Seimbang</td>
+                <td><strong>Kufi Modern / Thuluth</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">11</td>
+                <td class="col-ar">مَا شَاءَ اللَّهُ تَبَارَكَ اللَّهُ</td>
+                <td>
+                  <div class="trans-head">Masha'Allah Tabarakallah</div>
+                  <div class="trans-sub">Atas kehendak Allah, Maha Berkah Allah</div>
+                </td>
+                <td class="col-badge">Siluet Trapesium / Oval</td>
+                <td><strong>Diwani Jali Sambung</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">12</td>
+                <td class="col-ar">اللَّهُ &bull; مُحَمَّدٌ</td>
+                <td>
+                  <div class="trans-head">Lafadz Allah &amp; Muhammad</div>
+                  <div class="trans-sub">Sepasang lafadz utama (Twin Art)</div>
+                </td>
+                <td class="col-badge">Dua Emblem Senada</td>
+                <td><strong>Thuluth / Kufi Modern</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">13</td>
+                <td class="col-ar">هَٰذَا مِنْ فَضْلِ رَبِّي</td>
+                <td>
+                  <div class="trans-head">Haza min Fadli Rabbi</div>
+                  <div class="trans-sub">Ini adalah semata-mata dari karunia Tuhanku</div>
+                </td>
+                <td class="col-badge">Plakat Horizontal</td>
+                <td><strong>Thuluth / Diwani</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">14</td>
+                <td class="col-ar">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</td>
+                <td>
+                  <div class="trans-head">Hasbunallah wa Ni'mal Wakeel</div>
+                  <div class="trans-sub">Cukuplah Allah menjadi Penolong kami</div>
+                </td>
+                <td class="col-badge">Membulat / Lingkaran</td>
+                <td><strong>Thuluth Circular</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">15</td>
+                <td class="col-ar">وَخَلَقْنَاكُمْ أَزْوَاجًا</td>
+                <td>
+                  <div class="trans-head">Wa Khalaqnakum Azwaja</div>
+                  <div class="trans-sub">"Dan Kami menciptakan kamu berpasang-pasangan" (QS. An-Naba: 8)</div>
+                </td>
+                <td class="col-badge">Lengkung Mahar / Arch</td>
+                <td><strong>Diwani Modern Romantis</strong></td>
+              </tr>
+              <tr>
+                <td class="col-num">16</td>
+                <td class="col-ar">بَارَكَ اللَّهُ لَكُمَا</td>
+                <td>
+                  <div class="trans-head">Barakallahu Lakuma</div>
+                  <div class="trans-sub">Semoga Allah memberkahi kalian berdua (Kado Nikah)</div>
+                </td>
+                <td class="col-badge">Kompak Kartu / Emblem</td>
+                <td><strong>Diwani / Contemporary</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: SPESIFIKASI LASER-CUT -->
+      <section id="kal-tab-spec" class="tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">KETENTUAN PRODUKSI // LASER ENGINEERING</div>
+          <h2 class="panel-title">Standar Pemotongan Laser &amp; Vektorisasi Presisi</h2>
+          <p class="panel-desc">
+            Agar hasil sketsa dapat langsung dipotong di bahan kayu/akrilik tanpa cacat produksi:
+          </p>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-card">
+            <div class="spec-title">🔗 1. Prinsip Unibody (Saling Menyatu)</div>
+            <p class="spec-desc">
+              Seluruh rangkaian huruf dalam satu frasa wajib <strong>saling bersentuhan/menempel</strong> membentuk satu kesatuan lempengan. Jangan biarkan ada huruf yang berdiri sendiri melayang tanpa penopang.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">🖋️ 2. Ketebalan Garis (Bold Stroke)</div>
+            <p class="spec-desc">
+              Sapuan garis harus <strong>tebal dan mantap</strong>. Hindari ujung ekor huruf yang terlampau tipis seperti benang (*hairline*) karena akan hangus terbakar atau rapuh saat dipotong laser.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">🎯 3. Posisi Titik &amp; Harakat Terikat</div>
+            <p class="spec-desc">
+              Titik-titik huruf (seperti titik *ba*, *nun*, *ya*) dan harakat hiasan wajib <strong>menempel langsung ke badan huruf terdekat</strong>, bukan mengambang bebas di ruang kosong.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">📄 4. Standar Media Gambar</div>
+            <p class="spec-desc">
+              Digambar di atas <strong>kertas putih bersih tanpa garis</strong> menggunakan <strong>tinta hitam pekat</strong> (marker chisel tip / pena qalam). Hasil scan diserahkan minimal <strong>600 DPI (PNG)</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: DO & DON'T -->
+      <section id="kal-tab-rules" class="tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">ETIKA &amp; KEASLIAN // QUALITY ASSURANCE</div>
+          <h2 class="panel-title">Panduan Do's &amp; Don'ts Pengkaryaan</h2>
+          <p class="panel-desc">
+            Menjaga integritas hak cipta dan mutu artistik karya studio:
+          </p>
+        </div>
+
+        <div class="clean-callout">
+          <div class="callout-title">✓ Yang Sangat Disarankan (DO):</div>
+          <div class="callout-desc">
+            <strong>1. Autentisitas Tulisan Tangan:</strong> Karya harus murni buatan tangan seniman Eko sendiri agar memiliki nilai emosional seni kaligrafi bernilai tinggi.<br/>
+            <strong>2. Huruf Mengunci:</strong> Mengatur jalinan antar huruf agar siluet luar tampak solid dan kokoh.<br/>
+            <strong>3. Harakat Jelas:</strong> Menuliskan harakat utama dengan proporsi seimbang tanpa membuat kalimat sesak atau salah baca.
+          </div>
+        </div>
+
+        <div class="clean-callout" style="border-color: rgba(255, 82, 82, 0.3);">
+          <div class="callout-title" style="color: #ff5252;">✗ Yang Dilarang Keras (DON'T):</div>
+          <div class="callout-desc">
+            <strong>1. Anti-Plagiarisme:</strong> Dilarang menjiplak karya kaligrafer lain yang sudah beredar di internet.<br/>
+            <strong>2. Kertas Bergaris / Kusut:</strong> Jangan menggambar di kertas buku bergaris atau kertas yang memiliki lipatan bayangan.<br/>
+            <strong>3. Garis Mengambang (Floating Parts):</strong> Hindari titik atau lengkungan harakat terputus yang tidak menempel ke struktur utama.
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOKUMEN 2: CREATIVE BRIEF ORNAMEN GEOMETRIS
+       ========================================================================== -->
+  <div id="doc-ornamen" class="workspace-doc-view">
+    <div class="container hero-section">
+      <h1 class="hero-title">
+        Creative Brief: <span>Ornamen Geometris &amp; Arsitektural</span>
+      </h1>
+      <p class="hero-lead">
+        Panduan pengkaryaan sketsa ornamen geometris Islam (Girih, Mihrab, Rosetta, &amp; Arabesque) bernilai tinggi untuk diproduksi menjadi file cutting laser (.SVG / .DXF) dan B2B Brand Kit Canva studio Telkraf.id.
+      </p>
+
+      <div class="metrics-strip">
+        <div class="metric-box active">
+          <div class="metric-val purple">6 Kategori</div>
+          <div class="metric-lbl">Total Kategori Desain</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val green">16 Aset</div>
+          <div class="metric-lbl">Target Desain Ornamen</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val yellow">Modular</div>
+          <div class="metric-lbl">Sistem Pola Berulang</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val cyan">Finger Joint</div>
+          <div class="metric-lbl">Sistem Rakitan Knockdown</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS BAR -->
+    <div class="tabs-wrapper">
+      <div class="container">
+        <div class="tabs-header-hint">
+          <span>PILIH TOPIK BRIEF ORNAMEN:</span>
+          <span>👈 GESER TAB 👉</span>
+        </div>
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab('orn-tab-cats', this)">
+            <span>📐</span>
+            <span>6 Kategori</span>
+          </button>
+          <button class="tab-btn" onclick="switchTab('orn-tab-grid', this)">
+            <span>📏</span>
+            <span>Konstruksi Pola</span>
+          </button>
+          <button class="tab-btn" onclick="switchTab('orn-tab-roles', this)">
+            <span>🤝</span>
+            <span>Sinergi Studio</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANELS -->
+    <div class="container">
+      <!-- TAB 1: 6 KATEGORI DESAIN -->
+      <section id="orn-tab-cats" class="tab-panel active">
+        <div class="panel-header">
+          <div class="panel-tag">KATEGORISASI ASET // PRODUCT SUITE</div>
+          <h2 class="panel-title">6 Kategori Ornamen Geometris yang Dipesan</h2>
+          <p class="panel-desc">
+            Setiap kategori memiliki fungsi arsitektural dan aplikasi produk laser-cut yang spesifik:
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <!-- A. Jali Screen -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">A. Islamic Jali Screen &amp; Partisi</span>
+                <span class="feature-tag">2 DESAIN (RASIO 1:2)</span>
+              </div>
+              <p class="feature-desc">
+                Pola kisi-kisi geometris (*mashrabiya*) berulang yang terikat kokoh ke bingkai luar. Digunakan untuk sekat ruangan kafe, pintu lemari, dan hiasan dinding ruang tamu.<br/>
+                &bull; <strong>Panel 1:</strong> Pola Bintang 8 Sudut (Khatam) modular.<br/>
+                &bull; <strong>Panel 2:</strong> Pola Lengkungan Maroko (Moroccan Arch Lattice).
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=modern%20jali%20screen%20laser%20cut%20panel" target="_blank" class="action-link">
+              <span>Lihat Contoh Jali Screen</span> &nearr;
+            </a>
+          </div>
+
+          <!-- B. Multi-Layer 3D -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">B. Multi-Layered 3D Geometric Wall Art</span>
+                <span class="feature-tag">1 SET (4 LAPISAN)</span>
+              </div>
+              <p class="feature-desc">
+                Karya seni dinding 3D yang terdiri dari 4 lapisan kayu/akrilik terpisah berukuran 30x30 cm. Ketika ditumpuk, menghasilkan efek bayangan dan kedalaman yang sangat mewah.<br/>
+                &bull; <strong>Lapis 1:</strong> Dasar padat penopang.<br/>
+                &bull; <strong>Lapis 2 &amp; 3:</strong> Geometri transisi bertingkat.<br/>
+                &bull; <strong>Lapis 4:</strong> Garis terluar paling detail dan presisi.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=layered%20islamic%20geometric%20wall%20art" target="_blank" class="action-link">
+              <span>Lihat Contoh 3D Layers</span> &nearr;
+            </a>
+          </div>
+
+          <!-- C. Lanterns -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">C. Knockdown 3D Ramadan Lantern</span>
+                <span class="feature-tag">1 DESAIN LENTERA MEJA</span>
+              </div>
+              <p class="feature-desc">
+                Lentera meja estetik 4 sisi yang dirakit tanpa lem menggunakan slot kait (*finger joint*). Dioptimalkan untuk kayu 3mm dengan lubang ornamen lilin LED hangat.<br/>
+                &bull; <strong>Dinding:</strong> Ornamen bulan sabit, bintang, atau lengkungan kubah masjid.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=laser%20cut%20lantern%20ramadan%20dxf" target="_blank" class="action-link">
+              <span>Lihat Contoh Lentera</span> &nearr;
+            </a>
+          </div>
+
+          <!-- D. Coasters -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">D. Geometric Coaster &amp; Trivet Sets</span>
+                <span class="feature-tag">SET 6 POLA (10x10 CM)</span>
+              </div>
+              <p class="feature-desc">
+                6 variasi pola geometris berbeda dalam satu keluarga tema visual yang senada untuk tatakan gelas kayu dan suvenir DIY.<br/>
+                &bull; <strong>Variasi:</strong> Bintang 6, Bintang 8, Bintang 10, Hexagonal Tile, Arabesque, dan Radial Rosette.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=laser%20cut%20coasters%20geometric%20pattern" target="_blank" class="action-link">
+              <span>Lihat Contoh Coaster</span> &nearr;
+            </a>
+          </div>
+
+          <!-- E. Arch Frames -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">E. Mihrab &amp; Mosque Arch Frames</span>
+                <span class="feature-tag">2 DESAIN BINGKAI</span>
+              </div>
+              <p class="feature-desc">
+                Bingkai lengkungan arsitektur masjid (*Mihrab / Andalusian Arch*). Bagian tengah dibiarkan lapang untuk dipadukan dengan sketsa kaligrafi Telkraf.id.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=islamic%20arch%20frame%20laser%20cut" target="_blank" class="action-link">
+              <span>Lihat Contoh Arch Frame</span> &nearr;
+            </a>
+          </div>
+
+          <!-- F. Arabesque Border -->
+          <div class="feature-card">
+            <div>
+              <div class="feature-card-header">
+                <span class="feature-name">F. Modular Arabesque Corner &amp; Borders</span>
+                <span class="feature-tag">4 SUDUT &amp; 4 GARIS</span>
+              </div>
+              <p class="feature-desc">
+                Elemen pembatas tepi modular yang bisa disambung tanpa putus untuk sertifikat, kartu ucapan, dan plakat kayu eksklusif.
+              </p>
+            </div>
+            <a href="https://www.pinterest.com/search/pins/?q=islamic%20border%20corner%20laser%20cut%20vector" target="_blank" class="action-link">
+              <span>Lihat Contoh Border</span> &nearr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: KONSTRUKSI POLA -->
+      <section id="orn-tab-grid" class="tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">KETENTUAN STRUKTUR // GEOMETRIC GRID</div>
+          <h2 class="panel-title">Standar Konstruksi Garis &amp; Ketebalan</h2>
+          <p class="panel-desc">
+            Aturan presisi dalam merancang sketsa ornamen:
+          </p>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-card">
+            <div class="spec-title">📏 1. Keterikatan Grid (Bintang 8/12/16)</div>
+            <p class="spec-desc">
+              Pola geometris Islam berakar dari pembagian lingkaran simetris. Pastikan titik potong garis presisi agar saat digandakan (*tiling*) tidak meleset.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">🪚 2. Ketebalan Garis Batas Potong</div>
+            <p class="spec-desc">
+              Ketebalan garis sketsa minimal <strong>1.5 mm – 2 mm</strong> pada skala cetak asli untuk memastikan bahan kayu tidak hancur saat laser memotong.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">🔄 3. Sambungan Tertutup (Closed Loops)</div>
+            <p class="spec-desc">
+              Setiap bidang ornamen harus membentuk kurva tertutup (*closed vectors*) agar sistem mesin laser dapat membedakan area lubang (*cut-out*) dan lempengan penahan.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title">📦 4. Penyerahan File</div>
+            <p class="spec-desc">
+              Sketsa tangan dapat diserahkan dalam bentuk foto tegak lurus resolusi tinggi atau scan 600 DPI, atau langsung format vektor (.AI/.SVG) jika menggunakan tablet grafis.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: SINERGI STUDIO -->
+      <section id="orn-tab-roles" class="tab-panel">
+        <div class="panel-header">
+          <div class="panel-tag">PEMBAGIAN PERAN // WIN-WIN PARTNERSHIP</div>
+          <h2 class="panel-title">Fokus Seniman &amp; Tanggung Jawab Studio</h2>
+          <p class="panel-desc">
+            Sinergi kerja yang jelas dan saling menguntungkan:
+          </p>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-card">
+            <div class="spec-title" style="color: var(--accent-pink);">🎨 Peran Seniman (Eko)</div>
+            <p class="spec-desc">
+              &bull; Fokus 100% pada estetika pola, proporsi visual, dan keharmonisan komposisi.<br/>
+              &bull; Menyediakan sketsa hitam putih kontras tinggi dengan garis tegas.<br/>
+              &bull; Menjamin keaslian karya tanpa menjiplak template mesin lain.
+            </p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-title" style="color: var(--accent-cyan);">⚙️ Peran Studio (Telkraf.id)</div>
+            <p class="spec-desc">
+              &bull; Vektorisasi presisi, penutupan kurva (*path closing*), dan penyesuaian toleransi laser (*kerf allowance*).<br/>
+              &bull; Pengujian potong fisik prototipe kayu / akrilik.<br/>
+              &bull; Distribusi komersial ke marketplace internasional dan produk digital B2B Canva.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOKUMEN 3: STANDAR VEKTOR & SOP STUDIO
+       ========================================================================== -->
+  <div id="doc-workflow" class="workspace-doc-view">
+    <div class="container hero-section">
+      <h1 class="hero-title">
+        Standar Vektorisasi &amp; <span>SOP Pengiriman Sketsa</span>
+      </h1>
+      <p class="hero-lead">
+        Prosedur standar penyerahan hasil karya sketsa manual via smartphone atau scanner agar proses digitalisasi studio Telkraf berjalan cepat tanpa perlu gambar ulang.
+      </p>
+
+      <div class="metrics-strip">
+        <div class="metric-box active">
+          <div class="metric-val yellow">90°</div>
+          <div class="metric-lbl">Sudut Foto Tegak Lurus</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val green">No Shadow</div>
+          <div class="metric-lbl">Pencahayaan Terang Merata</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val cyan">600 DPI</div>
+          <div class="metric-lbl">Resolusi Scan Ideal</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val pink">B&amp;W Clean</div>
+          <div class="metric-lbl">Hitam Putih Kontras</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: 10px;">
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-title">📸 1. Cara Pemotretan Smartphone yang Benar</div>
+          <p class="spec-desc">
+            Jika menggunakan kamera ponsel, tempelkan kertas di meja yang terang di dekat jendela. Pegang kamera <strong>tegak lurus 90 derajat</strong> tepat di atas kertas untuk menghindari distorsi perspektif. Pastikan tidak ada bayangan tangan atau kepala yang menutupi gambar.
+          </p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-title">🖨️ 2. Standar Scanner Flatbed</div>
+          <p class="spec-desc">
+            Jika menggunakan mesin scanner, atur mode <strong>Grayscale</strong> atau <strong>Black &amp; White</strong> dengan resolusi <strong>600 DPI</strong>. Format simpan yang dianjurkan adalah <strong>PNG</strong> atau <strong>TIFF tanpa kompresi</strong>.
+          </p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-title">🏷️ 3. Format Penamaan Berkas</div>
+          <p class="spec-desc">
+            Beri nama file yang jelas dan terstruktur, contoh:<br/>
+            &bull; <code>TLK_EKO_KAL_01_Bismillah.png</code><br/>
+            &bull; <code>TLK_EKO_ORN_01_JaliPanel.png</code><br/>
+            Hal ini mempermudah pencatatan katalog dan hak royalti/fee seniman.
+          </p>
+        </div>
+        <div class="spec-card">
+          <div class="spec-title">🚀 4. Saluran Pengiriman Karya</div>
+          <p class="spec-desc">
+            Kirimkan berkas melalui <strong>Google Drive Shared Folder</strong> studio atau kirim via dokumen WhatsApp tanpa kompresi (*Send as Document*) ke nomor WhatsApp studio: <strong>+62 822 8404 1882</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER WITH OFFICIAL TELKRAF LOGO
+     ========================================================================== -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo-wrap">
+      <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M821.2,388.5c-10.8,0-19.6,8.9-19.6,19.8s8.8,19.6,19.6,19.6,19.6-8.8,19.6-19.6-8.8-19.8-19.6-19.8ZM821.2,425.5c-9.5,0-17.2-7.7-17.2-17.2s7.7-17.3,17.2-17.3,17.3,7.8,17.3,17.3-7.8,17.2-17.3,17.2ZM827.7,406.6c.6-.9.9-2,.9-3.2,0-2-.7-3.5-2.1-4.5-1.5-1-3.3-1.6-5.6-1.6h-5.9v20h3.2v-7.8h2.5c.7,0,1.2,0,1.6-.1l4.4,7.9h3.6l-5-8.7c1.1-.4,1.9-1.1,2.6-2ZM823.9,406c-.8.6-1.8.8-3.1.8h-2.6v-6.7h2.6c1.5,0,2.5.2,3.2.8.8.6,1.1,1.5,1.1,2.6s-.4,2-1.2,2.6ZM247.8,415.1c-5.2,15.8-29.4,108.3-32.4,116.5-3,7.9-17,22.8-20,22.8s-16.5-9.9-16.5-13.5,10.4-14.2,13.2-22.4c3-8.5,25.8-94.3,29.9-110.1,1.6-6.4,7.4-16.2,11.7-21.8h-36.4c-4.7,0-12.1,9.6-12.1,13.5,0,8.5,9.6,27.1,9.6,30.9s-7.7,10.5-12.1,10.5-23.7-23.1-23.7-29.9c0-10.2,27.7-48,42.3-48h109.8c2.6,0,5,1.1,5,3.6s-.6,4.4-5,10.7c-6,8.3-9.8,8.7-22.2,8.7h-41.1s9,5.2,9,8.6-6.8,12.6-9.3,20ZM797,510.2c-3.6,0-7.1,4.4-7.1,4.4-16.2,18.2-33.1,19-33.1,19,17-63.3,36.5-134.4,38.4-141.4.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.7,17.5-18.2,67.1-30.9,116.2-12.7,23.1-26.3,42.5-34,42.5s-6.6-3.6-6.6-9.3c0-13.7,19.2-73.4,19.2-82s-13.7-7.9-20.9-7.9c0,0-18.4-13.2-33.1-13.2s-38.4,35.9-48.4,69.2c-12.8,23.3-27,43.2-34.9,43.2s-6.6-4.9-6.6-7.9c0-15.6,17.1-65.3,17.1-74.3s-34-14.2-34-21.1,4.1-14,4.1-19.8-11.3-13.4-19.2-13.4-17,21.4-17,29,11.2,16,11.2,16c0,0-10.8,26.3-20.1,44.4-.2.3-.3.6-.4.8,0,0-.2.3-.4.8-13.7,24.1-21.3,36.5-29.5,36.5s-22.4-27.1-24.3-33.1c0,0,40-28,40-46.3s-15.1-23.9-24.9-23.9c-14.3,0-34,17.1-34,17.1,0,0,7.1-27.5,13.5-50.4.6-2.2,1-4.1,1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-4.8,15.8-20.4,74.7-30.9,117.3-12.6,22.5-25.8,41.4-33.5,41.4s-6.8-4.1-6.8-9.3c0-7.7,32.4-124.2,35.6-136.5.6-2.2,1.1-4.1,1.1-6.4,0-4.1-14.5-12.3-18.6-12.3s-4.9,1.6-6,5.7c-3,11.9-20.9,75.3-31,117.8h-.1c-14.7,26.9-30.9,40.6-44.5,40.6s-28-7.9-28.2-26.1c0-2.5,0-5.1.2-7.9,0,0,12.4,3.9,24.8,3.9,17.7,0,36.9-37.8,36.9-57s-18.1-25-35.6-25-54.8,46.6-54.8,89.6,31.8,39.3,51.4,39.3,30.6-8.8,42.7-22.9c-.1,1.1-.2,2-.2,2.8,0,9.9,21.1,20.1,30.5,20.1s18.7-6.7,26.7-17c-.4,2.5-.7,4.2-.7,5.1,0,5.5,13.2,11.8,17.9,11.8s4.9-2.8,5.7-6.4c1.9-8.5,13.7-55.4,20.9-78.7,3.6-12.1,20.9-23.5,27.3-23.5s8.3,4.7,8.3,9.4-8.3,22.1-29.9,39.4c-3.5,2.8-4,4.7-4,7.5,0,7,25.4,52.3,42.2,52.3s30.7-25,45.5-52.3c0,0,.7-1.2,1.5-3,.2-.3.3-.8.6-1.2,11.2-22,22.1-44.6,22.1-44.6,0,0,13.7,2.8,13.7,5.8,0,12.6-14.8,52.9-14.8,74.3s17.9,21.1,30.1,21.1,22.5-10,32.3-24.3c2.7,11.9,20.8,24.3,30.6,24.3,13.9,0,30.4-17.6,30.4-17.6,2.2,7.7,18.6,17.6,31,17.6s18.1-6.2,25.9-15.8c-8.9,36-15.7,65.8-15.7,73.3,0,13.7,10.6,24.7,26,24.7s29.4-18.6,29.4-34.7c0-29.7-7.7-55.5-7.7-55.5,0,0,18.6-.8,37.8-21.3,0,0,4.7-5.8,4.7-9s-3.3-5.8-6.9-5.8ZM303.4,442.2c2.1,0,6.8,3.8,6.8,6.8,0,12.2-14.5,43.4-37.3,43.4,2.2-18.2,18.6-50.2,30.5-50.2ZM672.5,512.4c-7.7,15.8-18.3,23.9-23.9,23.9s-9.3-5.2-9.3-11.6c0-26.2,21.1-80.2,35.9-80.2s13.7,4.6,13.7,9c0,7.7-11,47.4-16.5,58.9ZM743.8,621.4c-3,0-6.4-3.2-6.4-6.2,0-14.5,10.7-62.8,10.7-62.8,0,0,5.8,21.4,5.8,49.4s-5,19.6-10.2,19.6Z"/></svg>
+    </div>
+    <div>TELKRAF.ID × EKO CLOUD STUDIO // 2026</div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     SCRIPTS: AUTH GATE, WORKSPACE DOC VIEWER & TAB CONTROLLER
+     ========================================================================== -->
+<script>
+// PASSCODE HASHES: khattat, eko, Eko, bismillah, 2026
+const VALID_HASHES = new Set([
+  "240e074d72ee20a36d3db47b8bcbc51574e0b1365a0ee78316606c49422fc1d2", // khattat
+  "d6e472bc327f9a0443d8fd7622530fef9e6fa76904df6e940e207977982c9cf9", // eko
+  "0a50931a0724f8936ecce125b95a1764aea20ec7d9cda31f2ec2024fe0eacb74", // Eko
+  "76e6a142ad9ef5cb89f0a7fc972d3b4e72750e3fa6cf1b09b5ab22e3895c1c01", // bismillah
+  "b5832a875a6c3f6834dd9a8a719a84a28292c00cc781d48c8b4cc6012423dc23"  // 2026
+]);
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  const hashArr = Array.from(new Uint8Array(hashBuf));
+  return hashArr.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function checkSessionAuth() {
+  if (sessionStorage.getItem("eko_auth") === "granted") {
+    document.getElementById("security-gate").classList.add("unlocked");
+  }
+}
+
+async function verifyGate() {
+  const entered = document.getElementById("gate-pass").value.trim();
+  const lower = entered.toLowerCase();
+  const errBox = document.getElementById("gate-err");
+  const hashRaw = await sha256(entered);
+  const hashLower = await sha256(lower);
+
+  if (VALID_HASHES.has(hashRaw) || VALID_HASHES.has(hashLower)) {
+    sessionStorage.setItem("eko_auth", "granted");
+    document.getElementById("security-gate").classList.add("unlocked");
+    errBox.style.display = "none";
+    returnToHub();
+  } else {
+    errBox.style.display = "block";
+    const el = document.getElementById("gate-pass");
+    el.value = "";
+    el.focus();
+  }
+}
+
+function handleGateKey(e) {
+  if (e.key === "Enter") verifyGate();
+}
+
+function lockGate() {
+  sessionStorage.removeItem("eko_auth");
+  document.getElementById("security-gate").classList.remove("unlocked");
+  document.getElementById("gate-pass").value = "";
+  document.getElementById("gate-err").style.display = "none";
+  returnToHub();
+}
+
+// DOCUMENT NAVIGATION (DIREKTORI HUB & CONTEXTUAL BACK)
+function openDocument(docId) {
+  document.querySelectorAll('.workspace-doc-view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById(docId);
+  if (target) {
+    target.classList.add('active');
+  }
+  const backBtn = document.getElementById('header-back-btn');
+  if (backBtn) {
+    backBtn.style.display = (docId === 'doc-hub') ? 'none' : 'inline-flex';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function returnToHub() {
+  openDocument('doc-hub');
+}
+
+// UNIVERSAL SCOPED TAB SWITCHER
+function switchTab(tabId, btnEl) {
+  const scope = btnEl ? (btnEl.closest('.workspace-doc-view') || document) : document;
+  scope.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  scope.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+  const activeP = document.getElementById(tabId);
+  if (activeP) activeP.classList.add('active');
+  if (btnEl) {
+    btnEl.classList.add('active');
+    btnEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  const tabsWrapper = scope.querySelector('.tabs-wrapper');
+  if (tabsWrapper) {
+    const y = tabsWrapper.getBoundingClientRect().top + window.pageYOffset - 50;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+// INITIALIZATION
+checkSessionAuth();
+</script>
+</body>
+</html>
