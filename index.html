@@ -250,11 +250,18 @@ const HASHED_ROUTES = {
   "240e074d72ee20a36d3db47b8bcbc51574e0b1365a0ee78316606c49422fc1d2": "./eko/",
   "be58fc97c6be965a33389186bacfa0e5479566610a9a90cf8bbbeb880a8fba6b": "./eko/",
   "76e6a142ad9ef5cb89f0a7fc972d3b4e72750e3fa6cf1b09b5ab22e3895c1c01": "./eko/",
-  "896b0eeecbfae526c11b017b203c9ebf77f54c30c822e8ec57fb2e2a05cf4e81": "./eko/"
+  "896b0eeecbfae526c11b017b203c9ebf77f54c30c822e8ec57fb2e2a05cf4e81": "./eko/",
+
+  // PMB UMRI ROUTES: pmbcihuy404
+  "332b36f78ce7302c7812a23dfc67831229bc791c56f7b1836e2803da3b968e0f": "./pmb/",
+  "f4c0bb24d333a7022415dfb80507369b5dc7fb0bab571a263b16061f3551284d": "./pmb/",
+  "4431bef1ae0c42e904775a2df3494ed8aac6d2f64d178d69741d10b9f2a67455": "./pmb/"
 };
 
 // Auto-redirect if already authenticated in this session
-if (sessionStorage.getItem("utary_auth") === "granted") {
+if (sessionStorage.getItem("pmb_vault_auth") === "granted") {
+  window.location.href = "./pmb/";
+} else if (sessionStorage.getItem("utary_auth") === "granted") {
   window.location.href = "./utary/";
 } else if (sessionStorage.getItem("eko_auth") === "granted") {
   window.location.href = "./eko/";
