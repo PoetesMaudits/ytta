@@ -234,7 +234,7 @@ body::before {
 .top-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .back-btn {
   display: none;
@@ -252,6 +252,26 @@ body::before {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .back-btn:hover {
+  background: var(--accent-yellow);
+  color: #050508;
+  transform: translateY(-1px);
+}
+.editor-btn-top {
+  background: rgba(245, 224, 58, 0.08);
+  border: 1px solid rgba(245, 224, 58, 0.28);
+  color: var(--accent-yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.editor-btn-top:hover {
   background: var(--accent-yellow);
   color: #050508;
   transform: translateY(-1px);
@@ -459,7 +479,7 @@ body::before {
   border-color: var(--accent-yellow);
 }
 
-/* ARCHIVE ACCORDION SECTION */
+/* ARCHIVE ACCORDION */
 .archive-toggle-box {
   border-top: 1px dashed var(--border-subtle);
   padding-top: 24px;
@@ -748,6 +768,22 @@ body::before {
   word-break: break-word;
 }
 
+.image-preview-card {
+  margin-top: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: rgba(0,0,0,0.4);
+  text-align: center;
+  padding: 10px;
+}
+.image-preview-card img {
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
 .doc-footer-actions {
   display: flex;
   align-items: center;
@@ -873,6 +909,10 @@ footer {
         <span>←</span>
         <span>Kembali</span>
       </button>
+      <a href="./editor/" class="editor-btn-top" title="Buka Form Editor Mobile">
+        <span>✍️</span>
+        <span>Buat Brief</span>
+      </a>
       <button class="lock-btn" onclick="lockGate()" title="Kunci sesi">
         <span>🔒</span>
         <span>Kunci</span>
@@ -897,292 +937,28 @@ footer {
         </p>
       </div>
 
-      <!-- GRID KARTU BRIEF AKTIF -->
-      <div class="hub-gallery-grid">
-
-        <!-- KARTU BRIEF UTAMA: GREETING SUMPAH PEMUDA -->
-        <div class="hub-card" onclick="openDocument('doc-brief-01')">
-          <div class="hub-card-meta">
-            <span class="hub-card-id">PMB-GRAF-202610-04</span>
-            <span class="hub-card-status ready">
-              <span class="status-indicator-dot"></span>
-              <span>Siap Eksekusi</span>
-            </span>
-          </div>
-          <div class="hub-card-icon">🇮🇩</div>
-          <div class="hub-card-title">Greeting Hari Sumpah Pemuda ke-98</div>
-          <div class="hub-card-desc">
-            Desain flyer peringatan Hari Sumpah Pemuda ke-98 bernuansa heroik &amp; berkemajuan untuk membakar semangat pemuda Riau meraih masa depan di UMRI.
-          </div>
-          <div class="hub-card-specs-row">
-            <span class="spec-pill">Format: <strong>Feed 4:5</strong></span>
-            <span class="spec-pill">Funnel: <strong>Kultural (TOFU)</strong></span>
-            <span class="spec-pill">Channel: <strong>IG Feed &amp; Story</strong></span>
-          </div>
-          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-brief-01');">
-            <span>📑</span>
-            <span>Buka Brief</span>
-          </button>
-        </div>
-
+      <!-- GRID KARTU BRIEF AKTIF (DINAMIS DARI BRIEFS.JSON) -->
+      <div class="hub-gallery-grid" id="active-briefs-grid">
+        <!-- Rendered via JS -->
       </div>
 
-      <!-- ARSIP BRIEF DISIMPAN (ACCORDION BERSIH) -->
-      <div class="archive-toggle-box">
+      <!-- ARSIP BRIEF DISIMPAN -->
+      <div class="archive-toggle-box" id="archive-section" style="display: none;">
         <button class="archive-trigger-btn" onclick="toggleArchive()">
           <span>📁</span>
-          <span id="archive-btn-text">Tampilkan Arsip Brief (2 Disimpan)</span>
+          <span id="archive-btn-text">Tampilkan Arsip Brief</span>
         </button>
-
-        <div class="archive-grid" id="archive-container">
-
-          <!-- ARSIP 1: CAROUSEL -->
-          <div class="hub-card" style="opacity: 0.85;" onclick="openDocument('doc-brief-02')">
-            <div class="hub-card-meta">
-              <span class="hub-card-id">PMB-CARS-202610-02</span>
-              <span class="hub-card-status archived">Diarsipkan</span>
-            </div>
-            <div class="hub-card-icon">📱</div>
-            <div class="hub-card-title">Carousel 5 Jurusan Unggulan</div>
-            <div class="hub-card-desc">Bedah program studi technopreneur UMRI dengan daya serap industri tertinggi.</div>
-            <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-brief-02');">
-              <span>📑</span>
-              <span>Buka Arsip</span>
-            </button>
-          </div>
-
-          <!-- ARSIP 2: REELS -->
-          <div class="hub-card" style="opacity: 0.85;" onclick="openDocument('doc-brief-03')">
-            <div class="hub-card-meta">
-              <span class="hub-card-id">PMB-REEL-202610-03</span>
-              <span class="hub-card-status archived">Diarsipkan</span>
-            </div>
-            <div class="hub-card-icon">🎬</div>
-            <div class="hub-card-title">Reels: POV Ditanya Tetangga</div>
-            <div class="hub-card-desc">Skrip video komedi situasi anak muda Riau menjawab pertanyaan seputar kampus.</div>
-            <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-brief-03');">
-              <span>📑</span>
-              <span>Buka Arsip</span>
-            </button>
-          </div>
-
+        <div class="archive-grid" id="archived-briefs-grid">
+          <!-- Rendered via JS -->
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ==========================================================================
-       DOKUMEN 1: DETAIL BRIEF GREETING SUMPAH PEMUDA KE-98
-       ========================================================================== -->
-  <div id="doc-brief-01" class="workspace-doc-view">
-    <div class="container">
-      <div class="hero-section">
-        <div class="doc-meta-bar">
-          <span class="hub-card-id">PMB-GRAF-202610-04</span>
-          <span class="hub-card-status ready"><span class="status-indicator-dot"></span> Siap Eksekusi</span>
-          <span class="spec-pill">Batch: <strong>Oktober 2026</strong></span>
-        </div>
-        <h1 class="hero-title">
-          Flyer Greeting Sumpah Pemuda // <span>Pemuda Berkemajuan Indonesia</span>
-        </h1>
-        <p class="hero-lead">
-          Brief visual peringatan Hari Sumpah Pemuda ke-98 bernuansa heroik dan berwibawa, membakar tekad generasi muda Riau &amp; Sumatera untuk menuntut ilmu di kampus technopreneur UMRI.
-        </p>
-
-        <div class="metrics-strip">
-          <div class="metric-box active">
-            <div class="metric-val">4:5</div>
-            <div class="metric-label">Dimensi Canvas (1080x1350)</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val">TOFU</div>
-            <div class="metric-label">Kultural &amp; Awareness</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val">IG Feed</div>
-            <div class="metric-label">Channel Penayangan</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val">27 Okt</div>
-            <div class="metric-label">Target Deadline</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TABS BAR -->
-      <div class="tabs-wrapper">
-        <div class="tabs-nav">
-          <button class="tab-btn active" onclick="switchTab('tab-b1-spec', this)">📋 Spesifikasi</button>
-          <button class="tab-btn" onclick="switchTab('tab-b1-visual', this)">🎨 Panduan Visual</button>
-          <button class="tab-btn" onclick="switchTab('tab-b1-copy', this)">✍️ Copywriting</button>
-          <button class="tab-btn" onclick="switchTab('tab-b1-ai', this)">🤖 Prompt AI &amp; Aset</button>
-        </div>
-      </div>
-
-      <!-- TAB 1: SPESIFIKASI -->
-      <div id="tab-b1-spec" class="tab-panel active">
-        <div class="panel-grid-2">
-          <div class="spec-card">
-            <div class="spec-card-head">🎯 Objektif &amp; Distribusi</div>
-            <div class="spec-rows">
-              <div class="spec-row">
-                <span class="spec-key">TARGET AUDIENS</span>
-                <span class="spec-value">Generasi Muda Riau, Mahasiswa, Calon Maba &amp; Publik Sumatera</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-key">OBJEKTIF UTAMA</span>
-                <span class="spec-value">Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-key">JADWAL TAYANG</span>
-                <span class="spec-value">Rabu, 28 Oktober 2026 — Pukul 07:00 WIB</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="spec-card">
-            <div class="spec-card-head">📌 Elemen Desain Wajib Hadir</div>
-            <ul class="bullet-checklist">
-              <li>Logo resmi PMB UMRI &amp; Akreditasi Unggul/Baik Sekali.</li>
-              <li>Logo Nasional Hari Sumpah Pemuda ke-98.</li>
-              <li>Subjek talent mahasiswa UMRI berbusana rapi, berhijab sopan, senyum optimis.</li>
-              <li>Tagline institusi: <em>"Kampus Bermarwah &amp; Berkemajuan"</em>.</li>
-              <li>Tautan resmi admisi: <code>pmb.umri.ac.id</code>.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB 2: PANDUAN VISUAL -->
-      <div id="tab-b1-visual" class="tab-panel">
-        <div class="panel-grid-2">
-          <div class="spec-card">
-            <div class="spec-card-head">🎨 Palet Warna &amp; Mood</div>
-            <div class="spec-rows">
-              <div class="spec-row">
-                <span class="spec-key">PALET WARNA</span>
-                <span class="spec-value">Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#F5E03A)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-key">MOOD &amp; NUANSA</span>
-                <span class="spec-value">Heroik, khidmat, modern, sejuk Islami, penuh optimisme</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-key">KOMPOSISI</span>
-                <span class="spec-value">Center visual kuat dengan ruang nafas 35% agar tipografi headline terbaca tajam</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="spec-card">
-            <div class="spec-card-head">🔗 Referensi &amp; Bahan Mentah</div>
-            <div class="spec-rows">
-              <div class="spec-row">
-                <span class="spec-key">MOODBOARD PINTEREST</span>
-                <span class="spec-value"><a href="https://id.pinterest.com/search/pins/?q=sumpah%20pemuda%20poster%20modern" target="_blank" style="color: var(--accent-cyan);">Buka Inspirasi Desain Poster Sumpah Pemuda ↗</a></span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-key">FOLDER ASET LOGO &amp; FONT</span>
-                <span class="spec-value"><a href="https://drive.google.com" target="_blank" style="color: var(--accent-yellow);">Buka Google Drive Asset Pack ↗</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB 3: COPYWRITING -->
-      <div id="tab-b1-copy" class="tab-panel">
-        <div class="copy-showcase-box">
-          <div class="spec-card-head">✍️ Copywriting Tampil di Desain</div>
-          <div class="headline-hero-text">"Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!"</div>
-          <ul class="bullet-checklist" style="margin-bottom: 16px;">
-            <li>Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026.</li>
-            <li>Kobarkan tekad, ukir karya nyata dari Bumi Lancang Kuning untuk Indonesia tercinta.</li>
-          </ul>
-          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-yellow); font-weight: 700;">
-            CTA DESAIN: Wujudkan Cita-Citamu di UMRI | pmb.umri.ac.id
-          </div>
-
-          <div class="spec-card-head" style="margin-top: 24px;">📝 Draft Caption Media Sosial</div>
-          <div class="caption-raw-box" id="caption-b1">Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨
-
-98 tahun lalu, para pemuda dari pelosok nusantara bersumpah untuk menyatukan tekad dan memperjuangkan masa depan bangsa. 
-
-Hari ini, giliran kita—anak-anak muda di Riau dan seluruh penjuru Sumatera—untuk melanjutkan api perjuangan itu lewat ilmu pengetahuan, akhlak beradab, dan karya nyata yang berkemajuan.
-
-Jangan takut bermimpi besar, Wak! Di kampus @kampus_umri, setiap bakat dan potensimu dirawat untuk menjadi pemimpin masa depan.
-
-Selamat Hari Sumpah Pemuda ke-98! ✊🔥
-Apa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇
-
-#SumpahPemuda #HariSumpahPemuda #PMBUMRI #UMRI #PemudaBerkemajuan #KuliahDiPekanbaru #AnakRiau #MabaUMRI</div>
-        </div>
-      </div>
-
-      <!-- TAB 4: PROMPT AI -->
-      <div id="tab-b1-ai" class="tab-panel">
-        <div class="prompt-callout">
-          <div class="spec-card-head" style="color: #e2b4ff;">🤖 Rekomendasi Prompt AI Image Generator</div>
-          <p style="font-size: 13px; color: var(--text-muted);">Formula prompt photorealistic untuk Ideogram v2 atau Midjourney v6:</p>
-          <div class="prompt-code-wrap" id="ai-prompt-b1">Photorealistic group of diverse Indonesian college students standing proudly together, wearing neat university smart casual blazer with navy blue accents and modern modest hijab, heroic cinematic lighting, soft morning sunrays behind modern university atrium, Indonesian flag waving gently in the background, ultra-realistic 8k, inspiring national youth celebration --ar 4:5 --style raw</div>
-        </div>
-      </div>
-
-      <!-- FOOTER ACTIONS -->
-      <div class="doc-footer-actions">
-        <button class="action-btn" onclick="copyText('ai-prompt-b1', 'Prompt AI disalin!')">
-          <span>🤖</span>
-          <span>Salin Prompt</span>
-        </button>
-        <button class="action-btn" onclick="copyText('caption-b1', 'Caption disalin!')">
-          <span>📝</span>
-          <span>Salin Caption</span>
-        </button>
-        <button class="action-btn primary" onclick="copyFullBriefDoc('doc-brief-01')">
-          <span>📋</span>
-          <span>Salin Brief</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       DOKUMEN 2 (ARSIP): CAROUSEL 5 JURUSAN
-       ========================================================================== -->
-  <div id="doc-brief-02" class="workspace-doc-view">
-    <div class="container">
-      <div class="hero-section">
-        <div class="doc-meta-bar">
-          <span class="hub-card-id">PMB-CARS-202610-02</span>
-          <span class="hub-card-status archived">Diarsipkan</span>
-        </div>
-        <h1 class="hero-title">Carousel 5 Jurusan Unggulan // <span>Technopreneur 2027</span></h1>
-        <p class="hero-lead">Dokumen arsip brief carousel edukasi 7 slide.</p>
-      </div>
-      <div class="doc-footer-actions">
-        <button class="action-btn" onclick="returnToHub()"><span>←</span> <span>Kembali ke Hub</span></button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       DOKUMEN 3 (ARSIP): REELS KOMEDI SITUASI
-       ========================================================================== -->
-  <div id="doc-brief-03" class="workspace-doc-view">
-    <div class="container">
-      <div class="hero-section">
-        <div class="doc-meta-bar">
-          <span class="hub-card-id">PMB-REEL-202610-03</span>
-          <span class="hub-card-status archived">Diarsipkan</span>
-        </div>
-        <h1 class="hero-title">Video Reels // <span>POV Ditanya Tetangga</span></h1>
-        <p class="hero-lead">Dokumen arsip brief naskah video pendek komedi situasi.</p>
-      </div>
-      <div class="doc-footer-actions">
-        <button class="action-btn" onclick="returnToHub()"><span>←</span> <span>Kembali ke Hub</span></button>
-      </div>
-    </div>
+  <!-- CONTAINER UNTUK SELURUH VIEW DETAIL DOKUMEN BRIEF -->
+  <div id="doc-details-container">
+    <!-- Rendered via JS -->
   </div>
 
 </main>
@@ -1197,8 +973,8 @@ Apa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇
 </footer>
 
 <script>
-// SHA-256 HASH VERIFIER
 const TARGET_HASH = "332b36f78ce7302c7812a23dfc67831229bc791c56f7b1836e2803da3b968e0f";
+let allBriefs = [];
 
 async function sha256(str) {
   const buf = new TextEncoder().encode(str);
@@ -1211,14 +987,13 @@ async function verifyGate() {
   const entered = document.getElementById("gate-pass").value.trim();
   const lower = entered.toLowerCase();
   const errBox = document.getElementById("gate-err");
-
   const hashLower = await sha256(lower);
 
   if (hashLower === TARGET_HASH) {
     sessionStorage.setItem("pmb_vault_auth", "granted");
     document.getElementById("security-gate").classList.add("unlocked");
     errBox.style.display = "none";
-    returnToHub();
+    loadBriefsData();
   } else {
     errBox.style.display = "block";
     const el = document.getElementById("gate-pass");
@@ -1242,8 +1017,317 @@ function lockGate() {
 function checkSessionAuth() {
   if (sessionStorage.getItem("pmb_vault_auth") === "granted") {
     document.getElementById("security-gate").classList.add("unlocked");
-    returnToHub();
+    loadBriefsData();
   }
+}
+
+async function loadBriefsData() {
+  try {
+    const res = await fetch(`./briefs.json?t=${Date.now()}`);
+    if (res.ok) {
+      allBriefs = await res.json();
+    } else {
+      throw new Error("Failed to load JSON");
+    }
+  } catch (e) {
+    console.warn("Using embedded fallback", e);
+    allBriefs = [
+      {
+        id: "PMB-GRAF-202610-04",
+        title: "Flyer Greeting Hari Sumpah Pemuda ke-98",
+        category: "GRAFIS",
+        status: "READY",
+        statusLabel: "Siap Eksekusi",
+        deadline: "Selasa, 27 Okt 2026 — 17:00 WIB",
+        format: "Feed 4:5 (1080x1350px)",
+        channel: "Instagram Feed & Story",
+        funnel: "Kultural (TOFU)",
+        objective: "Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan",
+        palette: "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#F5E03A)",
+        mood: "Heroik, khidmat, modern, sejuk Islami, penuh optimisme",
+        mandatory: [
+          "Logo resmi PMB UMRI & Akreditasi Unggul/Baik Sekali",
+          "Logo Nasional Hari Sumpah Pemuda ke-98",
+          "Subjek talent mahasiswa UMRI berbusana rapi, berhijab sopan",
+          "Tagline: 'Kampus Bermarwah & Berkemajuan'"
+        ],
+        headline: "Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!",
+        bullets: [
+          "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026.",
+          "Kobarkan tekad, ukir karya nyata dari Bumi Lancang Kuning untuk Indonesia tercinta."
+        ],
+        cta: "Wujudkan Cita-Citamu di UMRI | pmb.umri.ac.id",
+        caption: "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\nSelamat Hari Sumpah Pemuda ke-98!",
+        aiPrompt: "Photorealistic group of diverse Indonesian college students standing proudly together, heroic lighting, 8k --ar 4:5",
+        refLink: "https://id.pinterest.com/search/pins/?q=sumpah%20pemuda%20poster%20modern",
+        driveLink: "https://drive.google.com"
+      }
+    ];
+  }
+
+  renderHubCards();
+  renderDetailDocs();
+}
+
+function renderHubCards() {
+  const activeGrid = document.getElementById("active-briefs-grid");
+  const archiveGrid = document.getElementById("archived-briefs-grid");
+  const archiveSection = document.getElementById("archive-section");
+
+  activeGrid.innerHTML = "";
+  archiveGrid.innerHTML = "";
+
+  const activeList = allBriefs.filter(b => b.status !== "ARCHIVED");
+  const archiveList = allBriefs.filter(b => b.status === "ARCHIVED");
+
+  // Render Active Cards
+  activeList.forEach(brief => {
+    const icon = getCategoryIcon(brief.category);
+    const cardEl = document.createElement("div");
+    cardEl.className = "hub-card";
+    cardEl.onclick = () => openDocument(`doc-${brief.id}`);
+
+    cardEl.innerHTML = `
+      <div class="hub-card-meta">
+        <span class="hub-card-id">${brief.id}</span>
+        <span class="hub-card-status ${brief.status === 'READY' ? 'ready' : 'review'}">
+          <span class="status-indicator-dot"></span>
+          <span>${brief.statusLabel || brief.status}</span>
+        </span>
+      </div>
+      <div class="hub-card-icon">${icon}</div>
+      <div class="hub-card-title">${brief.title}</div>
+      <div class="hub-card-desc">${brief.headline || brief.objective}</div>
+      <div class="hub-card-specs-row">
+        <span class="spec-pill">Format: <strong>${brief.format}</strong></span>
+        <span class="spec-pill">Funnel: <strong>${brief.funnel}</strong></span>
+        <span class="spec-pill">Channel: <strong>${brief.channel}</strong></span>
+      </div>
+      <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');">
+        <span>📑</span>
+        <span>Buka Brief</span>
+      </button>
+    `;
+    activeGrid.appendChild(cardEl);
+  });
+
+  // Render Archived Cards if any
+  if (archiveList.length > 0) {
+    archiveSection.style.display = "block";
+    document.getElementById("archive-btn-text").textContent = `Tampilkan Arsip Brief (${archiveList.length} Disimpan)`;
+
+    archiveList.forEach(brief => {
+      const icon = getCategoryIcon(brief.category);
+      const cardEl = document.createElement("div");
+      cardEl.className = "hub-card";
+      cardEl.style.opacity = "0.85";
+      cardEl.onclick = () => openDocument(`doc-${brief.id}`);
+
+      cardEl.innerHTML = `
+        <div class="hub-card-meta">
+          <span class="hub-card-id">${brief.id}</span>
+          <span class="hub-card-status archived">Diarsipkan</span>
+        </div>
+        <div class="hub-card-icon">${icon}</div>
+        <div class="hub-card-title">${brief.title}</div>
+        <div class="hub-card-desc">${brief.headline || brief.objective}</div>
+        <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');">
+          <span>📑</span>
+          <span>Buka Arsip</span>
+        </button>
+      `;
+      archiveGrid.appendChild(cardEl);
+    });
+  } else {
+    archiveSection.style.display = "none";
+  }
+}
+
+function renderDetailDocs() {
+  const container = document.getElementById("doc-details-container");
+  container.innerHTML = "";
+
+  allBriefs.forEach(brief => {
+    const docEl = document.createElement("div");
+    docEl.className = "workspace-doc-view";
+    docEl.id = `doc-${brief.id}`;
+
+    const statusClass = brief.status === "READY" ? "ready" : (brief.status === "ARCHIVED" ? "archived" : "review");
+
+    docEl.innerHTML = `
+      <div class="container">
+        <div class="hero-section">
+          <div class="doc-meta-bar">
+            <span class="hub-card-id">${brief.id}</span>
+            <span class="hub-card-status ${statusClass}">
+              <span class="status-indicator-dot"></span> ${brief.statusLabel || brief.status}
+            </span>
+            <span class="spec-pill">Format: <strong>${brief.format}</strong></span>
+          </div>
+          <h1 class="hero-title">
+            ${brief.title}
+          </h1>
+          <p class="hero-lead">
+            ${brief.objective}
+          </p>
+
+          <div class="metrics-strip">
+            <div class="metric-box active">
+              <div class="metric-val">${brief.format.split(' ')[0] || brief.format}</div>
+              <div class="metric-label">Canvas / Dimensi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">${brief.funnel.split(' ')[0] || brief.funnel}</div>
+              <div class="metric-label">Funnel Target</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">${brief.channel.split(' ')[0] || brief.channel}</div>
+              <div class="metric-label">Channel Utama</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">${brief.deadline.split('—')[0] || brief.deadline}</div>
+              <div class="metric-label">Target Deadline</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABS BAR -->
+        <div class="tabs-wrapper">
+          <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('tab-${brief.id}-spec', this)">📋 Spesifikasi</button>
+            <button class="tab-btn" onclick="switchTab('tab-${brief.id}-visual', this)">🎨 Panduan Visual</button>
+            <button class="tab-btn" onclick="switchTab('tab-${brief.id}-copy', this)">✍️ Copywriting</button>
+            <button class="tab-btn" onclick="switchTab('tab-${brief.id}-ai', this)">🤖 Prompt AI &amp; Aset</button>
+          </div>
+        </div>
+
+        <!-- TAB 1: SPESIFIKASI -->
+        <div id="tab-${brief.id}-spec" class="tab-panel active">
+          <div class="panel-grid-2">
+            <div class="spec-card">
+              <div class="spec-card-head">🎯 Objektif &amp; Distribusi</div>
+              <div class="spec-rows">
+                <div class="spec-row">
+                  <span class="spec-key">CHANNEL PENAYANGAN</span>
+                  <span class="spec-value">${brief.channel}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">FUNNEL KONTEN</span>
+                  <span class="spec-value">${brief.funnel}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">TARGET DEADLINE</span>
+                  <span class="spec-value">${brief.deadline}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-head">📌 Elemen Desain Wajib</div>
+              <ul class="bullet-checklist">
+                ${(brief.mandatory || []).map(m => `<li>${m}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: PANDUAN VISUAL -->
+        <div id="tab-${brief.id}-visual" class="tab-panel">
+          <div class="panel-grid-2">
+            <div class="spec-card">
+              <div class="spec-card-head">🎨 Palet Warna &amp; Mood</div>
+              <div class="spec-rows">
+                <div class="spec-row">
+                  <span class="spec-key">PALET WARNA</span>
+                  <span class="spec-value">${brief.palette}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">MOOD &amp; NUANSA</span>
+                  <span class="spec-value">${brief.mood}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-head">🔗 Tautan Aset &amp; Referensi</div>
+              <div class="spec-rows">
+                <div class="spec-row">
+                  <span class="spec-key">PAPAN REFERENSI</span>
+                  <span class="spec-value">
+                    <a href="${brief.refLink}" target="_blank" style="color: var(--accent-cyan);">Buka Tautan Referensi ↗</a>
+                  </span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">FOLDER ASSET GOOGLE DRIVE</span>
+                  <span class="spec-value">
+                    <a href="${brief.driveLink}" target="_blank" style="color: var(--accent-yellow);">Buka Google Drive Asset Pack ↗</a>
+                  </span>
+                </div>
+              </div>
+
+              ${brief.refImage ? `
+                <div class="image-preview-card">
+                  <span style="font-size: 11px; color: var(--text-dim); display: block; margin-bottom: 6px;">GAMBAR REFERENSI:</span>
+                  <img src="${brief.refImage}" alt="Referensi Desain"/>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: COPYWRITING -->
+        <div id="tab-${brief.id}-copy" class="tab-panel">
+          <div class="copy-showcase-box">
+            <div class="spec-card-head">✍️ Copywriting di Desain</div>
+            <div class="headline-hero-text">"${brief.headline}"</div>
+            <ul class="bullet-checklist" style="margin-bottom: 16px;">
+              ${(brief.bullets || []).map(b => `<li>${b}</li>`).join("")}
+            </ul>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-yellow); font-weight: 700;">
+              CTA: ${brief.cta}
+            </div>
+
+            <div class="spec-card-head" style="margin-top: 24px;">📝 Draft Caption Media Sosial</div>
+            <div class="caption-raw-box" id="caption-${brief.id}">${brief.caption}</div>
+          </div>
+        </div>
+
+        <!-- TAB 4: PROMPT AI -->
+        <div id="tab-${brief.id}-ai" class="tab-panel">
+          <div class="prompt-callout">
+            <div class="spec-card-head" style="color: #e2b4ff;">🤖 Rekomendasi Prompt AI Generator</div>
+            <div class="prompt-code-wrap" id="prompt-${brief.id}">${brief.aiPrompt}</div>
+          </div>
+        </div>
+
+        <!-- FOOTER ACTIONS -->
+        <div class="doc-footer-actions">
+          <button class="action-btn" onclick="copyText('prompt-${brief.id}', 'Prompt AI disalin!')">
+            <span>🤖</span>
+            <span>Salin Prompt</span>
+          </button>
+          <button class="action-btn" onclick="copyText('caption-${brief.id}', 'Caption disalin!')">
+            <span>📝</span>
+            <span>Salin Caption</span>
+          </button>
+          <button class="action-btn primary" onclick="copyFullBriefObject('${brief.id}')">
+            <span>📋</span>
+            <span>Salin Brief</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(docEl);
+  });
+}
+
+function getCategoryIcon(cat) {
+  if (cat === "GRAFIS") return "🎨";
+  if (cat === "CAROUSEL") return "📱";
+  if (cat === "REELS") return "🎬";
+  if (cat === "AFTERMOVIE") return "🎥";
+  return "📑";
 }
 
 function openDocument(docId) {
@@ -1274,13 +1358,13 @@ function switchTab(tabId, btnEl) {
 }
 
 function toggleArchive() {
-  const container = document.getElementById("archive-container");
+  const container = document.getElementById("archived-briefs-grid");
   const btnText = document.getElementById("archive-btn-text");
   container.classList.toggle("open");
   if (container.classList.contains("open")) {
     btnText.textContent = "Sembunyikan Arsip Brief";
   } else {
-    btnText.textContent = "Tampilkan Arsip Brief (2 Disimpan)";
+    btnText.textContent = `Tampilkan Arsip Brief (${allBriefs.filter(b=>b.status==='ARCHIVED').length} Disimpan)`;
   }
 }
 
@@ -1308,14 +1392,30 @@ function copyText(elementId, toastMsg) {
   });
 }
 
-function copyFullBriefDoc(docId) {
-  const doc = document.getElementById(docId);
-  if (!doc) return;
-  const title = doc.querySelector('.hero-title')?.innerText || '';
-  const lead = doc.querySelector('.hero-lead')?.innerText || '';
-  const text = `=== PMB UMRI PRODUCTION BRIEF ===\n${title}\n${lead}\n\nSpesifikasi lengkap & Copywriting dapat dicek di Studio Hub.`;
+function copyFullBriefObject(id) {
+  const brief = allBriefs.find(b => b.id === id);
+  if (!brief) return;
+
+  const text = `=== PMB UMRI PRODUCTION BRIEF ===
+JUDUL: ${brief.title}
+ID: ${brief.id} | Status: ${brief.statusLabel || brief.status}
+Format: ${brief.format} | Deadline: ${brief.deadline}
+Channel: ${brief.channel} | Funnel: ${brief.funnel}
+
+HEADLINE: "${brief.headline}"
+POIN PESAN:
+${(brief.bullets || []).map(b => "  - " + b).join("\n")}
+CTA: ${brief.cta}
+
+DRAFT CAPTION:
+${brief.caption}
+
+PROMPT AI:
+${brief.aiPrompt}
+=================================`;
+
   navigator.clipboard.writeText(text).then(() => {
-    showToast("Brief berhasil disalin!");
+    showToast("Brief lengkap berhasil disalin!");
   });
 }
 

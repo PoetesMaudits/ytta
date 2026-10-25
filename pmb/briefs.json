@@ -1,0 +1,104 @@
+[
+  {
+    "id": "PMB-GRAF-202610-04",
+    "title": "Flyer Greeting Hari Sumpah Pemuda ke-98",
+    "category": "GRAFIS",
+    "month": "2026-10",
+    "status": "READY",
+    "statusLabel": "Siap Eksekusi",
+    "deadline": "Selasa, 27 Okt 2026 — 17:00 WIB",
+    "format": "Feed 4:5 (1080x1350px)",
+    "channel": "Instagram Feed & Story",
+    "funnel": "Kultural (TOFU)",
+    "objective": "Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan serta membakar semangat pemuda Riau.",
+    "palette": "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#F5E03A)",
+    "mood": "Heroik, khidmat, modern, sejuk Islami, penuh optimisme",
+    "mandatory": [
+      "Logo resmi PMB UMRI & Akreditasi Unggul/Baik Sekali",
+      "Logo Nasional Hari Sumpah Pemuda ke-98",
+      "Subjek talent mahasiswa UMRI berbusana rapi, berhijab sopan, senyum optimis",
+      "Tagline institusi: 'Kampus Bermarwah & Berkemajuan'",
+      "Alamat website: pmb.umri.ac.id"
+    ],
+    "headline": "Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!",
+    "bullets": [
+      "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026.",
+      "Kobarkan tekad, ukir karya nyata dari Bumi Lancang Kuning untuk Indonesia tercinta."
+    ],
+    "cta": "Wujudkan Cita-Citamu di UMRI | pmb.umri.ac.id",
+    "caption": "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\n98 tahun lalu, para pemuda dari pelosok nusantara bersumpah untuk menyatukan tekad dan memperjuangkan masa depan bangsa.\n\nHari ini, giliran kita—anak-anak muda di Riau dan seluruh penjuru Sumatera—untuk melanjutkan api perjuangan itu lewat ilmu pengetahuan, akhlak beradab, dan karya nyata yang berkemajuan.\n\nJangan takut bermimpi besar, Wak! Di kampus @kampus_umri, setiap bakat dan potensimu dirawat untuk menjadi pemimpin masa depan.\n\nSelamat Hari Sumpah Pemuda ke-98! ✊🔥\nApa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇\n\n#SumpahPemuda #HariSumpahPemuda #PMBUMRI #UMRI #PemudaBerkemajuan #KuliahDiPekanbaru #AnakRiau #MabaUMRI",
+    "aiPrompt": "Photorealistic group of diverse Indonesian college students standing proudly together, wearing neat university smart casual blazer with navy blue accents and modern modest hijab, heroic cinematic lighting, soft morning sunrays behind modern university atrium, Indonesian flag waving gently in the background, ultra-realistic 8k, inspiring national youth celebration --ar 4:5 --style raw",
+    "refLink": "https://id.pinterest.com/search/pins/?q=sumpah%20pemuda%20poster%20modern",
+    "refImage": "",
+    "driveLink": "https://drive.google.com"
+  },
+  {
+    "id": "PMB-CARS-202610-02",
+    "title": "Carousel 5 Jurusan Unggulan Technopreneur UMRI",
+    "category": "CAROUSEL",
+    "month": "2026-10",
+    "status": "ARCHIVED",
+    "statusLabel": "Diarsipkan",
+    "deadline": "Kamis, 29 Okt 2026 — 15:00 WIB",
+    "format": "Carousel 4:5 (7s)",
+    "channel": "Instagram Feed & LinkedIn",
+    "funnel": "MOFU (Consideration)",
+    "objective": "Edukasi prospek karir & positioning technopreneurship UMRI.",
+    "palette": "Dark Mode (#08080a) dengan Aksen Gradien Kuning-Pink-Ungu",
+    "mood": "Edukatif, analitis, futuristik, terpercaya",
+    "mandatory": [
+      "Logo PMB UMRI di pojok kanan atas setiap slide",
+      "Slide 1: Hook kuat '5 Jurusan Gak Pernah Sepi Peminat'",
+      "Slide 2-6: Bedah prodi (Informatika, Manajemen Digital, Ilmu Komunikasi, Farmasi, Teknik)",
+      "Slide 7: CTA ajakan mendaftar"
+    ],
+    "headline": "Takut Salah Pilih Jurusan? Ini 5 Prodi UMRI dengan Serapan Kerja Tertinggi!",
+    "bullets": [
+      "Teknik Informatika (Fasilitas Cloud & AI Lab)",
+      "Ilmu Komunikasi (Studio TV, Radio, & Podcasting Lengkap)",
+      "Farmasi (Laboratorium Riset Bahan Hayati Lokal)",
+      "Manajemen Technopreneur (Inkubator Bisnis Kampus)",
+      "Teknik Mesin & Industri (Mitra Pabrik & Energi Riau)"
+    ],
+    "cta": "Save Postingan Ini & Konsultasi Jurusan di DM!",
+    "caption": "Bingung milih prodi karena takut susah cari kerja nanti? Sini kating kasih bocorannya! 📊\n\nDunia industri sekarang lagi butuh banget talenta yang punya skill aplikatif, bukan cuma teori doang. Di UMRI, kurikulumnya dirancang 'Technopreneurship Unggul' supaya kalian lulus siap kerja atau bangun bisnis sendiri.\n\nGeser slide sampai habis buat liat prodi impian kamu! Mana nih yang paling bikin kamu penasaran? Tulis di kolom komentar ya! 👇\n\n#PMBUMRI #JurusanKuliah #SpillJurusanUMRI #AnakKampus #InfoKuliahPekanbaru #Maba2026",
+    "aiPrompt": "Futuristic university computer laboratory, students collaborating on coding and robotics, modern ambient neon lighting, cinematic, clean high-tech academic atmosphere, photorealistic 8k --ar 4:5 --style raw",
+    "refLink": "https://id.pinterest.com/search/pins/?q=tech%20carousel%20instagram%20slides",
+    "refImage": "",
+    "driveLink": "https://drive.google.com"
+  },
+  {
+    "id": "PMB-REEL-202610-03",
+    "title": "Video Reels: POV Ditanya 'Kuliah di Mana?' Sama Tetangga",
+    "category": "REELS",
+    "month": "2026-10",
+    "status": "ARCHIVED",
+    "statusLabel": "Diarsipkan",
+    "deadline": "Jumat, 30 Okt 2026 — 13:00 WIB",
+    "format": "Vertical 9:16 (1080x1920px)",
+    "channel": "Instagram Reels & TikTok",
+    "funnel": "TOFU (Awareness)",
+    "objective": "Membangun kedekatan emosional lewat komedi situasi anak muda Riau yang bangga kuliah di UMRI.",
+    "palette": "Natural Lighting Kampus, Warna Asli Suasana UMRI",
+    "mood": "Humoris, hangat, relatable, khas dialek santai Riau",
+    "mandatory": [
+      "2 Talent Mahasiswa (1 Tetangga/Emak, 1 Mahasiswa UMRI)",
+      "Adab busana tetap santun & rapi (sesuai marwah Muhammadiyah)",
+      "B-Roll transisi gedung megah kampus & perpustakaan UMRI",
+      "Outro logo PMB UMRI & CTA bio"
+    ],
+    "headline": "POV: Ketika Tetangga Kepo Nanya Kamu Kuliah di Mana...",
+    "bullets": [
+      "00:00 - 00:03 (HOOK): Tetangga nyindir kelulusan.",
+      "00:04 - 00:15 (PROBLEM): Mahasiswa jawab bangga di UMRI.",
+      "00:16 - 00:40 (SPILL): B-roll megah fasilitas & lab UMRI.",
+      "00:41 - 00:60 (CTA): Tetangga melongo, ajakan daftar."
+    ],
+    "cta": "Tag Teman Kamu yang Sering Ditanya Begini!",
+    "caption": "Yang sering kena 'serangan fajar' pertanyaan tetangga, cung tangan! 🙋‍♂️😂\n\nKuliah di mana aja yang penting kampusnya jelas, fasilitasnya mantap, dan lingkungannya bikin kita berkembang jadi versi terbaik. Di UMRI, semuanya serba siap buat nemenin langkah suksesmu.\n\nYuk amankan akun pendaftaranmu sekarang sebelum gelombang 1 tutup! Cek link di bio @pmbumri ya.\n\n#PMBUMRI #ReelsKampus #DramaMahasiswa #KuliahDiPekanbaru #AnakRiau #MabaUMRI",
+    "aiPrompt": "Original Live-Action Video Concept (No AI Generation Required). Use Real UMRI Campus B-Roll.",
+    "refLink": "https://www.instagram.com/reels/",
+    "refImage": "",
+    "driveLink": "https://drive.google.com"
+  }
+]
