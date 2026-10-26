@@ -806,6 +806,10 @@ Apa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇
 
   <!-- DUAL ACTION FLOATING DOCK -->
   <div class="action-dock">
+    <!-- TOMBOL HAPUS (HANYA AKTIF SAAT EDIT BRIEF) -->
+    <button id="dock-btn-delete" class="dock-btn danger" style="display: none; background: rgba(220, 38, 38, 0.15); border: 1.5px solid rgba(220, 38, 38, 0.45); color: #f87171;" onclick="deleteCurrentBrief()">
+      <span>🗑️</span> <span>Hapus Brief</span>
+    </button>
     <!-- METODE 2: SALIN UNTUK DIINJECT KE AI BEBAS SLOP -->
     <button class="dock-btn secondary" onclick="copyBriefData()">
       <span>📋</span> <span>Salin Data Brief</span>
@@ -1076,6 +1080,57 @@ async function saveToBranch(token, branchName, listData, message) {
   });
 }
 
+async function deleteCurrentBrief() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const editId = urlParams.get("id");
+  if (!editId) return;
+
+  const confirmed = confirm("Apakah Bos yakin ingin menghapus brief [" + editId + "] secara permanen dari vault?");
+  if (!confirmed) return;
+
+  const token = localStorage.getItem("pmb_gh_token");
+  if (!token) {
+    openTokenModal();
+    return;
+  }
+
+  showToast("Menghapus brief dari repository...");
+
+  try {
+    const getUrl = "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME + "/contents/" + FILE_PATH + "?ref=main";
+    const getRes = await fetch(getUrl, {
+      headers: {
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.github.v3+json"
+      }
+    });
+
+    let currentList = [];
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      const decodedContent = decodeURIComponent(escape(atob(fileData.content)));
+      currentList = JSON.parse(decodedContent);
+    } else {
+      const rawRes = await fetch("https://raw.githubusercontent.com/" + REPO_OWNER + "/" + REPO_NAME + "/main/" + FILE_PATH + "?t=" + Date.now());
+      if (rawRes.ok) currentList = await rawRes.json();
+    }
+
+    currentList = currentList.filter(b => b.id !== editId);
+    localStorage.setItem("pmb_cached_briefs", JSON.stringify(currentList));
+
+    const commitMsg = "feat(pmb): delete brief " + editId + " via mobile editor";
+    await saveToBranch(token, "main", currentList, commitMsg);
+    await saveToBranch(token, "gh-pages", currentList, commitMsg);
+
+    showToast("🗑️ Brief berhasil dihapus!");
+    setTimeout(() => {
+      window.location.href = "../";
+    }, 1000);
+  } catch (e) {
+    alert("Gagal menghapus: " + e.message);
+  }
+}
+
 async function publishDirectToGitHub() {
   const token = localStorage.getItem("pmb_gh_token");
   if (!token) {
@@ -1261,6 +1316,8 @@ async function initEditorFromQuery() {
     if (subEl) subEl.textContent = `Mengubah spesifikasi brief "${brief.title}".`;
     const publishBtn = document.querySelector(".dock-btn.primary");
     if (publishBtn) publishBtn.innerHTML = `<span>💾</span> <span>Simpan Perubahan</span>`;
+    const deleteBtn = document.getElementById("dock-btn-delete");
+    if (deleteBtn) deleteBtn.style.display = "flex";
 
     handleImagePreview();
     updateLivePreview();
