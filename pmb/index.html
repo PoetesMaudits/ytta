@@ -483,6 +483,56 @@ body::before {
 }
 .spec-pill strong { color: var(--text-main); }
 
+/* PLATFORM BADGES */
+.platform-badges-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3.5px 8.5px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  transition: transform 0.15s ease;
+}
+.platform-badge:hover {
+  transform: translateY(-1px);
+}
+.platform-badge.platform-instagram {
+  background: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.35);
+  color: #ff7597;
+}
+.platform-badge.platform-tiktok {
+  background: rgba(0, 242, 234, 0.1);
+  border-color: rgba(0, 242, 234, 0.3);
+  color: #69c9d0;
+}
+.platform-badge.platform-facebook {
+  background: rgba(24, 119, 242, 0.12);
+  border-color: rgba(24, 119, 242, 0.35);
+  color: #70b4ff;
+}
+.platform-badge.platform-youtube {
+  background: rgba(255, 0, 0, 0.12);
+  border-color: rgba(255, 0, 0, 0.35);
+  color: #ff6b6b;
+}
+.platform-badge.platform-threads {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
 .hub-card-btn {
   background: transparent;
   border: 1.5px solid var(--border-strong);
@@ -1158,7 +1208,9 @@ function renderHubCards() {
       <div class="hub-card-specs-row">
         <span class="spec-pill">Format: <strong>${brief.format}</strong></span>
         <span class="spec-pill">Funnel: <strong>${brief.funnel}</strong></span>
-        <span class="spec-pill">Channel: <strong>${brief.channel}</strong></span>
+      </div>
+      <div class="platform-badges-wrap" style="margin-bottom: 18px;">
+        ${renderChannelBadges(brief.channels || brief.channel)}
       </div>
       <div style="display: flex; gap: 8px; margin-top: auto;">
         <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');" style="flex: 1;">
@@ -1193,6 +1245,9 @@ function renderHubCards() {
         <div class="hub-card-icon">${icon}</div>
         <div class="hub-card-title">${brief.title}</div>
         <div class="hub-card-desc">${brief.headline || brief.objective}</div>
+        <div class="platform-badges-wrap" style="margin-bottom: 18px;">
+          ${renderChannelBadges(brief.channels || brief.channel)}
+        </div>
         <div style="display: flex; gap: 8px; margin-top: auto;">
           <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');" style="flex: 1;">
             <span>📑</span>
@@ -1256,8 +1311,8 @@ function renderDetailDocs() {
               <div class="metric-label">Funnel Target</div>
             </div>
             <div class="metric-box">
-              <div class="metric-val">${brief.channel.split(' ')[0] || brief.channel}</div>
-              <div class="metric-label">Channel Utama</div>
+              <div class="metric-val" style="display: flex; gap: 4px; flex-wrap: wrap;">${renderChannelBadges(brief.channels || brief.channel)}</div>
+              <div class="metric-label">Platform Penayangan</div>
             </div>
             <div class="metric-box">
               <div class="metric-val">${brief.deadline.split('—')[0] || brief.deadline}</div>
@@ -1283,8 +1338,8 @@ function renderDetailDocs() {
               <div class="spec-card-head">🎯 Objektif &amp; Distribusi</div>
               <div class="spec-rows">
                 <div class="spec-row">
-                  <span class="spec-key">CHANNEL PENAYANGAN</span>
-                  <span class="spec-value">${brief.channel}</span>
+                  <span class="spec-key">PLATFORM PENAYANGAN</span>
+                  <div class="platform-badges-wrap" style="margin-top: 4px;">${renderChannelBadges(brief.channels || brief.channel)}</div>
                 </div>
                 <div class="spec-row">
                   <span class="spec-key">FUNNEL KONTEN</span>
@@ -1402,6 +1457,40 @@ function renderDetailDocs() {
 
     container.appendChild(docEl);
   });
+}
+
+function parseChannels(channelData) {
+  if (Array.isArray(channelData)) return channelData;
+  if (!channelData || typeof channelData !== "string") return ["Instagram"];
+  const list = [];
+  const lower = channelData.toLowerCase();
+  if (lower.includes("instagram") || lower.includes("ig")) list.push("Instagram");
+  if (lower.includes("tiktok")) list.push("TikTok");
+  if (lower.includes("facebook") || lower.includes("fb")) list.push("Facebook");
+  if (lower.includes("youtube") || lower.includes("yt")) list.push("YouTube");
+  if (lower.includes("threads")) list.push("Threads");
+  return list.length > 0 ? list : [channelData];
+}
+
+function getChannelIcon(channel) {
+  switch (channel) {
+    case "Instagram": return "📸";
+    case "TikTok": return "🎵";
+    case "Facebook": return "👥";
+    case "YouTube": return "▶️";
+    case "Threads": return "🧵";
+    default: return "🌐";
+  }
+}
+
+function renderChannelBadges(channelData) {
+  const channels = parseChannels(channelData);
+  return channels.map(c => `
+    <span class="platform-badge platform-${c.toLowerCase()}">
+      <span class="platform-icon">${getChannelIcon(c)}</span>
+      <span class="platform-name">${c}</span>
+    </span>
+  `).join("");
 }
 
 function getCategoryIcon(cat) {

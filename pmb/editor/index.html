@@ -311,6 +311,118 @@ body::before {
   padding: 20px;
   margin-bottom: 28px;
 }
+
+/* PLATFORM BADGES & CHANNEL SELECTOR */
+.channel-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+.channel-check-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  user-select: none;
+}
+.channel-check-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.channel-check-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.channel-check-card:hover .channel-check-inner {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  border-color: var(--border-strong);
+}
+.channel-check-card input[type="checkbox"]:checked + .channel-check-inner {
+  background: rgba(13, 124, 47, 0.16);
+  border-color: var(--accent-green);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(13, 124, 47, 0.28);
+}
+.channel-check-card input[type="checkbox"]:checked + .channel-check-inner::after {
+  content: "✓";
+  margin-left: auto;
+  color: var(--accent-yellow);
+  font-size: 12px;
+  font-weight: 800;
+}
+.channel-icon {
+  font-size: 16px;
+}
+
+/* PLATFORM BADGES FOR VIEWS */
+.platform-badges-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  transition: transform 0.15s ease;
+}
+.platform-badge:hover {
+  transform: translateY(-1px);
+}
+.platform-badge.platform-instagram {
+  background: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.35);
+  color: #ff7597;
+}
+.platform-badge.platform-tiktok {
+  background: rgba(0, 242, 234, 0.1);
+  border-color: rgba(0, 242, 234, 0.3);
+  color: #69c9d0;
+}
+.platform-badge.platform-facebook {
+  background: rgba(24, 119, 242, 0.12);
+  border-color: rgba(24, 119, 242, 0.35);
+  color: #70b4ff;
+}
+.platform-badge.platform-youtube {
+  background: rgba(255, 0, 0, 0.12);
+  border-color: rgba(255, 0, 0, 0.35);
+  color: #ff6b6b;
+}
+.platform-badge.platform-threads {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+.preview-callout {
+  background: rgba(8, 8, 12, 0.9);
+  border: 1px solid var(--accent-yellow);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
 .preview-head {
   display: flex;
   align-items: center;
@@ -542,8 +654,44 @@ body::before {
 
     <div class="input-grid-2">
       <div class="form-group">
-        <label class="form-label">Channel Distribusi</label>
-        <input type="text" id="f-channel" class="form-input" value="Instagram Feed &amp; Story" oninput="updateLivePreview()"/>
+        <label class="form-label">Platform Penayangan</label>
+                <div class="channel-selector-grid">
+          <label class="channel-check-card">
+            <input type="checkbox" name="f-channel-box" value="Instagram" onchange="updateLivePreview()" checked/>
+            <div class="channel-check-inner">
+              <span class="channel-icon">📸</span>
+              <span class="channel-name">Instagram</span>
+            </div>
+          </label>
+          <label class="channel-check-card">
+            <input type="checkbox" name="f-channel-box" value="TikTok" onchange="updateLivePreview()" checked/>
+            <div class="channel-check-inner">
+              <span class="channel-icon">🎵</span>
+              <span class="channel-name">TikTok</span>
+            </div>
+          </label>
+          <label class="channel-check-card">
+            <input type="checkbox" name="f-channel-box" value="Facebook" onchange="updateLivePreview()"/>
+            <div class="channel-check-inner">
+              <span class="channel-icon">👥</span>
+              <span class="channel-name">Facebook</span>
+            </div>
+          </label>
+          <label class="channel-check-card">
+            <input type="checkbox" name="f-channel-box" value="YouTube" onchange="updateLivePreview()"/>
+            <div class="channel-check-inner">
+              <span class="channel-icon">▶️</span>
+              <span class="channel-name">YouTube</span>
+            </div>
+          </label>
+          <label class="channel-check-card">
+            <input type="checkbox" name="f-channel-box" value="Threads" onchange="updateLivePreview()"/>
+            <div class="channel-check-inner">
+              <span class="channel-icon">🧵</span>
+              <span class="channel-name">Threads</span>
+            </div>
+          </label>
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">Kategori Funnel</label>
@@ -653,6 +801,7 @@ Apa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇
     </div>
     <div class="preview-title" id="preview-title-text">Flyer Greeting Hari Sumpah Pemuda ke-98</div>
     <div class="preview-desc" id="preview-desc-text">Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!</div>
+    <div class="platform-badges-wrap" id="preview-platforms-wrap" style="margin-top: 10px;"></div>
   </div>
 
   <!-- DUAL ACTION FLOATING DOCK -->
@@ -741,6 +890,52 @@ function handleImagePreview() {
   }
 }
 
+function getSelectedChannels() {
+  const boxes = document.querySelectorAll('input[name="f-channel-box"]:checked');
+  const arr = Array.from(boxes).map(b => b.value);
+  return arr.length > 0 ? arr : ["Instagram"];
+}
+
+function setSelectedChannels(channels) {
+  let arr = [];
+  if (Array.isArray(channels)) {
+    arr = channels;
+  } else if (typeof channels === "string") {
+    const lower = channels.toLowerCase();
+    if (lower.includes("instagram") || lower.includes("ig")) arr.push("Instagram");
+    if (lower.includes("tiktok")) arr.push("TikTok");
+    if (lower.includes("facebook") || lower.includes("fb")) arr.push("Facebook");
+    if (lower.includes("youtube") || lower.includes("yt")) arr.push("YouTube");
+    if (lower.includes("threads")) arr.push("Threads");
+  }
+  if (arr.length === 0) arr = ["Instagram"];
+
+  document.querySelectorAll('input[name="f-channel-box"]').forEach(b => {
+    b.checked = arr.some(c => c.toLowerCase() === b.value.toLowerCase());
+  });
+}
+
+function getChannelIcon(channel) {
+  switch (channel) {
+    case "Instagram": return "📸";
+    case "TikTok": return "🎵";
+    case "Facebook": return "👥";
+    case "YouTube": return "▶️";
+    case "Threads": return "🧵";
+    default: return "🌐";
+  }
+}
+
+function renderChannelBadges(channels) {
+  if (!channels || !Array.isArray(channels)) return "";
+  return channels.map(c => `
+    <span class="platform-badge platform-${c.toLowerCase()}">
+      <span class="platform-icon">${getChannelIcon(c)}</span>
+      <span class="platform-name">${c}</span>
+    </span>
+  `).join("");
+}
+
 function updateLivePreview() {
   const title = document.getElementById("f-title").value.trim() || "Judul Brief Konten";
   const headline = document.getElementById("f-headline").value.trim() || "Headline Pesan Utama";
@@ -749,6 +944,10 @@ function updateLivePreview() {
   document.getElementById("preview-title-text").textContent = title;
   document.getElementById("preview-desc-text").textContent = headline;
   document.getElementById("preview-badge-status").textContent = status === "READY" ? "Siap Eksekusi" : (status === "ARCHIVED" ? "Diarsipkan" : "In Review");
+
+  const selectedChannels = getSelectedChannels();
+  const wrap = document.getElementById("preview-platforms-wrap");
+  if (wrap) wrap.innerHTML = renderChannelBadges(selectedChannels);
 }
 
 function buildBriefObject() {
@@ -757,7 +956,8 @@ function buildBriefObject() {
   const status = document.getElementById("f-status").value;
   const deadline = document.getElementById("f-deadline").value.trim();
   const format = document.getElementById("f-format").value.trim();
-  const channel = document.getElementById("f-channel").value.trim();
+  const selectedChannels = getSelectedChannels();
+  const channel = selectedChannels.join(", ");
   const funnel = document.getElementById("f-funnel").value.trim();
   const objective = document.getElementById("f-objective").value.trim();
   const palette = document.getElementById("f-palette").value.trim();
@@ -782,6 +982,7 @@ function buildBriefObject() {
     statusLabel: status === "READY" ? "Siap Eksekusi" : (status === "ARCHIVED" ? "Diarsipkan" : "In Review"),
     deadline,
     format,
+    channels: selectedChannels,
     channel,
     funnel,
     objective,
@@ -1017,7 +1218,7 @@ async function initEditorFromQuery() {
     document.getElementById("f-title").value = brief.title || "";
     document.getElementById("f-deadline").value = brief.deadline || "";
     document.getElementById("f-format").value = brief.format || "";
-    document.getElementById("f-channel").value = brief.channel || "";
+    setSelectedChannels(brief.channels || brief.channel);
     document.getElementById("f-funnel").value = brief.funnel || "";
     document.getElementById("f-objective").value = brief.objective || "";
     document.getElementById("f-palette").value = brief.palette || "";
