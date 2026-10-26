@@ -1126,10 +1126,15 @@ function renderHubCards() {
         <span class="spec-pill">Funnel: <strong>${brief.funnel}</strong></span>
         <span class="spec-pill">Channel: <strong>${brief.channel}</strong></span>
       </div>
-      <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');">
-        <span>📑</span>
-        <span>Buka Brief</span>
-      </button>
+      <div style="display: flex; gap: 8px; margin-top: auto;">
+        <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');" style="flex: 1;">
+          <span>📑</span>
+          <span>Buka Brief</span>
+        </button>
+        <a href="./editor/?id=${brief.id}" onclick="event.stopPropagation();" class="hub-card-btn" style="width: auto; text-decoration: none; padding: 10px 14px;" title="Edit Brief">
+          <span>✏️</span>
+        </a>
+      </div>
     `;
     activeGrid.appendChild(cardEl);
   });
@@ -1154,10 +1159,15 @@ function renderHubCards() {
         <div class="hub-card-icon">${icon}</div>
         <div class="hub-card-title">${brief.title}</div>
         <div class="hub-card-desc">${brief.headline || brief.objective}</div>
-        <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');">
-          <span>📑</span>
-          <span>Buka Arsip</span>
-        </button>
+        <div style="display: flex; gap: 8px; margin-top: auto;">
+          <button class="hub-card-btn" onclick="event.stopPropagation(); openDocument('doc-${brief.id}');" style="flex: 1;">
+            <span>📑</span>
+            <span>Buka Arsip</span>
+          </button>
+          <a href="./editor/?id=${brief.id}" onclick="event.stopPropagation();" class="hub-card-btn" style="width: auto; text-decoration: none; padding: 10px 14px;" title="Edit Brief">
+            <span>✏️</span>
+          </a>
+        </div>
       `;
       archiveGrid.appendChild(cardEl);
     });
@@ -1186,6 +1196,14 @@ function renderDetailDocs() {
               <span class="status-indicator-dot"></span> ${brief.statusLabel || brief.status}
             </span>
             <span class="spec-pill">Format: <strong>${brief.format}</strong></span>
+            <div style="margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="./editor/?id=${brief.id}" class="action-btn" style="text-decoration:none; padding: 6px 12px; font-size: 11.5px;">
+                <span>✏️</span> <span>Edit</span>
+              </a>
+              <button class="action-btn" onclick="toggleArchiveBrief('${brief.id}')" style="padding: 6px 12px; font-size: 11.5px;">
+                <span>${brief.status === 'ARCHIVED' ? '♻️ Pulihkan' : '📦 Arsipkan'}</span>
+              </button>
+            </div>
           </div>
           <h1 class="hero-title">
             ${brief.title}
@@ -1325,6 +1343,13 @@ function renderDetailDocs() {
 
         <!-- FOOTER ACTIONS -->
         <div class="doc-footer-actions">
+          <a href="./editor/?id=${brief.id}" class="action-btn" style="text-decoration:none;">
+            <span>✏️</span>
+            <span>Edit Brief</span>
+          </a>
+          <button class="action-btn" onclick="toggleArchiveBrief('${brief.id}')">
+            <span>${brief.status === 'ARCHIVED' ? '♻️ Pulihkan dari Arsip' : '📦 Arsipkan Brief'}</span>
+          </button>
           <button class="action-btn" onclick="copyText('prompt-${brief.id}', 'Prompt AI disalin!')">
             <span>🤖</span>
             <span>Salin Prompt</span>
@@ -1440,6 +1465,73 @@ ${brief.aiPrompt}
   navigator.clipboard.writeText(text).then(() => {
     showToast("Brief lengkap berhasil disalin!");
   });
+}
+
+async function toggleArchiveBrief(briefId) {
+  const brief = allBriefs.find(b => b.id === briefId);
+  if (!brief) return;
+  const isArchived = brief.status === "ARCHIVED";
+  const actionName = isArchived ? "memulihkan" : "mengarsipkan";
+
+  const token = localStorage.getItem("pmb_gh_token");
+  if (!token) {
+    if (confirm(`Untuk ${actionName} brief ini, buka form editor atau gunakan GitHub Token? Klik OK untuk membuka form editor.`)) {
+      window.location.href = `./editor/?id=${briefId}&setArchive=${isArchived ? '0' : '1'}`;
+    }
+    return;
+  }
+
+  showToast(`Sedang ${actionName} brief...`);
+
+  try {
+    const getUrl = `https://api.github.com/repos/PoetesMaudits/ytta/contents/pmb/briefs.json`;
+    const getRes = await fetch(getUrl, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json"
+      }
+    });
+
+    if (!getRes.ok) throw new Error("Gagal mengambil data dari GitHub. Periksa token Anda.");
+    const fileData = await getRes.json();
+    const currentList = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+
+    const targetIndex = currentList.findIndex(b => b.id === briefId);
+    if (targetIndex === -1) throw new Error("Brief tidak ditemukan di repositori.");
+
+    if (isArchived) {
+      currentList[targetIndex].status = "READY";
+      currentList[targetIndex].statusLabel = "Siap Eksekusi";
+    } else {
+      currentList[targetIndex].status = "ARCHIVED";
+      currentList[targetIndex].statusLabel = "Diarsipkan";
+    }
+
+    const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentList, null, 2))));
+    const putRes = await fetch(getUrl, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: `feat(pmb): ${actionName} brief ${briefId}`,
+        content: updatedContent,
+        sha: fileData.sha
+      })
+    });
+
+    if (putRes.ok) {
+      showToast(`✨ Brief berhasil ${isArchived ? 'dipulihkan' : 'diarsipkan'}!`);
+      setTimeout(() => location.reload(), 1200);
+    } else {
+      const err = await putRes.json();
+      alert(`Gagal ${actionName}: ` + (err.message || "Periksa token Anda."));
+    }
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
 }
 
 checkSessionAuth();
