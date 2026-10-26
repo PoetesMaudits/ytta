@@ -209,18 +209,43 @@ body::before {
   align-items: center;
   gap: 12px;
 }
-.brand-logo-text {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: #fff;
+.brand-logo-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
 }
-.brand-logo-text span {
-  color: var(--accent-yellow);
+.header-logo-img {
+  height: 24px;
+  width: auto;
+  max-width: 135px;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  transition: transform 0.2s ease;
+}
+.header-logo-img:hover {
+  transform: scale(1.02);
+}
+.gate-brand-logo {
+  width: 220px;
+  max-width: 80%;
+  margin: 0 auto 18px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gate-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,0.7));
+}
+@media (max-width: 480px) {
+  .header-logo-img {
+    height: 20px;
+    max-width: 105px;
+  }
+  .gate-brand-logo {
+    width: 175px;
+  }
 }
 .divider-col {
   width: 1px; height: 18px; background: var(--border-strong);
@@ -876,7 +901,9 @@ footer {
      ========================================================================== -->
 <div id="security-gate">
   <div class="gate-card">
-    <div class="gate-brand-badge">PMB UMRI // <strong>CREATIVE VAULT</strong></div>
+    <div class="gate-brand-logo">
+      <img src="logo-pmbumri.svg" alt="PMB UMRI" class="gate-logo-img"/>
+    </div>
     <div class="gate-title">STUDIO BRIEF HUB</div>
     <div class="gate-sub">SENTRAL BRIEF KREATIF &amp; PIPELINE PRODUKSI @PMBUMRI</div>
     <div class="gate-input-wrap">
@@ -896,8 +923,8 @@ footer {
 <header class="top-bar">
   <div class="container top-bar-inner">
     <div class="brand-identity-row">
-      <div class="brand-logo-text">
-        PMB <span>UMRI</span>
+      <div class="brand-logo-wrap">
+        <img src="logo-pmbumri.svg" alt="PMB UMRI" class="header-logo-img"/>
       </div>
       <div class="divider-col"></div>
       <div class="partner-tag">
