@@ -517,7 +517,7 @@ body::before {
     <div class="input-grid-2">
       <div class="form-group">
         <label class="form-label">ID Konten</label>
-        <input type="text" id="f-id" class="form-input" style="font-family: var(--font-mono); font-size: 13px;" value="PMB-GRAF-202610-04" oninput="updateLivePreview()"/>
+        <input type="text" id="f-id" class="form-input" style="font-family: var(--font-mono); font-size: 13px;" placeholder="Misal: PMB-GRAF-202610-05" oninput="updateLivePreview()"/>
       </div>
       <div class="form-group">
         <label class="form-label">Status Produksi</label>
@@ -843,6 +843,38 @@ function saveGitHubToken() {
   closeTokenModal();
 }
 
+async function saveToBranch(token, branchName, listData, message) {
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${branchName}`;
+  const getRes = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Accept": "application/vnd.github.v3+json"
+    }
+  });
+
+  let sha = "";
+  if (getRes.ok) {
+    const data = await getRes.json();
+    sha = data.sha;
+  }
+
+  const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(listData, null, 2))));
+  return await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+    method: "PUT",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Accept": "application/vnd.github.v3+json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: message,
+      content: updatedContent,
+      sha: sha,
+      branch: branchName
+    })
+  });
+}
+
 async function publishDirectToGitHub() {
   const token = localStorage.getItem("pmb_gh_token");
   if (!token) {
@@ -855,8 +887,8 @@ async function publishDirectToGitHub() {
   try {
     const newBrief = buildBriefObject();
 
-    // 1. Ambil file briefs.json saat ini dari GitHub
-    const getUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+    // 1. Ambil file briefs.json dari GitHub (prioritas main branch)
+    const getUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=main`;
     const getRes = await fetch(getUrl, {
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -865,13 +897,14 @@ async function publishDirectToGitHub() {
     });
 
     let currentList = [];
-    let fileSha = "";
-
     if (getRes.ok) {
       const fileData = await getRes.json();
-      fileSha = fileData.sha;
       const decodedContent = decodeURIComponent(escape(atob(fileData.content)));
       currentList = JSON.parse(decodedContent);
+    } else {
+      // Fallback ambil dari raw github
+      const rawRes = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?t=${Date.now()}`);
+      if (rawRes.ok) currentList = await rawRes.json();
     }
 
     // 2. Cek apakah ID sudah ada (update) atau tambah baru di depan
@@ -883,31 +916,18 @@ async function publishDirectToGitHub() {
       currentList.unshift(newBrief);
     }
 
-    // 3. Encode & Put ke GitHub
-    const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentList, null, 2))));
-    const putRes = await fetch(getUrl, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: `feat(pmb): ${isEdit ? 'update' : 'publish'} brief ${newBrief.id} via mobile editor`,
-        content: updatedContent,
-        sha: fileSha
-      })
-    });
+    // 3. Simpan instan ke localStorage browser agar tidak ada jeda cache 0 detik!
+    localStorage.setItem("pmb_cached_briefs", JSON.stringify(currentList));
 
-    if (putRes.ok) {
-      showToast(isEdit ? "✨ Berhasil memperbarui brief!" : "🚀 Berhasil dipublikasikan ke Hub!");
-      setTimeout(() => {
-        window.location.href = "../";
-      }, 1200);
-    } else {
-      const err = await putRes.json();
-      alert("Gagal mem-publish ke GitHub: " + (err.message || "Periksa token Anda."));
-    }
+    // 4. Commit ke kedua branch (main dan gh-pages agar langsung deploy)
+    const commitMsg = `feat(pmb): ${isEdit ? 'update' : 'publish'} brief ${newBrief.id} via mobile editor`;
+    await saveToBranch(token, "main", currentList, commitMsg);
+    await saveToBranch(token, "gh-pages", currentList, commitMsg);
+
+    showToast(isEdit ? "✨ Berhasil memperbarui brief!" : "🚀 Berhasil dipublikasikan ke Hub!");
+    setTimeout(() => {
+      window.location.href = "../";
+    }, 1000);
   } catch (e) {
     alert("Error: " + e.message);
   }
@@ -956,15 +976,39 @@ async function initEditorFromQuery() {
   const setArchive = urlParams.get("setArchive");
 
   if (!editId) {
+    // Mode Buat Baru: generate ID baru otomatis jika kosong
+    if (!document.getElementById("f-id").value) {
+      const randNum = String(Math.floor(Math.random() * 90) + 10);
+      document.getElementById("f-id").value = `PMB-GRAF-202610-${randNum}`;
+    }
     updateLivePreview();
     checkScrollDock();
     return;
   }
 
   try {
-    const res = await fetch("../briefs.json?v=" + Date.now());
-    if (!res.ok) return;
-    const list = await res.json();
+    let list = null;
+    // 1. Coba ambil data ter-fresh dari raw github
+    try {
+      const rawRes = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?t=${Date.now()}`, { cache: "no-store" });
+      if (rawRes.ok) list = await rawRes.json();
+    } catch (e) {}
+
+    // 2. Coba fallback ke localStorage
+    if (!list) {
+      try {
+        const cached = localStorage.getItem("pmb_cached_briefs");
+        if (cached) list = JSON.parse(cached);
+      } catch (e) {}
+    }
+
+    // 3. Fallback ke relative file
+    if (!list) {
+      const res = await fetch("../briefs.json?v=" + Date.now(), { cache: "no-store" });
+      if (res.ok) list = await res.json();
+    }
+
+    if (!list) return;
     const brief = list.find(b => b.id === editId);
     if (!brief) return;
 

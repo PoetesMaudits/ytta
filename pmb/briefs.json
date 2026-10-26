@@ -8,11 +8,11 @@
     "statusLabel": "Siap Eksekusi",
     "deadline": "Selasa, 27 Okt 2026 — 11:00 WIB",
     "format": "Feed 3:4 (1080x1440px)",
-    "channel": "Instagram Feed & Story",
+    "channel": "IG, TikTok (feed)",
     "funnel": "Kultural (TOFU)",
     "objective": "Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan serta membakar semangat pemuda Riau.",
     "palette": "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#FBB03B)",
-    "mood": "Heroik, khidmat, modern, sejuk Islami, penuh optimisme",
+    "mood": "Heroik, modern, sejuk Islami, penuh optimisme",
     "mandatory": [
       "Logo resmi PMB UMRI & Akreditasi Unggul/Baik Sekali",
       "Logo Nasional Hari Sumpah Pemuda ke-98",
@@ -20,17 +20,16 @@
       "Tagline institusi: 'Sang Pencerah Muda'",
       "Alamat website: pmb.umri.ac.id"
     ],
-    "headline": "Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!",
+    "headline": "Pemuda Hari Ini (smaller), Pemimpin Esok Hari! (bigger)",
     "bullets": [
-      "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026.",
-      "Kobarkan tekad, ukir karya nyata dari Bumi Lancang Kuning untuk Indonesia tercinta."
+      "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026."
     ],
-    "cta": "Wujudkan Cita-Citamu di UMRI | pmb.umri.ac.id",
-    "caption": "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\n98 tahun lalu, para pemuda dari pelosok nusantara bersumpah untuk menyatukan tekad dan memperjuangkan masa depan bangsa.\n\nHari ini, giliran kita—anak-anak muda di Riau dan seluruh penjuru Sumatera—untuk melanjutkan api perjuangan itu lewat ilmu pengetahuan, akhlak beradab, dan karya nyata yang berkemajuan.\n\nJangan takut bermimpi besar, Wak! Di kampus @kampus_umri, setiap bakat dan potensimu dirawat untuk menjadi pemimpin masa depan.\n\nSelamat Hari Sumpah Pemuda ke-98! ✊🔥\nApa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇\n\n#SumpahPemuda #HariSumpahPemuda #PMBUMRI #UMRI #PemudaBerkemajuan #KuliahDiPekanbaru #AnakRiau #MabaUMRI",
+    "cta": "",
+    "caption": "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\nSelamat Hari Sumpah Pemuda ke-98! ✊🔥\n\nApa tekad terbesarmu untuk Indonesia tahun ini? Tulis di kolom komentar ya! 👇\n\n#PMBUMRI #UMRI #SumpahPemuda",
     "aiPrompt": "Photorealistic group of diverse Indonesian college students standing proudly together, wearing neat university smart casual blazer with navy blue accents and modern modest hijab, heroic cinematic lighting, soft morning sunrays behind modern university atrium, Indonesian flag waving gently in the background, ultra-realistic 8k, inspiring national youth celebration --ar 4:5 --style raw",
     "refLink": "https://id.pinterest.com/search/pins/?q=sumpah%20pemuda%20poster%20modern",
     "refImage": "",
-    "driveLink": "https://drive.google.com"
+    "driveLink": "https://drive.google.com/drive/folders/1dq_epnbm11bSk6jR8gD_HQHUJ3kXi-5b?usp=sharing"
   },
   {
     "id": "PMB-CARS-202610-02",

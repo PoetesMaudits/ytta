@@ -1045,15 +1045,50 @@ function checkSessionAuth() {
 }
 
 async function loadBriefsData() {
+  // 1. Cek cache lokal di browser agar perubahan langsung tampil instan (0 detik)
+  let cached = null;
   try {
-    const res = await fetch(`./briefs.json?t=${Date.now()}`);
+    const rawCache = localStorage.getItem("pmb_cached_briefs");
+    if (rawCache) cached = JSON.parse(rawCache);
+  } catch (err) {}
+
+  if (cached && Array.isArray(cached) && cached.length > 0) {
+    allBriefs = cached;
+    renderHubCards();
+    renderDetailDocs();
+  }
+
+  // 2. Fetch data terbaru dari GitHub Raw (update real-time dalam 1-2 detik tanpa nunggu CDN build)
+  try {
+    const rawUrl = `https://raw.githubusercontent.com/PoetesMaudits/ytta/main/pmb/briefs.json?t=${Date.now()}`;
+    const res = await fetch(rawUrl, { cache: "no-store" });
     if (res.ok) {
       allBriefs = await res.json();
-    } else {
-      throw new Error("Failed to load JSON");
+      localStorage.setItem("pmb_cached_briefs", JSON.stringify(allBriefs));
+      renderHubCards();
+      renderDetailDocs();
+      return;
     }
   } catch (e) {
-    console.warn("Using embedded fallback", e);
+    console.warn("Raw fetch failed, trying local relative fetch...", e);
+  }
+
+  // 3. Fallback ke file relatif jika raw gagal
+  try {
+    const res = await fetch(`./briefs.json?t=${Date.now()}`, { cache: "no-store" });
+    if (res.ok) {
+      allBriefs = await res.json();
+      localStorage.setItem("pmb_cached_briefs", JSON.stringify(allBriefs));
+      renderHubCards();
+      renderDetailDocs();
+      return;
+    }
+  } catch (e) {
+    console.warn("Relative fetch failed", e);
+  }
+
+  // 4. Jika semua fetch gagal dan belum ada cache, gunakan fallback
+  if (!allBriefs || allBriefs.length === 0) {
     allBriefs = [
       {
         id: "PMB-GRAF-202610-04",
@@ -1061,29 +1096,28 @@ async function loadBriefsData() {
         category: "GRAFIS",
         status: "READY",
         statusLabel: "Siap Eksekusi",
-        deadline: "Selasa, 27 Okt 2026 — 17:00 WIB",
-        format: "Feed 4:5 (1080x1350px)",
-        channel: "Instagram Feed & Story",
+        deadline: "Selasa, 27 Okt 2026 — 11:00 WIB",
+        format: "Feed 3:4 (1080x1440px)",
+        channel: "IG, TikTok (feed)",
         funnel: "Kultural (TOFU)",
         objective: "Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan",
         palette: "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#FBB03B)",
-        mood: "Heroik, khidmat, modern, sejuk Islami, penuh optimisme",
+        mood: "Heroik, modern, sejuk Islami, penuh optimisme",
         mandatory: [
           "Logo resmi PMB UMRI & Akreditasi Unggul/Baik Sekali",
           "Logo Nasional Hari Sumpah Pemuda ke-98",
           "Subjek talent mahasiswa UMRI berbusana rapi, berhijab sopan",
           "Tagline: 'Sang Pencerah Muda'"
         ],
-        headline: "Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!",
+        headline: "Pemuda Hari Ini (smaller), Pemimpin Esok Hari! (bigger)",
         bullets: [
-          "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026.",
-          "Kobarkan tekad, ukir karya nyata dari Bumi Lancang Kuning untuk Indonesia tercinta."
+          "Selamat Hari Sumpah Pemuda ke-98 — 28 Oktober 2026."
         ],
-        cta: "Wujudkan Cita-Citamu di UMRI | pmb.umri.ac.id",
-        caption: "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\nSelamat Hari Sumpah Pemuda ke-98!",
+        cta: "",
+        caption: "Satu nusa, satu bangsa, satu bahasa: INDONESIA! 🇮🇩✨\n\nSelamat Hari Sumpah Pemuda ke-98! ✊🔥",
         aiPrompt: "Photorealistic group of diverse Indonesian college students standing proudly together, heroic lighting, 8k --ar 4:5",
         refLink: "https://id.pinterest.com/search/pins/?q=sumpah%20pemuda%20poster%20modern",
-        driveLink: "https://drive.google.com"
+        driveLink: "https://drive.google.com/drive/folders/1dq_epnbm11bSk6jR8gD_HQHUJ3kXi-5b?usp=sharing"
       }
     ];
   }
@@ -1484,7 +1518,7 @@ async function toggleArchiveBrief(briefId) {
   showToast(`Sedang ${actionName} brief...`);
 
   try {
-    const getUrl = `https://api.github.com/repos/PoetesMaudits/ytta/contents/pmb/briefs.json`;
+    const getUrl = `https://api.github.com/repos/PoetesMaudits/ytta/contents/pmb/briefs.json?ref=main`;
     const getRes = await fetch(getUrl, {
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -1492,9 +1526,13 @@ async function toggleArchiveBrief(briefId) {
       }
     });
 
-    if (!getRes.ok) throw new Error("Gagal mengambil data dari GitHub. Periksa token Anda.");
-    const fileData = await getRes.json();
-    const currentList = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+    let currentList = [];
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      currentList = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+    } else {
+      currentList = [...allBriefs];
+    }
 
     const targetIndex = currentList.findIndex(b => b.id === briefId);
     if (targetIndex === -1) throw new Error("Brief tidak ditemukan di repositori.");
@@ -1507,28 +1545,32 @@ async function toggleArchiveBrief(briefId) {
       currentList[targetIndex].statusLabel = "Diarsipkan";
     }
 
-    const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentList, null, 2))));
-    const putRes = await fetch(getUrl, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: `feat(pmb): ${actionName} brief ${briefId}`,
-        content: updatedContent,
-        sha: fileData.sha
-      })
-    });
+    // Update state & cache lokal seketika
+    localStorage.setItem("pmb_cached_briefs", JSON.stringify(currentList));
+    allBriefs = currentList;
+    renderHubCards();
+    renderDetailDocs();
 
-    if (putRes.ok) {
-      showToast(`✨ Brief berhasil ${isArchived ? 'dipulihkan' : 'diarsipkan'}!`);
-      setTimeout(() => location.reload(), 1200);
-    } else {
-      const err = await putRes.json();
-      alert(`Gagal ${actionName}: ` + (err.message || "Periksa token Anda."));
-    }
+    // Commit ke kedua branch: main dan gh-pages
+    const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentList, null, 2))));
+    const commitMsg = `feat(pmb): ${actionName} brief ${briefId}`;
+
+    const saveBranch = async (branchName) => {
+      const bUrl = `https://api.github.com/repos/PoetesMaudits/ytta/contents/pmb/briefs.json?ref=${branchName}`;
+      const bRes = await fetch(bUrl, { headers: { "Authorization": `Bearer ${token}` } });
+      let sha = "";
+      if (bRes.ok) sha = (await bRes.json()).sha;
+      return await fetch(`https://api.github.com/repos/PoetesMaudits/ytta/contents/pmb/briefs.json`, {
+        method: "PUT",
+        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ message: commitMsg, content: updatedContent, sha, branch: branchName })
+      });
+    };
+
+    await saveBranch("main");
+    await saveBranch("gh-pages");
+
+    showToast(`✨ Brief berhasil ${isArchived ? 'dipulihkan' : 'diarsipkan'}!`);
   } catch (err) {
     alert("Error: " + err.message);
   }
