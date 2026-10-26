@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>PMB UMRI — Studio Creative Brief Hub &amp; Production Pipeline</title>
+<title>PMB UMRI — Brief Kreatif Tim Produksi</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-deep: #08080a;
@@ -21,17 +21,17 @@
   --text-muted: #8e8ea2;
   --text-dim: #545468;
 
-  --accent-yellow: #F5E03A;
-  --accent-pink: #F0527A;
-  --accent-purple: #8B2FC2;
+  --accent-yellow: #fbb03b;
+  --accent-gold: #fbb03b;
+  --accent-green: #0d7c2f;
   --accent-cyan: #00d2ff;
-  --accent-green: #00e676;
   --accent-red: #ff5252;
 
-  --grad-signature: linear-gradient(90deg, #F5E03A 0%, #F0527A 50%, #8B2FC2 100%);
-  --grad-card-header: linear-gradient(180deg, rgba(245, 224, 58, 0.08) 0%, transparent 100%);
-  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --grad-signature: linear-gradient(135deg, #0d7c2f 0%, #fbb03b 100%);
+  --grad-card-header: linear-gradient(180deg, rgba(251, 176, 59, 0.08) 0%, transparent 100%);
+  --font-display: 'Funnel Display', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Plus Jakarta Sans', sans-serif;
 }
 
 *, *::before, *::after {
@@ -44,7 +44,7 @@ html, body {
   overflow-x: hidden !important;
   background-color: var(--bg-deep);
   color: var(--text-main);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -123,6 +123,7 @@ body::before {
   font-weight: 700;
 }
 .gate-title {
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -130,11 +131,10 @@ body::before {
   color: #fff;
 }
 .gate-sub {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-muted);
   margin-bottom: 24px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   line-height: 1.5;
 }
 .gate-input-wrap { margin-bottom: 14px; }
@@ -154,7 +154,7 @@ body::before {
 }
 .gate-input:focus {
   border-color: var(--accent-yellow);
-  box-shadow: 0 0 16px rgba(245, 224, 58, 0.22);
+  box-shadow: 0 0 16px rgba(251, 176, 59, 0.22);
 }
 .gate-btn {
   width: 100%;
@@ -176,7 +176,7 @@ body::before {
 }
 .gate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 224, 58, 0.28);
+  box-shadow: 0 8px 24px rgba(251, 176, 59, 0.28);
 }
 .gate-error {
   display: none;
@@ -265,7 +265,7 @@ body::before {
   display: none;
   align-items: center;
   gap: 6px;
-  background: rgba(245, 224, 58, 0.12);
+  background: rgba(251, 176, 59, 0.12);
   border: 1px solid var(--accent-yellow);
   color: var(--accent-yellow);
   font-family: var(--font-display);
@@ -282,8 +282,8 @@ body::before {
   transform: translateY(-1px);
 }
 .editor-btn-top {
-  background: rgba(245, 224, 58, 0.08);
-  border: 1px solid rgba(245, 224, 58, 0.28);
+  background: rgba(251, 176, 59, 0.08);
+  border: 1px solid rgba(251, 176, 59, 0.28);
   color: var(--accent-yellow);
   font-family: var(--font-display);
   font-weight: 700;
@@ -342,9 +342,10 @@ body::before {
   text-align: left;
 }
 .hub-title {
+  font-family: var(--font-display);
   font-size: 32px;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   margin-bottom: 8px;
   color: #fff;
 }
@@ -424,9 +425,9 @@ body::before {
   gap: 5px;
 }
 .hub-card-status.ready {
-  background: rgba(245, 224, 58, 0.12);
+  background: rgba(251, 176, 59, 0.12);
   color: var(--accent-yellow);
-  border: 1px solid rgba(245, 224, 58, 0.3);
+  border: 1px solid rgba(251, 176, 59, 0.3);
 }
 .hub-card-status.review {
   background: rgba(0, 210, 255, 0.12);
@@ -448,6 +449,7 @@ body::before {
   margin-bottom: 14px;
 }
 .hub-card-title {
+  font-family: var(--font-display);
   font-size: 19px;
   font-weight: 800;
   color: #fff;
@@ -554,9 +556,10 @@ body::before {
   flex-wrap: wrap;
 }
 .hero-title {
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   line-height: 1.3;
   margin-bottom: 10px;
   color: #fff;
@@ -752,6 +755,7 @@ body::before {
   margin-bottom: 24px;
 }
 .headline-hero-text {
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 800;
   color: #fff;
@@ -769,25 +773,25 @@ body::before {
   color: var(--text-muted);
   line-height: 1.65;
   white-space: pre-wrap;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   margin-top: 14px;
 }
 
 .prompt-callout {
-  background: rgba(139, 47, 194, 0.08);
-  border: 1px solid rgba(139, 47, 194, 0.25);
+  background: rgba(13, 124, 47, 0.08);
+  border: 1px solid rgba(13, 124, 47, 0.25);
   border-radius: 16px;
   padding: 22px;
   margin-bottom: 24px;
 }
 .prompt-code-wrap {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   border-radius: 10px;
   padding: 14px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 12.5px;
-  color: #e2b4ff;
+  color: #dcfce7;
   line-height: 1.6;
   margin-top: 10px;
   word-break: break-word;
@@ -845,7 +849,7 @@ body::before {
   border: none;
 }
 .action-btn.primary:hover {
-  box-shadow: 0 4px 18px rgba(245, 224, 58, 0.28);
+  box-shadow: 0 4px 18px rgba(251, 176, 59, 0.28);
 }
 
 #toast-container {
@@ -904,8 +908,7 @@ footer {
     <div class="gate-brand-logo">
       <img src="logo-pmbumri.svg" alt="PMB UMRI" class="gate-logo-img"/>
     </div>
-    <div class="gate-title">STUDIO BRIEF HUB</div>
-    <div class="gate-sub">SENTRAL BRIEF KREATIF &amp; PIPELINE PRODUKSI @PMBUMRI</div>
+    <div class="gate-sub">Repo Brief Tim Kreatif @PMBUMRI</div>
     <div class="gate-input-wrap">
       <input type="password" id="gate-pass" class="gate-input" placeholder="MASUKKAN PIN" autofocus onkeypress="handleGateKey(event)"/>
     </div>
@@ -925,10 +928,6 @@ footer {
     <div class="brand-identity-row">
       <div class="brand-logo-wrap">
         <img src="logo-pmbumri.svg" alt="PMB UMRI" class="header-logo-img"/>
-      </div>
-      <div class="divider-col"></div>
-      <div class="partner-tag">
-        STUDIO × <strong>TIM PRODUKSI</strong>
       </div>
     </div>
     <div class="top-actions">
@@ -957,11 +956,8 @@ footer {
     <div class="container">
       <div class="hub-hero">
         <h1 class="hub-title">
-          Studio Brief Hub // <span>PMB UMRI 2026</span>
+          Brief Kreatif Tim Produksi <span>PMB UMRI</span>
         </h1>
-        <p class="hub-sub">
-          Daftar antrean brief kreatif resmi yang sedang aktif dikerjakan oleh tim produksi @pmbumri. Klik kartu di bawah untuk membuka detail spesifikasi lengkap.
-        </p>
       </div>
 
       <!-- GRID KARTU BRIEF AKTIF (DINAMIS DARI BRIEFS.JSON) -->
@@ -994,8 +990,8 @@ footer {
 
 <footer>
   <div class="container footer-inner">
-    <div>PMB UMRI // STUDIO PRODUCTION VAULT · UNIVERSITAS MUHAMMADIYAH RIAU</div>
-    <div>BERMARWAH &amp; BERKEMAJUAN</div>
+    <div>PMB UMRI // PRODUCTION VAULT · UNIVERSITAS MUHAMMADIYAH RIAU</div>
+    <div>Sang Pencerah Muda</div>
   </div>
 </footer>
 
@@ -1070,13 +1066,13 @@ async function loadBriefsData() {
         channel: "Instagram Feed & Story",
         funnel: "Kultural (TOFU)",
         objective: "Membangun citra kampus berjiwa muda, nasionalis, dan berakar pada nilai Islam berkemajuan",
-        palette: "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#F5E03A)",
+        palette: "Merah Berani (#D32F2F), Putih Bersih, Navy UMRI (#002B49), Aksen Gold (#FBB03B)",
         mood: "Heroik, khidmat, modern, sejuk Islami, penuh optimisme",
         mandatory: [
           "Logo resmi PMB UMRI & Akreditasi Unggul/Baik Sekali",
           "Logo Nasional Hari Sumpah Pemuda ke-98",
           "Subjek talent mahasiswa UMRI berbusana rapi, berhijab sopan",
-          "Tagline: 'Kampus Bermarwah & Berkemajuan'"
+          "Tagline: 'Sang Pencerah Muda'"
         ],
         headline: "Pemuda Hari Ini, Pemimpin Berkemajuan Esok Hari!",
         bullets: [
